@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+> **Custom Note:** the `Hero` component now layers a scroll‑animated video. Drop a long video file at `public/hero.mp4` (or adjust the `src` in `components/Hero.tsx`) to see it start as a small tilted tray and expand/rotate to fill the screen as you scroll. A new `HorizontalScroll` demo section also has content that translates sideways while the user scrolls down.
+
 ## Getting Started
 
 First, run the development server:
