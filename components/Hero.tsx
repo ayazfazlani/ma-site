@@ -29,38 +29,29 @@ export default function Hero() {
 
   return (
     <section
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
-        isDark ? "bg-dark-950" : "bg-gradient-to-br from-slate-50 via-white to-primary-50/30"
+      className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${
+        isDark ? "bg-dark-950" : "bg-white"
       }`}
     >
-      {/* Three.js Background — only in dark mode */}
-      {isDark && (
-        <div className="absolute inset-0 z-0">
-          <ParticleNetwork />
-        </div>
-      )}
+      {/* Three.js Background */}
+      <div className="absolute inset-0 z-0">
+        <ParticleNetwork />
+      </div>
 
-      {/* Light mode subtle pattern */}
+      {/* Subtle overlays for better contrast in light mode */}
       {!isDark && (
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-200/20 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-300/15 rounded-full blur-[120px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-100/20 rounded-full blur-[200px]" />
-        </div>
+        <div className="absolute inset-0 z-[1] pointer-events-none bg-radial-gradient from-white/20 via-white/40 to-white/90" />
       )}
 
-      {/* Ambient gradient orbs (dark only) */}
-      {isDark && (
-        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-500/[0.07] rounded-full blur-[120px] animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-400/[0.05] rounded-full blur-[100px] animate-float" style={{ animationDelay: "3s" }} />
-        </div>
-      )}
-
-      {/* Gradient Overlay */}
-      {isDark && (
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-950/40 via-transparent to-dark-950 z-[2] pointer-events-none" />
-      )}
+      {/* Ambient gradient orbs */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+        <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px] animate-float ${
+          isDark ? "bg-primary-500/[0.07]" : "bg-primary-500/[0.15]"
+        }`} />
+        <div className={`absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px] animate-float ${
+          isDark ? "bg-accent-400/[0.05]" : "bg-accent-400/[0.1]"
+        }`} style={{ animationDelay: "3s" }} />
+      </div>
 
       {/* Content */}
       <div className="container-custom relative z-10 mx-auto pt-32 pb-20 w-full">
@@ -76,11 +67,11 @@ export default function Hero() {
               className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide mb-8 ${
                 isDark
                   ? "glass text-primary-300"
-                  : "bg-primary-50 border border-primary-200/60 text-primary-600"
+                  : "bg-primary-50 border border-primary-200/60 text-primary-600 shadow-sm"
               }`}
             >
-              <span className="w-2 h-2 rounded-full bg-accent-400 animate-pulse-glow" />
-              Trusted by 500+ Businesses Worldwide
+              <span className={`w-2 h-2 rounded-full animate-pulse-glow ${isDark ? "bg-accent-400" : "bg-primary-500"}`} />
+              Software Solutions Redefined
             </span>
           </motion.div>
 
@@ -94,18 +85,18 @@ export default function Hero() {
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Best Digital
+            Building the Future of
             <br />
             <span className="gradient-text animate-gradient">
-              Marketing Agency
+              Startup Software
             </span>
             <br />
             <span
-              className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold ${
+              className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold opacity-80 ${
                 isDark ? "text-neutral-400" : "text-gray-400"
               }`}
             >
-              Pakistan
+              by Ayaz
             </span>
           </motion.h1>
 
@@ -119,12 +110,10 @@ export default function Hero() {
               isDark ? "text-neutral-400" : "text-gray-500"
             }`}
           >
-            Media Linkers has{" "}
-            <span className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>17+ years</span> of
-            experience in SEO, Content Marketing, Social Media Marketing, PPC
-            Advertising, Website Design &amp; Development. Since 2008, we&apos;ve
-            helped businesses grow sales, generate leads, and build brand
-            awareness.
+            I am a full-stack freelancer specializing in crafting 
+            <span className={`px-2 font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>custom ERPs</span>, 
+            scalable web platforms, and MVPs for startups. With expert-level 
+            execution, I transform complex business needs into seamless digital experiences.
           </motion.p>
 
           {/* CTAs */}
@@ -139,29 +128,21 @@ export default function Hero() {
               href="/contact"
               className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-[1.03]"
             >
-              <span className="relative z-10">Get Free Consultation</span>
+              <span className="relative z-10">Start Your Project</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
 
-            <button
-              className={`group inline-flex items-center gap-3 px-6 py-4 rounded-full font-medium text-lg transition-all duration-300 ${
+            <Link
+              href="/services"
+              className={`group inline-flex items-center gap-3 px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border ${
                 isDark
-                  ? "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
-                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+                  ? "border-white/10 text-neutral-400 hover:text-white hover:bg-white/[0.04]"
+                  : "border-gray-200 text-gray-500 hover:text-gray-900 hover:bg-gray-100"
               }`}
             >
-              <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  isDark
-                    ? "glass group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-primary-500/10"
-                    : "bg-primary-50 border border-primary-200/40 group-hover:bg-primary-100"
-                }`}
-              >
-                <Play className="w-5 h-5 ml-0.5 text-primary-400" />
-              </div>
-              <span>Watch Our Story</span>
-            </button>
+              <span>Explore My Services</span>
+            </Link>
           </motion.div>
 
           {/* Hero Stats */}
@@ -175,9 +156,9 @@ export default function Hero() {
             }`}
           >
             {[
-              { value: "400%", label: "Traffic Growth" },
-              { value: "500+", label: "Happy Clients" },
-              { value: "17+", label: "Years Experience" },
+              { value: "40+", label: "Projects Completed" },
+              { value: "25+", label: "Happy Startups" },
+              { value: "99%", label: "Client Satisfaction" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div

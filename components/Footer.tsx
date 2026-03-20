@@ -19,21 +19,15 @@ import { servicesData } from "../src/lib/services";
 
 const footerLinks = {
   services: servicesData
-    // exclude analytics page if not needed in footer
-    .filter((s) => s.slug !== "analytics" && s.slug !== "analytics-reporting")
     .map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/team" },
-    { label: "Careers", href: "/careers" },
+    { label: "About Ayaz", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
-  resources: [
-    { label: "Case Studies", href: "/case-studies" },
-    { label: "Free Tools", href: "/tools" },
-    { label: "Marketing Guides", href: "/guides" },
-    { label: "FAQ", href: "/faq" },
+  legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 };
 
@@ -73,23 +67,23 @@ export default function Footer() {
                 <span className="text-white font-bold text-xl">M</span>
               </div>
               <span className="text-2xl font-bold">
-                Media<span className="text-primary-400">Linkers</span>
+                MA<span className="text-primary-400"> Softs</span>
               </span>
             </Link>
             <p className="text-neutral-500 mb-8 max-w-sm leading-relaxed">
-              Pakistan&apos;s leading digital marketing agency with 17+ years of
-              experience helping businesses grow their online presence and
-              revenue.
+              Specialized software development for startups and small businesses. 
+              Crafting premium ERPs, custom web applications, and technical strategies 
+              that drive real business value.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3.5">
               <a
-                href="mailto:info@medialinkers.pk"
+                href="mailto:ayaz@masoftwares.com"
                 className="flex items-center gap-3 text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm"
               >
                 <Mail className="w-4.5 h-4.5" />
-                <span>info@medialinkers.pk</span>
+                <span>ayaz@masoftwares.com</span>
               </a>
               <a
                 href="tel:+923001234567"
@@ -100,7 +94,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-3 text-neutral-400 text-sm">
                 <MapPin className="w-4.5 h-4.5 flex-shrink-0 mt-0.5" />
-                <span>123 Business Avenue, Karachi, Pakistan</span>
+                <span>Karachi, Pakistan (Serving Globally)</span>
               </div>
             </div>
           </div>
@@ -108,7 +102,7 @@ export default function Footer() {
           {/* Services Links */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
-              Services
+              Solutions
             </h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
@@ -127,7 +121,7 @@ export default function Footer() {
           {/* Company Links */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
-              Company
+              Brand
             </h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
@@ -143,13 +137,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources Links */}
+          {/* Legal Links */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
-              Resources
+              Legal
             </h4>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+              {footerLinks.legal.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -166,7 +160,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/[0.06] py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-neutral-600 text-sm">
-            © {new Date().getFullYear()} Media Linkers. All rights reserved.
+            © {new Date().getFullYear()} MA Softs | Ayaz Freelancer. All rights reserved.
           </p>
 
           {/* Social Links */}

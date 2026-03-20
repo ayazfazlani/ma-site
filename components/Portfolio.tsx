@@ -1,54 +1,53 @@
 // components/Portfolio.tsx
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, useAnimation, PanInfo } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion, PanInfo } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Re-platforming",
-    category: "Web Development & SEO",
-    description: "Increased online sales by 150% and organic traffic by 200% within 6 months.",
+    title: "AI-Powered ERP Solution",
+    category: "Business Software",
+    description: "Custom enterprise resource planning system with AI-driven inventory forecasting and real-time analytics.",
     color: "from-blue-500 to-cyan-400",
     imageDark: "bg-blue-900/40",
     imageLight: "bg-blue-100",
   },
   {
     id: 2,
-    title: "Real Estate Lead Generation",
-    category: "PPC & Social Media",
-    description: "Generated 500+ qualified leads with a 40% reduction in cost-per-acquisition.",
+    title: "Fintech SaaS Dashboard",
+    category: "Web Application",
+    description: "High-performance financial monitoring dashboard for a European startup, built with Next.js and Chart.js.",
     color: "from-amber-500 to-orange-400",
     imageDark: "bg-amber-900/40",
     imageLight: "bg-amber-100",
   },
   {
     id: 3,
-    title: "Healthcare Brand Awareness",
-    category: "Content & Social Media",
-    description: "Grew social following to 50k+ and established industry thought leadership.",
+    title: "Headless E-commerce",
+    category: "E-commerce System",
+    description: "Blazing fast shopping experience using Shopify Hydrogen and Next.js, achieving 100/100 Lighthouse scores.",
     color: "from-rose-500 to-pink-400",
     imageDark: "bg-rose-900/40",
     imageLight: "bg-rose-100",
   },
   {
     id: 4,
-    title: "SaaS Launch Campaign",
-    category: "Full Service Marketing",
-    description: "Successful product launch acquiring 10,000+ active users in the first quarter.",
+    title: "Medical Clinic CRM",
+    category: "Custom Software",
+    description: "Specialized patient management and appointment scheduling system for a multi-branch medical center.",
     color: "from-purple-500 to-indigo-400",
     imageDark: "bg-purple-900/40",
     imageLight: "bg-purple-100",
   },
   {
     id: 5,
-    title: "Education Portal Redesign",
-    category: "Web Design & Development",
-    description: "Modernized user interface leading to a 60% increase in student course enrollments.",
+    title: "LMS Platform for Coaches",
+    category: "Educational Portal",
+    description: "Custom learning management system with video streaming, progress tracking, and automated certification.",
     color: "from-emerald-500 to-teal-400",
     imageDark: "bg-emerald-900/40",
     imageLight: "bg-emerald-100",
@@ -86,7 +85,6 @@ export default function Portfolio() {
     }
   };
 
-  // The active window of items relative to the current index
   const visibleOffsets = [-2, -1, 0, 1, 2];
 
   return (
@@ -110,11 +108,11 @@ export default function Portfolio() {
 
       <div className="container-custom mx-auto relative z-10 mb-12 lg:mb-16">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
         >
           <span
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-6 ${
@@ -124,22 +122,22 @@ export default function Portfolio() {
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            Our Portfolio
+            Proof of Excellence
           </span>
           <h2
             className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Featured <span className="gradient-text">Projects</span>
+            My Featured <span className="gradient-text">Works</span>
           </h2>
           <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Explore our recent success stories and see how we've helped businesses achieve their digital goals.
+            A selection of complex software solutions and high-performance web applications 
+            crafted for startups and established businesses.
           </p>
         </motion.div>
       </div>
 
-      {/* Carousel Container */}
       <div 
         className="w-full relative py-12 lg:py-20 overflow-hidden flex justify-center items-center min-h-[500px] md:min-h-[600px]"
         onMouseEnter={() => setIsHovered(true)}
@@ -147,7 +145,6 @@ export default function Portfolio() {
       >
         {visibleOffsets.map((offset) => {
           const absoluteIndex = currentIndex + offset;
-          // Calculate positive modulo even for negative indices
           const projectIndex = ((absoluteIndex % projects.length) + projects.length) % projects.length;
           const project = projects[projectIndex];
           const isActive = offset === 0;
@@ -185,19 +182,15 @@ export default function Portfolio() {
               <div className="flex flex-col md:flex-row h-full">
                 {/* Image Area */}
                 <div className={`w-full md:w-1/2 h-64 md:h-auto md:min-h-[450px] relative overflow-hidden flex-shrink-0 ${isDark ? project.imageDark : project.imageLight}`}>
-                  {/* Gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 mix-blend-overlay`} />
                   
-                  {/* Placeholder Mockup Graphic */}
                   <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
                     <div className={`w-full h-full rounded-xl border-4 border-white/10 shadow-2xl overflow-hidden ${isDark ? "bg-dark-950" : "bg-white"} flex flex-col`}>
-                       {/* Browser header */}
                        <div className={`h-6 w-full flex items-center px-3 gap-1.5 border-b ${isDark ? "bg-dark-900 border-white/5" : "bg-gray-100 border-gray-200"}`}>
                           <div className="w-2 h-2 rounded-full bg-red-400" />
                           <div className="w-2 h-2 rounded-full bg-amber-400" />
                           <div className="w-2 h-2 rounded-full bg-green-400" />
                        </div>
-                       {/* Body skeleton */}
                        <div className="flex-1 p-4 flex flex-col gap-3">
                           <div className={`w-3/4 h-8 rounded shrink-0 ${isDark ? "bg-white/5" : "bg-gray-200"}`} />
                           <div className={`w-full h-full rounded ${isDark ? "bg-white/5" : "bg-gray-100"}`} />
@@ -227,17 +220,16 @@ export default function Portfolio() {
                   </p>
                   
                   <div className="mt-auto">
-                    <Link
-                      href="#"
+                    <div
                       className={`inline-flex items-center gap-2 font-semibold transition-colors group/link ${
                         isDark
                           ? "text-white hover:text-primary-400"
                           : "text-gray-900 hover:text-primary-600"
                       }`}
                     >
-                      View Case Study
+                      Project Insights
                       <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -246,16 +238,13 @@ export default function Portfolio() {
         })}
       </div>
 
-      {/* Navigation Dots */}
       <div className="flex justify-center items-center gap-3 mt-4 pb-8 z-20 relative">
         {projects.map((_, idx) => {
-          // Normalize currentIndex to match exactly one of the projects dots
           const normalizedCurrent = ((currentIndex % projects.length) + projects.length) % projects.length;
           return (
             <button
               key={idx}
               onClick={() => {
-                // Find shortest path to target dot
                 let diff = idx - normalizedCurrent;
                 if (diff > projects.length / 2) diff -= projects.length;
                 if (diff < -projects.length / 2) diff += projects.length;
@@ -266,7 +255,6 @@ export default function Portfolio() {
                   ? "w-8 h-2.5 bg-primary-500" 
                   : `w-2.5 h-2.5 ${isDark ? "bg-white/20 hover:bg-white/40" : "bg-gray-300 hover:bg-gray-400"}`
               }`}
-              aria-label={`Go to project ${idx + 1}`}
             />
           );
         })}

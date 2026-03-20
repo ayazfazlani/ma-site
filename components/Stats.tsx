@@ -3,40 +3,40 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { TrendingUp, Users, Calendar, Award } from "lucide-react";
+import { TrendingUp, Rocket, Globe, Award } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 const stats = [
   {
     icon: TrendingUp,
-    value: 400,
+    value: 100,
     suffix: "%",
-    label: "Website Traffic Growth",
-    description: "Average increase in organic traffic within 3 months",
+    label: "Project Success Rate",
+    description: "Every solution delivered on time and within budget",
     gradient: "from-primary-500 to-primary-400",
   },
   {
-    icon: Users,
-    value: 500,
+    icon: Rocket,
+    value: 25,
     suffix: "+",
-    label: "Clients Worldwide",
-    description: "Businesses trust our expertise globally",
+    label: "Startups Scaled",
+    description: "Helping new ventures find their technical footing",
     gradient: "from-accent-500 to-accent-400",
   },
   {
-    icon: Calendar,
-    value: 17,
+    icon: Globe,
+    value: 12,
     suffix: "+",
-    label: "Years Experience",
-    description: "In digital marketing industry",
+    label: "Countries Served",
+    description: "Global delivery expertise from Pakistan",
     gradient: "from-amber-500 to-amber-400",
   },
   {
     icon: Award,
-    value: 98,
+    value: 99,
     suffix: "%",
-    label: "Client Retention",
-    description: "Long-term partnerships that last",
+    label: "Client Satisfaction",
+    description: "Focusing on quality and long-term value",
     gradient: "from-success-500 to-success-400",
   },
 ];
@@ -112,19 +112,18 @@ export default function Stats() {
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
-            Our Impact
+            My Performance 
           </span>
           <h2
             className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Results We{" "}
-            <span className="gradient-text">Deliver</span>
+            Delivering <span className="gradient-text">Excellence</span>
           </h2>
           <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Real numbers that demonstrate our commitment to driving growth for
-            your business
+            Numbers that highlight my commitment to providing specialized 
+            software engineering value to entrepreneurs and enterprises.
           </p>
         </motion.div>
 

@@ -4,8 +4,9 @@
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useTheme } from "./ThemeProvider";
 
-function Particles() {
+function Particles({ isDark }: { isDark: boolean }) {
   const mesh = useRef<THREE.Points>(null);
   const linesMesh = useRef<THREE.LineSegments>(null);
 
@@ -65,7 +66,7 @@ function Particles() {
         const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
         if (dist < connectionDistance) {
-          const alpha = (1 - dist / connectionDistance) * 0.6;
+          const alpha = (1 - dist / connectionDistance) * (isDark ? 0.6 : 0.4);
 
           linePos[lineIndex * 6] = positions[i * 3];
           linePos[lineIndex * 6 + 1] = positions[i * 3 + 1];
@@ -74,13 +75,23 @@ function Particles() {
           linePos[lineIndex * 6 + 4] = positions[j * 3 + 1];
           linePos[lineIndex * 6 + 5] = positions[j * 3 + 2];
 
-          // Indigo-to-cyan gradient matching the new brand colors
-          lineCol[lineIndex * 6] = 0.31 * alpha;     // R (indigo 6366f1)
-          lineCol[lineIndex * 6 + 1] = 0.25 * alpha; // G
-          lineCol[lineIndex * 6 + 2] = 0.95 * alpha;  // B
-          lineCol[lineIndex * 6 + 3] = 0.13 * alpha;  // R (cyan 22d3ee)
-          lineCol[lineIndex * 6 + 4] = 0.83 * alpha; // G
-          lineCol[lineIndex * 6 + 5] = 0.93 * alpha;  // B
+          if (isDark) {
+            // Indigo-to-cyan gradient matching the new brand colors
+            lineCol[lineIndex * 6] = 0.31 * alpha;     // R (indigo 6366f1)
+            lineCol[lineIndex * 6 + 1] = 0.25 * alpha; // G
+            lineCol[lineIndex * 6 + 2] = 0.95 * alpha;  // B
+            lineCol[lineIndex * 6 + 3] = 0.13 * alpha;  // R (cyan 22d3ee)
+            lineCol[lineIndex * 6 + 4] = 0.83 * alpha; // G
+            lineCol[lineIndex * 6 + 5] = 0.93 * alpha;  // B
+          } else {
+            // Darker colors for light mode
+            lineCol[lineIndex * 6] = 0.3 * alpha;     
+            lineCol[lineIndex * 6 + 1] = 0.3 * alpha; 
+            lineCol[lineIndex * 6 + 2] = 0.8 * alpha; 
+            lineCol[lineIndex * 6 + 3] = 0.1 * alpha; 
+            lineCol[lineIndex * 6 + 4] = 0.6 * alpha; 
+            lineCol[lineIndex * 6 + 5] = 0.7 * alpha; 
+          }
 
           lineIndex++;
         }
@@ -106,10 +117,10 @@ function Particles() {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.04}
-          color="#818cf8"
+          size={0.06}
+          color={isDark ? "#818cf8" : "#4f46e5"}
           transparent
-          opacity={0.6}
+          opacity={isDark ? 0.6 : 0.4}
           sizeAttenuation
         />
       </points>
@@ -134,8 +145,8 @@ function Particles() {
         <lineBasicMaterial
           vertexColors
           transparent
-          opacity={0.25}
-          blending={THREE.AdditiveBlending}
+          opacity={isDark ? 0.25 : 0.4}
+          blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
         />
       </lineSegments>
     </>
@@ -143,15 +154,18 @@ function Particles() {
 }
 
 export default function ParticleNetwork() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
-    <div className="absolute inset-0 bg-dark-950">
+    <div className={`absolute inset-0 transition-colors duration-500 ${isDark ? "bg-dark-950" : "bg-white"}`}>
       <Canvas
         camera={{ position: [0, 0, 8], fov: 75 }}
-        dpr={[1, 1.5]}
+        dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
       >
-        <ambientLight intensity={0.3} />
-        <Particles />
+        <ambientLight intensity={isDark ? 0.3 : 1} />
+        <Particles isDark={isDark} />
       </Canvas>
     </div>
   );

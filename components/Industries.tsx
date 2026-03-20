@@ -7,48 +7,48 @@ import {
   Heart,
   GraduationCap,
   Building2,
-  Utensils,
-  Plane,
+  Cpu,
+  Truck,
   ArrowRight,
 } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 const industries = [
   {
+    icon: Cpu,
+    name: "SaaS Startups",
+    description: "Cloud-native solutions and scalable MVP development",
+    gradient: "from-primary-500 to-primary-400",
+  },
+  {
+    icon: Truck,
+    name: "Logistics & ERP",
+    description: "Streamlined supply chain and resource planning systems",
+    gradient: "from-purple-500 to-violet-400",
+  },
+  {
     icon: ShoppingBag,
     name: "E-commerce",
-    description: "Boost online sales and customer retention",
-    gradient: "from-primary-500 to-primary-400",
+    description: "High-conversion headless stores and custom platforms",
+    gradient: "from-emerald-500 to-emerald-400",
   },
   {
     icon: Heart,
     name: "Healthcare",
-    description: "Connect with patients and build trust",
+    description: "Secure patient portals and medical management software",
     gradient: "from-rose-500 to-pink-400",
   },
   {
     icon: GraduationCap,
-    name: "Education",
-    description: "Attract students and build reputation",
+    name: "EdTech",
+    description: "Interactive learning platforms and management portals",
     gradient: "from-amber-500 to-amber-400",
   },
   {
     icon: Building2,
-    name: "Real Estate",
-    description: "Generate quality leads and sales",
+    name: "Fintech & PropTech",
+    description: "Secure financial tools and real estate data platforms",
     gradient: "from-accent-500 to-accent-400",
-  },
-  {
-    icon: Utensils,
-    name: "Food & Beverage",
-    description: "Increase orders and brand awareness",
-    gradient: "from-success-500 to-emerald-400",
-  },
-  {
-    icon: Plane,
-    name: "Travel & Tourism",
-    description: "Drive bookings and engagement",
-    gradient: "from-purple-500 to-violet-400",
   },
 ];
 
@@ -75,11 +75,11 @@ export default function Industries() {
       <div className="container-custom mx-auto relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+           className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
         >
           <span
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-6 ${
@@ -89,19 +89,18 @@ export default function Industries() {
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
-            Industries
+            Specialized Expertise
           </span>
           <h2
             className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Industries We{" "}
-            <span className="gradient-text">Serve</span>
+            Sectors I <span className="gradient-text">Empower</span>
           </h2>
           <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            We have experience working with diverse industries, delivering
-            tailored solutions for unique business challenges.
+            I specialize in building complex, data-driven software solutions for industries 
+            demanding high reliability and seamless user scaling.
           </p>
         </motion.div>
 

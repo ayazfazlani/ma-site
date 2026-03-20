@@ -8,6 +8,7 @@ import Process from "../../components/Process";
 import Industries from "../../components/Industries";
 import AuditForm from "../../components/AuditForm";
 import Testimonials from "../../components/Testimonials";
+import TechStack from "../../components/TechStack";
 import JsonLd from "../../components/JsonLd";
 import {
   homePageSchema,
@@ -36,6 +37,7 @@ export default function Home() {
       <Portfolio />
       <Services />
       <Stats />
+      <TechStack />
       <Process />
       <Industries />
       <AuditForm />
