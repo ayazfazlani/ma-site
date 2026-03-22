@@ -20,7 +20,7 @@ export interface PricingPlan {
 
 export interface ServiceData {
   slug: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
   features: string[];

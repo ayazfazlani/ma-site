@@ -58,9 +58,12 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
 
   const serviceSchema = serviceSchemas.find((sch: any) => sch.name === service.title) || serviceSchemas[0];
 
+  // Strip the non-serializable icon component from the service object
+  const { icon, ...serializableService } = service;
+
   return (
     <ServiceDetailClient
-      service={service}
+      service={serializableService}
       breadcrumb={breadcrumb}
       serviceItemListSchema={servicesItemListSchema}
       servicesFaqSchema={servicesFaqSchema}

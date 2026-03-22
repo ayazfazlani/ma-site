@@ -5,7 +5,7 @@ import { useTheme } from "../../../../components/ThemeProvider";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import JsonLd from "../../../../components/JsonLd";
-import { type ServiceData } from "../../../lib/services";
+import { type ServiceData, servicesData } from "../../../lib/services";
 
 interface ServiceDetailClientProps {
   service: ServiceData;
@@ -25,6 +25,10 @@ export default function ServiceDetailClient({
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
+  // Find the actual service data with the non-serializable icon from our static data
+  const fullService = servicesData.find(s => s.slug === service.slug);
+  const Icon = fullService?.icon;
+
   return (
     <main className="pt-20">
       {/* SEO Schemas */}
@@ -41,7 +45,7 @@ export default function ServiceDetailClient({
               <div
                 className={`w-20 h-20 bg-linear-to-br ${service.color} rounded-3xl flex items-center justify-center mb-4`}
               >
-                <service.icon className="w-10 h-10 text-white" />
+                {Icon && <Icon className="w-10 h-10 text-white" />}
               </div>
             </div>
             <div>

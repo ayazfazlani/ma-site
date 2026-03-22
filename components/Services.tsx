@@ -106,7 +106,7 @@ export default function Services() {
               <div
                 className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}
               >
-                <service.icon className="w-7 h-7 text-white" />
+                {service.icon && <service.icon className="w-7 h-7 text-white" />}
               </div>
 
               {/* Content */}

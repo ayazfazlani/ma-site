@@ -78,7 +78,7 @@ export default function ServicesPage() {
                 }`}
               >
                 <div className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6`}>
-                  <service.icon className="w-8 h-8 text-white" />
+                  {service.icon && <service.icon className="w-8 h-8 text-white" />}
                 </div>
                 
                 <h2 className={`text-2xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>{service.title}</h2>
