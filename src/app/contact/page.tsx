@@ -77,7 +77,7 @@ export default function ContactPage() {
               </div>
 
               {[
-                { icon: Phone, title: "Phone", content: "+92 318 2885445", href: "tel:+923367057973" },
+                { icon: Phone, title: "Phone", content: "+92 336 7057973", href: "tel:+923367057973" },
                 { icon: Mail, title: "Email", content: "ayaz@ma-softs.com", href: "mailto:ayaz@ma-softs.com" },
                 { icon: MapPin, title: "Address", content: "123 Business Avenue, Karachi, Pakistan", href: "#" },
                 { icon: Clock, title: "Working Hours", content: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
@@ -88,12 +88,12 @@ export default function ContactPage() {
                   className="flex items-start space-x-4 group"
                 >
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isDark
-                      ? "bg-primary-500/15 group-hover:bg-primary-500/25"
-                      : "bg-primary-50 group-hover:bg-primary-600"
+                    ? "bg-primary-500/15 group-hover:bg-primary-500/25"
+                    : "bg-primary-50 group-hover:bg-primary-600"
                     }`}>
                     <item.icon className={`w-6 h-6 transition-colors ${isDark
-                        ? "text-primary-400"
-                        : "text-primary-600 group-hover:text-white"
+                      ? "text-primary-400"
+                      : "text-primary-600 group-hover:text-white"
                       }`} />
                   </div>
                   <div>
@@ -112,8 +112,8 @@ export default function ContactPage() {
               className="lg:col-span-2"
             >
               <div className={`rounded-3xl p-8 lg:p-10 ${isDark
-                  ? "bg-white/[0.03] border border-white/[0.06]"
-                  : "bg-white shadow-xl"
+                ? "bg-white/[0.03] border border-white/[0.06]"
+                : "bg-white shadow-xl"
                 }`}>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
@@ -125,8 +125,8 @@ export default function ContactPage() {
                         type="text"
                         required
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${isDark
-                            ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
-                            : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
+                          ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
+                          : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
                         placeholder="John Doe"
                         value={formData.name}
@@ -141,8 +141,8 @@ export default function ContactPage() {
                         type="email"
                         required
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${isDark
-                            ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
-                            : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
+                          ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
+                          : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
                         placeholder="john@example.com"
                         value={formData.email}
@@ -159,8 +159,8 @@ export default function ContactPage() {
                       <input
                         type="tel"
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${isDark
-                            ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
-                            : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
+                          ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
+                          : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
                         placeholder="+92 300 1234567"
                         value={formData.phone}
@@ -173,8 +173,8 @@ export default function ContactPage() {
                       </label>
                       <select
                         className={`w-full px-4 py-3 rounded-xl border outline-none transition-all ${isDark
-                            ? "bg-white/[0.04] border-white/[0.08] text-white focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
-                            : "bg-gray-50 border-gray-200 text-gray-900 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
+                          ? "bg-white/[0.04] border-white/[0.08] text-white focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
+                          : "bg-gray-50 border-gray-200 text-gray-900 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
@@ -198,8 +198,8 @@ export default function ContactPage() {
                       required
                       rows={5}
                       className={`w-full px-4 py-3 rounded-xl border outline-none transition-all resize-none ${isDark
-                          ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
-                          : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
+                        ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
+                        : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                         }`}
                       placeholder="Tell us about your project..."
                       value={formData.message}
