@@ -4,7 +4,7 @@
 const SITE_URL = "https://ma-softs.com";
 const SITE_NAME = "MA Softs";
 const LOGO_URL = `${SITE_URL}/logo.png`;
-const PHONE = "+923182885445";
+const PHONE = "+923367057973";
 const EMAIL = "ayaz@ma-softs.com";
 
 // ── Organization Schema ──
