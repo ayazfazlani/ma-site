@@ -11,59 +11,60 @@ import {
   websiteSchema,
   localBusinessSchema,
 } from "../../lib/schemas";
+import WhatsAppButton from "../../components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Media Linkers - Best Digital Marketing Agency Pakistan",
-    template: "%s | Media Linkers",
+    default: "MA Softs - Custom Software & Web Development by Ayaz",
+    template: "%s | MA Softs",
   },
   description:
-    "17+ years of experience in SEO, Content Marketing, Social Media Marketing, PPC Advertising, Website Design & Development. Trusted by 500+ businesses worldwide.",
+    "Expert custom software solutions, web applications, and ERP systems tailored for startups and businesses. Built with Passion by Ayaz.",
   keywords: [
-    "digital marketing agency Pakistan",
-    "SEO services Pakistan",
-    "social media marketing",
-    "content marketing",
-    "PPC advertising",
-    "web development Pakistan",
-    "Media Linkers",
-    "best digital marketing agency",
-    "SEO company Karachi",
-    "online marketing Pakistan",
+    "custom software development",
+    "web application development",
+    "ERP systems",
+    "software developer Ayaz",
+    "MA Softs",
+    "startup software solutions",
+    "business automation",
+    "Next.js developer",
+    "React developer",
+    "Karachi software services",
   ],
-  authors: [{ name: "Media Linkers", url: "https://medialinkers.pk" }],
-  creator: "Media Linkers",
-  publisher: "Media Linkers",
-  metadataBase: new URL("https://medialinkers.pk"),
+  authors: [{ name: "Ayaz", url: "https://ma-softs.com" }],
+  creator: "Ayaz",
+  publisher: "MA Softs",
+  metadataBase: new URL("https://ma-softs.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://medialinkers.pk",
-    siteName: "Media Linkers",
-    title: "Media Linkers - Best Digital Marketing Agency Pakistan",
+    url: "https://ma-softs.com",
+    siteName: "MA Softs",
+    title: "MA Softs - Custom Software & Web Development by Ayaz",
     description:
-      "17+ years of experience in SEO, Content Marketing, Social Media Marketing, PPC Advertising, Website Design & Development.",
+      "Transforming businesses with custom software solutions, web applications, and ERP systems. Built with Passion by Ayaz.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Media Linkers - Digital Marketing Agency",
+        alt: "MA Softs - Software & Web Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Media Linkers - Best Digital Marketing Agency Pakistan",
+    title: "MA Softs - Custom Software & Web Development by Ayaz",
     description:
-      "17+ years of experience in SEO, Content Marketing, Social Media Marketing, PPC Advertising, Website Design & Development.",
+      "Transforming businesses with custom software solutions, web applications, and ERP systems. Built with Passion by Ayaz.",
     images: ["/og-image.png"],
-    creator: "@medialinkers",
+    creator: "@ayaz_masofts",
   },
   robots: {
     index: true,
@@ -98,6 +99,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>

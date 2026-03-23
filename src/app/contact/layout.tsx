@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Get Free Digital Marketing Consultation",
+  title: "Contact Us - Custom Software Consultation with Ayaz",
   description:
-    "Get in touch with Media Linkers for a free consultation about your digital marketing needs. Call +92 300 1234567 or email info@medialinkers.pk. We respond within 24 hours.",
+    "Get in touch with Ayaz at MA Softs for a free consultation about your custom software needs. Call +92 318 2885445 or email ayaz@ma-softs.com.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact Media Linkers - Free Digital Marketing Consultation",
+    title: "Contact MA Softs - Free Software Development Consultation",
     description:
-      "Ready to grow your business? Contact us for a free consultation. Phone: +92 300 1234567, Email: info@medialinkers.pk",
-    url: "https://medialinkers.pk/contact",
+      "Ready to build your next big idea? Contact Ayaz for a free software consultation. Phone: +92 318 2885445, Email: ayaz@ma-softs.com",
+    url: "https://ma-softs.com/contact",
     type: "website",
   },
   twitter: {
-    title: "Contact Media Linkers",
+    title: "Contact MA Softs",
     description:
-      "Get a free digital marketing consultation. Call +92 300 1234567 or visit our Karachi office.",
+      "Get a free custom software consultation from Ayaz. Start your project today.",
   },
 };
 

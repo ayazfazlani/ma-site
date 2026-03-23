@@ -28,9 +28,9 @@ export default function SEOPage() {
   const service = servicesData.find((s) => s.slug === "seo");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://medialinkers.pk" },
-    { name: "Services", url: "https://medialinkers.pk/services" },
-    { name: "SEO Optimization", url: "https://medialinkers.pk/services/seo" },
+    { name: "Home", url: "https://ma-softs.com" },
+    { name: "Services", url: "https://ma-softs.com/services" },
+    { name: "SEO Optimization", url: "https://ma-softs.com/services/seo" },
   ]);
 
   return (

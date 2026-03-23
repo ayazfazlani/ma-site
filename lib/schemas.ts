@@ -1,11 +1,11 @@
 // lib/schemas.ts
 // Centralized SEO Schema definitions for Media Linkers
 
-const SITE_URL = "https://medialinkers.pk";
-const SITE_NAME = "Media Linkers";
+const SITE_URL = "https://ma-softs.com";
+const SITE_NAME = "MA Softs";
 const LOGO_URL = `${SITE_URL}/logo.png`;
-const PHONE = "+923001234567";
-const EMAIL = "info@medialinkers.pk";
+const PHONE = "+923182885445";
+const EMAIL = "ayaz@ma-softs.com";
 
 // ── Organization Schema ──
 export const organizationSchema = {
@@ -22,18 +22,18 @@ export const organizationSchema = {
   },
   image: LOGO_URL,
   description:
-    "Pakistan's leading digital marketing agency with 17+ years of experience in SEO, Content Marketing, Social Media Marketing, PPC Advertising, Website Design & Development.",
-  foundingDate: "2008",
+    "Expert custom software solutions, web applications, and ERP systems tailored for startups and businesses. Built with Passion by Ayaz.",
+  foundingDate: "2023",
   founder: {
     "@type": "Person",
-    name: "Media Linkers Team",
+    name: "Ayaz",
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Business Avenue",
+    streetAddress: "Gulshan-e-Iqbal",
     addressLocality: "Karachi",
     addressRegion: "Sindh",
-    postalCode: "74000",
+    postalCode: "75300",
     addressCountry: "PK",
   },
   contactPoint: [
@@ -54,16 +54,16 @@ export const organizationSchema = {
     },
   ],
   sameAs: [
-    "https://www.facebook.com/medialinkers",
-    "https://twitter.com/medialinkers",
-    "https://www.linkedin.com/company/medialinkers",
-    "https://www.instagram.com/medialinkers",
+    "https://www.facebook.com/masofts",
+    "https://twitter.com/masofts",
+    "https://www.linkedin.com/company/masofts",
+    "https://www.instagram.com/masofts",
   ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",
-    minValue: 50,
+    minValue: 5,
   },
-  slogan: "Best Digital Marketing Agency Pakistan",
+  slogan: "Custom Software & Web Development by Ayaz",
 };
 
 // ── WebSite Schema (with search action) ──
@@ -77,7 +77,7 @@ export const websiteSchema = {
     "@id": `${SITE_URL}/#organization`,
   },
   description:
-    "Pakistan's best digital marketing agency offering SEO, Social Media Marketing, Content Marketing, PPC Advertising, and Web Development services.",
+    "Custom software, web development, and ERP solutions for startups and businesses. Expert development services by Ayaz.",
   potentialAction: {
     "@type": "SearchAction",
     target: {
@@ -100,10 +100,10 @@ export const localBusinessSchema = {
   email: EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Business Avenue",
+    streetAddress: "Gulshan-e-Iqbal",
     addressLocality: "Karachi",
     addressRegion: "Sindh",
-    postalCode: "74000",
+    postalCode: "75300",
     addressCountry: "PK",
   },
   geo: {
@@ -143,45 +143,37 @@ export const localBusinessSchema = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Digital Marketing Services",
+    name: "Software Development Services",
     itemListElement: [
       {
         "@type": "OfferCatalog",
-        name: "SEO Services",
+        name: "Web Development",
         itemListElement: [
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Technical SEO Audit" },
+            itemOffered: { "@type": "Service", name: "Custom Web Applications" },
           },
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "On-Page SEO" },
+            itemOffered: { "@type": "Service", name: "E-commerce Solutions" },
           },
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Off-Page SEO" },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Local SEO" },
+            itemOffered: { "@type": "Service", name: "SaaS Development" },
           },
         ],
       },
       {
         "@type": "OfferCatalog",
-        name: "Marketing Services",
+        name: "Enterprise Solutions",
         itemListElement: [
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Social Media Marketing" },
+            itemOffered: { "@type": "Service", name: "Custom ERP Systems" },
           },
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Content Marketing" },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "PPC Advertising" },
+            itemOffered: { "@type": "Service", name: "Business Process Automation" },
           },
         ],
       },
@@ -231,9 +223,9 @@ export const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   "@id": `${SITE_URL}/about/#aboutpage`,
-  name: "About Media Linkers",
+  name: "About MA Softs",
   description:
-    "Learn about Media Linkers - Pakistan's leading digital marketing agency with 17+ years of experience, 500+ clients served, and a team of 50+ digital marketing experts.",
+    "Learn about MA Softs - Custom software development led by Ayaz. Specializing in web applications, ERP systems, and business automation.",
   url: `${SITE_URL}/about`,
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -244,9 +236,9 @@ export const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "@id": `${SITE_URL}/contact/#contactpage`,
-  name: "Contact Media Linkers",
+  name: "Contact MA Softs",
   description:
-    "Get in touch with Media Linkers for a free consultation about your digital marketing needs. We respond within 24 hours.",
+    "Get in touch with Ayaz at MA Softs for a free consultation about your custom software needs. Expert development services delivered with care.",
   url: `${SITE_URL}/contact`,
   mainEntity: {
     "@type": "Organization",
@@ -280,9 +272,9 @@ export const blogPageSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": `${SITE_URL}/blog/#blog`,
-  name: "Media Linkers Blog",
+  name: "MA Softs Blog",
   description:
-    "Digital marketing insights, tips, and strategies from Pakistan's leading marketing experts. Learn about SEO, Social Media, Content Marketing, and more.",
+    "Software development insights, coding tips, and tech trends from Ayaz. Learn about Next.js, React, Node.js, and enterprise software architecture.",
   url: `${SITE_URL}/blog`,
   publisher: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -330,8 +322,8 @@ export function getBlogPostingsSchema(
 export const servicesItemListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Digital Marketing Services",
-  description: "Comprehensive digital marketing solutions by Media Linkers",
+  name: "Software Development Services",
+  description: "Comprehensive custom software and web development solutions by MA Softs",
   url: `${SITE_URL}/services`,
   numberOfItems: 6,
   itemListElement: serviceSchemas.map((service, index) => ({
@@ -353,42 +345,42 @@ export const servicesFaqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What digital marketing services does Media Linkers offer?",
+      name: "What software development services does MA Softs offer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Media Linkers offers comprehensive digital marketing services including SEO Optimization, Social Media Marketing, Content Marketing, Web Design & Development, PPC Advertising, and Analytics & Reporting. Each service is tailored to meet your specific business needs.",
+        text: "MA Softs offers a wide range of custom software development services including Web Application Development, ERP Systems, E-commerce Solutions, SaaS Development, and Business Process Automation. Each solution is custom-built by Ayaz to meet your specific business requirements.",
       },
     },
     {
       "@type": "Question",
-      name: "How much do Media Linkers' digital marketing services cost?",
+      name: "How much does custom software development cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our services start from $499/month for Analytics & Reporting, $599/month for Content Marketing, $799/month for Social Media Marketing, $999/month for SEO Optimization, $1,299/month for PPC Advertising, and $2,499/project for Web Design & Development. Custom packages are also available.",
+        text: "Project costs vary depending on complexity and requirements. We offer competitive pricing for high-quality, custom-built solutions. Contact Ayaz for a detailed quote based on your specific needs.",
       },
     },
     {
       "@type": "Question",
-      name: "How long does it take to see results from SEO?",
+      name: "How long does it take to build a custom web application?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most clients see significant improvements in organic traffic within 3-4 months, with an average traffic growth of 400%. However, SEO is a long-term strategy and results can vary depending on your industry, competition, and current website status.",
+        text: "Simple web applications can take 4-8 weeks, while complex enterprise systems or ERPs may take 3-6 months. We follow an agile development process to deliver functional modules incrementally.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Media Linkers work with international clients?",
+      name: "Do you provide support after the software is launched?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, Media Linkers serves clients globally across Pakistan, UAE, Saudi Arabia, USA, UK, and other countries. With 500+ happy clients worldwide, we have extensive experience working with diverse markets and industries.",
+        text: "Yes, we provide comprehensive post-launch support and maintenance to ensure your software runs smoothly and stays up-to-date with the latest technologies.",
       },
     },
     {
       "@type": "Question",
-      name: "What industries does Media Linkers specialize in?",
+      name: "Can you integrate with existing business tools?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We specialize in E-commerce, Healthcare, Education, Real Estate, Food & Beverage, and Travel & Tourism industries. Our team has deep industry knowledge to deliver tailored solutions for unique business challenges.",
+        text: "Absolutely! We have extensive experience integrating custom software with various third-party APIs, payment gateways, and existing legacy systems.",
       },
     },
   ],
@@ -415,9 +407,9 @@ export const homePageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": `${SITE_URL}/#webpage`,
-  name: "Media Linkers - Best Digital Marketing Agency Pakistan",
+  name: "MA Softs - Custom Software & Web Development by Ayaz",
   description:
-    "17+ years of experience in SEO, Content Marketing, Social Media Marketing, PPC Advertising, Website Design & Development. Trusted by 500+ businesses worldwide.",
+    "Expert custom software solutions, web applications, and ERP systems tailored for startups and businesses. Built with Passion by Ayaz.",
   url: SITE_URL,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
@@ -445,7 +437,7 @@ export const reviewsSchema = {
         name: "Ahmed Khan",
       },
       reviewBody:
-        "Media Linkers transformed our online presence completely. Our organic traffic increased by 300% in just 4 months. Highly recommended!",
+        "MA Softs transformed our business processes with a custom ERP. The efficiency gains have been incredible. Ayaz is a brilliant developer!",
       reviewRating: {
         "@type": "Rating",
         ratingValue: "5",

@@ -10,8 +10,8 @@ import JsonLd from "../../../components/JsonLd";
 import { contactPageSchema, getBreadcrumbSchema } from "../../../lib/schemas";
 
 const contactBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://medialinkers.pk" },
-  { name: "Contact", url: "https://medialinkers.pk/contact" },
+  { name: "Home", url: "https://ma-softs.com" },
+  { name: "Contact", url: "https://ma-softs.com/contact" },
 ]);
 
 export default function ContactPage() {
@@ -77,8 +77,8 @@ export default function ContactPage() {
               </div>
 
               {[
-                { icon: Phone, title: "Phone", content: "+92 300 1234567", href: "tel:+923001234567" },
-                { icon: Mail, title: "Email", content: "info@medialinkers.pk", href: "mailto:info@medialinkers.pk" },
+                { icon: Phone, title: "Phone", content: "+92 318 2885445", href: "tel:+923182885445" },
+                { icon: Mail, title: "Email", content: "ayaz@ma-softs.com", href: "mailto:ayaz@ma-softs.com" },
                 { icon: MapPin, title: "Address", content: "123 Business Avenue, Karachi, Pakistan", href: "#" },
                 { icon: Clock, title: "Working Hours", content: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
               ].map((item) => (

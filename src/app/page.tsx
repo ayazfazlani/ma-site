@@ -18,7 +18,7 @@ import {
 } from "../../lib/schemas";
 
 const homeBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://medialinkers.pk" },
+  { name: "Home", url: "https://ma-softs.com" },
 ]);
 
 export default function Home() {

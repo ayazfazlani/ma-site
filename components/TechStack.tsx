@@ -63,22 +63,24 @@ const Row = ({ stacks, direction = 1, speed = 25, isDark }: { stacks: any[], dir
     <div className="flex overflow-hidden group select-none">
       <motion.div
         animate={{
-          x: direction > 0 ? [-2000, 0] : [0, -2000],
+          x: direction > 0 ? ["-50%", "0%"] : ["0%", "-50%"],
         }}
         transition={{
           duration: speed,
           repeat: Infinity,
           ease: "linear",
+          repeatType: "loop",
         }}
+        style={{ willChange: "transform" }}
         className="flex gap-8 py-4 whitespace-nowrap min-w-max"
       >
-        {[...stacks, ...stacks, ...stacks, ...stacks].map((tech, i) => (
+        {[...stacks, ...stacks].map((tech, i) => (
           <div
             key={i}
             className={`flex items-center gap-3 px-8 py-4 rounded-2xl border transition-all duration-300
               ${isDark 
                 ? "bg-white/[0.03] border-white/[0.06] hover:bg-white/[0.1] hover:border-white/[0.2] backdrop-blur-sm" 
-                : "bg-gray-100/50 border-gray-200/60 hover:bg-gray-200/80 hover:border-gray-300 hover:shadow-lg shadow-black/5"}
+                : "bg-white border-gray-100 hover:border-primary-200 hover:shadow-lg shadow-sm"}
               flex-shrink-0 group/tech`}
           >
             <tech.icon className={`w-6 h-6 transition-transform duration-300 group-hover/tech:scale-110 ${tech.color}`} />

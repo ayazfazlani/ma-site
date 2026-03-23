@@ -28,9 +28,9 @@ export default function PPCPage() {
   const service = servicesData.find((s) => s.slug === "ppc");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://medialinkers.pk" },
-    { name: "Services", url: "https://medialinkers.pk/services" },
-    { name: "PPC Advertising", url: "https://medialinkers.pk/services/ppc" },
+    { name: "Home", url: "https://ma-softs.com" },
+    { name: "Services", url: "https://ma-softs.com/services" },
+    { name: "PPC Advertising", url: "https://ma-softs.com/services/ppc" },
   ]);
 
   return (

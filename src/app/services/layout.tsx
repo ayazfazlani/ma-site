@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Services - Digital Marketing Solutions",
+  title: "Our Services - Custom Software & Web Development Solutions",
   description:
-    "Comprehensive digital marketing services including SEO Optimization, Social Media Marketing, Content Marketing, Web Development, PPC Advertising, and Analytics & Reporting. Starting from $499/month.",
+    "Expert software solutions including Web Application Development, ERP Systems, E-commerce, SaaS, and Business Process Automation. Custom-built by Ayaz.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Digital Marketing Services - Media Linkers",
+    title: "Software Development Services - MA Softs",
     description:
-      "SEO, Social Media, Content Marketing, Web Development, PPC, Analytics. Comprehensive solutions starting from $499/month.",
-    url: "https://medialinkers.pk/services",
+      "Web Applications, ERP Systems, SaaS, E-commerce, and Business Automation. Custom solutions built with passion by Ayaz.",
+    url: "https://ma-softs.com/services",
     type: "website",
   },
   twitter: {
-    title: "Digital Marketing Services - Media Linkers",
+    title: "Software Development Services - MA Softs",
     description:
-      "SEO, Social Media, Content Marketing, Web Development, PPC, Analytics. Starting from $499/month.",
+      "Web Applications, ERP Systems, SaaS, E-commerce, and Business Automation. Custom solutions built by Ayaz.",
   },
 };
 

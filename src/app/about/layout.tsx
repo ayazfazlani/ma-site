@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - Media Linkers Digital Marketing Agency",
+  title: "About Us - MA Softs by Ayaz",
   description:
-    "Learn about Media Linkers - Pakistan's leading digital marketing agency with 17+ years of experience, 500+ clients served, and a team of 50+ digital marketing experts.",
+    "Learn about MA Softs - Leading custom software development company led by Ayaz. Specializing in high-performance web applications and enterprise systems.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About Media Linkers - Pakistan's Leading Digital Marketing Agency",
+    title: "About MA Softs - Leading Software Development by Ayaz",
     description:
-      "17+ years of experience, 500+ clients, 50+ team members. Discover our story, values, and commitment to digital marketing excellence.",
-    url: "https://medialinkers.pk/about",
+      "Expert software solutions, personalized service, and commitment to excellence. Discover the story of MA Softs and Ayaz.",
+    url: "https://ma-softs.com/about",
     type: "website",
   },
   twitter: {
-    title: "About Media Linkers",
+    title: "About MA Softs",
     description:
-      "17+ years of experience, 500+ clients, 50+ team members. Pakistan's leading digital marketing agency.",
+      "Leading software development by Ayaz. Custom solutions for the modern web.",
   },
 };
 

@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog - Digital Marketing Insights & Tips",
+  title: "Blog - Software Development Insights by Ayaz",
   description:
-    "Read the latest digital marketing insights, SEO tips, social media strategies, and content marketing guides from Media Linkers' expert team.",
+    "Read the latest software development insights, React & Next.js tips, and enterprise software architecture guides from Ayaz at MA Softs.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Media Linkers Blog - Digital Marketing Insights",
+    title: "MA Softs Blog - Software Development Insights",
     description:
-      "Expert articles on SEO, Social Media Marketing, Content Marketing, PPC, Web Design, and Analytics from Pakistan's leading agency.",
-    url: "https://medialinkers.pk/blog",
+      "Expert articles on Web Application Development, ERP Systems, React, Next.js, and Software Architecture by Ayaz.",
+    url: "https://ma-softs.com/blog",
     type: "website",
   },
   twitter: {
-    title: "Media Linkers Blog",
+    title: "MA Softs Blog",
     description:
-      "Digital marketing insights, tips, and strategies for business growth.",
+      "Software development insights, coding tips, and tech trends by Ayaz.",
   },
 };
 

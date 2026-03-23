@@ -10,7 +10,7 @@ const testimonials = [
     name: "Ahmed Khan",
     role: "CEO, TechSolutions PK",
     content:
-      "Media Linkers transformed our online presence completely. Our organic traffic increased by 300% in just 4 months. Highly recommended!",
+      "MA Softs transformed our business processes with a custom ERP. The efficiency gains have been incredible. Ayaz is a brilliant developer!",
     rating: 5,
     initial: "A",
     gradient: "from-primary-500 to-primary-400",
@@ -28,7 +28,7 @@ const testimonials = [
     name: "Muhammad Rizwan",
     role: "Founder, EduLearn Academy",
     content:
-      "Working with Media Linkers was a game-changer for our ed-tech startup. They understood our vision and helped us reach our target audience effectively.",
+      "Working with Ayaz was a game-changer for our startup. He understood our vision and helped us build a scalable product effectively.",
     rating: 5,
     initial: "M",
     gradient: "from-amber-500 to-amber-400",

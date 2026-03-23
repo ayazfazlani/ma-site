@@ -73,10 +73,10 @@ export default function HorizontalScroll() {
               className="flex-shrink-0 flex items-center px-6 py-3"
             >
               <span
-                className={`text-2xl font-bold transition-colors duration-500 whitespace-nowrap select-none tracking-tight ${
+                className={`text-2xl font-bold transition-all duration-500 whitespace-nowrap select-none tracking-tight ${
                   isDark
-                    ? "text-white/[0.08] hover:text-white/20"
-                    : "text-gray-200 hover:text-gray-300"
+                    ? "text-white/20 hover:text-white/50"
+                    : "text-gray-300 hover:text-gray-500"
                 }`}
               >
                 {brand}

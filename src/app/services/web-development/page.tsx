@@ -28,9 +28,9 @@ export default function WebDevelopmentPage() {
   const service = servicesData.find((s) => s.slug === "web-development");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://medialinkers.pk" },
-    { name: "Services", url: "https://medialinkers.pk/services" },
-    { name: "Web Design & Development", url: "https://medialinkers.pk/services/web-development" },
+    { name: "Home", url: "https://ma-softs.com" },
+    { name: "Services", url: "https://ma-softs.com/services" },
+    { name: "Web Design & Development", url: "https://ma-softs.com/services/web-development" },
   ]);
 
   return (

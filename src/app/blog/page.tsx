@@ -14,8 +14,8 @@ import {
 } from "../../../lib/schemas";
 
 const blogBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://medialinkers.pk" },
-  { name: "Blog", url: "https://medialinkers.pk/blog" },
+  { name: "Home", url: "https://ma-softs.com" },
+  { name: "Blog", url: "https://ma-softs.com/blog" },
 ]);
 
 const posts = [

@@ -28,9 +28,9 @@ export default function ContentPage() {
   const service = servicesData.find((s) => s.slug === "content");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://medialinkers.pk" },
-    { name: "Services", url: "https://medialinkers.pk/services" },
-    { name: "Content Marketing", url: "https://medialinkers.pk/services/content" },
+    { name: "Home", url: "https://ma-softs.com" },
+    { name: "Services", url: "https://ma-softs.com/services" },
+    { name: "Content Marketing", url: "https://ma-softs.com/services/content" },
   ]);
 
   return (

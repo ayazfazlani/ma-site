@@ -28,9 +28,9 @@ export default function SocialMediaPage() {
   const service = servicesData.find((s) => s.slug === "social-media");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://medialinkers.pk" },
-    { name: "Services", url: "https://medialinkers.pk/services" },
-    { name: "Social Media Marketing", url: "https://medialinkers.pk/services/social-media" },
+    { name: "Home", url: "https://ma-softs.com" },
+    { name: "Services", url: "https://ma-softs.com/services" },
+    { name: "Social Media Marketing", url: "https://ma-softs.com/services/social-media" },
   ]);
 
   return (

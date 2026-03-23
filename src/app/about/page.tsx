@@ -9,8 +9,8 @@ import JsonLd from "../../../components/JsonLd";
 import { aboutPageSchema, getBreadcrumbSchema } from "../../../lib/schemas";
 
 const aboutBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://medialinkers.pk" },
-  { name: "About", url: "https://medialinkers.pk/about" },
+  { name: "Home", url: "https://ma-softs.com" },
+  { name: "About", url: "https://ma-softs.com/about" },
 ]);
 
 const values = [

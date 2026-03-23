@@ -15,8 +15,8 @@ import {
 } from "../../../lib/schemas";
 
 const servicesBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://medialinkers.pk" },
-  { name: "Services", url: "https://medialinkers.pk/services" },
+  { name: "Home", url: "https://ma-softs.com" },
+  { name: "Services", url: "https://ma-softs.com/services" },
 ]);
 
 import type { ServiceData } from "../../lib/services";
