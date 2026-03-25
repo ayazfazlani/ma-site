@@ -11,14 +11,14 @@ import { servicesData } from "@/lib/services";
 import { Metadata } from "next";
 
 // export const metadata: Metadata = {
-//   title: "SEO Optimization Services | Media Linkers",
+//   title: "SEO Optimization Services | MA Softs",
 //   description:
 //     "Dominate search rankings with our comprehensive SEO services starting from $999/month. Technical SEO, keyword research, link building & more.",
 //   openGraph: {
-//     title: "SEO Optimization Services - Media Linkers",
+//     title: "SEO Optimization Services - MA Softs",
 //     description:
 //       "Comprehensive SEO services including technical SEO, keyword research, content optimization, and link building.",
-//     url: "https://medialinkers.pk/services/seo",
+//     url: "https://ma-softs.com/services/seo",
 //   },
 // };
 

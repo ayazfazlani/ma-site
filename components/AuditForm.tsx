@@ -70,7 +70,7 @@ export default function AuditForm() {
                 isDark ? "text-neutral-400" : "text-gray-500"
               }`}
             >
-              Discover how Media Linkers can grow your website traffic, leads,
+              Discover how MA Softs can grow your website traffic, leads,
               and sales. Our comprehensive SEO audit identifies opportunities
               and provides actionable recommendations.
             </p>

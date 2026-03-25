@@ -54,7 +54,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
-            About <span className="gradient-text">Media Linkers</span>
+            About <span className="gradient-text">MA Softs</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export default function AboutPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Pioneering digital marketing excellence in Pakistan since 2008
+            Pioneering software development excellence in Pakistan since 2008
           </motion.p>
         </div>
       </section>
@@ -81,21 +81,21 @@ export default function AboutPage() {
               </h2>
               <div className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
                 <p>
-                  Founded in 2008, Media Linkers started with a simple mission: to help 
-                  Pakistani businesses succeed in the digital world. What began as a small 
-                  team of passionate marketers has grown into one of Pakistan&apos;s most 
-                  trusted digital marketing agencies.
+                  Founded in 2023, MA Softs started with a simple mission: to help 
+                  startups and businesses succeed with custom-built software solutions. 
+                  What began with Ayaz's passion for coding has grown into a specialized 
+                  software development practice focused on ERPs and scalable web apps.
                 </p>
                 <p>
-                  Over the past 17 years, we've helped over 500 businesses across various 
-                  industries establish their online presence, generate qualified leads, 
-                  and increase their revenue through strategic digital marketing initiatives.
+                  Over the past few years, we've helped dozens of businesses across various 
+                  industries automate their operations, build their first MVPs, 
+                  and scale their technical infrastructure through strategic software development.
                 </p>
                 <p>
-                  Our team of 50+ experts combines creativity with data-driven strategies 
-                  to deliver results that matter. We believe in building long-term 
-                  partnerships with our clients, acting as their dedicated digital 
-                  marketing department.
+                  Our team of experts combines creative UI/UX with robust engineering 
+                  to deliver products that matter. We believe in building long-term 
+                  partnerships with our clients, acting as their dedicated technical 
+                  partner and engineering department.
                 </p>
               </div>
             </motion.div>
@@ -109,22 +109,22 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 mt-8">
                   <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-primary-500/10" : "bg-primary-50"}`}>
-                    <div className="text-4xl font-bold text-primary-600 mb-2">17+</div>
+                    <div className="text-4xl font-bold text-primary-600 mb-2">5+</div>
                     <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Years Experience</div>
                   </div>
                   <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-accent-500/10" : "bg-accent-300/10"}`}>
-                    <div className="text-4xl font-bold text-accent-500 mb-2">500+</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Clients Served</div>
+                    <div className="text-4xl font-bold text-accent-500 mb-2">40+</div>
+                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Projects Done</div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-purple-500/10" : "bg-purple-50"}`}>
-                    <div className="text-4xl font-bold text-purple-600 mb-2">50+</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Team Members</div>
+                    <div className="text-4xl font-bold text-purple-600 mb-2">25+</div>
+                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Happy Clients</div>
                   </div>
                   <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-success-500/10" : "bg-green-50"}`}>
-                    <div className="text-4xl font-bold text-green-600 mb-2">98%</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Retention Rate</div>
+                    <div className="text-4xl font-bold text-green-600 mb-2">99%</div>
+                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Satisfaction</div>
                   </div>
                 </div>
               </div>

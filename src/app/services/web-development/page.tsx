@@ -11,14 +11,14 @@ import { servicesData } from "@/lib/services";
 import { Metadata } from "next";
 
 // export const metadata: Metadata = {
-//   title: "Web Design & Development Services | Media Linkers",
+//   title: "Web Design & Development Services | MA Softs",
 //   description:
 //     "Custom, responsive websites that convert visitors into customers starting from $2,499. E-commerce, CMS & performance optimization.",
 //   openGraph: {
-//     title: "Web Design & Development - Media Linkers",
+//     title: "Web Design & Development - MA Softs",
 //     description:
 //       "Professional website design and development including e-commerce, CMS integration, and performance optimization.",
-//     url: "https://medialinkers.pk/services/web-development",
+//     url: "https://ma-softs.com/services/web-development",
 //   },
 // };
 

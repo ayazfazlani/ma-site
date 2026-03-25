@@ -18,7 +18,7 @@ const steps = [
     icon: Lightbulb,
     title: "Strategy",
     description:
-      "Our experts craft a customized digital marketing strategy aligned with your business goals and budget.",
+      "Our experts craft a customized software development strategy aligned with your business goals and budget.",
     gradient: "from-purple-500 to-pink-400",
     number: "02",
   },

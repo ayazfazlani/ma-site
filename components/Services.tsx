@@ -70,7 +70,7 @@ export default function Services() {
             <span className="gradient-text">Services</span>
           </h2>
           <p className={`text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Comprehensive digital marketing solutions tailored to grow your
+            Comprehensive software development solutions tailored to grow your
             business and establish your online presence in the competitive
             digital landscape.
           </p>

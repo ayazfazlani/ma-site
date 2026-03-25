@@ -55,7 +55,7 @@ export default function ServicesPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Comprehensive digital marketing solutions tailored to grow your business
+            Comprehensive software development solutions tailored to grow your business
           </motion.p>
         </div>
       </section>
@@ -140,7 +140,7 @@ export default function ServicesPage() {
               Need a Custom Solution?
             </h2>
             <p className={`text-lg mb-8 ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-              Every business is unique. Contact us to discuss a tailored digital marketing 
+              Every business is unique. Contact us to discuss a tailored software development 
               strategy that fits your specific needs and budget.
             </p>
             <Link

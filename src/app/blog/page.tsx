@@ -108,7 +108,7 @@ export default function BlogPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Insights, tips, and strategies for digital marketing success
+            Insights, tips, and strategies for software development success
           </motion.p>
         </div>
       </section>

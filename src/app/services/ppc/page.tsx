@@ -11,14 +11,14 @@ import { servicesData } from "@/lib/services";
 import { Metadata } from "next";
 
 // export const metadata: Metadata = {
-//   title: "PPC Advertising Services | Media Linkers",
+//   title: "PPC Advertising Services | MA Softs",
 //   description:
 //     "Maximize ROI with targeted pay-per-click campaigns starting from $1,299/month. Google Ads, Facebook, Instagram & more.",
 //   openGraph: {
-//     title: "PPC Advertising Services - Media Linkers",
+//     title: "PPC Advertising Services - MA Softs",
 //     description:
 //       "Expert PPC management including Google Ads, Facebook advertising, and conversion optimization.",
-//     url: "https://medialinkers.pk/services/ppc",
+//     url: "https://ma-softs.com/services/ppc",
 //   },
 // };
 

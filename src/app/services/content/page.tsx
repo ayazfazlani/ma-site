@@ -11,14 +11,14 @@ import { servicesData } from "@/lib/services";
 import { Metadata } from "next";
 
 // export const metadata: Metadata = {
-//   title: "Content Marketing Services | Media Linkers",
+//   title: "Content Marketing Services | MA Softs",
 //   description:
 //     "Create valuable content that attracts and retains your audience starting from $599/month. Blog, video, infographics & more.",
 //   openGraph: {
-//     title: "Content Marketing Services - Media Linkers",
+//     title: "Content Marketing Services - MA Softs",
 //     description:
 //       "Comprehensive content marketing including blog writing, video production, and content strategy.",
-//     url: "https://medialinkers.pk/services/content",
+//     url: "https://ma-softs.com/services/content",
 //   },
 // };
 

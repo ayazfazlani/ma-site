@@ -53,7 +53,7 @@ export default function ContactPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Ready to grow your business? Let's discuss your project
+            Ready to build your custom software? Let's discuss your project
           </motion.p>
         </div>
       </section>
@@ -180,12 +180,12 @@ export default function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       >
                         <option value="">Select a service</option>
-                        <option value="seo">SEO Optimization</option>
-                        <option value="social">Social Media Marketing</option>
-                        <option value="content">Content Marketing</option>
-                        <option value="web">Web Development</option>
-                        <option value="ppc">PPC Advertising</option>
-                        <option value="analytics">Analytics & Reporting</option>
+                        <option value="web-apps">Custom Web Applications</option>
+                        <option value="erp">Business Software & ERP</option>
+                        <option value="startup-consulting">Startup Tech Strategy</option>
+                        <option value="ecommerce">Advanced E-commerce</option>
+                        <option value="technical-seo">Technical SEO & Speed</option>
+                        <option value="ui-ux">UI/UX Design for SaaS</option>
                       </select>
                     </div>
                   </div>

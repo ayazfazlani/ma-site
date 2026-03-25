@@ -11,14 +11,14 @@ import { servicesData } from "@/lib/services";
 import { Metadata } from "next";
 
 // export const metadata: Metadata = {
-//   title: "Analytics & Reporting Services | Media Linkers",
+//   title: "Analytics & Reporting Services | MA Softs",
 //   description:
 //     "Data-driven insights and comprehensive reporting starting from $499/month. Google Analytics, dashboards, tracking & more.",
 //   openGraph: {
-//     title: "Analytics & Reporting Services - Media Linkers",
+//     title: "Analytics & Reporting Services - MA Softs",
 //     description:
 //       "Expert analytics setup including Google Analytics 4, custom dashboards, and comprehensive performance reporting.",
-//     url: "https://medialinkers.pk/services/analytics",
+//     url: "https://ma-softs.com/services/analytics",
 //   },
 // };
 

@@ -1,5 +1,5 @@
 // lib/schemas.ts
-// Centralized SEO Schema definitions for Media Linkers
+// Centralized SEO Schema definitions for MA Softs
 
 const SITE_URL = "https://ma-softs.com";
 const SITE_NAME = "MA Softs";
@@ -473,7 +473,7 @@ export const reviewsSchema = {
         name: "Muhammad Rizwan",
       },
       reviewBody:
-        "Working with Media Linkers was a game-changer for our ed-tech startup. They understood our vision and helped us reach our target audience effectively.",
+        "Working with MA Softs was a game-changer for our ed-tech startup. They understood our vision and helped us reach our target audience effectively.",
       reviewRating: {
         "@type": "Rating",
         ratingValue: "5",
