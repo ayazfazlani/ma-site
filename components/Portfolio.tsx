@@ -1,264 +1,37 @@
 // components/Portfolio.tsx
-"use client";
+import dbConnect from "@/lib/mongodb";
+import ProjectModel from "@/models/Project";
+import PortfolioWrapper from "./PortfolioWrapper";
+import PortfolioList from "./PortfolioList";
 
-import { useState, useEffect } from "react";
-import { motion, PanInfo } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+export default async function Portfolio() {
+  await dbConnect();
+  const dbProjects = await ProjectModel.find({ active: true }).sort({ order: 1 }).lean();
 
-const projects = [
-  {
-    id: 1,
-    title: "AI-Powered ERP Solution",
-    category: "Business Software",
-    description: "Custom enterprise resource planning system with AI-driven inventory forecasting and real-time analytics.",
-    color: "from-blue-500 to-cyan-400",
-    imageDark: "bg-blue-900/40",
-    imageLight: "bg-blue-100",
-  },
-  {
-    id: 2,
-    title: "Fintech SaaS Dashboard",
-    category: "Web Application",
-    description: "High-performance financial monitoring dashboard for a European startup, built with Next.js and Chart.js.",
-    color: "from-amber-500 to-orange-400",
-    imageDark: "bg-amber-900/40",
-    imageLight: "bg-amber-100",
-  },
-  {
-    id: 3,
-    title: "Headless E-commerce",
-    category: "E-commerce System",
-    description: "Blazing fast shopping experience using Shopify Hydrogen and Next.js, achieving 100/100 Lighthouse scores.",
-    color: "from-rose-500 to-pink-400",
-    imageDark: "bg-rose-900/40",
-    imageLight: "bg-rose-100",
-  },
-  {
-    id: 4,
-    title: "Medical Clinic CRM",
-    category: "Custom Software",
-    description: "Specialized patient management and appointment scheduling system for a multi-branch medical center.",
-    color: "from-purple-500 to-indigo-400",
-    imageDark: "bg-purple-900/40",
-    imageLight: "bg-purple-100",
-  },
-  {
-    id: 5,
-    title: "LMS Platform for Coaches",
-    category: "Educational Portal",
-    description: "Custom learning management system with video streaming, progress tracking, and automated certification.",
-    color: "from-emerald-500 to-teal-400",
-    imageDark: "bg-emerald-900/40",
-    imageLight: "bg-emerald-100",
-  },
-];
-
-export default function Portfolio() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (isHovered || isDragging) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => prev + 1);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isHovered, isDragging]);
-
-  const handleDragEnd = (
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => {
-    setIsDragging(false);
-    const threshold = 50;
-    if (info.offset.x > threshold) {
-      setCurrentIndex((prev) => prev - 1);
-    } else if (info.offset.x < -threshold) {
-      setCurrentIndex((prev) => prev + 1);
+  // Simplified static projects as backup if DB is empty
+  const staticProjects = [
+    {
+      id: "1",
+      title: "AI-Powered ERP Solution",
+      category: "Business Software",
+      description: "Custom enterprise resource planning system with AI-driven inventory forecasting and real-time analytics.",
+      color: "from-blue-500 to-cyan-400",
+    },
+    {
+      id: "2",
+      title: "Fintech SaaS Dashboard",
+      category: "Web Application",
+      description: "High-performance financial monitoring dashboard for a European startup, built with Next.js and Chart.js.",
+      color: "from-amber-500 to-orange-400",
     }
-  };
+  ];
 
-  const visibleOffsets = [-2, -1, 0, 1, 2];
+  const raw = dbProjects.length > 0 ? dbProjects : staticProjects;
+  const projects = JSON.parse(JSON.stringify(raw.map((p: any) => ({ ...p, _id: undefined, id: p._id?.toString?.() || p.id }))));
 
   return (
-    <section
-      className={`section-padding relative overflow-hidden ${
-        isDark ? "bg-dark-950" : "bg-white"
-      }`}
-      id="portfolio"
-    >
-      {/* Background accents */}
-      <div
-        className={`absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[150px] pointer-events-none ${
-          isDark ? "bg-primary-500/[0.03]" : "bg-primary-200/20"
-        }`}
-      />
-      <div
-        className={`absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none ${
-          isDark ? "bg-accent-400/[0.02]" : "bg-accent-300/10"
-        }`}
-      />
-
-      <div className="container-custom mx-auto relative z-10 mb-12 lg:mb-16">
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
-        >
-          <span
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-6 ${
-              isDark
-                ? "glass text-primary-400"
-                : "bg-primary-50 border border-primary-200/60 text-primary-600"
-            }`}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            Proof of Excellence
-          </span>
-          <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-          >
-            My Featured <span className="gradient-text">Works</span>
-          </h2>
-          <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            A selection of complex software solutions and high-performance web applications 
-            crafted for startups and established businesses.
-          </p>
-        </motion.div>
-      </div>
-
-      <div 
-        className="w-full relative py-12 lg:py-20 overflow-hidden flex justify-center items-center min-h-[500px] md:min-h-[600px]"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {visibleOffsets.map((offset) => {
-          const absoluteIndex = currentIndex + offset;
-          const projectIndex = ((absoluteIndex % projects.length) + projects.length) % projects.length;
-          const project = projects[projectIndex];
-          const isActive = offset === 0;
-
-          return (
-            <motion.div
-              key={absoluteIndex}
-              className={`absolute left-0 right-0 mx-auto w-[85%] sm:w-[70%] lg:w-[50%] max-w-5xl rounded-3xl overflow-hidden border ${
-                isActive ? "cursor-grab active:cursor-grabbing hover:shadow-2xl" : "cursor-pointer"
-              } ${
-                isDark
-                  ? "bg-dark-900 border-white/[0.08]"
-                  : "bg-white border-gray-200"
-              }`}
-              animate={{
-                x: `${offset * 105}%`,
-                scale: isActive ? 1 : 0.85,
-                opacity: Math.abs(offset) >= 2 ? 0 : isActive ? 1 : 0.4,
-                zIndex: 10 - Math.abs(offset),
-                pointerEvents: Math.abs(offset) >= 2 ? "none" : "auto",
-              }}
-              initial={false}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              drag={isActive ? "x" : false}
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
-              onDragStart={() => setIsDragging(true)}
-              onDragEnd={handleDragEnd}
-              onClick={() => {
-                if (!isActive && Math.abs(offset) < 2) {
-                  setCurrentIndex((prev) => prev + offset);
-                }
-              }}
-            >
-              <div className="flex flex-col md:flex-row h-full">
-                {/* Image Area */}
-                <div className={`w-full md:w-1/2 h-64 md:h-auto md:min-h-[450px] relative overflow-hidden flex-shrink-0 ${isDark ? project.imageDark : project.imageLight}`}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 mix-blend-overlay`} />
-                  
-                  <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
-                    <div className={`w-full h-full rounded-xl border-4 border-white/10 shadow-2xl overflow-hidden ${isDark ? "bg-dark-950" : "bg-white"} flex flex-col`}>
-                       <div className={`h-6 w-full flex items-center px-3 gap-1.5 border-b ${isDark ? "bg-dark-900 border-white/5" : "bg-gray-100 border-gray-200"}`}>
-                          <div className="w-2 h-2 rounded-full bg-red-400" />
-                          <div className="w-2 h-2 rounded-full bg-amber-400" />
-                          <div className="w-2 h-2 rounded-full bg-green-400" />
-                       </div>
-                       <div className="flex-1 p-4 flex flex-col gap-3">
-                          <div className={`w-3/4 h-8 rounded shrink-0 ${isDark ? "bg-white/5" : "bg-gray-200"}`} />
-                          <div className={`w-full h-full rounded ${isDark ? "bg-white/5" : "bg-gray-100"}`} />
-                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
-                  <div className="mb-4">
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
-                      isDark 
-                        ? "bg-white/10 text-primary-300" 
-                        : "bg-primary-50 text-primary-600"
-                    }`}>
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <h3 className={`text-2xl lg:text-3xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
-                    {project.title}
-                  </h3>
-                  
-                  <p className={`text-base lg:text-lg mb-8 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-                    {project.description}
-                  </p>
-                  
-                  <div className="mt-auto">
-                    <div
-                      className={`inline-flex items-center gap-2 font-semibold transition-colors group/link ${
-                        isDark
-                          ? "text-white hover:text-primary-400"
-                          : "text-gray-900 hover:text-primary-600"
-                      }`}
-                    >
-                      Project Insights
-                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      <div className="flex justify-center items-center gap-3 mt-4 pb-8 z-20 relative">
-        {projects.map((_, idx) => {
-          const normalizedCurrent = ((currentIndex % projects.length) + projects.length) % projects.length;
-          return (
-            <button
-              key={idx}
-              onClick={() => {
-                let diff = idx - normalizedCurrent;
-                if (diff > projects.length / 2) diff -= projects.length;
-                if (diff < -projects.length / 2) diff += projects.length;
-                setCurrentIndex(prev => prev + diff);
-              }}
-              className={`transition-all duration-300 rounded-full cursor-pointer hover:scale-125 ${
-                normalizedCurrent === idx 
-                  ? "w-8 h-2.5 bg-primary-500" 
-                  : `w-2.5 h-2.5 ${isDark ? "bg-white/20 hover:bg-white/40" : "bg-gray-300 hover:bg-gray-400"}`
-              }`}
-            />
-          );
-        })}
-      </div>
-    </section>
+    <PortfolioWrapper>
+      <PortfolioList initialProjects={projects} />
+    </PortfolioWrapper>
   );
 }

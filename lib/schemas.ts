@@ -182,7 +182,7 @@ export const localBusinessSchema = {
 };
 
 // ── Service Schemas ──
-import { servicesData } from "../src/lib/services";
+import { servicesData } from "./services";
 
 export const serviceSchemas = servicesData.map((s) => {
   // convert human readable title to serviceType
