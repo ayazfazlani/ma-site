@@ -4,9 +4,12 @@ import PostModel from "@/models/Post";
 import BlogForm from "../_components/BlogForm";
 import { notFound } from "next/navigation";
 
-export default async function EditPostPage({ params }: { params: { id: string } }) {
+export const dynamic = "force-dynamic";
+
+export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   await dbConnect();
-  const rawPost = await PostModel.findById(params.id).lean();
+  const rawPost = await PostModel.findById(id).lean();
   
   if (!rawPost) {
     return notFound();

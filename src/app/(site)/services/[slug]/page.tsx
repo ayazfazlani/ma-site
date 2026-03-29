@@ -1,13 +1,13 @@
 // src/app/services/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { type ServiceData, servicesData } from "../../../lib/services";
+import { type ServiceData, servicesData } from "@/lib/services";
 import {
   servicesItemListSchema,
   servicesFaqSchema,
   getBreadcrumbSchema,
   serviceSchemas,
-} from "../../../../lib/schemas";
+} from "@/lib/schemas";
 import ServiceDetailClient from "./ServiceDetailClient";
 
 interface Params {

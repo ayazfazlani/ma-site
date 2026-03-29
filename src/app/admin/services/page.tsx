@@ -5,6 +5,8 @@ import dbConnect from "@/lib/mongodb";
 import ServiceModel from "@/models/Service";
 import { cn } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminServicesPage() {
   await dbConnect();
   const rawServices = await ServiceModel.find({}).sort({ order: 1 }).lean();

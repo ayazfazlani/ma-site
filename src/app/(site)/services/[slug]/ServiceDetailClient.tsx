@@ -1,11 +1,11 @@
 // src/app/services/[slug]/ServiceDetailClient.tsx
 "use client";
 
-import { useTheme } from "../../../../components/ThemeProvider";
+import { useTheme } from "@/components/ThemeProvider";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import JsonLd from "../../../../components/JsonLd";
-import { type ServiceData, servicesData } from "../../../lib/services";
+import JsonLd from "@/components/JsonLd";
+import { type ServiceData, servicesData } from "@/lib/services";
 
 interface ServiceDetailClientProps {
   service: ServiceData;

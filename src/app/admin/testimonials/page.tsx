@@ -5,6 +5,8 @@ import dbConnect from "@/lib/mongodb";
 import TestimonialModel from "@/models/Testimonial";
 import { cn } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminTestimonialsPage() {
   await dbConnect();
   const raw = await TestimonialModel.find({}).sort({ createdAt: -1 }).lean();

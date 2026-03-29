@@ -17,6 +17,8 @@ import {
   getBreadcrumbSchema,
 } from "@/lib/schemas";
 
+export const dynamic = "force-dynamic"; // Skip static generation during build
+
 const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://ma-softs.com" },
 ]);

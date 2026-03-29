@@ -11,9 +11,10 @@ import { cn } from "@/lib/utils";
 
 export const revalidate = 3600;
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   await dbConnect();
-  const post = await PostModel.findOne({ slug: params.slug }).lean() as any;
+  const post = await PostModel.findOne({ slug }).lean() as any;
 
   if (!post) return { title: "Post Not Found" };
 
@@ -35,9 +36,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   await dbConnect();
-  const post = await PostModel.findOne({ slug: params.slug }).lean() as any;
+  const post = await PostModel.findOne({ slug }).lean() as any;
 
   if (!post || !post.published) {
     return notFound();

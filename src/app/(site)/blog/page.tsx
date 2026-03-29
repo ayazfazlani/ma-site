@@ -11,6 +11,7 @@ import {
 import BlogList from "./_components/BlogList";
 
 export const revalidate = 3600; // Revalidate every hour
+export const dynamic = "force-dynamic"; // Skip static generation during build
 
 const blogBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://ma-softs.com" },

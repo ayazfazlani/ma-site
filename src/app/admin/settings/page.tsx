@@ -3,6 +3,8 @@ import dbConnect from "@/lib/mongodb";
 import SiteSettingsModel from "@/models/SiteSettings";
 import SettingsForm from "./_components/SettingsForm";
 
+export const dynamic = "force-dynamic";
+
 export default async function SettingsPage() {
   await dbConnect();
   const rawSettings = await SiteSettingsModel.findById("settings").lean();

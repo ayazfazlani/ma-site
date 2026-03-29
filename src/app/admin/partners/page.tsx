@@ -5,6 +5,8 @@ import dbConnect from "@/lib/mongodb";
 import PartnerModel from "@/models/Partner";
 import { cn } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminPartnersPage() {
   await dbConnect();
   const rawPartners = await PartnerModel.find({}).sort({ order: 1 }).lean();

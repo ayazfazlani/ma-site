@@ -10,6 +10,8 @@ import PostModel from "@/models/Post";
 import Image from "next/image";
 import { cn, formatDate } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminBlogPage() {
   await dbConnect();
   const rawPosts = await PostModel.find({}).sort({ createdAt: -1 }).lean();
