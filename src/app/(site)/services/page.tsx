@@ -3,7 +3,7 @@
 
 import { motion } from "framer-motion";
 import ScrollTray from "@/components/ScrollTray";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle, Code2, Cpu, Database, Globe, Layout, Layers, Settings } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
@@ -21,9 +21,22 @@ const servicesBreadcrumb = getBreadcrumbSchema([
 
 import type { ServiceData } from "@/lib/services";
 import { servicesData } from "@/lib/services";
+import FaqSection from "@/components/FaqSection";
+import { servicesHubFaqs } from "@/lib/faq-data";
+import type { ElementType } from "react";
 
 // use shared data
 const services: ServiceData[] = servicesData;
+
+const ICON_MAP: Record<string, ElementType> = {
+  Code2,
+  Database,
+  Cpu,
+  Globe,
+  Settings,
+  Layout,
+  Figma: Layout,
+};
 
 export default function ServicesPage() {
   const { theme } = useTheme();
@@ -36,7 +49,7 @@ export default function ServicesPage() {
       <JsonLd data={servicesFaqSchema} />
       <JsonLd data={servicesBreadcrumb} />
       {serviceSchemas.map((schema: unknown, index: number) => (
-        <JsonLd key={index} data={schema as any} />
+        <JsonLd key={index} data={schema as Record<string, unknown>} />
       ))}
       {/* Hero */}
       <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
@@ -64,71 +77,83 @@ export default function ServicesPage() {
       <section className={`section-padding ${isDark ? "bg-dark-950" : "bg-gray-50"}`}>
         <div className="container-custom mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8">
-            {services.map((service: ServiceData, index: number) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`rounded-3xl p-8 lg:p-10 transition-all duration-300 ${
-                  isDark
-                    ? "bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.1] hover:bg-white/[0.05]"
-                    : "bg-white shadow-lg hover:shadow-2xl"
-                }`}
-              >
-                <div className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6`}>
-                  {service.icon && <service.icon className="w-8 h-8 text-white" />}
-                </div>
-                
-                <h2 className={`text-2xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>{service.title}</h2>
-                <p className={`mb-6 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>{service.description}</p>
-                
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature: string) => (
-                    <li key={feature} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
-                      <span className={isDark ? "text-neutral-300" : "text-gray-700"}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <div className={`pt-6 border-t ${isDark ? "border-white/[0.06]" : "border-gray-100"}`}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-primary-600">{service.price}</span>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className={`text-sm font-semibold transition-colors ${
-                        isDark
-                          ? "text-neutral-300 hover:text-primary-400"
-                          : "text-gray-900 hover:text-primary-600"
-                      }`}
-                    >
-                      Learn More →
-                    </Link>
+            {services.map((service: ServiceData, index: number) => {
+              const IconComponent = (service.icon && ICON_MAP[String(service.icon)]) || Layers;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`rounded-3xl p-8 lg:p-10 transition-all duration-300 ${
+                    isDark
+                      ? "bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.1] hover:bg-white/[0.05]"
+                      : "bg-white shadow-lg hover:shadow-2xl"
+                  }`}
+                >
+                  <div
+                    className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6`}
+                  >
+                    <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                  <div className="mt-4 flex justify-end">
-                    <Link
-                      href="/contact"
-                      className={`inline-flex items-center space-x-2 font-semibold transition-colors ${
-                        isDark
-                          ? "text-neutral-300 hover:text-primary-400"
-                          : "text-gray-900 hover:text-primary-600"
-                      }`}
-                    >
-                      <span>Get Started</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
+                
+                  <h2 className={`text-2xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>{service.title}</h2>
+                  <p className={`mb-6 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>{service.description}</p>
+                
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature: string) => (
+                      <li key={feature} className="flex items-center space-x-3">
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
+                        <span className={isDark ? "text-neutral-300" : "text-gray-700"}>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                
+                  <div className={`pt-6 border-t ${isDark ? "border-white/[0.06]" : "border-gray-100"}`}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-bold text-primary-600">{service.price}</span>
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className={`text-sm font-semibold transition-colors ${
+                          isDark
+                            ? "text-neutral-300 hover:text-primary-400"
+                            : "text-gray-900 hover:text-primary-600"
+                        }`}
+                      >
+                        Learn More →
+                      </Link>
+                    </div>
+                    <div className="mt-4 flex justify-end">
+                      <Link
+                        href="/contact"
+                        className={`inline-flex items-center space-x-2 font-semibold transition-colors ${
+                          isDark
+                            ? "text-neutral-300 hover:text-primary-400"
+                            : "text-gray-900 hover:text-primary-600"
+                        }`}
+                      >
+                        <span>Get Started</span>
+                        <ArrowRight className="w-5 h-5" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
+      <FaqSection
+        className={isDark ? "bg-dark-900" : "bg-gray-100"}
+        title="Services FAQs"
+        subtitle="Straight answers about how we build, price, and support custom software."
+        items={servicesHubFaqs}
+      />
+
       {/* CTA Section */}
-      <section className={`section-padding ${isDark ? "bg-dark-900" : "bg-white"}`}>
+      <section className={`section-padding ${isDark ? "bg-dark-950" : "bg-white"}`}>
         <div className="container-custom mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

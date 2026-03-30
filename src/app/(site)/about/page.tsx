@@ -6,6 +6,8 @@ import ScrollTray from "@/components/ScrollTray";
 import { Award, Users, Globe, Target } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
+import FaqSection from "@/components/FaqSection";
+import { aboutFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { aboutPageSchema, getBreadcrumbSchema } from "@/lib/schemas";
 
 const aboutBreadcrumb = getBreadcrumbSchema([
@@ -45,6 +47,7 @@ export default function AboutPage() {
       {/* SEO Schemas */}
       <JsonLd data={aboutPageSchema} />
       <JsonLd data={aboutBreadcrumb} />
+      <JsonLd data={toFaqPageSchema(aboutFaqs)} />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
         <ScrollTray src="/tray.mp4" className="opacity-20" />
@@ -83,11 +86,11 @@ export default function AboutPage() {
                 <p>
                   Founded in 2023, MA Softs started with a simple mission: to help 
                   startups and businesses succeed with custom-built software solutions. 
-                  What began with Ayaz's passion for coding has grown into a specialized 
+                  What began with Ayaz&apos;s passion for coding has grown into a specialized 
                   software development practice focused on ERPs and scalable web apps.
                 </p>
                 <p>
-                  Over the past few years, we've helped dozens of businesses across various 
+                  Over the past few years, we&apos;ve helped dozens of businesses across various 
                   industries automate their operations, build their first MVPs, 
                   and scale their technical infrastructure through strategic software development.
                 </p>
@@ -171,6 +174,13 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection
+        className={isDark ? "bg-dark-950" : "bg-white"}
+        title="About MA Softs"
+        subtitle="A few things teams often ask before we work together."
+        items={aboutFaqs}
+      />
     </main>
   );
 }

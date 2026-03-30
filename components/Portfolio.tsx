@@ -2,7 +2,7 @@
 import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
 import PortfolioWrapper from "./PortfolioWrapper";
-import PortfolioList from "./PortfolioList";
+import PortfolioList, { type PortfolioListProject } from "./PortfolioList";
 
 export default async function Portfolio() {
   await dbConnect();
@@ -26,8 +26,17 @@ export default async function Portfolio() {
     }
   ];
 
-  const raw = dbProjects.length > 0 ? dbProjects : staticProjects;
-  const projects = JSON.parse(JSON.stringify(raw.map((p: any) => ({ ...p, _id: undefined, id: p._id?.toString?.() || p.id }))));
+  type RawEntry = PortfolioListProject & { _id?: { toString(): string }; id?: string };
+  const raw = (dbProjects.length > 0 ? dbProjects : staticProjects) as RawEntry[];
+  const projects: PortfolioListProject[] = JSON.parse(
+    JSON.stringify(
+      raw.map((p) => ({
+        ...p,
+        _id: undefined,
+        id: p._id?.toString?.() ?? p.id,
+      }))
+    )
+  );
 
   return (
     <PortfolioWrapper>

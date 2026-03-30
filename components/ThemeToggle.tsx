@@ -7,18 +7,21 @@ import { useTheme } from "./ThemeProvider";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <motion.button
+      type="button"
       onClick={toggleTheme}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300
-        bg-white/[0.06] hover:bg-white/[0.12] text-neutral-400 hover:text-white
-        light:bg-gray-100 light:hover:bg-gray-200 light:text-gray-600 light:hover:text-gray-900
-        border border-white/[0.06] light:border-gray-200"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      className={
+        isDark
+          ? "relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/[0.06] hover:bg-white/[0.12] text-neutral-400 hover:text-white border border-white/[0.06]"
+          : "relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 border border-gray-200"
+      }
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      title={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       <motion.div
         key={theme}
@@ -27,11 +30,7 @@ export default function ThemeToggle() {
         exit={{ rotate: 90, opacity: 0, scale: 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        {theme === "dark" ? (
-          <Sun className="w-[18px] h-[18px]" />
-        ) : (
-          <Moon className="w-[18px] h-[18px]" />
-        )}
+        {isDark ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
       </motion.div>
     </motion.button>
   );

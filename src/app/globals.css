@@ -1,6 +1,10 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
+/* Theme toggle sets `html.dark` / `html.light` — not system `prefers-color-scheme` */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
 @theme {
   /* ── Premium Agency Color System ── */
   /* Deep Dark Backgrounds */

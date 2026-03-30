@@ -7,6 +7,8 @@ import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
+import FaqSection from "@/components/FaqSection";
+import { contactFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { contactPageSchema, getBreadcrumbSchema } from "@/lib/schemas";
 
 const contactBreadcrumb = getBreadcrumbSchema([
@@ -36,6 +38,7 @@ export default function ContactPage() {
       {/* SEO Schemas */}
       <JsonLd data={contactPageSchema} />
       <JsonLd data={contactBreadcrumb} />
+      <JsonLd data={toFaqPageSchema(contactFaqs)} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
         <ScrollTray src="/tray.mp4" className="opacity-20" />
@@ -53,7 +56,7 @@ export default function ContactPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Ready to build your custom software? Let's discuss your project
+            Ready to build your custom software? Let&apos;s discuss your project
           </motion.p>
         </div>
       </section>
@@ -222,6 +225,13 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection
+        className={isDark ? "bg-dark-900" : "bg-white"}
+        title="Contact FAQs"
+        subtitle="Quick answers before you reach out."
+        items={contactFaqs}
+      />
     </main>
   );
 }

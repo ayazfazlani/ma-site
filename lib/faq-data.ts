@@ -1,0 +1,119 @@
+/** Shared FAQ copy + helpers for visible sections and JSON-LD */
+
+export type FaqItem = { question: string; answer: string };
+
+export function toFaqPageSchema(items: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export const portfolioListingFaqs: FaqItem[] = [
+  {
+    question: "What types of projects appear in your portfolio?",
+    answer:
+      "We showcase custom web applications, dashboards, business software, and integrations—typically built with modern stacks such as Next.js, Node, and cloud services. Each entry highlights real outcomes and the problems we solved.",
+  },
+  {
+    question: "Can I see more detail than the portfolio card?",
+    answer:
+      "Yes. Open any case study for a deeper overview, tech context, and links when a live demo or product is public. If something is under NDA, we share what we can without exposing sensitive details.",
+  },
+  {
+    question: "Do you take on projects similar to these?",
+    answer:
+      "Absolutely. If your goals align with the kind of work shown here—performance, clean UX, and maintainable code—contact us with your requirements and we will propose a tailored approach.",
+  },
+];
+
+export const portfolioDetailFaqs: FaqItem[] = [
+  {
+    question: "Is the live project link always available?",
+    answer:
+      "We include a link when the product is public and the client agrees. Some work is internal or protected; in those cases we focus on scope, stack, and results instead of a public URL.",
+  },
+  {
+    question: "How do you describe technologies on case studies?",
+    answer:
+      "Tech stacks reflect what was used for the engagement. If your project needs a different stack, we will recommend tools based on your constraints, team, and long-term maintenance.",
+  },
+  {
+    question: "How can we start a project like this?",
+    answer:
+      "Use the contact page to share goals, timeline, and budget range. We typically follow with a short discovery call, then a proposal with milestones and deliverables.",
+  },
+];
+
+export const contactFaqs: FaqItem[] = [
+  {
+    question: "How quickly will you respond?",
+    answer:
+      "We aim to reply within one business day. For urgent inquiries, mention it in your message or reach out via the phone number on this page.",
+  },
+  {
+    question: "What should I include in my first message?",
+    answer:
+      "A brief on your product or problem, desired timeline, any tech preferences, and whether you need discovery, a fixed scope, or ongoing work. Attachments or links help us understand faster.",
+  },
+  {
+    question: "Do you work with international clients?",
+    answer:
+      "Yes. We collaborate remotely across time zones with clear communication channels and regular demos so you stay aligned with progress.",
+  },
+];
+
+export const aboutFaqs: FaqItem[] = [
+  {
+    question: "What does MA Softs specialize in?",
+    answer:
+      "Custom software and web products—especially when you need a senior-led build, clear architecture, and delivery you can evolve after launch.",
+  },
+  {
+    question: "How do you work with clients day to day?",
+    answer:
+      "We use structured milestones, async updates, and scheduled reviews. You get transparency on scope, risks, and decisions without unnecessary meetings.",
+  },
+  {
+    question: "Why emphasize long-term maintainability?",
+    answer:
+      "Software should not be a one-off handoff. We document, test where it matters, and choose patterns your team—or ours—can extend safely over time.",
+  },
+];
+
+/** Mirrors the existing servicesFaqSchema for on-page display */
+export const servicesHubFaqs: FaqItem[] = [
+  {
+    question: "What software development services does MA Softs offer?",
+    answer:
+      "MA Softs offers a wide range of custom software development services including Web Application Development, ERP Systems, E-commerce Solutions, SaaS Development, and Business Process Automation. Each solution is custom-built by Ayaz to meet your specific business requirements.",
+  },
+  {
+    question: "How much does custom software development cost?",
+    answer:
+      "Project costs vary depending on complexity and requirements. We offer competitive pricing for high-quality, custom-built solutions. Contact Ayaz for a detailed quote based on your specific needs.",
+  },
+  {
+    question: "How long does it take to build a custom web application?",
+    answer:
+      "Simple web applications can take 4-8 weeks, while complex enterprise systems or ERPs may take 3-6 months. We follow an agile development process to deliver functional modules incrementally.",
+  },
+  {
+    question: "Do you provide support after the software is launched?",
+    answer:
+      "Yes, we provide comprehensive post-launch support and maintenance to ensure your software runs smoothly and stays up-to-date with the latest technologies.",
+  },
+  {
+    question: "Can you integrate with existing business tools?",
+    answer:
+      "Absolutely. We have extensive experience integrating custom software with various third-party APIs, payment gateways, and existing legacy systems.",
+  },
+];

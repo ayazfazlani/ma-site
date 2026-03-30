@@ -3,14 +3,27 @@ import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Layers, LayoutGrid, Monitor } from "lucide-react";
+import { ArrowUpRight, Layers, LayoutGrid } from "lucide-react";
+import JsonLd from "@/components/JsonLd";
+import FaqSection from "@/components/FaqSection";
+import { portfolioListingFaqs, toFaqPageSchema } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title: "Our Portfolio",
   description: "Explore our latest case studies, web applications, and custom software projects.",
 };
 
-const DUMMY_PROJECTS = [
+type PortfolioCard = {
+  slug?: string;
+  title: string;
+  description?: string;
+  image?: string;
+  category?: string;
+  link?: string;
+  _id?: string;
+};
+
+const DUMMY_PROJECTS: PortfolioCard[] = [
   {
       title: "AI-Powered ERP Solution",
       slug: "ai-erp",
@@ -36,13 +49,12 @@ export default async function PortfolioPage() {
   
   // Fetch active projects and sort them
   const rawProjects = await ProjectModel.find({ active: true }).sort({ order: 1 }).lean();
-  let projects = rawProjects.length > 0 ? rawProjects : DUMMY_PROJECTS;
-  
-  // Plain Object Serialization for Client boundaries (although server component here, it's safe)
-  projects = JSON.parse(JSON.stringify(projects));
+  const raw = rawProjects.length > 0 ? rawProjects : DUMMY_PROJECTS;
+  const projects = JSON.parse(JSON.stringify(raw)) as PortfolioCard[];
 
   return (
-    <div className="min-h-screen pt-32 pb-20 dark:bg-dark-950 font-sans">
+    <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-dark-950 font-sans">
+      <JsonLd data={toFaqPageSchema(portfolioListingFaqs)} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header content */}
         <div className="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
@@ -56,9 +68,9 @@ export default async function PortfolioPage() {
 
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project: any, index: number) => (
+          {projects.map((project, index) => (
             <div 
-              key={project.slug || project._id} 
+              key={project.slug || project._id || String(index)} 
               className="group relative bg-white dark:bg-dark-900 rounded-[2rem] overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in slide-in-from-bottom-10"
               style={{ animationDelay: `${index * 150}ms`, animationFillMode: "both" }}
             >
@@ -81,7 +93,7 @@ export default async function PortfolioPage() {
                     <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 dark:bg-black/60 backdrop-blur-md rounded-full border border-white/20 dark:border-white/[0.05]">
                         <span className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-2">
                            <LayoutGrid className="w-3.5 h-3.5 text-primary-500" />
-                           {project.category}
+                           {project.category ?? "Portfolio"}
                         </span>
                     </div>
                 </div>
@@ -107,6 +119,13 @@ export default async function PortfolioPage() {
           ))}
         </div>
       </div>
+
+      <FaqSection
+        className="bg-gray-50 dark:bg-dark-900"
+        title="Portfolio FAQs"
+        subtitle="Common questions about our case studies and how we present client work."
+        items={portfolioListingFaqs}
+      />
     </div>
   );
 }
