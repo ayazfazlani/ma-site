@@ -21,10 +21,38 @@ const blogBreadcrumb = getBreadcrumbSchema([
 export default async function BlogPage() {
   await dbConnect();
   const rawPosts = await PostModel.find({ published: true }).sort({ createdAt: -1 }).lean();
-  const posts = rawPosts.map((p: any) => ({ ...p, _id: undefined, id: p._id?.toString() }));
+  type DbPost = {
+    _id?: { toString(): string } | null;
+    title: string;
+    slug: string;
+    excerpt: string | null;
+    category: string | null;
+    author: string | null;
+    createdAt: Date;
+    readTime: string | null;
+    image: string | null;
+    date?: Date;
+  };
+  type DbLeanPost = DbPost & Record<string, unknown>;
+  const posts = rawPosts.map((p: DbLeanPost) => ({
+    ...p,
+    _id: undefined,
+    id: p._id?.toString() ?? p.slug,
+  }));
 
   // Fallback for SEO schema if DB is empty
-  const seoPosts = posts.length > 0 ? posts : [];
+  type BlogPostingSeoPost = Parameters<typeof getBlogPostingsSchema>[0][number];
+  const seoPosts: BlogPostingSeoPost[] =
+    posts.length > 0
+      ? posts.map((p) => ({
+          title: p.title,
+          excerpt: p.excerpt ?? "",
+          category: p.category ?? "General",
+          author: p.author ?? "Ayaz",
+          date: p.date ? p.date.toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
+          readTime: p.readTime ?? "5 min",
+        }))
+      : [];
 
   return (
     <main className="pt-20">
@@ -37,7 +65,7 @@ export default async function BlogPage() {
       <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
         <ScrollTray src="/tray.mp4" className="opacity-20" />
         <div className="container-custom mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Our <span className="gradient-text">Blog</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-medium">

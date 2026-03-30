@@ -10,12 +10,14 @@ import AuditForm from "@/components/AuditForm";
 import Testimonials from "@/components/Testimonials";
 import TechStack from "@/components/TechStack";
 import JsonLd from "@/components/JsonLd";
+import FaqSection from "@/components/FaqSection";
 import {
   homePageSchema,
   reviewsSchema,
   serviceSchemas,
   getBreadcrumbSchema,
 } from "@/lib/schemas";
+import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
 
 export const dynamic = "force-dynamic"; // Skip static generation during build
 
@@ -43,6 +45,13 @@ export default function Home() {
       <Process />
       <Industries />
       <AuditForm />
+      <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />
+      <FaqSection
+        className="bg-gray-50 dark:bg-dark-950"
+        title="Frequently asked questions"
+        subtitle="Common questions about working with MA Softs."
+        items={servicesHubFaqs}
+      />
       <Testimonials />
     </>
   );
