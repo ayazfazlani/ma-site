@@ -73,7 +73,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
   return (
     <>
       <div 
-        className="w-full relative py-12 lg:py-20 overflow-hidden flex justify-center items-center min-h-[500px] md:min-h-[600px]"
+        className="w-full relative py-12 lg:py-20 overflow-hidden flex justify-center items-center min-h-[720px] md:min-h-[600px]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -86,7 +86,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
           return (
             <motion.div
               key={absoluteIndex}
-              className={`absolute left-0 right-0 mx-auto w-[85%] sm:w-[70%] lg:w-[50%] max-w-5xl rounded-3xl overflow-hidden border ${
+              className={`absolute left-0 right-0 mx-auto w-[92%] sm:w-[70%] lg:w-[50%] max-w-5xl rounded-3xl overflow-hidden border ${
                 isActive ? "cursor-grab active:cursor-grabbing hover:shadow-2xl" : "cursor-pointer"
               } ${
                 isDark ? "bg-dark-900 border-white/[0.08]" : "bg-white border-gray-200 shadow-sm"
@@ -112,7 +112,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
               }}
             >
               <div className="flex flex-col md:flex-row h-full">
-                <div className={`w-full md:w-1/2 h-64 md:h-auto md:min-h-[450px] relative overflow-hidden flex-shrink-0 group/image ${isDark ? project.imageDark : project.imageLight}`}>
+                <div className={`w-full md:w-1/2 h-56 sm:h-64 md:h-auto md:min-h-[450px] relative overflow-hidden flex-shrink-0 group/image ${isDark ? project.imageDark : project.imageLight}`}>
                     {project.image ? (
                         <Image src={project.image} alt={project.title} fill className="object-contain object-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4" />
                     ) : (
