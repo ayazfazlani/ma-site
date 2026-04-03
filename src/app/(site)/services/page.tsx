@@ -15,8 +15,8 @@ import {
 } from "@/lib/schemas";
 
 const servicesBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://ma-softs.com" },
-  { name: "Services", url: "https://ma-softs.com/services" },
+  { name: "Home", url: "https://www.masofts.com" },
+  { name: "Services", url: "https://www.masofts.com/services" },
 ]);
 
 import type { ServiceData } from "@/lib/services";
@@ -35,7 +35,6 @@ const ICON_MAP: Record<string, ElementType> = {
   Globe,
   Settings,
   Layout,
-  Figma: Layout,
 };
 
 export default function ServicesPage() {

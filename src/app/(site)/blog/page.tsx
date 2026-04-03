@@ -14,8 +14,8 @@ export const revalidate = 3600; // Revalidate every hour
 export const dynamic = "force-dynamic"; // Skip static generation during build
 
 const blogBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://ma-softs.com" },
-  { name: "Blog", url: "https://ma-softs.com/blog" },
+  { name: "Home", url: "https://www.masofts.com" },
+  { name: "Blog", url: "https://www.masofts.com/blog" },
 ]);
 
 export default async function BlogPage() {

@@ -9,8 +9,17 @@ import FaqSection from "@/components/FaqSection";
 import { portfolioListingFaqs, toFaqPageSchema } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
-  title: "Our Portfolio",
-  description: "Explore our latest case studies, web applications, and custom software projects.",
+  title: "Portfolio – Our Work & Case Studies",
+  description: "Explore MA Softs portfolio of custom web applications, ERP systems, e-commerce platforms & SaaS solutions built for clients worldwide.",
+  alternates: {
+    canonical: "/portfolio",
+  },
+  openGraph: {
+    title: "MA Softs Portfolio – Our Work & Case Studies",
+    description: "See our latest custom software projects, web applications, and digital transformations.",
+    url: "https://www.masofts.com/portfolio",
+    type: "website",
+  },
 };
 
 type PortfolioCard = {
@@ -30,7 +39,7 @@ const DUMMY_PROJECTS: PortfolioCard[] = [
       category: "Business Software",
       description: "Custom enterprise resource planning system with AI-driven inventory forecasting and real-time analytics.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      link: "https://ma-softs.com"
+      link: "https://www.masofts.com"
   },
   {
       title: "Fintech SaaS Dashboard",
@@ -38,7 +47,7 @@ const DUMMY_PROJECTS: PortfolioCard[] = [
       category: "Web Application",
       description: "High-performance financial monitoring dashboard for a European startup, built with Next.js and Chart.js.",
       image: "https://images.unsplash.com/photo-1551288049-bbda646261c6?w=800&q=80",
-      link: "https://ma-softs.com"
+      link: "https://www.masofts.com"
   }
 ];
 

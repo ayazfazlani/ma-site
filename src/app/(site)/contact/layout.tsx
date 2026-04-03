@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Custom Software Consultation with Ayaz",
+  title: "Contact Us – Free Software Consultation",
   description:
-    "Get in touch with Ayaz at MA Softs for a free consultation about your custom software needs. Call +92 336 7057973 or email ayaz@ma-softs.com.",
+    "Get a free consultation for your custom software project. Call +92 336 7057973 or email ayaz@ma-softs.com. Web apps, ERP systems & SaaS development.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact MA Softs - Free Software Development Consultation",
+    title: "Contact MA Softs – Free Software Development Consultation",
     description:
-      "Ready to build your next big idea? Contact Ayaz for a free software consultation. Phone: +92 336 7057973, Email: ayaz@ma-softs.com",
-    url: "https://ma-softs.com/contact",
+      "Ready to build your next big idea? Get a free consultation. Call +92 336 7057973 or email ayaz@ma-softs.com.",
+    url: "https://www.masofts.com/contact",
     type: "website",
   },
   twitter: {
-    title: "Contact MA Softs",
+    title: "Contact MA Softs – Free Consultation",
     description:
-      "Get a free custom software consultation from Ayaz. Start your project today.",
+      "Get a free custom software consultation. Web apps, ERP systems & SaaS development.",
   },
 };
 

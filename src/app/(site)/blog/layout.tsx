@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog - Software Development Insights by Ayaz",
+  title: "Blog – Software Development Tips, Guides & Insights",
   description:
-    "Read the latest software development insights, React & Next.js tips, and enterprise software architecture guides from Ayaz at MA Softs.",
+    "Read expert articles on web development, React, Next.js, SEO strategies, and enterprise software architecture from the MA Softs team.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "MA Softs Blog - Software Development Insights",
+    title: "MA Softs Blog – Development Tips & Industry Insights",
     description:
-      "Expert articles on Web Application Development, ERP Systems, React, Next.js, and Software Architecture by Ayaz.",
-    url: "https://ma-softs.com/blog",
+      "Expert articles on web development, React, Next.js, SEO, and software architecture. Practical guides for startups and businesses.",
+    url: "https://www.masofts.com/blog",
     type: "website",
   },
   twitter: {
-    title: "MA Softs Blog",
+    title: "MA Softs Blog – Dev Tips & Insights",
     description:
-      "Software development insights, coding tips, and tech trends by Ayaz.",
+      "Software development insights, coding tips, and tech trends from MA Softs.",
   },
 };
 

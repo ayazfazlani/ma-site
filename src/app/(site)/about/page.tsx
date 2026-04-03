@@ -11,8 +11,8 @@ import { aboutFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { aboutPageSchema, getBreadcrumbSchema } from "@/lib/schemas";
 
 const aboutBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://ma-softs.com" },
-  { name: "About", url: "https://ma-softs.com/about" },
+  { name: "Home", url: "https://www.masofts.com" },
+  { name: "About", url: "https://www.masofts.com/about" },
 ]);
 
 const values = [

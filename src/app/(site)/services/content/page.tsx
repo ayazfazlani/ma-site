@@ -8,19 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { servicesData } from "@/lib/services";
-import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Content Marketing Services | MA Softs",
-//   description:
-//     "Create valuable content that attracts and retains your audience starting from $599/month. Blog, video, infographics & more.",
-//   openGraph: {
-//     title: "Content Marketing Services - MA Softs",
-//     description:
-//       "Comprehensive content marketing including blog writing, video production, and content strategy.",
-//     url: "https://ma-softs.com/services/content",
-//   },
-// };
 
 export default function ContentPage() {
   const { theme } = useTheme();
@@ -28,9 +16,9 @@ export default function ContentPage() {
   const service = servicesData.find((s) => s.slug === "content");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: "Content Marketing", url: "https://ma-softs.com/services/content" },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: "Content Marketing", url: "https://www.masofts.com/services/content" },
   ]);
 
   return (

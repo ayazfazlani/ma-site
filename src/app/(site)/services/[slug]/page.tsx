@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     openGraph: {
       title: `${service.title} - MA Softs`,
       description: service.description,
-      url: `https://ma-softs.com/services/${service.slug}`,
+      url: `https://www.masofts.com/services/${service.slug}`,
       type: "website",
     },
     twitter: {
@@ -51,9 +51,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
   }
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: service.title, url: `https://ma-softs.com/services/${service.slug}` },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: service.title, url: `https://www.masofts.com/services/${service.slug}` },
   ]);
 
   const serviceSchema = serviceSchemas.find((sch: any) => sch.name === service.title) || serviceSchemas[0];

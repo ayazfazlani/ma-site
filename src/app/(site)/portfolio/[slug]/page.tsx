@@ -32,8 +32,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return { title: 'Not Found' };
 
   return {
-    title: `${project.title} | Portfolio`,
-    description: project.description ?? undefined,
+    title: `${project.title} – Case Study`,
+    description: project.description ?? `See how we built ${project.title}. View the full case study on MA Softs portfolio.`,
+    alternates: {
+      canonical: `/portfolio/${slug}`,
+    },
+    openGraph: {
+      title: `${project.title} – MA Softs Portfolio`,
+      description: project.description ?? undefined,
+      url: `https://www.masofts.com/portfolio/${slug}`,
+      type: "article",
+      images: project.image ? [project.image] : [],
+    },
   };
 }
 

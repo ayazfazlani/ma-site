@@ -8,19 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { servicesData } from "@/lib/services";
-import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Analytics & Reporting Services | MA Softs",
-//   description:
-//     "Data-driven insights and comprehensive reporting starting from $499/month. Google Analytics, dashboards, tracking & more.",
-//   openGraph: {
-//     title: "Analytics & Reporting Services - MA Softs",
-//     description:
-//       "Expert analytics setup including Google Analytics 4, custom dashboards, and comprehensive performance reporting.",
-//     url: "https://ma-softs.com/services/analytics",
-//   },
-// };
 
 export default function AnalyticsPage() {
   const { theme } = useTheme();
@@ -28,9 +16,9 @@ export default function AnalyticsPage() {
   const service = servicesData.find((s) => s.slug === "analytics");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: "Analytics & Reporting", url: "https://ma-softs.com/services/analytics" },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: "Analytics & Reporting", url: "https://www.masofts.com/services/analytics" },
   ]);
 
   return (

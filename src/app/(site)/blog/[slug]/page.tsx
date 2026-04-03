@@ -19,13 +19,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: "Post Not Found" };
 
   return {
-    title: `${post.metaTitle || post.title} | MA Softs`,
-    description: post.metaDesc || post.excerpt,
+    title: `${post.metaTitle || post.title}`,
+    description: post.metaDesc || post.excerpt || `Read about ${post.title} on the MA Softs blog.`,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.metaDesc || post.excerpt || "",
       images: post.image ? [post.image] : [],
       type: "article",
+      url: `https://www.masofts.com/blog/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

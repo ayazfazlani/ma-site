@@ -8,19 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { servicesData } from "@/lib/services";
-import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Web Design & Development Services | MA Softs",
-//   description:
-//     "Custom, responsive websites that convert visitors into customers starting from $2,499. E-commerce, CMS & performance optimization.",
-//   openGraph: {
-//     title: "Web Design & Development - MA Softs",
-//     description:
-//       "Professional website design and development including e-commerce, CMS integration, and performance optimization.",
-//     url: "https://ma-softs.com/services/web-development",
-//   },
-// };
 
 export default function WebDevelopmentPage() {
   const { theme } = useTheme();
@@ -28,9 +16,9 @@ export default function WebDevelopmentPage() {
   const service = servicesData.find((s) => s.slug === "web-development");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: "Web Design & Development", url: "https://ma-softs.com/services/web-development" },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: "Web Design & Development", url: "https://www.masofts.com/services/web-development" },
   ]);
 
   return (

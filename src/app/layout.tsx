@@ -7,12 +7,31 @@ import ThemeProvider from "../../components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.masofts.com"),
   title: {
-    default: "MA Softs - Custom Software & Web Development by Ayaz",
+    default: "MA Softs – Custom Software & Web Development Company in Pakistan",
     template: "%s | MA Softs",
   },
   description:
-    "Expert custom software solutions, web applications, and ERP systems tailored for startups and businesses. Built with Passion by Ayaz.",
+    "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    siteName: "MA Softs",
+    type: "website",
+    locale: "en_US",
+    url: "https://www.masofts.com",
+    title: "MA Softs – Custom Software & Web Development Company",
+    description:
+      "Custom web applications, ERP systems, SaaS & e-commerce solutions built for scale. Free consultation available.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MA Softs – Custom Software & Web Development",
+    description:
+      "Custom web apps, ERP systems & SaaS platforms for startups and businesses. Free consultation.",
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

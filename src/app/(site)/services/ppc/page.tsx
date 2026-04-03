@@ -8,19 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { servicesData } from "@/lib/services";
-import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "PPC Advertising Services | MA Softs",
-//   description:
-//     "Maximize ROI with targeted pay-per-click campaigns starting from $1,299/month. Google Ads, Facebook, Instagram & more.",
-//   openGraph: {
-//     title: "PPC Advertising Services - MA Softs",
-//     description:
-//       "Expert PPC management including Google Ads, Facebook advertising, and conversion optimization.",
-//     url: "https://ma-softs.com/services/ppc",
-//   },
-// };
 
 export default function PPCPage() {
   const { theme } = useTheme();
@@ -28,9 +16,9 @@ export default function PPCPage() {
   const service = servicesData.find((s) => s.slug === "ppc");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: "PPC Advertising", url: "https://ma-softs.com/services/ppc" },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: "PPC Advertising", url: "https://www.masofts.com/services/ppc" },
   ]);
 
   return (

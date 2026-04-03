@@ -8,19 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { servicesData } from "@/lib/services";
-import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "SEO Optimization Services | MA Softs",
-//   description:
-//     "Dominate search rankings with our comprehensive SEO services starting from $999/month. Technical SEO, keyword research, link building & more.",
-//   openGraph: {
-//     title: "SEO Optimization Services - MA Softs",
-//     description:
-//       "Comprehensive SEO services including technical SEO, keyword research, content optimization, and link building.",
-//     url: "https://ma-softs.com/services/seo",
-//   },
-// };
 
 export default function SEOPage() {
   const { theme } = useTheme();
@@ -28,9 +16,9 @@ export default function SEOPage() {
   const service = servicesData.find((s) => s.slug === "seo");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: "SEO Optimization", url: "https://ma-softs.com/services/seo" },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: "SEO Optimization", url: "https://www.masofts.com/services/seo" },
   ]);
 
   return (

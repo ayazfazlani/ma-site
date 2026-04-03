@@ -22,7 +22,7 @@ import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
 export const dynamic = "force-dynamic"; // Skip static generation during build
 
 const homeBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://ma-softs.com" },
+  { name: "Home", url: "https://www.masofts.com" },
 ]);
 
 export default function Home() {

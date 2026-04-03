@@ -8,19 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/schemas";
 import { servicesData } from "@/lib/services";
-import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Social Media Marketing Services | MA Softs",
-//   description:
-//     "Build brand awareness and engage your audience across all social platforms starting from $799/month. Content creation, paid ads & more.",
-//   openGraph: {
-//     title: "Social Media Marketing - MA Softs",
-//     description:
-//       "Comprehensive social media marketing including content creation, community management, and paid advertising.",
-//     url: "https://ma-softs.com/services/social-media",
-//   },
-// };
 
 export default function SocialMediaPage() {
   const { theme } = useTheme();
@@ -28,9 +16,9 @@ export default function SocialMediaPage() {
   const service = servicesData.find((s) => s.slug === "social-media");
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://ma-softs.com" },
-    { name: "Services", url: "https://ma-softs.com/services" },
-    { name: "Social Media Marketing", url: "https://ma-softs.com/services/social-media" },
+    { name: "Home", url: "https://www.masofts.com" },
+    { name: "Services", url: "https://www.masofts.com/services" },
+    { name: "Social Media Marketing", url: "https://www.masofts.com/services/social-media" },
   ]);
 
   return (
