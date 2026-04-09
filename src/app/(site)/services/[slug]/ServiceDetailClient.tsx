@@ -3,7 +3,7 @@
 
 import { useTheme } from "@/components/ThemeProvider";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Layers, Code2, Database, Cpu, Globe, Settings, Layout } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { type ServiceData, servicesData } from "@/lib/services";
 
@@ -14,6 +14,16 @@ interface ServiceDetailClientProps {
   servicesFaqSchema: any;
   serviceSchema: any;
 }
+
+const ICON_MAP: Record<string, any> = {
+  Code2,
+  Database,
+  Cpu,
+  Globe,
+  Settings,
+  Layout,
+  Figma: Layout,
+};
 
 export default function ServiceDetailClient({
   service,
@@ -27,7 +37,7 @@ export default function ServiceDetailClient({
 
   // Find the actual service data with the non-serializable icon from our static data
   const fullService = servicesData.find(s => s.slug === service.slug);
-  const Icon = fullService?.icon;
+  const IconComponent = fullService?.icon ? ICON_MAP[fullService.icon] || Layers : Layers;
 
   return (
     <main className="pt-20">
@@ -45,7 +55,7 @@ export default function ServiceDetailClient({
               <div
                 className={`w-20 h-20 bg-linear-to-br ${service.color} rounded-3xl flex items-center justify-center mb-4`}
               >
-                {Icon && <Icon className="w-10 h-10 text-white" />}
+                {IconComponent && <IconComponent className="w-10 h-10 text-white" />}
               </div>
             </div>
             <div>

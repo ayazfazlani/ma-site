@@ -28,7 +28,7 @@ import type { ElementType } from "react";
 // use shared data
 const services: ServiceData[] = servicesData;
 
-const ICON_MAP: Record<string, ElementType> = {
+const ICON_MAP: Record<string, any> = {
   Code2,
   Database,
   Cpu,
