@@ -81,9 +81,9 @@ export default function ContactPage() {
 
               {[
                 { icon: Phone, title: "Phone", content: "+92 336 7057973", href: "tel:+923367057973" },
-                { icon: Mail, title: "Email", content: "ayaz@ma-softs.com", href: "mailto:ayaz@ma-softs.com" },
-                { icon: MapPin, title: "Address", content: "123 Business Avenue, Karachi, Pakistan", href: "#" },
-                { icon: Clock, title: "Working Hours", content: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
+                { icon: Mail, title: "Email", content: "info@masofts.com", href: "mailto:info@masofts.com" },
+                { icon: MapPin, title: "Address", content: "Pakistan (Serving Globally)", href: "#" },
+                { icon: Clock, title: "Working Hours", content: "mon - sat: 9:00 AM - 6:00 PM", href: "#" },
               ].map((item) => (
                 <a
                   key={item.title}
@@ -147,7 +147,7 @@ export default function ContactPage() {
                           ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
                           : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
-                        placeholder="john@example.com"
+                        placeholder="info@masofts.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
@@ -165,7 +165,7 @@ export default function ContactPage() {
                           ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
                           : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
-                        placeholder="+92 300 1234567"
+                        placeholder="+92 336 7057973"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       />

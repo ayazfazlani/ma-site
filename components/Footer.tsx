@@ -93,18 +93,18 @@ export default function Footer() {
                 className="flex items-center gap-3 text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm"
               >
                 <Mail className="w-4.5 h-4.5" />
-                <span>ayaz@masoftwares.com</span>
+                <span>info@masofts.com</span>
               </a>
               <a
                 href="tel:+923001234567"
                 className="flex items-center gap-3 text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm"
               >
                 <Phone className="w-4.5 h-4.5" />
-                <span>+92 300 1234567</span>
+                <span>+923367057973</span>
               </a>
               <div className="flex items-start gap-3 text-neutral-400 text-sm">
                 <MapPin className="w-4.5 h-4.5 flex-shrink-0 mt-0.5" />
-                <span>Karachi, Pakistan (Serving Globally)</span>
+                <span>Pakistan (Serving Globally)</span>
               </div>
             </div>
           </div>
