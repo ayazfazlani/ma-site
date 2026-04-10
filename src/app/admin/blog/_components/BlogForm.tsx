@@ -7,6 +7,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { ImageIcon, X, Save, Send, Eye, LayoutIcon, FileText, Search, Settings } from "lucide-react";
 import Image from "next/image";
 import { cn, slugify } from "@/lib/utils";
+import RichTextEditor from "./RichTextEditor";
 
 interface BlogFormProps {
   initialData?: any;
@@ -43,6 +44,10 @@ export default function BlogForm({ initialData }: BlogFormProps) {
 
   const handleToggle = () => {
       setFormData(prev => ({ ...prev, published: !prev.published }));
+  };
+
+  const handleContentChange = (content: string) => {
+      setFormData(prev => ({ ...prev, content }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -146,13 +151,10 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                                     <span>Real-time Preview</span>
                                 </div>
                             </label>
-                            <textarea
-                                name="content"
+                            <RichTextEditor
                                 value={formData.content}
-                                onChange={handleChange}
+                                onChange={handleContentChange}
                                 placeholder="Tell your story here..."
-                                className="w-full min-h-[500px] bg-gray-50/50 dark:bg-white/[0.015] rounded-3xl p-6 md:p-8 text-black dark:text-neutral-200 text-lg border border-gray-100 dark:border-white/[0.05] focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500/30 transition-all leading-relaxed placeholder:text-gray-300 dark:placeholder:text-neutral-800"
-                                required
                             />
                         </div>
                     </div>
