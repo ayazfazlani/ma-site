@@ -8,6 +8,7 @@ import { ImageIcon, X, Save, Send, Eye, LayoutIcon, FileText, Search, Settings }
 import Image from "next/image";
 import { cn, slugify } from "@/lib/utils";
 import RichTextEditor from "./RichTextEditor";
+import { pingSearchEngines } from "@/lib/indexing";
 
 interface BlogFormProps {
   initialData?: any;
@@ -74,6 +75,11 @@ export default function BlogForm({ initialData }: BlogFormProps) {
         headers: { "Content-Type": "application/json" },
       });
       if (res.ok) {
+        // If content is published, try to ping search engines
+        if (formData.published) {
+          pingSearchEngines(`/blog/${formData.slug}`).catch(err => console.error("Indexing failed:", err));
+        }
+        
         router.refresh();
         router.push("/admin/blog");
       }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.masofts.com",
   },
   openGraph: {
     siteName: "MA Softs",

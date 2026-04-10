@@ -13,6 +13,8 @@ interface CategoryItem {
   slug: string;
   description: string;
   color: string;
+  metaTitle: string;
+  metaDesc: string;
 }
 
 const PRESET_COLORS = [
@@ -37,6 +39,8 @@ export default function CategoriesManager() {
     slug: "",
     description: "",
     color: "#6366f1",
+    metaTitle: "",
+    metaDesc: "",
   });
 
   const fetchCategories = async () => {
@@ -57,7 +61,7 @@ export default function CategoriesManager() {
   }, []);
 
   const resetForm = () => {
-    setFormData({ name: "", slug: "", description: "", color: "#6366f1" });
+    setFormData({ name: "", slug: "", description: "", color: "#6366f1", metaTitle: "", metaDesc: "" });
     setEditingId(null);
     setShowForm(false);
   };
@@ -68,6 +72,8 @@ export default function CategoriesManager() {
       slug: cat.slug,
       description: cat.description,
       color: cat.color,
+      metaTitle: cat.metaTitle || "",
+      metaDesc: cat.metaDesc || "",
     });
     setEditingId(cat._id);
     setShowForm(true);
@@ -190,6 +196,26 @@ export default function CategoriesManager() {
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="A short description for this category..."
                 className="w-full px-5 py-3.5 rounded-2xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 transition-all outline-none placeholder:text-gray-300 dark:placeholder:text-gray-600"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[11px] font-black text-gray-400 dark:text-neutral-500 uppercase tracking-widest pl-1">SEO Meta Title</label>
+              <input
+                value={formData.metaTitle}
+                onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
+                placeholder="SEO Title"
+                className="w-full px-5 py-3.5 rounded-2xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 transition-all outline-none"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[11px] font-black text-gray-400 dark:text-neutral-500 uppercase tracking-widest pl-1">SEO Meta Description</label>
+              <input
+                value={formData.metaDesc}
+                onChange={(e) => setFormData({ ...formData, metaDesc: e.target.value })}
+                placeholder="SEO Description"
+                className="w-full px-5 py-3.5 rounded-2xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 transition-all outline-none"
               />
             </div>
 

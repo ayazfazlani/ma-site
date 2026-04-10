@@ -23,7 +23,7 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     await dbConnect();
-    const { name, slug, description, color } = await req.json();
+    const { name, slug, description, color, metaTitle, metaDesc } = await req.json();
 
     if (!name || !slug) {
       return NextResponse.json({ message: "Name and slug are required" }, { status: 400 });
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Category with this name or slug already exists" }, { status: 409 });
     }
 
-    const category = await Category.create({ name, slug, description, color });
+    const category = await Category.create({ name, slug, description, color, metaTitle, metaDesc });
     return NextResponse.json(category, { status: 201 });
   } catch (error) {
     console.error("Create Category Error:", error);

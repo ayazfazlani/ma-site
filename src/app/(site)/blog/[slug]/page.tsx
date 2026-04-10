@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${post.metaTitle || post.title}`,
     description: post.metaDesc || post.excerpt || `Read about ${post.title} on the MA Softs blog.`,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `https://www.masofts.com/blog/${slug}`,
     },
     openGraph: {
       title: post.title,

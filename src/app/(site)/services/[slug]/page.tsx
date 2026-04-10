@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: `${service.title} | MA Softs`,
     description: service.description,
     alternates: {
-      canonical: `/services/${service.slug}`,
+      canonical: `https://www.masofts.com/services/${service.slug}`,
     },
     openGraph: {
       title: `${service.title} - MA Softs`,

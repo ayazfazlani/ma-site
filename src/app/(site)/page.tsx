@@ -18,6 +18,16 @@ import {
   getBreadcrumbSchema,
 } from "@/lib/schemas";
 import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MA Softs – Home",
+  description: "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
+  alternates: {
+    canonical: "https://www.masofts.com",
+  },
+};
+
 
 export const dynamic = "force-dynamic"; // Skip static generation during build
 

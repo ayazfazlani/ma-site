@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Portfolio – Our Work & Case Studies",
   description: "Explore MA Softs portfolio of custom web applications, ERP systems, e-commerce platforms & SaaS solutions built for clients worldwide.",
   alternates: {
-    canonical: "/portfolio",
+    canonical: "https://www.masofts.com/portfolio",
   },
   openGraph: {
     title: "MA Softs Portfolio – Our Work & Case Studies",

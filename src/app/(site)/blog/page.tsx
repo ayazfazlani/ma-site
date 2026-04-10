@@ -9,6 +9,16 @@ import {
   getBreadcrumbSchema 
 } from "@/lib/schemas";
 import BlogList from "./_components/BlogList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog – Insights on Custom Software & Development",
+  description: "Read the latest articles, tutorials, and strategy guides on custom software, ERP systems, SaaS development, and digital transformation by MA Softs.",
+  alternates: {
+    canonical: "https://www.masofts.com/blog",
+  },
+};
+
 
 export const revalidate = 3600; // Revalidate every hour
 export const dynamic = "force-dynamic"; // Skip static generation during build
