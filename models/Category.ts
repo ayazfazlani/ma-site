@@ -18,7 +18,15 @@ const CategorySchema = new Schema(
     },
     color: {
       type: String,
-      default: "#6366f1", // primary indigo
+      default: "#6366f1",
+    },
+    metaTitle: {
+      type: String,
+      default: "",
+    },
+    metaDesc: {
+      type: String,
+      default: "",
     },
   },
   {

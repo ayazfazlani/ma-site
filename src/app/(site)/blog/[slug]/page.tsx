@@ -126,17 +126,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
 
             <div className={cn(
-                "prose prose-lg dark:prose-invert max-w-none break-words overflow-hidden",
+                "prose prose-lg dark:prose-invert max-w-none",
+                "[overflow-wrap:break-word] [word-break:normal]",
                 "prose-headings:font-black prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
-                "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:font-medium",
+                "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:font-medium prose-p:whitespace-pre-line",
                 "prose-strong:text-primary-600 dark:prose-strong:text-primary-400 prose-strong:font-black",
                 "prose-img:rounded-3xl prose-img:shadow-2xl prose-img:border prose-img:border-gray-100 dark:prose-img:border-white/[0.05] prose-img:max-w-full prose-img:h-auto",
                 "prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:font-black prose-a:no-underline hover:prose-a:underline",
                 "prose-li:text-gray-600 dark:prose-li:text-neutral-400 prose-li:font-medium",
                 "prose-ul:list-disc prose-ol:list-decimal",
+                "prose-pre:overflow-x-auto prose-pre:max-w-full",
+                "[&_iframe]:max-w-full [&_iframe]:rounded-2xl [&_video]:max-w-full [&_video]:rounded-2xl",
                 "first-letter:text-5xl first-letter:font-black first-letter:text-primary-600 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none"
             )}>
-                {/* Normally we'd use MDXRemote here, but for now we'll render as dangerouslySetInnerHTML if it's stored as HTML */}
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
 

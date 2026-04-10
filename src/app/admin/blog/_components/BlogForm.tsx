@@ -1,7 +1,7 @@
 // src/app/admin/blog/_components/BlogForm.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { CldUploadWidget } from "next-cloudinary";
 import { ImageIcon, X, Save, Send, Eye, LayoutIcon, FileText, Search, Settings } from "lucide-react";
@@ -21,7 +21,7 @@ export default function BlogForm({ initialData }: BlogFormProps) {
     slug: initialData?.slug || "",
     excerpt: initialData?.excerpt || "",
     content: initialData?.content || "",
-    category: initialData?.category || "SEO",
+    category: initialData?.category || "",
     author: initialData?.author || "Ahmed Khan",
     image: initialData?.image || "",
     published: initialData?.published || false,
@@ -30,6 +30,20 @@ export default function BlogForm({ initialData }: BlogFormProps) {
   });
 
   const [activeTab, setActiveTab] = useState("content");
+  const [categories, setCategories] = useState<{_id: string; name: string; slug: string}[]>([]);
+
+  useEffect(() => {
+    fetch("/api/admin/categories")
+      .then(res => res.json())
+      .then(data => {
+        setCategories(data);
+        // Set default category if none selected and categories exist
+        if (!formData.category && data.length > 0) {
+          setFormData(prev => ({ ...prev, category: data[0].name }));
+        }
+      })
+      .catch(console.error);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -290,12 +304,14 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                             onChange={handleChange}
                             className="w-full px-5 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold focus:ring-2 focus:ring-primary-500/20 transition-all appearance-none cursor-pointer"
                         >
-                            <option value="SEO">Digital SEO</option>
-                            <option value="Web Design">Next.js Development</option>
-                            <option value="Social Media">Cloud Solutions</option>
-                            <option value="Content">AI & Automation</option>
-                            <option value="PPC">Business Growth</option>
+                            <option value="" disabled>Select a category...</option>
+                            {categories.map((cat) => (
+                              <option key={cat._id} value={cat.name}>{cat.name}</option>
+                            ))}
                         </select>
+                        {categories.length === 0 && (
+                          <p className="text-[10px] text-amber-500 font-medium pl-1">No categories found. Create one in Admin → Categories first.</p>
+                        )}
                     </div>
 
                     <div className="space-y-3">
