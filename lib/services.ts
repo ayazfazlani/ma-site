@@ -44,16 +44,16 @@ export const servicesData: ServiceData[] = [
     glow: "group-hover:shadow-primary-500/20",
     number: "01",
     color: "from-blue-500 to-blue-600",
-    price: "Starting from $499",
+    price: "Starting from $99",
     longDescription:
-      "We design and develop custom websites and web applications that are fast, responsive, and conversion-optimized. From landing pages to complex SaaS dashboards, we build digital experiences that help your business grow.",
+      "We design and develop fast, conversion-focused websites and web apps that help startups launch quickly and scale efficiently.",
     plans: [
       {
         name: "Starter Website",
-        price: "$499",
+        price: "$99",
         billingCycle: "one-time",
         description:
-          "Perfect for small businesses needing a professional web presence.",
+          "Perfect for new startups needing a professional online presence on a tight budget.",
         features: [
           "Up to 5 Pages",
           "Mobile Responsive Design",
@@ -65,12 +65,12 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Business Pro",
-        price: "$1,499",
+        price: "$199",
         billingCycle: "one-time",
         description:
-          "Feature-rich website for established businesses ready to scale.",
+          "Feature-rich website ideal for startups ready to grow and convert visitors.",
         features: [
-          "Up to 15 Pages",
+          "Up to 12 Pages",
           "CMS Integration",
           "Advanced SEO & Analytics",
           "Payment Gateway Setup",
@@ -82,10 +82,10 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Enterprise Web App",
-        price: "$3,999",
+        price: "$499",
         billingCycle: "starting from",
         description:
-          "Full-stack custom web application with advanced features.",
+          "Full-stack custom web application with advanced features for scaling startups.",
         features: [
           "Custom Full-stack Development",
           "User Authentication & Roles",
@@ -101,13 +101,14 @@ export const servicesData: ServiceData[] = [
   {
     slug: "seo",
     icon: "Settings",
-    title: "SEO Optimization",
+    title: "Affordable SEO Services for Startups",
     description:
-      "Dominate search rankings with data-driven SEO strategies. We optimize technical SEO, content, keywords, and backlinks to drive organic growth.",
+      "Boost your startup’s visibility with affordable SEO services designed for early-stage businesses. Get more organic traffic, higher rankings, and sustainable growth.",
     features: [
       "Technical SEO Audit & Fixes",
-      "Keyword Research & Strategy",
+      "In-depth Keyword Research & Strategy",
       "On-page SEO Optimization",
+      "Content SEO Optimization",
       "Link Building & Outreach",
       "Local SEO & Google My Business",
       "Monthly Reporting & Analytics",
@@ -116,50 +117,51 @@ export const servicesData: ServiceData[] = [
     glow: "group-hover:shadow-rose-500/20",
     number: "02",
     color: "from-green-500 to-emerald-600",
-    price: "Starting from $299/mo",
+    price: "Starting from $249/mo",
     longDescription:
-      "Our SEO services help your website rank higher on Google, drive more organic traffic, and convert visitors into customers. We use proven white-hat strategies tailored to your industry.",
+      "Our affordable SEO services for startups focus on high-ROI strategies including technical fixes, keyword targeting, and content optimization to help you rank faster and grow organically without high costs.",
     plans: [
       {
         name: "SEO Starter",
-        price: "$299",
+        price: "$249",
         billingCycle: "/month",
-        description: "Essential SEO for small businesses getting started.",
+        description: "Budget-friendly SEO perfect for early-stage startups.",
         features: [
-          "5 Target Keywords",
-          "On-page Optimization",
-          "Technical SEO Audit",
-          "Monthly Reporting",
-          "Google Search Console Setup",
+          "Up to 8 Target Keywords",
+          "Complete Technical SEO Audit",
+          "On-page SEO Optimization",
+          "Keyword Research & Strategy",
+          "Monthly SEO Report",
+          "Google Search Console & Analytics Setup",
         ],
         cta: "Start Ranking",
       },
       {
-        name: "Growth SEO",
-        price: "$599",
+        name: "Startup Growth SEO",
+        price: "$449",
         billingCycle: "/month",
-        description: "Comprehensive SEO for competitive markets.",
+        description: "Comprehensive SEO for startups looking to scale traffic quickly.",
         features: [
-          "15 Target Keywords",
-          "On-page & Off-page SEO",
-          "Content Optimization",
-          "Link Building (5/mo)",
+          "Up to 20 Target Keywords",
+          "Advanced On-page & Technical SEO",
+          "Monthly Content Recommendations",
+          "Link Building (8 links/mo)",
           "Competitor Analysis",
-          "Bi-weekly Reporting",
+          "Bi-weekly Reports + Strategy Calls",
         ],
-        cta: "Grow Traffic",
+        cta: "Scale My Startup",
         highlighted: true,
       },
       {
         name: "Enterprise SEO",
-        price: "$1,299",
+        price: "$899",
         billingCycle: "/month",
-        description: "Full-scale SEO for maximum visibility and dominance.",
+        description: "Full-scale SEO for aggressive growth or competitive niches.",
         features: [
-          "30+ Target Keywords",
+          "Unlimited Target Keywords",
           "Complete SEO Strategy",
-          "Premium Link Building (15/mo)",
-          "Content Creation (4 articles/mo)",
+          "Premium Link Building (15+/mo)",
+          "Content Creation (5 articles/mo)",
           "Local SEO & Citations",
           "Weekly Reporting & Strategy Calls",
         ],
@@ -172,7 +174,7 @@ export const servicesData: ServiceData[] = [
     icon: "Globe",
     title: "Social Media Marketing",
     description:
-      "Build brand awareness, engage your audience, and drive sales across all social platforms with data-driven content and paid ad strategies.",
+      "Build brand awareness, engage your audience, and drive sales across social platforms with affordable, data-driven strategies tailored for startups.",
     features: [
       "Content Creation & Scheduling",
       "Community Management",
@@ -185,15 +187,15 @@ export const servicesData: ServiceData[] = [
     glow: "group-hover:shadow-emerald-500/20",
     number: "03",
     color: "from-purple-500 to-indigo-600",
-    price: "Starting from $399/mo",
+    price: "Starting from $299/mo",
     longDescription:
-      "We manage your social media presence across all major platforms, creating engaging content, running targeted paid campaigns, and building a loyal community around your brand.",
+      "We help startups grow their social presence with engaging content, consistent posting, and smart paid campaigns — all at startup-friendly prices.",
     plans: [
       {
         name: "Social Starter",
-        price: "$399",
+        price: "$299",
         billingCycle: "/month",
-        description: "Get started with professional social media management.",
+        description: "Great entry point for startups building social presence.",
         features: [
           "2 Platforms Managed",
           "12 Posts/month",
@@ -205,14 +207,14 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Social Growth",
-        price: "$799",
+        price: "$599",
         billingCycle: "/month",
-        description: "Accelerate your social presence and engagement.",
+        description: "Accelerated growth plan for active startups.",
         features: [
           "4 Platforms Managed",
           "24 Posts/month",
           "Professional Graphics & Reels",
-          "Paid Ad Management ($500 budget)",
+          "Paid Ad Management ($400 budget)",
           "Competitor Monitoring",
           "Bi-weekly Reports",
         ],
@@ -221,14 +223,14 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Social Premium",
-        price: "$1,499",
+        price: "$999",
         billingCycle: "/month",
-        description: "Full-service social media domination.",
+        description: "Full-service social media for scaling startups.",
         features: [
-          "All Platforms Managed",
-          "40+ Posts/month",
+          "All Major Platforms",
+          "35+ Posts/month",
           "Video Content & Stories",
-          "Paid Ad Management ($2000 budget)",
+          "Paid Ad Management ($1500 budget)",
           "Influencer Outreach",
           "Weekly Strategy & Reports",
         ],
@@ -241,7 +243,7 @@ export const servicesData: ServiceData[] = [
     icon: "Cpu",
     title: "PPC & Paid Advertising",
     description:
-      "Maximize ROI with targeted pay-per-click campaigns across Google, Facebook, and Instagram. Immediate traffic and qualified leads for your business.",
+      "Maximize ROI with targeted pay-per-click campaigns across Google, Facebook, and Instagram. Immediate traffic for your startup.",
     features: [
       "Google Ads Management",
       "Facebook & Instagram Ads",
@@ -254,15 +256,15 @@ export const servicesData: ServiceData[] = [
     glow: "group-hover:shadow-amber-500/20",
     number: "04",
     color: "from-amber-500 to-orange-600",
-    price: "Starting from $499/mo",
+    price: "Starting from $99/mo",
     longDescription:
-      "We create and manage high-performing PPC campaigns that drive immediate, qualified traffic to your business. Our data-driven approach ensures every dollar of ad spend generates maximum return.",
+      "Affordable PPC management that drives qualified leads and sales for startups with smart targeting and continuous optimization.",
     plans: [
       {
         name: "PPC Starter",
-        price: "$499",
+        price: "$99",
         billingCycle: "/month",
-        description: "Start driving targeted traffic to your business.",
+        description: "Low-commitment entry for testing paid ads.",
         features: [
           "1 Platform (Google or Facebook)",
           "Campaign Setup & Management",
@@ -274,9 +276,9 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "PPC Growth",
-        price: "$999",
+        price: "$199",
         billingCycle: "/month",
-        description: "Multi-platform campaigns for maximum reach.",
+        description: "Multi-platform campaigns for growing startups.",
         features: [
           "Google + Facebook/Instagram Ads",
           "Advanced Targeting & Retargeting",
@@ -290,9 +292,9 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "PPC Enterprise",
-        price: "$1,999",
+        price: "$399",
         billingCycle: "/month",
-        description: "Full-scale advertising across all channels.",
+        description: "Full-scale advertising for high-growth startups.",
         features: [
           "All Major Platforms",
           "Advanced Attribution Modeling",
@@ -310,7 +312,7 @@ export const servicesData: ServiceData[] = [
     icon: "Layout",
     title: "Content Marketing",
     description:
-      "Create valuable, SEO-optimized content that attracts, engages, and converts your target audience. Blog posts, videos, infographics, and more.",
+      "Create valuable, SEO-optimized content that attracts, engages, and converts your target audience. Ideal for startups building authority.",
     features: [
       "Content Strategy & Planning",
       "SEO Blog Writing",
@@ -323,18 +325,18 @@ export const servicesData: ServiceData[] = [
     glow: "group-hover:shadow-accent-500/20",
     number: "05",
     color: "from-cyan-500 to-blue-600",
-    price: "Starting from $349/mo",
+    price: "Starting from $249/mo",
     longDescription:
-      "We develop content strategies that position your brand as an industry authority, drive organic traffic, and nurture leads through every stage of the buyer journey.",
+      "We produce high-quality, SEO-friendly content that helps startups establish thought leadership and drive organic traffic.",
     plans: [
       {
         name: "Content Starter",
-        price: "$349",
+        price: "$249",
         billingCycle: "/month",
         description:
           "Build your content foundation with quality blog posts.",
         features: [
-          "2 Blog Articles/month (1500+ words)",
+          "2 Blog Articles/month (1200+ words)",
           "Keyword Research per Article",
           "On-page SEO Optimization",
           "1 Social Share Graphic",
@@ -344,11 +346,11 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Content Growth",
-        price: "$699",
+        price: "$499",
         billingCycle: "/month",
-        description: "Scale content production for serious growth.",
+        description: "Scale content production for serious startup growth.",
         features: [
-          "4 Blog Articles/month (2000+ words)",
+          "4 Blog Articles/month (1500+ words)",
           "2 Newsletter Emails",
           "Social Media Copy for All Posts",
           "Infographic Design (1/mo)",
@@ -360,12 +362,12 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Content Premium",
-        price: "$1,299",
+        price: "$899",
         billingCycle: "/month",
         description:
-          "Full content engine with video, blogs, and campaigns.",
+          "Full content engine with blogs, video, and campaigns.",
         features: [
-          "8 Blog Articles/month",
+          "6 Blog Articles/month",
           "Video Script + Editing (2/mo)",
           "Email Drip Campaigns",
           "Lead Magnet Creation",
@@ -381,7 +383,7 @@ export const servicesData: ServiceData[] = [
     icon: "Database",
     title: "Analytics & Reporting",
     description:
-      "Make data-driven decisions with comprehensive analytics setup, custom dashboards, and performance tracking across all your digital channels.",
+      "Make data-driven decisions with comprehensive analytics setup, custom dashboards, and performance tracking across all channels.",
     features: [
       "Google Analytics 4 Setup",
       "Custom Dashboard Creation",
@@ -394,15 +396,15 @@ export const servicesData: ServiceData[] = [
     glow: "group-hover:shadow-purple-500/20",
     number: "06",
     color: "from-pink-500 to-rose-600",
-    price: "Starting from $249/mo",
+    price: "Starting from $199/mo",
     longDescription:
-      "We set up comprehensive analytics and reporting systems so you can understand your users, measure ROI, and make data-driven decisions that grow your business.",
+      "We set up clear analytics systems so startups can track performance, measure ROI, and make smart growth decisions.",
     plans: [
       {
         name: "Analytics Basic",
-        price: "$249",
+        price: "$199",
         billingCycle: "/month",
-        description: "Essential analytics setup for small businesses.",
+        description: "Essential analytics setup for startups.",
         features: [
           "GA4 Setup & Configuration",
           "5 Goal Conversions",
@@ -414,9 +416,9 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Analytics Pro",
-        price: "$499",
+        price: "$399",
         billingCycle: "/month",
-        description: "Advanced tracking and custom reporting.",
+        description: "Advanced tracking and custom reporting for growing teams.",
         features: [
           "Full GA4 + GTM Setup",
           "Custom Conversion Funnels",
@@ -430,10 +432,10 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Analytics Enterprise",
-        price: "$999",
+        price: "$799",
         billingCycle: "/month",
         description:
-          "Complete business intelligence and analytics stack.",
+          "Complete business intelligence for scaling startups.",
         features: [
           "Multi-platform Analytics Integration",
           "Advanced Attribution Modeling",
