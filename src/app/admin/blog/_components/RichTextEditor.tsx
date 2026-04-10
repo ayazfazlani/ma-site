@@ -24,13 +24,17 @@ interface RichTextEditorProps {
 
 const modules = {
   toolbar: [
-    [{ header: [2, 3, 4, false] }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
     [{ font: [] }],
+    [{ size: ["small", false, "large", "huge"] }],
     ["bold", "italic", "underline", "strike"],
     [{ color: [] }, { background: [] }],
     [{ list: "ordered" }, { list: "bullet" }],
+    [{ indent: "-1" }, { indent: "+1" }],
     [{ align: [] }],
+    ["blockquote", "code-block"],
     ["link", "image", "video"],
+    [{ script: "sub" }, { script: "super" }],
     ["clean"],
   ],
   clipboard: {
@@ -41,6 +45,7 @@ const modules = {
 const formats = [
   "header",
   "font",
+  "size",
   "bold",
   "italic",
   "underline",
@@ -49,10 +54,14 @@ const formats = [
   "background",
   "list",
   "bullet",
+  "indent",
   "align",
+  "blockquote",
+  "code-block",
   "link",
   "image",
   "video",
+  "script",
 ];
 
 export default function RichTextEditor({ value, onChange, placeholder }: RichTextEditorProps) {
