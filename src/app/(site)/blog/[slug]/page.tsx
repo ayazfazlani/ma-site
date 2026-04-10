@@ -125,11 +125,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
 
             <div className={cn(
-                "prose prose-lg dark:prose-invert max-w-none",
+                "prose prose-lg dark:prose-invert max-w-none break-words overflow-hidden",
                 "prose-headings:font-black prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
                 "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:font-medium",
                 "prose-strong:text-primary-600 dark:prose-strong:text-primary-400 prose-strong:font-black",
-                "prose-img:rounded-3xl prose-img:shadow-2xl prose-img:border prose-img:border-gray-100 dark:prose-img:border-white/[0.05]",
+                "prose-img:rounded-3xl prose-img:shadow-2xl prose-img:border prose-img:border-gray-100 dark:prose-img:border-white/[0.05] prose-img:max-w-full prose-img:h-auto",
                 "prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:font-black prose-a:no-underline hover:prose-a:underline",
                 "prose-li:text-gray-600 dark:prose-li:text-neutral-400 prose-li:font-medium",
                 "prose-ul:list-disc prose-ol:list-decimal",
