@@ -8,6 +8,7 @@ import { Calendar, User, Clock, ChevronLeft, Share2, Tag, Bookmark } from "lucid
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import CommentSection from "../_components/CommentSection";
 
 export const revalidate = 3600;
 
@@ -147,6 +148,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 ))}
             </div>
         </div>
+
+        {/* Comments Section */}
+        <CommentSection postId={post._id.toString()} />
       </div>
     </article>
   );

@@ -13,13 +13,17 @@ import {
   Image as ImageIcon,
   Users,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Tag,
+  MessagesSquare
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
   { icon: FileText, label: "Blog Posts", href: "/admin/blog" },
+  { icon: Tag, label: "Categories", href: "/admin/categories" },
+  { icon: MessagesSquare, label: "Comments", href: "/admin/comments" },
   { icon: Briefcase, label: "Services", href: "/admin/services" },
   { icon: Layers, label: "Portfolio", href: "/admin/portfolio" },
   { icon: MessageSquare, label: "Testimonials", href: "/admin/testimonials" },

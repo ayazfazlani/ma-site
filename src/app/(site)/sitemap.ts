@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+export const revalidate = 3600; // revalidate every hour
 import dbConnect from '@/lib/mongodb';
 import PostModel from '@/models/Post';
 import ProjectModel from '@/models/Project';
