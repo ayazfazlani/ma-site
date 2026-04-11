@@ -23,6 +23,10 @@ export interface ServiceData {
   price: string;
   longDescription?: string;
   plans?: PricingPlan[];
+  whyChooseUs?: { title: string; description: string }[];
+  process?: { title: string; description: string }[];
+  faqs?: { q: string; a: string }[];
+  techStack?: { name: string; icon: string; color?: string }[];
 }
 
 export const servicesData: ServiceData[] = [
@@ -97,6 +101,30 @@ export const servicesData: ServiceData[] = [
         cta: "Let's Discuss",
       },
     ],
+    whyChooseUs: [
+      { title: "Performance First", description: "Our websites are lightning-fast, ensuring your users never have to wait." },
+      { title: "SEO Optimized", description: "Built-in SEO best practices to help you rank higher from day one." },
+      { title: "Conversion Focused", description: "Every element is designed to turn visitors into loyal customers." },
+      { title: "Scale Ready", description: "Architecture designed to grow alongside your business and traffic." }
+    ],
+    process: [
+      { title: "Discovery", description: "We dive deep into your brand, goals, and target audience." },
+      { title: "Design", description: "Creating stunning, user-centric designs that reflect your brand." },
+      { title: "Development", description: "Coding with the latest technologies for speed and reliability." },
+      { title: "Launch", description: "Thorough testing and deployment to bring your vision to life." }
+    ],
+    faqs: [
+      { q: "How long does a website take to build?", a: "Typical timelines: Starter (3-4 weeks), Professional (5-7 weeks), E-commerce (8-12 weeks)." },
+      { q: "Can you migrate my existing website?", a: "Yes! We handle full migrations including data transfer, SEO setup, and zero downtime." },
+      { q: "Will my website be mobile-friendly?", a: "Absolutely. All our websites are fully responsive and mobile-optimized." },
+      { q: "What about ongoing support?", a: "All plans include free support beyond the initial launch period." }
+    ],
+    techStack: [
+      { name: "React", icon: "Layers", color: "text-sky-400" },
+      { name: "Next.js", icon: "Zap", color: "text-white" },
+      { name: "TypeScript", icon: "Code2", color: "text-blue-500" },
+      { name: "Tailwind", icon: "Layout", color: "text-cyan-400" }
+    ]
   },
   {
     slug: "seo",
@@ -119,7 +147,7 @@ export const servicesData: ServiceData[] = [
     color: "from-green-500 to-emerald-600",
     price: "Starting from $249/mo",
     longDescription:
-      "Our affordable SEO services for startups focus on high-ROI strategies including technical fixes, keyword targeting, and content optimization to help you rank faster and grow organically without high costs.",
+      "Our affordable SEO services for startups focus on high-ROI strategies including technical fixes, keyword targeting, and content optimization to help you rank faster and grow organically.",
     plans: [
       {
         name: "SEO Starter",
@@ -132,7 +160,7 @@ export const servicesData: ServiceData[] = [
           "On-page SEO Optimization",
           "Keyword Research & Strategy",
           "Monthly SEO Report",
-          "Google Search Console & Analytics Setup",
+          "Search Console & Analytics Setup",
         ],
         cta: "Start Ranking",
       },
@@ -147,7 +175,7 @@ export const servicesData: ServiceData[] = [
           "Monthly Content Recommendations",
           "Link Building (8 links/mo)",
           "Competitor Analysis",
-          "Bi-weekly Reports + Strategy Calls",
+          "Bi-weekly Strategy Calls",
         ],
         cta: "Scale My Startup",
         highlighted: true,
@@ -163,11 +191,35 @@ export const servicesData: ServiceData[] = [
           "Premium Link Building (15+/mo)",
           "Content Creation (5 articles/mo)",
           "Local SEO & Citations",
-          "Weekly Reporting & Strategy Calls",
+          "Weekly Strategy & Reports",
         ],
         cta: "Dominate Search",
       },
     ],
+    whyChooseUs: [
+      { title: "Data Driven", description: "We use hard data and analytics to shape your SEO strategy." },
+      { title: "White Hat Only", description: "Ethical SEO practices that protect your site from penalties." },
+      { title: "Transparent Reporting", description: "Clear, simplified reports that show real growth metrics." },
+      { title: "Content Specialists", description: "Our team creates content that both Google and users love." }
+    ],
+    process: [
+      { title: "Audit", description: "Finding technical issues that hold your site back." },
+      { title: "Strategy", description: "Identifying high-value keywords and content gaps." },
+      { title: "Optimization", description: "Implementing changes for maximum visibility." },
+      { title: "Reporting", description: "Measuring progress and refining the approach." }
+    ],
+    faqs: [
+      { q: "How long until I see SEO results?", a: "Noticeable improvements in 3-6 months, significant results within 6-12 months." },
+      { q: "What makes your SEO different?", a: "We combine technical expertise with data-driven growth strategies for startups." },
+      { q: "Do you guarantee rankings?", a: "We guarantee effort, expertise, and transparency. Rankings depend on many market factors." },
+      { q: "What's in the monthly retainer?", a: "Ongoing optimization, monitoring, and proactive strategy adjustments." }
+    ],
+    techStack: [
+      { name: "Semrush", icon: "Search", color: "text-orange-500" },
+      { name: "Ahrefs", icon: "Globe", color: "text-blue-600" },
+      { name: "GA4", icon: "BarChart", color: "text-yellow-400" },
+      { name: "GSC", icon: "Settings", color: "text-emerald-500" }
+    ]
   },
   {
     slug: "social-media",
@@ -214,7 +266,7 @@ export const servicesData: ServiceData[] = [
           "4 Platforms Managed",
           "24 Posts/month",
           "Professional Graphics & Reels",
-          "Paid Ad Management ($400 budget)",
+          "Paid Ad Management",
           "Competitor Monitoring",
           "Bi-weekly Reports",
         ],
@@ -230,13 +282,37 @@ export const servicesData: ServiceData[] = [
           "All Major Platforms",
           "35+ Posts/month",
           "Video Content & Stories",
-          "Paid Ad Management ($1500 budget)",
+          "Advanced Ad Management",
           "Influencer Outreach",
           "Weekly Strategy & Reports",
         ],
         cta: "Go Premium",
       },
     ],
+    whyChooseUs: [
+      { title: "Engagement focus", description: "We don't just post; we build active communities around your brand." },
+      { title: "Platform Experts", description: "Deep knowledge of algorithms for TikTok, Instagram, and LinkedIn." },
+      { title: "Creative Storytelling", description: "Content that stops the scroll and starts conversations." },
+      { title: "ROI Oriented", description: "Social strategies that align with your actual business goals." }
+    ],
+    process: [
+      { title: "Brand Discovery", description: "Defining your unique brand voice and aesthetic." },
+      { title: "Content Creation", description: "Producing high-quality visuals and compelling copy." },
+      { title: "Scheduling", description: "Strategic posting when your audience is most active." },
+      { title: "Community Management", description: "Engaging with your audience in real-time." }
+    ],
+    faqs: [
+      { q: "Which platforms do you manage?", a: "Facebook, Instagram, TikTok, LinkedIn, Twitter, and YouTube." },
+      { q: "How often do you post?", a: "Varies by plan, from 12 posts/month to daily posting." },
+      { q: "Can you create our brand voice?", a: "Absolutely! We'll develop an authentic voice that resonates with your audience." },
+      { q: "How do you track success?", a: "Through detailed engagement metrics, reach, and conversion analytics." }
+    ],
+    techStack: [
+      { name: "Buffer", icon: "Layers", color: "text-blue-400" },
+      { name: "Canva", icon: "Layout", color: "text-cyan-500" },
+      { name: "Meta Business", icon: "Globe", color: "text-blue-600" },
+      { name: "CapCut", icon: "Zap", color: "text-white" }
+    ]
   },
   {
     slug: "ppc",
@@ -306,6 +382,30 @@ export const servicesData: ServiceData[] = [
         cta: "Maximize ROI",
       },
     ],
+    whyChooseUs: [
+      { title: "Immediate Impact", description: "Start getting traffic and leads within hours of launch." },
+      { title: "Strict ROI focus", description: "Constant monitoring to ensure your ad spend yields profit." },
+      { title: "Laser Targeting", description: "Reaching the exact people searching for your solution." },
+      { title: "Creative A/B Testing", description: "We constantly test copy and visuals to optimize CPAs." }
+    ],
+    process: [
+      { title: "KW Research", description: "Identifying high-intent search terms for your business." },
+      { title: "Campaign Launch", description: "Setting up structured, high-performing ad sets." },
+      { title: "Daily Monitoring", description: "Real-time adjustments to bids and budgets." },
+      { title: "Scaling", description: "Incrementally increasing spend on winning campaigns." }
+    ],
+    faqs: [
+      { q: "How much is the management fee?", a: "Management fees are separate from your ad spend, which you control." },
+      { q: "What's a good budget to start?", a: "We recommend starting with at least $1,000/mo in spend for meaningful data." },
+      { q: "How quickly will I see results?", a: "Immediate visibility, with peak optimization typically in 2-4 weeks." },
+      { q: "Which platform is best?", a: "Depends on your niche; typically Google for intent and Meta for awareness." }
+    ],
+    techStack: [
+      { name: "Google Ads", icon: "Zap", color: "text-blue-500" },
+      { name: "Meta Ads", icon: "Globe", color: "text-blue-600" },
+      { name: "Hotjar", icon: "Cpu", color: "text-red-500" },
+      { name: "Looker Studio", icon: "BarChart", color: "text-blue-400" }
+    ]
   },
   {
     slug: "content",
@@ -333,10 +433,9 @@ export const servicesData: ServiceData[] = [
         name: "Content Starter",
         price: "$249",
         billingCycle: "/month",
-        description:
-          "Build your content foundation with quality blog posts.",
+        description: "Build your content foundation with quality blog posts.",
         features: [
-          "2 Blog Articles/month (1200+ words)",
+          "2 Blog Articles/month",
           "Keyword Research per Article",
           "On-page SEO Optimization",
           "1 Social Share Graphic",
@@ -350,10 +449,10 @@ export const servicesData: ServiceData[] = [
         billingCycle: "/month",
         description: "Scale content production for serious startup growth.",
         features: [
-          "4 Blog Articles/month (1500+ words)",
+          "4 Blog Articles/month",
           "2 Newsletter Emails",
-          "Social Media Copy for All Posts",
-          "Infographic Design (1/mo)",
+          "Social Media Copy",
+          "Infographic Design",
           "Performance Reporting",
           "Content Distribution",
         ],
@@ -364,19 +463,42 @@ export const servicesData: ServiceData[] = [
         name: "Content Premium",
         price: "$899",
         billingCycle: "/month",
-        description:
-          "Full content engine with blogs, video, and campaigns.",
+        description: "Full content engine with blogs, video, and campaigns.",
         features: [
           "6 Blog Articles/month",
-          "Video Script + Editing (2/mo)",
+          "Video Script + Editing",
           "Email Drip Campaigns",
           "Lead Magnet Creation",
-          "Guest Posting (2/mo)",
+          "Guest Posting",
           "Weekly Editorial Review",
         ],
         cta: "Build My Brand",
       },
     ],
+    whyChooseUs: [
+      { title: "Authority Building", description: "Establish your brand as a leader in your industry." },
+      { title: "Human Centric", description: "Content written for real people, not just algorithms." },
+      { title: "Evergreen ROI", description: "High-quality content that generates traffic for years." },
+      { title: "Integrated SEO", description: "Seamlessly blending keywords into compelling narratives." }
+    ],
+    process: [
+      { title: "Topic Research", description: "Finding what your audience is actually searching for." },
+      { title: "Editorial Plan", description: "Developing a strategic calendar for consistent delivery." },
+      { title: "Writing & Edit", description: "Crafting original, high-quality, long-form content." },
+      { title: "Promotion", description: "Ensuring your content reaches the right eyes." }
+    ],
+    faqs: [
+      { q: "Can you write in our voice?", a: "Yes, we create style guides to ensure perfect brand alignment." },
+      { q: "How long are the articles?", a: "Typically 1,500-2,500 words for maximum SEO impact." },
+      { q: "Do you include graphics?", a: "Yes, social graphics are included; infographics in higher tiers." },
+      { q: "Can we request revisions?", a: "Absolutely. We include multiple revision rounds in every plan." }
+    ],
+    techStack: [
+      { name: "Grammarly", icon: "Type", color: "text-green-500" },
+      { name: "SurferSEO", icon: "Search", color: "text-blue-500" },
+      { name: "Jasper", icon: "Zap", color: "text-indigo-400" },
+      { name: "WordPress", icon: "Layout", color: "text-blue-600" }
+    ]
   },
   {
     slug: "analytics",
@@ -418,14 +540,14 @@ export const servicesData: ServiceData[] = [
         name: "Analytics Pro",
         price: "$399",
         billingCycle: "/month",
-        description: "Advanced tracking and custom reporting for growing teams.",
+        description: "Advanced tracking and custom reporting.",
         features: [
           "Full GA4 + GTM Setup",
           "Custom Conversion Funnels",
           "E-commerce Tracking",
-          "Custom Looker Studio Dashboard",
+          "Looker Studio Dashboard",
           "Heat Map Analysis",
-          "Bi-weekly Reports & Recommendations",
+          "Bi-weekly Strategy Calls",
         ],
         cta: "Go Data-Driven",
         highlighted: true,
@@ -434,18 +556,41 @@ export const servicesData: ServiceData[] = [
         name: "Analytics Enterprise",
         price: "$799",
         billingCycle: "/month",
-        description:
-          "Complete business intelligence for scaling startups.",
+        description: "Complete business intelligence for scaling startups.",
         features: [
-          "Multi-platform Analytics Integration",
-          "Advanced Attribution Modeling",
+          "Multi-platform Integration",
           "Predictive Analytics",
           "Custom API Data Feeds",
           "Real-time Dashboards",
-          "Weekly Strategy & Data Review",
+          "Advanced Attribution",
+          "Weekly Strategy Review",
         ],
         cta: "Full Intelligence",
       },
     ],
+    whyChooseUs: [
+      { title: "Biolerplate-free", description: "Custom tracking tailored to your specific business model." },
+      { title: "Clarity over Noise", description: "We highlight the metrics that actually drive growth." },
+      { title: "GTM Experts", description: "Complex tracking implementations made reliable and fast." },
+      { title: "Actionable Insights", description: "We don't just give data; we tell you what to do with it." }
+    ],
+    process: [
+      { title: "Audit", description: "Evaluating your current tracking health and data gaps." },
+      { title: "Implementation", description: "Configuring GA4, GTM, and custom event tracking." },
+      { title: "Dashboarding", description: "Visualizing your data for easy daily monitoring." },
+      { title: "Analysis", description: "Translating numbers into growth opportunities." }
+    ],
+    faqs: [
+      { q: "Why GA4?", a: "It's the future of tracking, offering better user behavior insights." },
+      { q: "Standard vs Custom?", a: "Custom reports focus only on the KPIs that matter to you." },
+      { q: "How often reports?", a: "Weekly/Monthly based on your preference; real-time dashboards." },
+      { q: "Can you track calls?", a: "Yes, we can implement full call and lead tracking systems." }
+    ],
+    techStack: [
+      { name: "GA4", icon: "BarChart", color: "text-yellow-500" },
+      { name: "GTM", icon: "Layers", color: "text-blue-500" },
+      { name: "Clarity", icon: "Layout", color: "text-blue-400" },
+      { name: "Looker", icon: "Zap", color: "text-blue-600" }
+    ]
   },
 ];
