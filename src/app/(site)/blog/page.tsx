@@ -3,10 +3,10 @@ import dbConnect from "@/lib/mongodb";
 import PostModel from "@/models/Post";
 import ScrollTray from "@/components/ScrollTray";
 import JsonLd from "@/components/JsonLd";
-import { 
-  blogPageSchema, 
-  getBlogPostingsSchema, 
-  getBreadcrumbSchema 
+import {
+  blogPageSchema,
+  getBlogPostingsSchema,
+  getBreadcrumbSchema
 } from "@/lib/schemas";
 import BlogList from "./_components/BlogList";
 import { Metadata } from "next";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Blog – Insights on Custom Software & Development",
   description: "Read the latest articles, tutorials, and strategy guides on custom software, ERP systems, SaaS development, and digital transformation by MA Softs.",
   alternates: {
-    canonical: "https://www.masofts.com/blog",
+    canonical: "https://masofts.com/blog",
   },
 };
 
@@ -24,8 +24,8 @@ export const revalidate = 3600; // Revalidate every hour
 export const dynamic = "force-dynamic"; // Skip static generation during build
 
 const blogBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://www.masofts.com" },
-  { name: "Blog", url: "https://www.masofts.com/blog" },
+  { name: "Home", url: "https://masofts.com" },
+  { name: "Blog", url: "https://masofts.com/blog" },
 ]);
 
 export default async function BlogPage() {
@@ -55,13 +55,13 @@ export default async function BlogPage() {
   const seoPosts: BlogPostingSeoPost[] =
     posts.length > 0
       ? posts.map((p) => ({
-          title: p.title,
-          excerpt: p.excerpt ?? "",
-          category: p.category ?? "General",
-          author: p.author ?? "Ayaz",
-          date: p.date ? p.date.toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
-          readTime: p.readTime ?? "5 min",
-        }))
+        title: p.title,
+        excerpt: p.excerpt ?? "",
+        category: p.category ?? "General",
+        author: p.author ?? "Ayaz",
+        date: p.date ? p.date.toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
+        readTime: p.readTime ?? "5 min",
+      }))
       : [];
 
   return (
@@ -70,7 +70,7 @@ export default async function BlogPage() {
       <JsonLd data={blogPageSchema} />
       <JsonLd data={getBlogPostingsSchema(seoPosts)} />
       <JsonLd data={blogBreadcrumb} />
-      
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
         <ScrollTray src="/tray.mp4" className="opacity-20" />

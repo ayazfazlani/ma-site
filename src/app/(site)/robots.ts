@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://www.masofts.com/sitemap.xml',
+    sitemap: 'https://masofts.com/sitemap.xml',
   };
 }

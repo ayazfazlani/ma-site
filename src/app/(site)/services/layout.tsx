@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Digital Services – MA Softs",
     description:
       "Web Development, SEO, PPC, Social Media Marketing, Content & Analytics. Affordable pricing for businesses of all sizes.",
-    url: "https://www.masofts.com/services",
+    url: "https://masofts.com/services",
     type: "website",
   },
   twitter: {

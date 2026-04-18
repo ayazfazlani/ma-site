@@ -6,7 +6,7 @@ import ProjectModel from '@/models/Project';
 import { servicesData } from '@/lib/services';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.masofts.com';
+  const baseUrl = 'https://masofts.com';
 
   // Static routes with priorities
   const staticRoutes: MetadataRoute.Sitemap = [

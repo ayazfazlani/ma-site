@@ -35,12 +35,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${project.title} – Case Study`,
     description: project.description ?? `See how we built ${project.title}. View the full case study on MA Softs portfolio.`,
     alternates: {
-      canonical: `https://www.masofts.com/portfolio/${slug}`,
+      canonical: `https://masofts.com/portfolio/${slug}`,
     },
     openGraph: {
       title: `${project.title} – MA Softs Portfolio`,
       description: project.description ?? undefined,
-      url: `https://www.masofts.com/portfolio/${slug}`,
+      url: `https://masofts.com/portfolio/${slug}`,
       type: "article",
       images: project.image ? [project.image] : [],
     },
@@ -68,50 +68,50 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
 
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10 animate-in fade-in slide-in-from-bottom-5 duration-700">
           {/* Navigation */}
-          <Link 
-            href="/portfolio" 
+          <Link
+            href="/portfolio"
             className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 mb-10 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Portfolio
           </Link>
-          
+
           {/* Header */}
           <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                  <span className="px-4 py-1.5 rounded-full bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-primary-500/10">
-                      <LayoutGrid className="w-3.5 h-3.5" />
-                      {project.category || "Case Study"}
-                  </span>
-              </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tight">
-                  {project.title}
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-neutral-300 font-medium leading-relaxed max-w-3xl">
-                  {project.description}
-              </p>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="px-4 py-1.5 rounded-full bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-primary-500/10">
+                <LayoutGrid className="w-3.5 h-3.5" />
+                {project.category || "Case Study"}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tight">
+              {project.title}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-neutral-300 font-medium leading-relaxed max-w-3xl">
+              {project.description}
+            </p>
           </div>
-          
+
           {/* CTA Button */}
           {project.link && (
-              <div>
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 text-white font-bold tracking-wide shadow-lg shadow-primary-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
-                  >
-                      Visit Live Project
-                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </a>
-              </div>
+            <div>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 text-white font-bold tracking-wide shadow-lg shadow-primary-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+              >
+                Visit Live Project
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </a>
+            </div>
           )}
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        
+
         {/* Featured Image with Lightbox */}
         {project.image && (
           <div className="mb-20">

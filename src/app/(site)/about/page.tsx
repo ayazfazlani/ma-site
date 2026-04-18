@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "About US – MA Softs Heritage",
   description: "Learn about MA Softs mission, our story of pioneering software development in Pakistan, and our core values of delivering results and innovation.",
   alternates: {
-    canonical: "https://www.masofts.com/about",
+    canonical: "https://masofts.com/about",
   },
 };
 

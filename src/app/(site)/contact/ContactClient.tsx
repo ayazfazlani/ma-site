@@ -11,8 +11,8 @@ import { contactFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { contactPageSchema, getBreadcrumbSchema } from "@/lib/schemas";
 
 const contactBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://www.masofts.com" },
-  { name: "Contact", url: "https://www.masofts.com/contact" },
+  { name: "Home", url: "https://masofts.com" },
+  { name: "Contact", url: "https://masofts.com/contact" },
 ]);
 
 export default function ContactClient() {

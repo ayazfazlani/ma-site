@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Contact MA Softs – Free Software Development Consultation",
     description:
       "Ready to build your next big idea? Get a free consultation. Call +92 336 7057973 or email ayaz@ma-softs.com.",
-    url: "https://www.masofts.com/contact",
+    url: "https://masofts.com/contact",
     type: "website",
   },
   twitter: {

@@ -14,8 +14,8 @@ import {
 } from "@/lib/schemas";
 
 const servicesBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://www.masofts.com" },
-  { name: "Services", url: "https://www.masofts.com/services" },
+  { name: "Home", url: "https://masofts.com" },
+  { name: "Services", url: "https://masofts.com/services" },
 ]);
 
 import type { ServiceData } from "@/lib/services";
@@ -82,21 +82,20 @@ export default function ServicesClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className={`rounded-3xl p-8 lg:p-10 transition-all duration-300 ${
-                    isDark
+                  className={`rounded-3xl p-8 lg:p-10 transition-all duration-300 ${isDark
                       ? "bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.1] hover:bg-white/[0.05]"
                       : "bg-white shadow-lg hover:shadow-2xl"
-                  }`}
+                    }`}
                 >
                   <div
                     className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6`}
                   >
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                
+
                   <h2 className={`text-2xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>{service.title}</h2>
                   <p className={`mb-6 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>{service.description}</p>
-                
+
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature: string) => (
                       <li key={feature} className="flex items-center space-x-3">
@@ -105,17 +104,16 @@ export default function ServicesClient() {
                       </li>
                     ))}
                   </ul>
-                
+
                   <div className={`pt-6 border-t ${isDark ? "border-white/[0.06]" : "border-gray-100"}`}>
                     <div className="flex items-center justify-between">
                       <span className="text-lg font-bold text-primary-600">{service.price}</span>
                       <Link
                         href={`/services/${service.slug}`}
-                        className={`text-sm font-semibold transition-colors ${
-                          isDark
+                        className={`text-sm font-semibold transition-colors ${isDark
                             ? "text-neutral-300 hover:text-primary-400"
                             : "text-gray-900 hover:text-primary-600"
-                        }`}
+                          }`}
                       >
                         Learn More →
                       </Link>
@@ -123,11 +121,10 @@ export default function ServicesClient() {
                     <div className="mt-4 flex justify-end">
                       <Link
                         href="/contact"
-                        className={`inline-flex items-center space-x-2 font-semibold transition-colors ${
-                          isDark
+                        className={`inline-flex items-center space-x-2 font-semibold transition-colors ${isDark
                             ? "text-neutral-300 hover:text-primary-400"
                             : "text-gray-900 hover:text-primary-600"
-                        }`}
+                          }`}
                       >
                         <span>Get Started</span>
                         <ArrowRight className="w-5 h-5" />
@@ -161,7 +158,7 @@ export default function ServicesClient() {
               Need a Custom Solution?
             </h2>
             <p className={`text-lg mb-8 ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-              Every business is unique. Contact us to discuss a tailored software development 
+              Every business is unique. Contact us to discuss a tailored software development
               strategy that fits your specific needs and budget.
             </p>
             <Link

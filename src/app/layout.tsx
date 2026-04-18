@@ -7,7 +7,7 @@ import ThemeProvider from "../../components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.masofts.com"),
+  metadataBase: new URL("https://masofts.com"),
   title: {
     default: "MA Softs – Custom Software & Web Development Company in Pakistan",
     template: "%s | MA Softs",
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   description:
     "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
   alternates: {
-    canonical: "https://www.masofts.com",
+    canonical: "https://masofts.com",
   },
   openGraph: {
     siteName: "MA Softs",
     type: "website",
     locale: "en_US",
-    url: "https://www.masofts.com",
+    url: "https://masofts.com",
     title: "MA Softs – Custom Software & Web Development Company",
     description:
       "Custom web applications, ERP systems, SaaS & e-commerce solutions built for scale. Free consultation available.",

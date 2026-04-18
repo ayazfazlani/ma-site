@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "MA Softs – Home",
   description: "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
   alternates: {
-    canonical: "https://www.masofts.com",
+    canonical: "https://masofts.com",
   },
 };
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic"; // Skip static generation during build
 
 const homeBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://www.masofts.com" },
+  { name: "Home", url: "https://masofts.com" },
 ]);
 
 export default function Home() {

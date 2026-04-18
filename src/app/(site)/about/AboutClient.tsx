@@ -10,8 +10,8 @@ import { aboutFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { aboutPageSchema, getBreadcrumbSchema } from "@/lib/schemas";
 
 const aboutBreadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://www.masofts.com" },
-  { name: "About", url: "https://www.masofts.com/about" },
+  { name: "Home", url: "https://masofts.com" },
+  { name: "About", url: "https://masofts.com/about" },
 ]);
 
 const values = [
@@ -83,25 +83,25 @@ export default function AboutClient() {
               </h2>
               <div className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
                 <p>
-                  Founded in 2023, MA Softs started with a simple mission: to help 
-                  startups and businesses succeed with custom-built software solutions. 
-                  What began with Ayaz&apos;s passion for coding has grown into a specialized 
+                  Founded in 2023, MA Softs started with a simple mission: to help
+                  startups and businesses succeed with custom-built software solutions.
+                  What began with Ayaz&apos;s passion for coding has grown into a specialized
                   software development practice focused on ERPs and scalable web apps.
                 </p>
                 <p>
-                  Over the past few years, we&apos;ve helped dozens of businesses across various 
-                  industries automate their operations, build their first MVPs, 
+                  Over the past few years, we&apos;ve helped dozens of businesses across various
+                  industries automate their operations, build their first MVPs,
                   and scale their technical infrastructure through strategic software development.
                 </p>
                 <p>
-                  Our team of experts combines creative UI/UX with robust engineering 
-                  to deliver products that matter. We believe in building long-term 
-                  partnerships with our clients, acting as their dedicated technical 
+                  Our team of experts combines creative UI/UX with robust engineering
+                  to deliver products that matter. We believe in building long-term
+                  partnerships with our clients, acting as their dedicated technical
                   partner and engineering department.
                 </p>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -155,15 +155,13 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`rounded-2xl p-8 text-center ${
-                  isDark
+                className={`rounded-2xl p-8 text-center ${isDark
                     ? "bg-white/[0.03] border border-white/[0.06]"
                     : "bg-white shadow-lg"
-                }`}
+                  }`}
               >
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
-                  isDark ? "bg-primary-500/15" : "bg-primary-50"
-                }`}>
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${isDark ? "bg-primary-500/15" : "bg-primary-50"
+                  }`}>
                   <value.icon className="w-8 h-8 text-primary-600" />
                 </div>
                 <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>{value.title}</h3>

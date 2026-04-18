@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "About MA Softs – Software Development Experts",
     description:
       "5+ years delivering custom web apps, ERP systems & SaaS solutions. Learn about our mission, values, and the team behind MA Softs.",
-    url: "https://www.masofts.com/about",
+    url: "https://masofts.com/about",
     type: "website",
   },
   twitter: {

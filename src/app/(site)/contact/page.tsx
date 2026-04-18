@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Contact US – Free Consultation",
   description: "Get in touch with MA Softs for custom software development projects. We offer free technical consultations for ERPs, SaaS dashboards, and high-end web applications.",
   alternates: {
-    canonical: "https://www.masofts.com/contact",
+    canonical: "https://masofts.com/contact",
   },
 };
 

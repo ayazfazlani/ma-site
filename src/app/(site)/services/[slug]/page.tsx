@@ -2,11 +2,11 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { type ServiceData, servicesData } from "@/lib/services";
-import { 
-  servicesItemListSchema, 
-  servicesFaqSchema, 
-  getBreadcrumbSchema, 
-  serviceSchemas 
+import {
+  servicesItemListSchema,
+  servicesFaqSchema,
+  getBreadcrumbSchema,
+  serviceSchemas
 } from "@/lib/schemas";
 import ServiceDetailClient from "./ServiceDetailClient";
 import dbConnect from "@/lib/mongodb";
@@ -30,12 +30,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: `${service.title} | MA Softs`,
     description: service.description,
     alternates: {
-      canonical: `https://www.masofts.com/services/${service.slug}`,
+      canonical: `https://masofts.com/services/${service.slug}`,
     },
     openGraph: {
       title: `${service.title} - MA Softs`,
       description: service.description,
-      url: `https://www.masofts.com/services/${service.slug}`,
+      url: `https://masofts.com/services/${service.slug}`,
       type: "website",
     },
     twitter: {
@@ -73,9 +73,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
   const testimonials = JSON.parse(JSON.stringify(raw.map((t: any) => ({ ...t, _id: undefined, id: t._id?.toString?.() || t.id }))));
 
   const breadcrumb = getBreadcrumbSchema([
-    { name: "Home", url: "https://www.masofts.com" },
-    { name: "Services", url: "https://www.masofts.com/services" },
-    { name: service.title, url: `https://www.masofts.com/services/${service.slug}` },
+    { name: "Home", url: "https://masofts.com" },
+    { name: "Services", url: "https://masofts.com/services" },
+    { name: service.title, url: `https://masofts.com/services/${service.slug}` },
   ]);
 
   const serviceSchema = serviceSchemas.find((sch: any) => sch.name === service.title) || serviceSchemas[0];
