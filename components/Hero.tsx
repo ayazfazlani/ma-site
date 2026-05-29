@@ -2,10 +2,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Play, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useTheme } from "./ThemeProvider";
+import { useEffect, useState } from "react";
 
 const ParticleNetwork = dynamic(() => import("./ParticleNetwork"), {
   ssr: false,
@@ -23,9 +24,26 @@ const fadeUp: any = {
   }),
 };
 
-export default function Hero() {
+export default function Hero({ partners = [] }: { partners?: any[] }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+
+  const displayPartners = partners.length > 0 ? partners : [
+    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=1" },
+    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=2" },
+    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=3" },
+    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=4" },
+    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=5" },
+  ];
+
+  // Skip heavy Three.js canvas on mobile to save CPU/GPU
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 768);
+    const handler = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
 
   return (
     <section
@@ -33,9 +51,17 @@ export default function Hero() {
         isDark ? "bg-dark-950" : "bg-white"
       }`}
     >
-      {/* Three.js Background */}
+      {/* Background: Three.js on desktop, CSS gradient on mobile */}
       <div className="absolute inset-0 z-0">
-        <ParticleNetwork />
+        {isDesktop ? (
+          <ParticleNetwork />
+        ) : (
+          <div className={`absolute inset-0 ${
+            isDark
+              ? "bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950"
+              : "bg-gradient-to-br from-white via-primary-50/30 to-white"
+          }`} />
+        )}
       </div>
 
       {/* Subtle overlays for better contrast in light mode */}
@@ -143,6 +169,36 @@ export default function Hero() {
             >
               <span>Explore My Services</span>
             </Link>
+          </motion.div>
+
+          {/* Social Proof Avatars */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.35}
+            className="flex flex-col items-center gap-4 mb-20"
+          >
+            <div className="flex -space-x-3">
+              {displayPartners.map((p, i) => (
+                <div 
+                  key={i} 
+                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl`}
+                >
+                  <img 
+                    src={p.logo} 
+                    alt="client" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+              <div className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950 bg-primary-600" : "border-white bg-primary-500"} flex items-center justify-center text-[10px] font-black text-white shadow-xl`}>
+                100+
+              </div>
+            </div>
+            <p className={`text-sm font-semibold tracking-wide ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+              Trusted by <span className="text-primary-500 underline decoration-primary-500/30 underline-offset-4">100+ Global Businesses</span> & Startups
+            </p>
           </motion.div>
 
           {/* Hero Stats */}

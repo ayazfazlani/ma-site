@@ -39,11 +39,11 @@ export default function TestimonialsWrapper({ children }: { children: React.Reac
             Social Proof
           </span>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight ${
+            className={`text-4xl sm:text-5xl lg:text-7xl font-black mb-8 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Global <span className="gradient-text">Trust</span>
+            Voice of <span className="gradient-text">Success</span>
           </h2>
           <p className={`text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
             Businesses that have transformed their core digital presence with our bespoke technical expertise.

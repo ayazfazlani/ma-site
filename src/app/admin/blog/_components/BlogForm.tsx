@@ -26,23 +26,32 @@ export default function BlogForm({ initialData }: BlogFormProps) {
     author: initialData?.author || "Ahmed Khan",
     image: initialData?.image || "",
     published: initialData?.published || false,
+    seriesId: initialData?.seriesId || "",
+    orderInSeries: initialData?.orderInSeries || 0,
     metaTitle: initialData?.metaTitle || "",
     metaDesc: initialData?.metaDesc || "",
   });
 
   const [activeTab, setActiveTab] = useState("content");
   const [categories, setCategories] = useState<{_id: string; name: string; slug: string}[]>([]);
+  const [series, setSeries] = useState<{id: string; title: string}[]>([]);
 
   useEffect(() => {
+    // Fetch categories
     fetch("/api/admin/categories")
       .then(res => res.json())
       .then(data => {
         setCategories(data);
-        // Set default category if none selected and categories exist
         if (!formData.category && data.length > 0) {
           setFormData(prev => ({ ...prev, category: data[0].name }));
         }
       })
+      .catch(console.error);
+
+    // Fetch series
+    fetch("/api/admin/series")
+      .then(res => res.json())
+      .then(data => setSeries(data))
       .catch(console.error);
   }, []);
 
@@ -302,6 +311,34 @@ export default function BlogForm({ initialData }: BlogFormProps) {
 
                 {/* Categorization */}
                 <div className="space-y-6 relative z-10 pt-2 border-t border-gray-100 dark:border-white/[0.05]">
+                    <div className="space-y-3">
+                        <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Part of a Series?</label>
+                        <select
+                            name="seriesId"
+                            value={formData.seriesId}
+                            onChange={handleChange}
+                            className="w-full px-5 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold focus:ring-2 focus:ring-primary-500/20 transition-all appearance-none cursor-pointer"
+                        >
+                            <option value="">None (Standalone Post)</option>
+                            {series.map((s) => (
+                              <option key={s.id} value={s.id}>{s.title}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {formData.seriesId && (
+                      <div className="space-y-3 animate-in fade-in slide-in-from-top-2">
+                          <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Order in Series</label>
+                          <input
+                              type="number"
+                              name="orderInSeries"
+                              value={formData.orderInSeries}
+                              onChange={handleChange}
+                              className="w-full px-5 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold focus:ring-2 focus:ring-primary-500/20 transition-all"
+                          />
+                      </div>
+                    )}
+
                     <div className="space-y-3">
                         <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Primary Category</label>
                         <select

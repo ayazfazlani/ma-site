@@ -1,21 +1,18 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
-const ProjectSchema = new Schema(
+const SeriesSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "Project title is required"],
+      required: [true, "Series title is required"],
     },
     slug: {
       type: String,
-      required: [true, "Project slug is required"],
+      required: [true, "Series slug is required"],
       unique: true,
     },
-    category: String,
-    content: String,
+    description: String,
     image: String,
-    link: String,
-    color: String,
     order: {
       type: Number,
       default: 0,
@@ -30,5 +27,5 @@ const ProjectSchema = new Schema(
   }
 );
 
-const Project = models.Project || model("Project", ProjectSchema);
-export default Project;
+const Series = models.Series || model("Series", SeriesSchema);
+export default Series;

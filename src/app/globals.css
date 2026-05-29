@@ -309,10 +309,47 @@ html.light .theme-card {
   }
 }
 
-/* ── Blog Content – Preserve Quill Editor Spacing ── */
+/* ── Blog Content – Premium Typography & Spacing ── */
+.prose {
+  /* Better word management */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+  line-height: 1.8;
+}
+
+/* Ensure headings have breathing room and professional weight */
+.prose h2 {
+  margin-top: 3em !important;
+  margin-bottom: 1.25em !important;
+  font-size: 1.875rem !important; /* 30px */
+  line-height: 1.3 !important;
+}
+
+.prose h3 {
+  margin-top: 2.5em !important;
+  margin-bottom: 1em !important;
+  font-size: 1.5rem !important; /* 24px */
+  line-height: 1.4 !important;
+}
+
+.prose h4 {
+  margin-top: 2em !important;
+  margin-bottom: 0.75em !important;
+  font-size: 1.25rem !important; /* 20px */
+}
+
+/* Natural paragraph flow */
+.prose p {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
+}
+
+/* Quill/Editor specifics */
 .prose .ql-editor,
 .prose div {
-  /* Don't collapse whitespace in blog content */
+  /* Keep default behavior */
 }
 
 /* Quill empty paragraphs (line breaks) must remain visible */
@@ -325,16 +362,11 @@ html.light .theme-card {
   min-height: 1.5em;
 }
 
-/* Ensure <br> tags always create visible line breaks */
+/* Ensure <br> tags create visible line breaks without excessive gaps */
 .prose br {
   display: block;
   content: "";
   margin-top: 0.5em;
-}
-
-/* Quill spacing between paragraphs */
-.prose p + p {
-  margin-top: 1.25em;
 }
 
 /* Preserve spacing for empty Quill paragraphs like <p><br></p> */

@@ -8,11 +8,11 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
   try {
     await dbConnect();
     const { id } = await params;
-    const { name, slug, description, color } = await req.json();
+    const { name, slug, description, color, metaTitle, metaDesc } = await req.json();
 
     const category = await Category.findByIdAndUpdate(
       id,
-      { name, slug, description, color },
+      { name, slug, description, color, metaTitle, metaDesc },
       { new: true }
     );
 

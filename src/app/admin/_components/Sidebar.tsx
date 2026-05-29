@@ -15,19 +15,22 @@ import {
   LogOut,
   ChevronRight,
   Tag,
-  MessagesSquare
+  MessagesSquare,
+  Mail,
+  LayoutGrid
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
   { icon: FileText, label: "Blog Posts", href: "/admin/blog" },
+  { icon: Layers, label: "Series", href: "/admin/series" },
   { icon: Tag, label: "Categories", href: "/admin/categories" },
+  { icon: Mail, label: "Messages", href: "/admin/messages" },
   { icon: MessagesSquare, label: "Comments", href: "/admin/comments" },
   { icon: Briefcase, label: "Services", href: "/admin/services" },
-  { icon: Layers, label: "Portfolio", href: "/admin/portfolio" },
+  { icon: LayoutGrid, label: "Portfolio", href: "/admin/portfolio" },
   { icon: MessageSquare, label: "Testimonials", href: "/admin/testimonials" },
-  { icon: Users, label: "Industries", href: "/admin/industries" },
   { icon: Settings, label: "Site Settings", href: "/admin/settings" },
 ];
 

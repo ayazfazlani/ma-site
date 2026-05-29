@@ -7,7 +7,9 @@ import Link from "next/link";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import { toast, Toaster } from "react-hot-toast";
-import { cn } from "@/lib/utils";
+import RichTextEditor from "../../blog/_components/RichTextEditor";
+
+export const dynamic = "force-dynamic";
 
 export default function NewProjectPage() {
   const [loading, setLoading] = useState(false);
@@ -89,8 +91,12 @@ export default function NewProjectPage() {
                 </div>
 
                 <div className="space-y-4 relative z-10">
-                    <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest">Internal Narrative / Full Showcase Story</label>
-                    <textarea name="content" rows={12} value={formData.content} onChange={handleChange} className="w-full px-6 py-5 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500/50 resize-none outline-none" placeholder="Deep dive into the problem, solution, and technical stack used..." />
+                    <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Story Narration / Impact Report</label>
+                    <RichTextEditor 
+                        value={formData.content}
+                        onChange={(content) => setFormData(prev => ({ ...prev, content }))}
+                        placeholder="Deep dive into the problem, solution, and technical stack used..."
+                    />
                 </div>
             </div>
 

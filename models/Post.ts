@@ -28,6 +28,14 @@ const PostSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    seriesId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Series'
+    },
+    orderInSeries: {
+      type: Number,
+      default: 0
+    },
     metaTitle: String,
     metaDesc: String,
   },

@@ -1,64 +1,129 @@
 // components/TestimonialsList.tsx
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 export default function TestimonialsList({ testimonials }: { testimonials: any[] }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const [index, setIndex] = useState(0);
+
+  // Auto-slide every 8 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const next = () => setIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+
+  const current = testimonials[index];
+
+  if (!current) return null;
 
   return (
-    <div className="relative flex overflow-hidden w-full group py-4">
-      <div className={`absolute top-0 bottom-0 left-0 w-24 sm:w-40 z-20 bg-gradient-to-r pointer-events-none ${isDark ? 'from-dark-950 to-transparent' : 'from-white to-transparent'}`} />
-      <div className={`absolute top-0 bottom-0 right-0 w-24 sm:w-40 z-20 bg-gradient-to-l pointer-events-none ${isDark ? 'from-dark-950 to-transparent' : 'from-white to-transparent'}`} />
+    <div className="relative max-w-5xl mx-auto px-4">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] pointer-events-none">
+        <Quote className={`w-full h-full ${isDark ? "text-white" : "text-primary-900"}`} strokeWidth={0.5} />
+      </div>
 
-      <div className="flex w-max animate-marquee hover-pause gap-5 lg:gap-6 pr-5 lg:pr-6 whitespace-nowrap">
-        {[...testimonials, ...testimonials].map((testimonial, index) => (
-          <div
-            key={`${testimonial.name}-${index}`}
-            className={`w-[320px] sm:w-[380px] lg:w-[420px] flex-shrink-0 group relative rounded-2xl lg:rounded-3xl p-8 border transition-all duration-500 whitespace-normal ${
-              isDark
-                ? "bg-white/[0.02] border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04]"
-                : "bg-white border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-lg"
-            }`}
+      <div className="relative z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: "circOut" }}
+            className="flex flex-col items-center text-center"
           >
-            <Quote
-              className={`absolute top-7 right-7 w-12 h-12 transition-colors duration-500 ${
-                isDark ? "text-white/[0.04] group-hover:text-primary-500/10" : "text-gray-100 group-hover:text-primary-100"
-              }`}
-            />
-
-            <div className="flex items-center gap-1 mb-6">
-              {[...Array(testimonial.rating || 5)].map((_, i) => (
-                <Star key={i} className="w-4.5 h-4.5 fill-amber-400 text-amber-400" />
+            {/* Stars */}
+            <div className="flex items-center gap-1 mb-8">
+              {[...Array(current.rating || 5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
               ))}
             </div>
 
-            <p className={`mb-10 leading-relaxed relative z-10 text-[15px] font-medium italic ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
-              &quot;{testimonial.content}&quot;
-            </p>
+            {/* Quote Content */}
+            <blockquote className="mb-10 max-w-4xl mx-auto px-4 sm:px-10">
+              <p className={`text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-[1.2] tracking-tight ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}>
+                &ldquo;{current.content}&rdquo;
+              </p>
+            </blockquote>
 
-            <div className="flex items-center gap-4 mt-auto">
-              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${testimonial.gradient || "from-primary-600 to-primary-500"} flex items-center justify-center shadow-lg shrink-0`}>
-                {testimonial.image ? (
-                    <img src={testimonial.image} alt={testimonial.name} className="w-full h-full rounded-2xl object-cover" />
+            {/* Author Info */}
+            <div className="flex items-center gap-5 mt-4">
+              <div className={`w-16 h-16 rounded-2xl p-0.5 border ${
+                isDark ? "border-white/10 bg-white/5" : "border-gray-200 bg-gray-50"
+              } overflow-hidden shadow-sm`}>
+                {current.image ? (
+                  <img src={current.image} alt={current.name} className="w-full h-full rounded-[0.9rem] object-cover" />
                 ) : (
-                    <span className="text-white font-black text-xl">{testimonial.name[0]}</span>
+                  <div className="w-full h-full rounded-[0.9rem] bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-400 dark:text-neutral-500 text-2xl font-black uppercase">
+                    {current.name[0]}
+                  </div>
                 )}
               </div>
-              <div>
-                <div className={`font-black text-sm uppercase tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
-                  {testimonial.name}
-                </div>
-                <div className={`text-[10px] font-black uppercase tracking-widest ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
-                  {testimonial.role}
-                </div>
+              
+              <div className="text-left">
+                <h4 className={`text-lg font-black uppercase tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
+                  {current.name}
+                </h4>
+                <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
+                  {current.role}
+                </p>
               </div>
             </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation Controls */}
+        <div className="flex items-center justify-center gap-6 mt-16 sm:mt-24">
+          <button
+            onClick={prev}
+            className={`p-3 rounded-xl border transition-all hover:scale-105 active:scale-95 group ${
+              isDark 
+                ? "bg-white/[0.02] border-white/[0.05] hover:border-white/20 text-neutral-500 hover:text-white" 
+                : "bg-white border-gray-100 hover:border-gray-300 text-gray-400 hover:text-gray-900 shadow-sm"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Indicators */}
+          <div className="flex items-center gap-2">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                className={`transition-all duration-300 rounded-full h-1.5 ${
+                  i === index 
+                    ? `w-10 bg-primary-500` 
+                    : `w-1.5 ${isDark ? "bg-white/10 hover:bg-white/30" : "bg-gray-200 hover:bg-gray-400"}`
+                }`}
+              />
+            ))}
           </div>
-        ))}
+
+          <button
+            onClick={next}
+            className={`p-3 rounded-xl border transition-all hover:scale-105 active:scale-95 group ${
+              isDark 
+                ? "bg-white/[0.02] border-white/[0.05] hover:border-white/20 text-neutral-500 hover:text-white" 
+                : "bg-white border-gray-100 hover:border-gray-300 text-gray-400 hover:text-gray-900 shadow-sm"
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </div>
   );

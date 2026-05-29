@@ -35,7 +35,14 @@ const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },
 ]);
 
-export default function Home() {
+import dbConnect from "@/lib/mongodb";
+import PartnerModel from "@/models/Partner";
+
+export default async function Home() {
+  await dbConnect();
+  const rawPartners = await PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean();
+  const partners = JSON.parse(JSON.stringify(rawPartners));
+
   return (
     <>
       {/* Page-specific SEO Schemas */}
@@ -46,7 +53,7 @@ export default function Home() {
         <JsonLd key={index} data={schema} />
       ))}
 
-      <Hero />
+      <Hero partners={partners} />
       <HorizontalScroll />
       <Portfolio />
       <Services />

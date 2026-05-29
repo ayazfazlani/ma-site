@@ -1,4 +1,5 @@
 // src/app/admin/page.tsx
+import Link from "next/link";
 import { 
   Users, 
   FileText, 
@@ -8,14 +9,29 @@ import {
   MousePointerClick, 
   Search 
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import StatCard from "@/app/admin/_components/StatCard";
+import dbConnect from "@/lib/mongodb";
+import PostModel from "@/models/Post";
+import ProjectModel from "@/models/Project";
+import ContactMessageModel from "@/models/ContactMessage";
+import { formatDate } from "@/lib/utils";
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  await dbConnect();
+  
+  const [postsCount, projectsCount, unreadMessages, recentMessages] = await Promise.all([
+    PostModel.countDocuments(),
+    ProjectModel.countDocuments(),
+    ContactMessageModel.countDocuments({ status: "unread" }),
+    ContactMessageModel.find({}).sort({ createdAt: -1 }).limit(5).lean(),
+  ]);
+
   const stats = [
-    { label: "Total Views", value: "12,450", change: "+14%", icon: Eye, color: "blue" },
-    { label: "Blog Posts", value: "24", change: "+2", icon: FileText, color: "primary" },
-    { label: "Projects", value: "12", change: "+1", icon: Briefcase, color: "accent" },
-    { label: "Active Clients", value: "8", change: "0%", icon: Users, color: "green" },
+    { label: "Total Views", value: "1.2k", change: "+14%", icon: Eye, color: "blue" },
+    { label: "Blog Posts", value: postsCount.toString(), change: "+2", icon: FileText, color: "primary" },
+    { label: "Projects", value: projectsCount.toString(), change: "+1", icon: Briefcase, color: "accent" },
+    { label: "New Messages", value: unreadMessages.toString(), change: unreadMessages > 0 ? "Action Req" : "All Read", icon: Users, color: "green" },
   ];
 
   return (
@@ -82,6 +98,39 @@ export default function AdminDashboard() {
                         </div>
                         <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-tight">{item.title}</h4>
                         <p className="text-[15px] text-gray-500 dark:text-neutral-400 leading-relaxed font-medium">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        {/* Recent Messages Section */}
+        <div className="p-8 rounded-3xl bg-white dark:bg-dark-900 border border-gray-200 dark:border-white/[0.08] shadow-sm">
+            <div className="flex items-center justify-between mb-8">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Recent Inquiries</h3>
+                <Link href="/admin/messages" className="text-sm font-bold text-primary-600 dark:text-primary-400 hover:underline">View All Messages</Link>
+            </div>
+            
+            <div className="space-y-4">
+                {recentMessages.length === 0 ? (
+                    <p className="text-center py-10 text-gray-500 font-medium">No messages found.</p>
+                ) : recentMessages.map((msg: any) => (
+                    <div key={msg._id.toString()} className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] hover:border-primary-500/20 transition-all">
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-primary-500/10 flex items-center justify-center text-primary-600 font-bold">
+                                {msg.name.charAt(0)}
+                            </div>
+                            <div>
+                                <p className="font-bold text-gray-900 dark:text-white">{msg.name}</p>
+                                <p className="text-[12px] text-gray-500 font-medium">{msg.service || "General Inquiry"}</p>
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <p className="text-[12px] font-bold text-gray-900 dark:text-white">{formatDate(msg.createdAt)}</p>
+                            <span className={cn(
+                                "text-[10px] uppercase tracking-widest font-black px-2 py-0.5 rounded-md",
+                                msg.status === "unread" ? "bg-amber-500/10 text-amber-500" : "bg-green-500/10 text-green-500"
+                            )}>{msg.status}</span>
+                        </div>
                     </div>
                 ))}
             </div>

@@ -19,7 +19,7 @@ type PortfolioDetail = {
   challenges?: string;
   solution?: string;
   results?: string;
-  longDescription?: string;
+  content?: string;
   technologies?: string;
   active?: boolean;
 };
@@ -56,6 +56,12 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
   if (!project) {
     notFound();
   }
+
+  // Fetch related projects for SEO internal linking
+  const relatedProjects = await ProjectModel.find({ 
+    slug: { $ne: slug }, 
+    active: true 
+  }).sort({ createdAt: -1 }).limit(3).lean() as any[];
 
   return (
     <article className="min-h-screen bg-white dark:bg-dark-950 font-sans">
@@ -121,6 +127,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                 src={project.image}
                 alt={project.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 className="object-contain bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4 group-hover:scale-105 transition-transform duration-500"
                 priority
               />
@@ -171,9 +178,19 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         <div className="grid lg:grid-cols-3 gap-12 mb-20">
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Project</h2>
-            <div className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-p:font-medium prose-p:leading-relaxed prose-a:text-primary-600 dark:prose-a:text-primary-400 max-w-none">
-              {project.longDescription ? (
-                <div dangerouslySetInnerHTML={{ __html: project.longDescription }} />
+            <div className={[
+              "ql-content prose prose-lg dark:prose-invert max-w-none",
+              "prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
+              "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:font-medium",
+              "prose-strong:text-primary-600 dark:prose-strong:text-primary-400",
+              "prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:font-bold",
+              "prose-blockquote:border-primary-500 prose-blockquote:text-gray-500 dark:prose-blockquote:text-neutral-400",
+              "prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-code:bg-primary-50 dark:prose-code:bg-primary-500/10",
+              "prose-img:rounded-2xl prose-img:shadow-lg",
+              "prose-ul:list-disc prose-ol:list-decimal prose-li:text-gray-600 dark:prose-li:text-neutral-400",
+            ].join(" ")}>
+              {project.content ? (
+                <div dangerouslySetInnerHTML={{ __html: project.content }} />
               ) : (
                 <p className="text-gray-600 dark:text-neutral-400">
                   This project showcases our expertise in delivering high-quality solutions. We focused on creating a seamless user experience while ensuring robust backend infrastructure and scalability for future growth.
@@ -227,6 +244,41 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
             </div>
           </div>
         </div>
+
+        {/* Related Projects (Internal Links for SEO) */}
+        {relatedProjects.length > 0 && (
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">More Projects</h2>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {relatedProjects.map((rp) => (
+                <Link key={rp._id.toString()} href={`/portfolio/${rp.slug}`} className="group block">
+                  <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm group-hover:shadow-xl transition-all duration-500 mb-5 bg-gray-50 dark:bg-dark-900">
+                    {rp.image ? (
+                      <Image 
+                        src={rp.image} 
+                        alt={rp.title} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Monitor className="w-10 h-10 text-gray-300 dark:text-white/10" />
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors mb-2 leading-tight">
+                    {rp.title}
+                  </h3>
+                  {rp.category && (
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+                      {rp.category}
+                    </p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-primary-600 to-primary-500 rounded-3xl p-12 text-white text-center">

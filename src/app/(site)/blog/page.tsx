@@ -28,9 +28,20 @@ const blogBreadcrumb = getBreadcrumbSchema([
   { name: "Blog", url: "https://masofts.com/blog" },
 ]);
 
+import CategoryModel from "@/models/Category";
+import SeriesModel from "@/models/Series";
+import { Search as SearchIcon, Tag as TagIcon, Layers } from "lucide-react";
+import Link from "next/link";
+
 export default async function BlogPage() {
   await dbConnect();
-  const rawPosts = await PostModel.find({ published: true }).sort({ createdAt: -1 }).lean();
+  
+  const [rawPosts, categories, series] = await Promise.all([
+    PostModel.find({ published: true }).sort({ createdAt: -1 }).lean(),
+    CategoryModel.find({}).sort({ name: 1 }).lean(),
+    SeriesModel.find({ active: true }).sort({ order: 1 }).lean(),
+  ]);
+
   type DbPost = {
     _id?: { toString(): string } | null;
     title: string;
@@ -84,8 +95,76 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* Blog Grid - Handled by Client Component for Animations */}
-      <BlogList initialPosts={posts} />
+      {/* Blog Content with Sidebar */}
+      <section className="py-20 lg:py-32 bg-gray-50 dark:bg-dark-950">
+        <div className="container-custom mx-auto px-4">
+          <div className="grid lg:grid-cols-12 gap-12">
+            {/* Main Content */}
+            <div className="lg:col-span-8">
+               <BlogList initialPosts={posts} />
+            </div>
+
+            {/* Sidebar */}
+            <aside className="lg:col-span-4 space-y-10">
+                {/* Search */}
+                <div className="p-8 rounded-[2.5rem] bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/[0.05] shadow-sm">
+                    <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
+                        <SearchIcon className="w-5 h-5 text-primary-500" />
+                        Search
+                    </h3>
+                    <div className="relative group">
+                        <input 
+                            type="text" 
+                            placeholder="Find an article..." 
+                            className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium"
+                        />
+                    </div>
+                </div>
+
+                {/* Categories */}
+                <div className="p-8 rounded-[2.5rem] bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/[0.05] shadow-sm">
+                    <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
+                        <TagIcon className="w-5 h-5 text-primary-500" />
+                        Categories
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                        {categories.map((cat: any) => (
+                            <Link 
+                                key={cat._id.toString()} 
+                                href={`/blog/category/${cat.slug}`}
+                                className="px-4 py-2 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.05] text-sm font-bold text-gray-600 dark:text-neutral-400 hover:bg-primary-600 hover:text-white hover:border-primary-600 transition-all"
+                            >
+                                {cat.name}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Learning Series */}
+                {series.length > 0 && (
+                    <div className="p-8 rounded-[2.5rem] bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/[0.05] shadow-sm">
+                        <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
+                            <Layers className="w-5 h-5 text-primary-500" />
+                            Featured Series
+                        </h3>
+                        <div className="space-y-4">
+                            {series.map((s: any) => (
+                                <Link 
+                                    key={s._id.toString()} 
+                                    href={`/blog/series/${s.slug}`}
+                                    className="block p-4 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] hover:border-primary-500/30 transition-all group/series"
+                                >
+                                    <h4 className="font-bold text-gray-900 dark:text-white group-hover/series:text-primary-500 transition-colors uppercase tracking-tight text-sm mb-1">{s.title}</h4>
+                                    <p className="text-[12px] text-gray-500 font-medium line-clamp-1">{s.description}</p>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </aside>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

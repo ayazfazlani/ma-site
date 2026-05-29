@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import ScrollTray from "@/components/ScrollTray";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import FaqSection from "@/components/FaqSection";
 import { contactFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { contactPageSchema, getBreadcrumbSchema } from "@/lib/schemas";
+import toast, { Toaster } from "react-hot-toast";
 
 const contactBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },
@@ -26,14 +27,36 @@ export default function ContactClient() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setLoading(true);
+    const toastId = toast.loading("Sending your message...");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.ok) {
+        toast.success("Message sent! We'll get back to you soon.", { id: toastId, duration: 5000 });
+        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+        setSubmitted(true);
+      } else {
+        toast.error("Failed to send. Please try again.", { id: toastId });
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.", { id: toastId });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <main className="pt-20">
+      <Toaster position="top-right" toastOptions={{ style: { borderRadius: '12px', fontWeight: '600' } }} />
       {/* SEO Schemas */}
       <JsonLd data={contactPageSchema} />
       <JsonLd data={contactBreadcrumb} />
@@ -213,10 +236,11 @@ export default function ContactClient() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-primary-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-700 transition-all flex items-center justify-center space-x-2"
+                    disabled={loading}
+                    className="w-full bg-primary-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-700 disabled:opacity-70 transition-all flex items-center justify-center space-x-2"
                   >
-                    <span>Send Message</span>
-                    <Send className="w-5 h-5" />
+                    <span>{loading ? "Sending..." : "Send Message"}</span>
+                    {!loading && <Send className="w-5 h-5" />}
                   </motion.button>
                 </form>
               </div>

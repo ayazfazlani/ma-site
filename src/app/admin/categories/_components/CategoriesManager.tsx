@@ -15,6 +15,7 @@ interface CategoryItem {
   color: string;
   metaTitle: string;
   metaDesc: string;
+  postsCount?: number;
 }
 
 const PRESET_COLORS = [
@@ -311,7 +312,14 @@ export default function CategoriesManager() {
                       <Tag className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-gray-900 dark:text-white leading-tight">{cat.name}</h4>
+                      <h4 className="font-extrabold text-gray-900 dark:text-white leading-tight flex items-center gap-2">
+                        {cat.name}
+                        {cat.metaTitle && cat.metaDesc ? (
+                          <span className="w-1.5 h-1.5 rounded-full bg-success-500" title="SEO Ready" />
+                        ) : (
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500" title="SEO Missing" />
+                        )}
+                      </h4>
                       <p className="text-[11px] text-gray-400 dark:text-neutral-500 font-bold uppercase tracking-widest">/{cat.slug}</p>
                     </div>
                   </div>
