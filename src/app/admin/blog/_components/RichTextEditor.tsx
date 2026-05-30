@@ -34,9 +34,11 @@ const modules = {
     [{ align: [] }],
     ["blockquote", "code-block"],
     ["link", "image", "video"],
+    ["table"],
     [{ script: "sub" }, { script: "super" }],
     ["clean"],
   ],
+  table: true,
   clipboard: {
     matchVisual: false,
   },
@@ -61,6 +63,7 @@ const formats = [
   "link",
   "image",
   "video",
+  "table",
   "script",
 ];
 
@@ -131,6 +134,37 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
         .ql-editor {
           padding: 2rem !important;
           line-height: 1.8;
+        }
+
+        .ql-editor table {
+          border-collapse: collapse;
+          width: 100%;
+          margin: 1rem 0;
+          border-radius: 0.75rem;
+          overflow: hidden;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .ql-editor table {
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ql-editor table td, .ql-editor table th {
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 0.75rem 1rem;
+        }
+
+        .dark .ql-editor table td, .dark .ql-editor table th {
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ql-editor table th {
+          background: rgba(0, 0, 0, 0.02);
+          font-weight: 700;
+        }
+
+        .dark .ql-editor table th {
+          background: rgba(255, 255, 255, 0.02);
         }
       `}</style>
       <ReactQuill
