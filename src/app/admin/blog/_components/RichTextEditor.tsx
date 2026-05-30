@@ -79,9 +79,15 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
   }
 
   return (
-    <div className="quill-premium-container">
+    <div className="quill-premium-container max-w-full overflow-x-hidden">
       <style jsx global>{`
+        .quill-premium-container {
+          max-width: 100%;
+        }
+        
         .quill-premium-container .ql-container {
+          max-width: 100%;
+          overflow-x: hidden;
           border-bottom-left-radius: 1.5rem;
           border-bottom-right-radius: 1.5rem;
           border: 1px solid rgba(0, 0, 0, 0.05) !important;
@@ -102,11 +108,15 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
           border: 1px solid rgba(0, 0, 0, 0.05) !important;
           background: #f9fafb;
           padding: 12px 20px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
         }
 
         .dark .quill-premium-container .ql-toolbar {
           background: #0a0a0a;
           border: 1px solid rgba(255, 255, 255, 0.05) !important;
+          max-width: 100%;
         }
 
         .quill-premium-container .ql-video {
@@ -132,13 +142,22 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
         }
 
         .ql-editor {
-          padding: 2rem !important;
+          padding: 1rem !important;
           line-height: 1.8;
+          overflow-x: auto;
+          max-width: 100%;
+        }
+
+        @media (min-width: 640px) {
+          .ql-editor {
+            padding: 2rem !important;
+          }
         }
 
         .ql-editor table {
           border-collapse: collapse;
           width: 100%;
+          min-width: 600px;
           margin: 1rem 0;
           border-radius: 0.75rem;
           overflow: hidden;
