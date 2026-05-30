@@ -311,14 +311,12 @@ html.light .theme-card {
 
 /* ── Blog Content – Premium Typography & Spacing ── */
 .prose {
-  /* Better word management */
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: normal;
   hyphens: none;
   line-height: 1.8;
-  /* Prevent any child from bleeding out on mobile */
-  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* ── Mobile-safe Tables ── */
@@ -329,21 +327,16 @@ html.light .theme-card {
   -webkit-overflow-scrolling: touch;
   border-collapse: collapse;
   font-size: 0.875rem;
-}
-
-.prose thead {
-  display: table-header-group;
-}
-
-.prose tbody {
-  display: table-row-group;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  margin: 1.5em 0;
 }
 
 .prose table th,
 .prose table td {
-  white-space: nowrap;
   padding: 0.625rem 1rem;
   border: 1px solid rgba(0,0,0,0.08);
+  min-width: 120px;
 }
 
 html.dark .prose table th,
@@ -371,13 +364,9 @@ html.dark .prose table tr:nth-child(even) td {
   background: rgba(255,255,255,0.02);
 }
 
-/* Wrap tables in a scrollable container with rounded border */
-.prose table {
-  border-radius: 0.75rem;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.08);
-  display: table;
-  min-width: 100%;
+/* Unified table styles above cover this */
+html.dark .prose table {
+  border-color: rgba(255,255,255,0.07);
 }
 
 /* The outer wrapper that enables horizontal scroll must be a block */
