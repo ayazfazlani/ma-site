@@ -21,7 +21,7 @@ export const portfolioListingFaqs: FaqItem[] = [
   {
     question: "What types of projects appear in your portfolio?",
     answer:
-      "We showcase custom web applications, dashboards, business software, and integrations—typically built with modern stacks such as Next.js, Node, and cloud services. Each entry highlights real outcomes and the problems we solved.",
+      "I showcase custom web applications, dashboards, business software, and integrations—typically built with modern stacks such as Next.js, Node, and cloud services. Each entry highlights real outcomes and the problems I solved.",
   },
   {
     question: "Can I see more detail than the portfolio card?",
@@ -31,7 +31,7 @@ export const portfolioListingFaqs: FaqItem[] = [
   {
     question: "Do you take on projects similar to these?",
     answer:
-      "Absolutely. If your goals align with the kind of work shown here—performance, clean UX, and maintainable code—contact us with your requirements and we will propose a tailored approach.",
+      "Absolutely. If your goals align with the kind of work shown here—performance, clean UX, and maintainable code—contact me with your requirements and I will propose a tailored approach.",
   },
 ];
 
@@ -39,17 +39,17 @@ export const portfolioDetailFaqs: FaqItem[] = [
   {
     question: "Is the live project link always available?",
     answer:
-      "We include a link when the product is public and the client agrees. Some work is internal or protected; in those cases we focus on scope, stack, and results instead of a public URL.",
+      "I include a link when the product is public and the client agrees. Some work is internal or protected; in those cases I focus on scope, stack, and results instead of a public URL.",
   },
   {
     question: "How do you describe technologies on case studies?",
     answer:
-      "Tech stacks reflect what was used for the engagement. If your project needs a different stack, we will recommend tools based on your constraints, team, and long-term maintenance.",
+      "Tech stacks reflect what was used for the engagement. If your project needs a different stack, I will recommend tools based on your constraints, team, and long-term maintenance.",
   },
   {
     question: "How can we start a project like this?",
     answer:
-      "Use the contact page to share goals, timeline, and budget range. We typically follow with a short discovery call, then a proposal with milestones and deliverables.",
+      "Use the contact page to share goals, timeline, and budget range. I typically follow with a short discovery call, then a proposal with milestones and deliverables.",
   },
 ];
 
@@ -57,7 +57,7 @@ export const contactFaqs: FaqItem[] = [
   {
     question: "How quickly will you respond?",
     answer:
-      "We aim to reply within one business day. For urgent inquiries, mention it in your message or reach out via the phone number on this page.",
+      "I aim to reply within one business day. For urgent inquiries, mention it in your message or reach out via the phone number on this page.",
   },
   {
     question: "What should I include in my first message?",
@@ -67,7 +67,7 @@ export const contactFaqs: FaqItem[] = [
   {
     question: "Do you work with international clients?",
     answer:
-      "Yes. We collaborate remotely across time zones with clear communication channels and regular demos so you stay aligned with progress.",
+      "Yes. I collaborate remotely across time zones with clear communication channels and regular demos so you stay aligned with progress.",
   },
 ];
 
@@ -80,12 +80,12 @@ export const aboutFaqs: FaqItem[] = [
   {
     question: "How do you work with clients day to day?",
     answer:
-      "We use structured milestones, async updates, and scheduled reviews. You get transparency on scope, risks, and decisions without unnecessary meetings.",
+      "I use structured milestones, async updates, and scheduled reviews. You get transparency on scope, risks, and decisions without unnecessary meetings.",
   },
   {
     question: "Why emphasize long-term maintainability?",
     answer:
-      "Software should not be a one-off handoff. We document, test where it matters, and choose patterns your team—or ours—can extend safely over time.",
+      "Software should not be a one-off handoff. I document, test where it matters, and choose patterns your team—or mine—can extend safely over time.",
   },
 ];
 
@@ -94,26 +94,26 @@ export const servicesHubFaqs: FaqItem[] = [
   {
     question: "What software development services does MA Softs offer?",
     answer:
-      "MA Softs offers a wide range of custom software development services including Web Application Development, ERP Systems, E-commerce Solutions, SaaS Development, and Business Process Automation. Each solution is custom-built by Ayaz to meet your specific business requirements.",
+      "MA Softs offers a wide range of custom software development services including Web Application Development, ERP Systems, E-commerce Solutions, SaaS Development, and Business Process Automation. Each solution is custom-built by me to meet your specific business requirements.",
   },
   {
     question: "How much does custom software development cost?",
     answer:
-      "Project costs vary depending on complexity and requirements. We offer competitive pricing for high-quality, custom-built solutions. Contact Ayaz for a detailed quote based on your specific needs.",
+      "Project costs vary depending on complexity and requirements. I offer competitive pricing for high-quality, custom-built solutions. Contact me for a detailed quote based on your specific needs.",
   },
   {
     question: "How long does it take to build a custom web application?",
     answer:
-      "Simple web applications can take 4-8 weeks, while complex enterprise systems or ERPs may take 3-6 months. We follow an agile development process to deliver functional modules incrementally.",
+      "Simple web applications can take 4-8 weeks, while complex enterprise systems or ERPs may take 3-6 months. I follow an agile development process to deliver functional modules incrementally.",
   },
   {
     question: "Do you provide support after the software is launched?",
     answer:
-      "Yes, we provide comprehensive post-launch support and maintenance to ensure your software runs smoothly and stays up-to-date with the latest technologies.",
+      "Yes, I provide comprehensive post-launch support and maintenance to ensure your software runs smoothly and stays up-to-date with the latest technologies.",
   },
   {
     question: "Can you integrate with existing business tools?",
     answer:
-      "Absolutely. We have extensive experience integrating custom software with various third-party APIs, payment gateways, and existing legacy systems.",
+      "Absolutely. I have extensive experience integrating custom software with various third-party APIs, payment gateways, and existing legacy systems.",
   },
 ];

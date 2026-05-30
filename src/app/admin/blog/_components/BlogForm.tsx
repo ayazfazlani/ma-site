@@ -23,7 +23,7 @@ export default function BlogForm({ initialData }: BlogFormProps) {
     excerpt: initialData?.excerpt || "",
     content: initialData?.content || "",
     category: initialData?.category || "",
-    author: initialData?.author || "Ahmed Khan",
+    author: initialData?.author || "MA Softs Team",
     image: initialData?.image || "",
     published: initialData?.published || false,
     seriesId: initialData?.seriesId || "",
@@ -174,10 +174,18 @@ export default function BlogForm({ initialData }: BlogFormProps) {
 
                         <div className="space-y-4">
                             <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1 flex items-center justify-between">
-                                Content Editor (Markdown Support)
-                                <div className="flex items-center gap-2 opacity-50 font-medium">
-                                    <Eye className="w-3.5 h-3.5" />
-                                    <span>Real-time Preview</span>
+                                <div className="flex items-center gap-4 opacity-50 font-medium">
+                                    <div className={cn("text-[11px] font-bold px-2 py-0.5 rounded-full", 
+                                        formData.content.split(/\s+/).filter(Boolean).length < 1200 
+                                            ? "bg-amber-100 text-amber-700" 
+                                            : "bg-green-100 text-green-700")}>
+                                        {formData.content.split(/\s+/).filter(Boolean).length} words
+                                        {formData.content.split(/\s+/).filter(Boolean).length < 1200 && " (Goal: 1500+)"}
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Eye className="w-3.5 h-3.5" />
+                                        <span>Real-time Preview</span>
+                                    </div>
                                 </div>
                             </label>
                             <RichTextEditor

@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return { title: 'Not Found' };
 
   return {
-    title: `${project.title} – Case Study`,
-    description: project.description ?? `See how we built ${project.title}. View the full case study on MA Softs portfolio.`,
+    title: `${project.title} | Custom ERP Development Pakistan`,
+    description: project.description ?? `Case Study: How MA Softs delivered ${project.title} using modern custom software development in Pakistan.`,
     alternates: {
       canonical: `https://masofts.com/portfolio/${slug}`,
     },

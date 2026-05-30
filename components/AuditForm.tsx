@@ -199,7 +199,7 @@ export default function AuditForm() {
                               ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
                               : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
-                          placeholder="john@example.com"
+                          placeholder="yourname@email.com"
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
@@ -221,7 +221,7 @@ export default function AuditForm() {
                               ? "bg-white/[0.04] border-white/[0.08] text-white placeholder-neutral-600 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/30"
                               : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400"
                           }`}
-                          placeholder="+92 300 1234567"
+                          placeholder="+92 336 7057973"
                           value={formData.phone}
                           onChange={(e) =>
                             setFormData({ ...formData, phone: e.target.value })

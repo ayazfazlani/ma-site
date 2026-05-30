@@ -58,7 +58,7 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 dark:opacity-100" />
               <Image
                 src={isDark ? "/ma-sols-logo.png" : "/ma-sols-logo.png"}
-                alt="Ayaz - MA Softs"
+                alt="MA Softs Logo"
                 width={70}
                 height={70}
                 className="object-contain relative z-10 drop-shadow-2xl"
@@ -95,11 +95,11 @@ export default function Navbar() {
           {/* CTA + Theme Toggle */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:+923001234567"
+              href="tel:+923367057973"
               className={`text-sm font-medium transition-colors duration-300 ${isDark ? "text-neutral-500 hover:text-white" : "text-gray-400 hover:text-gray-900"
                 }`}
             >
-              +92 300 1234567
+              +92 336 7057973
             </a>
             <ThemeToggle />
             <Link

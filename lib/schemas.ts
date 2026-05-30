@@ -5,7 +5,7 @@ const SITE_URL = "https://masofts.com";
 const SITE_NAME = "MA Softs";
 const LOGO_URL = `${SITE_URL}/logo.png`;
 const PHONE = "+923367057973";
-const EMAIL = "ayaz@ma-softs.com";
+const EMAIL = "info@masofts.com";
 
 // ── Organization Schema ──
 export const organizationSchema = {
@@ -22,7 +22,7 @@ export const organizationSchema = {
   },
   image: LOGO_URL,
   description:
-    "Expert custom software solutions, web applications, and ERP systems tailored for startups and businesses. Built with Passion by Ayaz.",
+    "Leading freelance ERP developer in Pakistan & global SaaS MVP developer. MA Softs delivers custom plastic factory ERP software, property dealer software, and Next.js solutions for startups.",
   foundingDate: "2023",
   founder: {
     "@type": "Person",
@@ -30,10 +30,10 @@ export const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Gulshan-e-Iqbal",
-    addressLocality: "Karachi",
-    addressRegion: "Sindh",
-    postalCode: "75300",
+    streetAddress: "Gulgasht Colony",
+    addressLocality: "Multan",
+    addressRegion: "Punjab",
+    postalCode: "60000",
     addressCountry: "PK",
   },
   contactPoint: [
@@ -61,7 +61,7 @@ export const organizationSchema = {
   ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",
-    minValue: 5,
+    value: 1,
   },
   slogan: "Custom Software & Web Development by Ayaz",
 };
@@ -77,15 +77,24 @@ export const websiteSchema = {
     "@id": `${SITE_URL}/#organization`,
   },
   description:
-    "Custom software, web development, and ERP solutions for startups and businesses. Expert development services by Ayaz.",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
+    "Custom software, web development, and SaaS MVP development for startups worldwide. Expert Next.js developer and freelance ERP developer in Pakistan.",
+  potentialAction: [
+    {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    }
+  ],
+  hasPart: [
+    { "@type": "WebPage", name: "Services", url: `${SITE_URL}/services` },
+    { "@type": "WebPage", name: "Portfolio", url: `${SITE_URL}/portfolio` },
+    { "@type": "WebPage", name: "Blog", url: `${SITE_URL}/blog` },
+    { "@type": "WebPage", name: "About", url: `${SITE_URL}/about` },
+    { "@type": "WebPage", name: "Contact", url: `${SITE_URL}/contact` }
+  ]
 };
 
 // ── LocalBusiness Schema ──
@@ -100,16 +109,16 @@ export const localBusinessSchema = {
   email: EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Gulshan-e-Iqbal",
-    addressLocality: "Karachi",
-    addressRegion: "Sindh",
-    postalCode: "75300",
+    streetAddress: "Gulgasht Colony",
+    addressLocality: "Multan",
+    addressRegion: "Punjab",
+    postalCode: "60000",
     addressCountry: "PK",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 24.8607,
-    longitude: 67.0011,
+    latitude: 30.1575,
+    longitude: 71.5249,
   },
   openingHoursSpecification: [
     {
@@ -136,10 +145,11 @@ export const localBusinessSchema = {
   },
   areaServed: [
     { "@type": "Country", name: "Pakistan" },
-    { "@type": "Country", name: "United Arab Emirates" },
-    { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "United States" },
     { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "United Arab Emirates" },
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "Australia" },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -274,7 +284,7 @@ export const blogPageSchema = {
   "@id": `${SITE_URL}/blog/#blog`,
   name: "MA Softs Blog",
   description:
-    "Software development insights, coding tips, and tech trends from Ayaz. Learn about Next.js, React, Node.js, and enterprise software architecture.",
+    "Software development insights, coding tips, and tech trends from MA Softs. Learn about ERP systems, SaaS development, SEO strategies, Web Design, and niches like Cleaning Company Website Design.",
   url: `${SITE_URL}/blog`,
   publisher: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -409,7 +419,7 @@ export const homePageSchema = {
   "@id": `${SITE_URL}/#webpage`,
   name: "MA Softs - Custom Software & Web Development by Ayaz",
   description:
-    "Expert custom software solutions, web applications, and ERP systems tailored for startups and businesses. Built with Passion by Ayaz.",
+    "Expert freelance ERP developer in Pakistan & SaaS MVP developer. Specialized in plastic factory ERP software, property dealer software, and custom Next.js development for startups worldwide.",
   url: SITE_URL,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
@@ -423,10 +433,28 @@ export const homePageSchema = {
   },
 };
 
+// ── Person Schema (for Personal Brand) ──
+export const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
+  name: "Ayaz",
+  image: LOGO_URL,
+  url: SITE_URL,
+  jobTitle: "Senior Software Developer & ERP Expert",
+  worksFor: { "@id": `${SITE_URL}/#organization` },
+  description: "Senior Full-stack Developer and Freelance ERP Expert helping startups build scalable products.",
+  sameAs: [
+    "https://www.facebook.com/masofts",
+    "https://twitter.com/masofts",
+    "https://www.linkedin.com/company/masofts",
+  ]
+};
+
 // ── Review/Testimonials Schema ──
 export const reviewsSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   review: [

@@ -33,16 +33,16 @@ export const servicesData: ServiceData[] = [
   {
     slug: "web-development",
     icon: "Code2",
-    title: "Web Design & Development",
+    title: "Custom Web Application Development Pakistan",
     description:
-      "Custom, responsive websites and web applications built with Next.js, React, and modern stacks. Perfectly tailored for startups and growing businesses.",
+      "Expert custom web application development for startups worldwide. I build scalable SaaS platforms and ERP software using Next.js, React, and modern tech stacks.",
     features: [
-      "Full-stack Next.js & React Development",
-      "Responsive & Mobile-first Design",
-      "E-commerce Storefronts",
-      "CMS Integration (WordPress, Headless)",
-      "Performance & Core Web Vitals Optimization",
-      "SEO-ready Architecture",
+      "Full-stack Next.js & React Developer for Hire",
+      "SaaS MVP Development Pakistan",
+      "Web Development for Startups Pakistan",
+      "Headless Ecommerce Developer Pakistan",
+      "Custom ERP Development for Startups",
+      "Performance & SEO-ready Architecture",
     ],
     gradient: "from-primary-500 to-primary-400",
     glow: "group-hover:shadow-primary-500/20",
@@ -50,7 +50,7 @@ export const servicesData: ServiceData[] = [
     color: "from-blue-500 to-blue-600",
     price: "Starting from $99",
     longDescription:
-      "We design and develop fast, conversion-focused websites and web apps that help startups launch quickly and scale efficiently.",
+      "I design and develop fast, conversion-focused websites and web apps that help startups launch quickly and scale efficiently.",
     plans: [
       {
         name: "Starter Website",
@@ -89,9 +89,11 @@ export const servicesData: ServiceData[] = [
         price: "$499",
         billingCycle: "starting from",
         description:
-          "Full-stack custom web application with advanced features for scaling startups.",
+          "Custom freelance ERP developer Pakistan expertise for high-end web applications, plastic factory ERP software, and property dealer software.",
         features: [
           "Custom Full-stack Development",
+          "Plastic Factory ERP Software",
+          "Property Dealer Software Pakistan",
           "User Authentication & Roles",
           "Third-party API Integrations",
           "Real-time Dashboards",

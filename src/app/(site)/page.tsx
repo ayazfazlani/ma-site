@@ -14,6 +14,7 @@ import FaqSection from "@/components/FaqSection";
 import {
   homePageSchema,
   reviewsSchema,
+  personSchema,
   serviceSchemas,
   getBreadcrumbSchema,
 } from "@/lib/schemas";
@@ -21,8 +22,8 @@ import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MA Softs – Home",
-  description: "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
+  title: "Custom Web Development & ERP Solutions | MA Softs – Pakistan",
+  description: "Senior Full-stack Developer Ayaz (MA Softs) specialized in custom ERP solutions, SaaS MVP development, and Next.js applications for startups worldwide.",
   alternates: {
     canonical: "https://masofts.com",
   },
@@ -47,6 +48,7 @@ export default async function Home() {
     <>
       {/* Page-specific SEO Schemas */}
       <JsonLd data={homePageSchema} />
+      <JsonLd data={personSchema} />
       <JsonLd data={reviewsSchema} />
       <JsonLd data={homeBreadcrumb} />
       {serviceSchemas.map((schema, index) => (

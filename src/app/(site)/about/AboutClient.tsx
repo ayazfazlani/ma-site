@@ -32,8 +32,8 @@ const values = [
   },
   {
     icon: Globe,
-    title: "Innovation",
-    description: "We stay ahead of digital trends to give you a competitive advantage.",
+    title: "Personalized Approach",
+    description: "I work closely with you as a dedicated partner, not just a service provider.",
   },
 ];
 
@@ -64,7 +64,7 @@ export default function AboutClient() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Pioneering software development excellence in Pakistan since 2008
+            Serving startups and businesses globally from Multan, Pakistan
           </motion.p>
         </div>
       </section>
@@ -84,20 +84,20 @@ export default function AboutClient() {
               <div className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
                 <p>
                   Founded in 2023, MA Softs started with a simple mission: to help
-                  startups and businesses succeed with custom-built software solutions.
-                  What began with Ayaz&apos;s passion for coding has grown into a specialized
-                  software development practice focused on ERPs and scalable web apps.
+                  startups and businesses worldwide succeed with custom-built software solutions.
+                  Based in Multan, Punjab, I leverage modern technology to serve a global clientele,
+                  acting as a dedicated technical partner for companies from the US to Australia.
                 </p>
                 <p>
-                  Over the past few years, we&apos;ve helped dozens of businesses across various
-                  industries automate their operations, build their first MVPs,
-                  and scale their technical infrastructure through strategic software development.
+                  What began as a personal passion for coding has grown into a specialized
+                  software development practice focused on ERPs, SaaS MVPs, and scalable web apps.
+                  Over the past few years, I&apos;ve helped dozens of businesses automate their operations, 
+                  build their first digital products, and scale their technical infrastructure.
                 </p>
                 <p>
-                  Our team of experts combines creative UI/UX with robust engineering
-                  to deliver products that matter. We believe in building long-term
-                  partnerships with our clients, acting as their dedicated technical
-                  partner and engineering department.
+                  I combine creative UI/UX with robust engineering to deliver products that matter. 
+                  I believe in building long-term partnerships, delivering the high-touch reliability 
+                  of a dedicated expert with the reach and expertise of a global partner.
                 </p>
               </div>
             </motion.div>

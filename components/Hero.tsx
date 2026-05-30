@@ -97,7 +97,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
               }`}
             >
               <span className={`w-2 h-2 rounded-full animate-pulse-glow ${isDark ? "bg-accent-400" : "bg-primary-500"}`} />
-              Software Solutions Redefined
+              Ayaz | Software Developer
             </span>
           </motion.div>
 
@@ -136,7 +136,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
               isDark ? "text-neutral-400" : "text-gray-500"
             }`}
           >
-            I am a full-stack freelancer specializing in crafting 
+            I am a full-stack developer specializing in crafting 
             <span className={`px-2 font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>custom ERPs</span>, 
             scalable web platforms, and MVPs for startups. With expert-level 
             execution, I transform complex business needs into seamless digital experiences.
@@ -187,7 +187,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
                 >
                   <img 
                     src={p.logo} 
-                    alt="client" 
+                    alt="MA Softs Logo" 
                     className="w-full h-full object-cover"
                   />
                 </div>
