@@ -64,7 +64,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
   }).sort({ createdAt: -1 }).limit(3).lean() as any[];
 
   return (
-    <article className="min-h-screen bg-white dark:bg-dark-950 font-sans">
+    <article className="min-h-screen bg-white dark:bg-dark-950 font-sans overflow-x-hidden">
       <JsonLd data={toFaqPageSchema(portfolioDetailFaqs)} />
       {/* Hero Section */}
       <div className="relative pt-32 pb-20 bg-gradient-to-b from-primary-50/50 dark:from-primary-950/20 to-transparent overflow-hidden">

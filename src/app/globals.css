@@ -313,10 +313,11 @@ html.light .theme-card {
 .prose {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  word-break: normal;
-  hyphens: none;
+  word-break: break-word;
+  hyphens: auto;
   line-height: 1.8;
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ── Mobile-safe Tables ── */
@@ -336,7 +337,8 @@ html.light .theme-card {
 .prose table td {
   padding: 0.625rem 1rem;
   border: 1px solid rgba(0,0,0,0.08);
-  min-width: 120px;
+  min-width: auto;
+  word-break: break-word;
 }
 
 html.dark .prose table th,
