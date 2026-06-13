@@ -512,10 +512,9 @@ html.dark .prose code:not(pre code) {
   margin-bottom: 1em !important;
 }
 
-/* Quill/Editor specifics */
-.prose .ql-editor,
-.prose div {
-  /* Keep default behavior */
+/* Quill/Editor specifics - Keep default behavior */
+.prose .ql-editor {
+  display: block;
 }
 
 /* Quill empty paragraphs (line breaks) must remain visible */
@@ -536,4 +535,10 @@ html.dark .prose code:not(pre code) {
 /* Preserve spacing for empty Quill paragraphs like <p><br></p> */
 .prose p:has(br) {
   min-height: 1em;
+}
+
+/* ── Performance: defer rendering of below-fold sections ── */
+.content-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }

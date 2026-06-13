@@ -111,15 +111,15 @@ export default function Footer() {
 
           {/* Services Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Solutions
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-neutral-500 hover:text-primary-400 transition-colors duration-300 text-sm"
+                    className="text-neutral-300 hover:text-primary-400 transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </Link>
@@ -130,15 +130,15 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Brand
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-neutral-500 hover:text-primary-400 transition-colors duration-300 text-sm"
+                    className="text-neutral-300 hover:text-primary-400 transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </Link>
@@ -149,15 +149,15 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Legal
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-neutral-500 hover:text-primary-400 transition-colors duration-300 text-sm"
+                    className="text-neutral-300 hover:text-primary-400 transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </Link>
@@ -169,7 +169,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/[0.06] py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-neutral-600 text-sm">
+          <p className="text-neutral-400 text-sm">
             © {new Date().getFullYear()} MA Softs | Ayaz Freelancer. All rights reserved.
           </p>
 
@@ -181,7 +181,7 @@ export default function Footer() {
                 href={social.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-white/[0.04] hover:bg-primary-500/20 rounded-xl flex items-center justify-center text-neutral-500 hover:text-primary-400 transition-all duration-300 border border-white/[0.04] hover:border-primary-500/20"
+              className="w-12 h-12 bg-white/[0.04] hover:bg-primary-500/20 rounded-xl flex items-center justify-center text-neutral-300 hover:text-primary-400 transition-all duration-300 border border-white/[0.04] hover:border-primary-500/20"
                 aria-label={social.label}
               >
                 <social.icon className="w-4.5 h-4.5" />

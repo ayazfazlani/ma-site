@@ -74,6 +74,7 @@ export default function ServicesList({ services }: { services: any[] }) {
                 ? "text-neutral-400 group-hover:text-primary-400"
                 : "text-gray-400 group-hover:text-primary-600"
             }`}
+            aria-label={`Learn more about ${service.title}`}
           >
             Learn More
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />

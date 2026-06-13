@@ -17,8 +17,8 @@ export default function ThemeToggle() {
       whileTap={{ scale: 0.9 }}
       className={
         isDark
-          ? "relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/[0.06] hover:bg-white/[0.12] text-neutral-400 hover:text-white border border-white/[0.06]"
-          : "relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 border border-gray-200"
+          ? "relative w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/[0.06] hover:bg-white/[0.12] text-neutral-300 hover:text-white border border-white/[0.06]"
+          : "relative w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 border border-gray-200"
       }
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
       title={`Switch to ${isDark ? "light" : "dark"} mode`}

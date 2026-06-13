@@ -53,7 +53,7 @@ export default function Navbar() {
       <nav className="container-custom mx-auto">
         <div className="flex items-center justify-between h-20 lg:h-[88px]">
           {/* Logo */}
-          <Link href="/" className="relative z-10 flex items-center gap-4 group">
+          <Link href="/" aria-label="MA Softs – Home" className="relative z-10 flex items-center gap-4 group">
             <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-400/20 backdrop-blur-md flex items-center justify-center shadow-lg shadow-primary-500/10 group-hover:shadow-primary-500/30 transition-all duration-500 group-hover:scale-110 border border-white/[0.08] overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 dark:opacity-100" />
               <Image
@@ -116,13 +116,14 @@ export default function Navbar() {
           <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
-              className={`relative z-10 p-2.5 rounded-xl transition-colors ${isDark ? "text-white hover:bg-white/[0.06]" : "text-gray-900 hover:bg-gray-100"
+              className={`relative z-10 p-3 rounded-xl transition-colors ${isDark ? "text-white hover:bg-white/[0.06]" : "text-gray-900 hover:bg-gray-100"
                 }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6
-              " /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -132,6 +133,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
