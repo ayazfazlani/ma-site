@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 
 export default function TestimonialsList({ testimonials }: { testimonials: any[] }) {
@@ -65,7 +66,13 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
                 isDark ? "border-white/10 bg-white/5" : "border-gray-200 bg-gray-50"
               } overflow-hidden shadow-sm`}>
                 {current.image ? (
-                  <img src={current.image} alt={current.name} className="w-full h-full rounded-[0.9rem] object-cover" />
+                  <Image 
+                    src={current.image} 
+                    alt={current.name} 
+                    width={64}
+                    height={64}
+                    className="w-full h-full rounded-[0.9rem] object-cover" 
+                  />
                 ) : (
                   <div className="w-full h-full rounded-[0.9rem] bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-400 dark:text-neutral-500 text-2xl font-black uppercase">
                     {current.name[0]}

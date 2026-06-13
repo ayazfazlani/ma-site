@@ -166,13 +166,13 @@ export default function ParticleNetwork() {
       const isTablet = w < 1024;
 
       if (isMobile) {
-        setParticleCount(30);
-        setDpr([1, 1]);       // Cap at 1x DPR on mobile
+        setParticleCount(20);
+        setDpr([1, 1]);       // Cap at 1x DPR on mobile to save GPU
       } else if (isTablet) {
-        setParticleCount(50);
+        setParticleCount(45);
         setDpr([1, 1.5]);
       } else {
-        setParticleCount(80);
+        setParticleCount(75);
         setDpr([1, 2]);
       }
     };

@@ -1,6 +1,7 @@
 // components/HorizontalScrollList.tsx
 "use client";
 
+import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 
 export default function HorizontalScrollList({ partners }: { partners: any[] }) {
@@ -25,7 +26,14 @@ export default function HorizontalScrollList({ partners }: { partners: any[] }) 
       {[...partners, ...partners, ...partners].map((partner, i) => (
         <div key={`${partner.name}-${i}`} className="flex-shrink-0 flex items-center px-8 py-3 group/item transition-all duration-500 hover:scale-110">
           {partner.logo ? (
-            <img src={partner.logo} alt={partner.name} className={`h-10 w-auto object-contain filter grayscale opacity-40 group-hover/item:opacity-100 group-hover/item:grayscale-0 transition-all duration-700 ${isDark ? 'brightness-0 invert' : ''}`} />
+            <div className={`relative h-10 w-32 group-hover/item:scale-110 transition-transform duration-500`}>
+              <Image 
+                src={partner.logo} 
+                alt={partner.name} 
+                fill
+                className={`object-contain filter grayscale opacity-40 group-hover/item:opacity-100 group-hover/item:grayscale-0 transition-all duration-700 ${isDark ? 'brightness-0 invert' : ''}`} 
+              />
+            </div>
           ) : (
             <span className={`text-2xl font-black transition-all duration-500 whitespace-nowrap select-none tracking-tight uppercase ${isDark ? "text-white/20 group-hover/item:text-primary-500/50" : "text-gray-300 group-hover/item:text-primary-600/60"}`}>
               {partner.name}

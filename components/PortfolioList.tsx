@@ -114,7 +114,14 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
               <div className="flex flex-col md:flex-row h-full">
                 <div className={`w-full md:w-1/2 h-56 sm:h-64 md:h-auto md:min-h-[450px] relative overflow-hidden flex-shrink-0 group/image ${isDark ? project.imageDark : project.imageLight}`}>
                     {project.image ? (
-                        <Image src={project.image} alt={project.title} fill className="object-contain object-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4" />
+                        <Image 
+                          src={project.image} 
+                          alt={project.title} 
+                          fill 
+                          priority={isActive}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-contain object-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4" 
+                        />
                     ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                             <ImageIcon className="w-16 h-16 text-primary-500/20" />

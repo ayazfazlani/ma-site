@@ -4,15 +4,13 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTheme } from "./ThemeProvider";
 import { useEffect, useState } from "react";
 
 const ParticleNetwork = dynamic(() => import("./ParticleNetwork"), {
   ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
-  ),
 });
 
 const fadeUp: any = {
@@ -37,12 +35,24 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
   ];
 
   // Skip heavy Three.js canvas on mobile to save CPU/GPU
+  // Skip heavy Three.js canvas on mobile/slow connection
   const [isDesktop, setIsDesktop] = useState(false);
+  const [shouldLoadCanvas, setShouldLoadCanvas] = useState(false);
+
   useEffect(() => {
     setIsDesktop(window.innerWidth >= 768);
     const handler = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
+    
+    // Defer canvas loading to prioritize content rendering
+    const timer = setTimeout(() => {
+      setShouldLoadCanvas(true);
+    }, 1200);
+
+    return () => {
+      window.removeEventListener("resize", handler);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -53,7 +63,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
     >
       {/* Background: Three.js on desktop, CSS gradient on mobile */}
       <div className="absolute inset-0 z-0">
-        {isDesktop ? (
+        {isDesktop && shouldLoadCanvas ? (
           <ParticleNetwork />
         ) : (
           <div className={`absolute inset-0 ${
@@ -183,12 +193,13 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
               {displayPartners.map((p, i) => (
                 <div 
                   key={i} 
-                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl`}
+                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl relative`}
                 >
-                  <img 
+                  <Image 
                     src={p.logo} 
                     alt={p.name || "Business Partner Logo"} 
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               ))}
