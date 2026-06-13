@@ -313,8 +313,10 @@ html.light .theme-card {
 .prose {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  word-break: break-word;
-  hyphens: none;
+  word-break: normal;
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  -ms-hyphens: none !important;
   line-height: 1.8;
   max-width: 100%;
   overflow-x: hidden;
@@ -499,9 +501,7 @@ html.dark .prose code:not(pre code) {
 
 /* Ensure <br> tags create visible line breaks without excessive gaps */
 .prose br {
-  display: block;
-  content: "";
-  margin-top: 0.5em;
+  display: inline;
 }
 
 /* Preserve spacing for empty Quill paragraphs like <p><br></p> */

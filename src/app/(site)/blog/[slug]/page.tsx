@@ -227,7 +227,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Content Section */}
             <div className="relative">
               <div className={cn(
-                "prose prose-sm sm:prose-base dark:prose-invert max-w-none",
+                "prose prose-sm sm:prose-base dark:prose-invert max-w-none break-words hyphens-none",
                 "prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
                 "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:font-medium",
                 "prose-strong:text-primary-600 dark:prose-strong:text-primary-400 prose-strong:font-black",

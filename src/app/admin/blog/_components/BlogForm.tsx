@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { CldUploadWidget } from "next-cloudinary";
-import { ImageIcon, X, Save, Send, Eye, LayoutIcon, FileText, Search, Settings } from "lucide-react";
+import { ImageIcon, X, Save, Send, Eye, LayoutIcon, FileText, Search, Settings, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { cn, slugify } from "@/lib/utils";
 import RichTextEditor from "./RichTextEditor";
@@ -206,6 +206,20 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                                 placeholder="Write a short teaser for the article list..."
                                 className="w-full px-5 py-4 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 transition-all leading-relaxed"
                             />
+                        </div>
+
+                        <div className="pt-6 flex justify-end">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setActiveTab("seo");
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                                className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-primary-100 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-sm font-bold border border-primary-200/50 dark:border-primary-500/20 hover:bg-primary-600 hover:text-white transition-all shadow-sm group"
+                            >
+                                Continue to SEO Settings
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </button>
                         </div>
                     </div>
                 ) : (
