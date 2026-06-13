@@ -121,7 +121,7 @@ export default function Stats() {
           >
             Delivering <span className="gradient-text">Excellence</span>
           </h2>
-          <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-700"}`}>
             Numbers that highlight my commitment to providing specialized 
             software engineering value to entrepreneurs and enterprises.
           </p>
@@ -173,7 +173,7 @@ export default function Stats() {
                 {/* Description */}
                 <div
                   className={`text-sm leading-relaxed ${
-                    isDark ? "text-neutral-500" : "text-gray-400"
+                    isDark ? "text-neutral-500" : "text-gray-600"
                   }`}
                 >
                   {stat.description}

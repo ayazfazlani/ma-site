@@ -154,7 +154,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
                     {project.title}
                   </h3>
                   
-                  <p className={`text-base lg:text-lg mb-10 leading-relaxed font-medium ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                  <p className={`text-base lg:text-lg mb-10 leading-relaxed font-medium ${isDark ? "text-neutral-400" : "text-gray-700"}`}>
                     {project.description}
                   </p>
                   
@@ -165,6 +165,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
                         className={`inline-flex items-center gap-2.5 font-black text-sm uppercase tracking-widest transition-all group/link ${
                           isDark ? "text-white hover:text-primary-400" : "text-gray-900 hover:text-primary-600"
                         }`}
+                        aria-label={`View details for project: ${project.title}`}
                       >
                         Project Details
                         <ExternalLink className="w-4.5 h-4.5 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
@@ -194,19 +195,21 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
             <button
               type="button"
               key={idx}
-              aria-label={`Go to project ${idx + 1}`}
+              aria-label={`Go to project ${idx + 1}: ${projects[idx].title}`}
               onClick={() => {
                 let diff = idx - normalizedCurrent;
                 if (diff > projects.length / 2) diff -= projects.length;
                 if (diff < -projects.length / 2) diff += projects.length;
                 setCurrentIndex(prev => prev + diff);
               }}
-              className={`transition-all duration-300 rounded-full cursor-pointer hover:scale-150 ${
+              className="p-3 -m-3 flex items-center justify-center transition-all duration-300 rounded-full cursor-pointer hover:scale-150 group"
+            >
+              <div className={`transition-all duration-300 rounded-full ${
                 normalizedCurrent === idx 
-                  ? "w-8 h-2.5 bg-primary-500 shadow-lg shadow-primary-500/20" 
-                  : `w-2.5 h-2.5 ${isDark ? "bg-white/10 hover:bg-white/30" : "bg-gray-200 hover:bg-gray-400"}`
-              }`}
-            />
+                  ? "w-10 h-3 bg-primary-500 shadow-lg shadow-primary-500/20" 
+                  : `w-3 h-3 ${isDark ? "bg-white/10 group-hover:bg-white/30" : "bg-gray-200 group-hover:bg-gray-400"}`
+              }`} />
+            </button>
           );
         })}
       </div>

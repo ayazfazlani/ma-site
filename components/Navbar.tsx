@@ -69,7 +69,7 @@ export default function Navbar() {
               <span className={`text-xl font-bold tracking-tight leading-none ${isDark ? "text-white" : "text-gray-900"}`}>
                 MA<span className="text-primary-400"> Softs</span>
               </span>
-              <span className={`text-[10px] uppercase tracking-[0.2em] font-medium ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
+              <span className={`text-[10px] uppercase tracking-[0.2em] font-medium ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
                 Ayaz | Software Developer
               </span>
             </div>
@@ -83,7 +83,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg group ${isDark
                   ? "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
-                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100/80"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/80"
                   }`}
               >
                 {link.label}
@@ -96,7 +96,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+923367057973"
-              className={`text-sm font-medium transition-colors duration-300 ${isDark ? "text-neutral-500 hover:text-white" : "text-gray-400 hover:text-gray-900"
+              className={`text-sm font-medium transition-colors duration-300 ${isDark ? "text-neutral-500 hover:text-white" : "text-gray-600 hover:text-gray-900"
                 }`}
             >
               +92 336 7057973

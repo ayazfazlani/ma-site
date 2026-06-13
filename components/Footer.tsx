@@ -72,7 +72,7 @@ export default function Footer() {
         <div className="py-16 lg:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
+            <Link href="/" aria-label="MA Softs Home" className="inline-flex items-center gap-3 mb-6 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-400 flex items-center justify-center shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/30 transition-shadow">
                 <span className="text-white font-bold text-xl">M</span>
               </div>
@@ -80,7 +80,7 @@ export default function Footer() {
                 MA<span className="text-primary-400"> Softs</span>
               </span>
             </Link>
-            <p className="text-neutral-500 mb-8 max-w-sm leading-relaxed">
+            <p className="text-neutral-300 mb-8 max-w-sm leading-relaxed">
               Specialized software development for startups and small businesses. 
               Crafting premium ERPs, custom web applications, and technical strategies 
               that drive real business value.
@@ -111,9 +111,9 @@ export default function Footer() {
 
           {/* Services Links */}
           <div>
-            <h2 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Solutions
-            </h2>
+            </h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -130,9 +130,9 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h2 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Brand
-            </h2>
+            </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -149,9 +149,9 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h2 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Legal
-            </h2>
+            </h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>

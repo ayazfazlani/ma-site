@@ -119,7 +119,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             <br />
             <span
               className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold opacity-70 ${
-                isDark ? "text-neutral-400" : "text-gray-400"
+                isDark ? "text-neutral-400" : "text-gray-600"
               }`}
             >
               by Ayaz
@@ -133,7 +133,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             animate="visible"
             custom={0.2}
             className={`text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed ${
-              isDark ? "text-neutral-400" : "text-gray-500"
+              isDark ? "text-neutral-400" : "text-gray-700"
             }`}
           >
             I am a full-stack developer specializing in crafting 
@@ -187,7 +187,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
                 >
                   <img 
                     src={p.logo} 
-                    alt="MA Softs Logo" 
+                    alt={p.name || "Business Partner Logo"} 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -196,7 +196,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
                 100+
               </div>
             </div>
-            <p className={`text-sm font-semibold tracking-wide ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+            <p className={`text-sm font-semibold tracking-wide ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
               Trusted by <span className="text-primary-500 underline decoration-primary-500/30 underline-offset-4">100+ Global Businesses</span> & Startups
             </p>
           </motion.div>

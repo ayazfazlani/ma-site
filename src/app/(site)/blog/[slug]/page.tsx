@@ -138,14 +138,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 sm:gap-8 pt-6 sm:pt-8 border-t border-gray-100 dark:border-white/[0.05]">
               <div className="flex items-center gap-4 group cursor-default">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary-100 dark:bg-primary-500/10 border border-primary-200 dark:border-primary-500/20 flex items-center justify-center p-0.5 group-hover:border-primary-500 transition-colors">
+                <div 
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary-100 dark:bg-primary-500/10 border border-primary-200 dark:border-primary-500/20 flex items-center justify-center p-0.5 group-hover:border-primary-500 transition-colors"
+                  aria-hidden="true"
+                >
                   <div className="w-full h-full rounded-2xl bg-primary-500 flex items-center justify-center text-white text-base sm:text-lg font-black shadow-lg shadow-primary-500/20">
                     {post.author ? post.author.charAt(0) : "A"}
                   </div>
                 </div>
                 <div>
                   <p className="text-[13px] sm:text-[14px] font-black text-gray-900 dark:text-white uppercase tracking-tight">{post.author || "Ahmed Khan"}</p>
-                  <p className="text-[11px] sm:text-xs text-gray-400 dark:text-neutral-500 font-bold uppercase tracking-widest">Enterprise Lead Writer</p>
+                  <p className="text-[11px] sm:text-xs text-gray-500 dark:text-neutral-400 font-bold uppercase tracking-widest">Enterprise Lead Writer</p>
                 </div>
               </div>
 

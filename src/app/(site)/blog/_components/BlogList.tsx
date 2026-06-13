@@ -54,6 +54,7 @@ export default function BlogList({ initialPosts, initialSearch = "" }: { initial
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search articles by title, category or topic..." 
+          aria-label="Search articles"
           className={cn(
             "w-full pl-14 pr-16 py-4 rounded-[1.5rem] outline-none transition-all font-medium border",
             isDark ? "bg-white/5 border-white/10 focus:border-primary-500/50 text-white placeholder:text-neutral-600" : "bg-white border-gray-100 focus:border-primary-500/30 text-gray-900 placeholder:text-gray-400 shadow-sm"
@@ -160,7 +161,10 @@ export default function BlogList({ initialPosts, initialSearch = "" }: { initial
                         </span>
                       </div>
 
-                      <div className="text-primary-500 font-extrabold text-sm flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                      <div 
+                        className="text-primary-500 font-extrabold text-sm flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"
+                        aria-hidden="true"
+                      >
                         <span className="uppercase tracking-widest text-xs">Read</span>
                         <ArrowRight className="w-4 h-4" />
                       </div>

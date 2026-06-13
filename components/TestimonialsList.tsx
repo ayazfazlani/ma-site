@@ -74,10 +74,10 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
               </div>
               
               <div className="text-left">
-                <h4 className={`text-base font-bold tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
+                <h3 className={`text-base font-bold tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
                   {current.name}
-                </h4>
-                <p className={`text-[11px] font-medium uppercase tracking-widest ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
+                </h3>
+                <p className={`text-[11px] font-medium uppercase tracking-widest ${isDark ? "text-neutral-500" : "text-gray-600"}`}>
                   {current.role}
                 </p>
               </div>
@@ -89,6 +89,7 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
         <div className="flex items-center justify-center gap-6 mt-16 sm:mt-24">
           <button
             onClick={prev}
+            aria-label="Previous testimonial"
             className={`p-3 rounded-xl border transition-all hover:scale-105 active:scale-95 group ${
               isDark 
                 ? "bg-white/[0.02] border-white/[0.05] hover:border-white/20 text-neutral-500 hover:text-white" 
@@ -104,17 +105,22 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
               <button
                 key={i}
                 onClick={() => setIndex(i)}
-                className={`transition-all duration-300 rounded-full h-1.5 ${
+                aria-label={`Go to testimonial ${i + 1}: ${testimonials[i].name}`}
+                className="p-3 -m-3 flex items-center justify-center transition-all duration-300 rounded-full cursor-pointer hover:scale-150 group"
+              >
+                <div className={`transition-all duration-300 rounded-full ${
                   i === index 
-                    ? `w-10 bg-primary-500` 
-                    : `w-1.5 ${isDark ? "bg-white/10 hover:bg-white/30" : "bg-gray-200 hover:bg-gray-400"}`
-                }`}
-              />
+                    ? `w-12 h-2.5 bg-primary-500` 
+                    : `w-2.5 h-2.5 ${isDark ? "bg-white/10 group-hover:bg-white/30" : "bg-gray-200 group-hover:bg-gray-400"}`
+                }`} />
+                <span className="sr-only">Go to testimonial {i + 1}</span>
+              </button>
             ))}
           </div>
 
           <button
             onClick={next}
+            aria-label="Next testimonial"
             className={`p-3 rounded-xl border transition-all hover:scale-105 active:scale-95 group ${
               isDark 
                 ? "bg-white/[0.02] border-white/[0.05] hover:border-white/20 text-neutral-500 hover:text-white" 
