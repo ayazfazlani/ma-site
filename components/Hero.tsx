@@ -183,10 +183,10 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             style={{ animationDelay: '0.4s' }}
           >
             <div className="flex -space-x-3">
-              {displayPartners.map((p, i) => (
+              {displayPartners.slice(0, 5).map((p, i) => (
                 <div 
                   key={i} 
-                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl relative`}
+                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl relative ${i >= 3 ? "hidden sm:block" : ""}`}
                 >
                   <Image 
                     src={p.logo} 
@@ -238,21 +238,17 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-fade-in-up"
+        style={{ animationDelay: '1.5s' }}
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className={`flex flex-col items-center gap-2 ${isDark ? "text-neutral-500" : "text-gray-400"}`}
+        <div
+          className={`flex flex-col items-center gap-2 animate-float ${isDark ? "text-neutral-500" : "text-gray-400"}`}
         >
           <span className="text-[10px] uppercase tracking-[0.3em] font-medium">Scroll</span>
           <ChevronDown className="w-4 h-4" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
