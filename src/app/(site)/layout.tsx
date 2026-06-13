@@ -8,6 +8,7 @@ import {
   localBusinessSchema,
 } from "@/lib/schemas";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { Toaster } from "react-hot-toast";
 
 export default function SiteLayout({
   children,
@@ -16,6 +17,7 @@ export default function SiteLayout({
 }) {
   return (
     <>
+      <Toaster position="top-right" toastOptions={{ style: { borderRadius: '12px', fontWeight: '600' } }} />
       <Navbar />
       <main>{children}</main>
       <Footer />

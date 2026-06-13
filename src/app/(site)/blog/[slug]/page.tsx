@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import CommentSection from "../_components/CommentSection";
 import RelatedPostSidebar from "../_components/RelatedPostSidebar";
 import InContentRelated from "../_components/InContentRelated";
+import ShareButtons from "../_components/ShareButtons";
 
 export const revalidate = 3600;
 
@@ -148,15 +149,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <button className="p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/[0.05] text-gray-500 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500/20 shadow-sm transition-all group" title="Save for later">
-                  <Bookmark className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-                </button>
-                <button className="p-3 sm:p-3.5 rounded-2xl bg-primary-600 text-white shadow-lg shadow-primary-600/20 flex items-center gap-2 sm:gap-3 font-bold text-sm px-4 sm:px-6 hover:bg-primary-700 hover:scale-[1.02] active:scale-[0.98] transition-all" title="Share Article">
-                  <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span className="hidden sm:inline">Share Now</span>
-                </button>
-              </div>
+              <ShareButtons title={post.title} slug={post.slug} />
             </div>
           </div>
         </div>
