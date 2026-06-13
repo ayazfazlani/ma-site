@@ -39,11 +39,8 @@ export default function Navbar() {
   const isDark = theme === "dark";
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-slide-up-subtle ${isScrolled
         ? isDark
           ? "bg-dark-950/90 backdrop-blur-2xl border-b border-white/[0.06] shadow-2xl shadow-black/20"
           : "bg-white/50 backdrop-blur-2xl border-b border-gray-800/60 shadow-lg shadow-black/5"
@@ -181,6 +178,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

@@ -44,15 +44,31 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
     const handler = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handler);
     
-    // Defer canvas loading to prioritize content rendering
-    const timer = setTimeout(() => {
-      setShouldLoadCanvas(true);
-    }, 1200);
-
-    return () => {
-      window.removeEventListener("resize", handler);
-      clearTimeout(timer);
+    // Defer canvas loading drastically to reach visual stability early
+    const loadCanvas = () => {
+      const timer = setTimeout(() => {
+        setShouldLoadCanvas(true);
+      }, 3500);
+      return () => clearTimeout(timer);
     };
+
+    let cleanup: () => void;
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(() => {
+        cleanup = loadCanvas();
+      });
+      return () => {
+        window.removeEventListener("resize", handler);
+        window.cancelIdleCallback(idleId);
+        if (cleanup) cleanup();
+      };
+    } else {
+      cleanup = loadCanvas();
+      return () => {
+        window.removeEventListener("resize", handler);
+        if (cleanup) cleanup();
+      };
+    }
   }, []);
 
   return (
@@ -92,13 +108,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
       {/* Content */}
       <div className="container-custom relative z-10 mx-auto pt-28 pb-16 w-full">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-          >
+          <div className="flex justify-center">
             <span
               className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide mb-8 ${
                 isDark
@@ -109,15 +119,10 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
               <span className={`w-2 h-2 rounded-full animate-pulse-glow ${isDark ? "bg-accent-400" : "bg-primary-500"}`} />
               Ayaz | Software Developer
             </span>
-          </motion.div>
+          </div>
 
-          {/* Heading */}
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.1}
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 ${
+          <h1
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 animate-fade-in-up ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -134,31 +139,23 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             >
               by Ayaz
             </span>
-          </motion.h1>
+          </h1>
 
-          {/* Description */}
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.2}
-            className={`text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed ${
+          <p
+            className={`text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-150 ${
               isDark ? "text-neutral-400" : "text-gray-700"
             }`}
+            style={{ animationDelay: '0.15s' }}
           >
             I am a full-stack developer specializing in crafting 
             <span className={`px-2 font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>custom ERPs</span>, 
             scalable web platforms, and MVPs for startups. With expert-level 
             execution, I transform complex business needs into seamless digital experiences.
-          </motion.p>
+          </p>
 
-          {/* CTAs */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.3}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-20"
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-20 animate-fade-in-up"
+            style={{ animationDelay: '0.3s' }}
           >
             <Link
               href="/contact"
@@ -179,15 +176,11 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             >
               <span>Explore My Services</span>
             </Link>
-          </motion.div>
+          </div>
 
-          {/* Social Proof Avatars */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.35}
-            className="flex flex-col items-center gap-4 mb-20"
+          <div
+            className="flex flex-col items-center gap-4 mb-20 animate-fade-in-up"
+            style={{ animationDelay: '0.4s' }}
           >
             <div className="flex -space-x-3">
               {displayPartners.map((p, i) => (
@@ -210,17 +203,13 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             <p className={`text-sm font-semibold tracking-wide ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
               Trusted by <span className="text-primary-500 underline decoration-primary-500/30 underline-offset-4">100+ Global Businesses</span> & Startups
             </p>
-          </motion.div>
+          </div>
 
-          {/* Hero Stats */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.45}
-            className={`grid grid-cols-3 gap-6 sm:gap-10 max-w-2xl mx-auto pt-8 border-t ${
+          <div
+            className={`grid grid-cols-3 gap-6 sm:gap-10 max-w-2xl mx-auto pt-8 border-t animate-fade-in-up ${
               isDark ? "border-white/[0.06]" : "border-gray-200"
             }`}
+            style={{ animationDelay: '0.5s' }}
           >
             {[
               { value: "40+", label: "Projects Completed" },
@@ -244,7 +233,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
