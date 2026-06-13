@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { Plus, Trash2, Quote, Star, User, Loader2, Pencil, X, Check, Image as ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CldUploadWidget } from "next-cloudinary";
 
 interface TestimonialItem {
   _id: string;
@@ -154,12 +155,38 @@ export default function TestimonialsManager() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest pl-1">Image URL (Optional)</label>
+              <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest pl-1">Client Image / Avatar</label>
+              <div className="flex gap-4 items-center">
+                  <div className="w-16 h-16 rounded-xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] overflow-hidden flex items-center justify-center shrink-0 shadow-sm">
+                      {formData.image ? (
+                          <img src={formData.image} className="w-full h-full object-cover" />
+                      ) : (
+                          <User className="w-6 h-6 text-gray-400" />
+                      )}
+                  </div>
+                  <CldUploadWidget 
+                      uploadPreset="ma_softs_preset" 
+                      onSuccess={(result: any) => {
+                          setFormData(prev => ({ ...prev, image: result?.info?.secure_url }));
+                      }}
+                  >
+                      {({ open }) => (
+                          <button
+                              type="button"
+                              onClick={() => open()}
+                              className="flex-1 px-5 py-3 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all flex items-center justify-center gap-2"
+                          >
+                              <ImageIcon className="w-4 h-4 text-primary-500" />
+                              {formData.image ? "Change Avatar" : "Upload Avatar"}
+                          </button>
+                      )}
+                  </CldUploadWidget>
+              </div>
               <input
                 value={formData.image}
                 onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                placeholder="https://..."
-                className="w-full px-5 py-3.5 rounded-2xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium outline-none focus:ring-2 focus:ring-primary-500/20 transition-all"
+                placeholder="Or paste URL here..."
+                className="w-full mt-2 px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] text-gray-500 dark:text-neutral-400 text-xs font-medium outline-none"
               />
             </div>
             <div className="space-y-2">

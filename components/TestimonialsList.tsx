@@ -51,8 +51,8 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
             </div>
 
             {/* Quote Content */}
-            <blockquote className="mb-10 max-w-4xl mx-auto px-4 sm:px-10">
-              <p className={`text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-[1.2] tracking-tight ${
+            <blockquote className="mb-8 max-w-2xl mx-auto px-4">
+              <p className={`text-xl sm:text-2xl lg:text-3xl font-bold leading-relaxed tracking-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}>
                 &ldquo;{current.content}&rdquo;
@@ -74,10 +74,10 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
               </div>
               
               <div className="text-left">
-                <h4 className={`text-lg font-black uppercase tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
+                <h4 className={`text-base font-bold tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
                   {current.name}
                 </h4>
-                <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
+                <p className={`text-[11px] font-medium uppercase tracking-widest ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
                   {current.role}
                 </p>
               </div>

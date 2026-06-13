@@ -33,7 +33,8 @@ import SeriesModel from "@/models/Series";
 import { Search as SearchIcon, Tag as TagIcon, Layers } from "lucide-react";
 import Link from "next/link";
 
-export default async function BlogPage() {
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+  const { q: searchQuery } = await searchParams;
   await dbConnect();
   
   const [rawPosts, categories, series] = await Promise.all([
@@ -101,23 +102,21 @@ export default async function BlogPage() {
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-8">
-               <BlogList initialPosts={posts} />
+               <BlogList initialPosts={posts} initialSearch={searchQuery} />
             </div>
 
             {/* Sidebar */}
             <aside className="lg:col-span-4 space-y-10">
-                {/* Search */}
                 <div className="p-8 rounded-[2.5rem] bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/[0.05] shadow-sm">
                     <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
                         <SearchIcon className="w-5 h-5 text-primary-500" />
-                        Search
+                        Quick Find
                     </h3>
-                    <div className="relative group">
-                        <input 
-                            type="text" 
-                            placeholder="Find an article..." 
-                            className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium"
-                        />
+                    <p className="text-[12px] text-gray-500 dark:text-neutral-500 font-medium mb-4 leading-relaxed">
+                        Looking for something specific? Start typing to filter the articles.
+                    </p>
+                    <div className="text-xs font-bold text-primary-500 uppercase tracking-widest bg-primary-500/5 px-4 py-2 rounded-xl border border-primary-500/10 inline-block">
+                        Search in {posts.length} Articles
                     </div>
                 </div>
 

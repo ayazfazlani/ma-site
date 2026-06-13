@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
     const body = await req.json();
-    const { title, slug, excerpt, content, category, author, image, published, metaTitle, metaDesc } = body;
+    const { title, slug, excerpt, content, category, author, image, published, metaTitle, metaDesc, readTime } = body;
 
     const post = await PostModel.create({
       title,
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       orderInSeries: body.orderInSeries || 0,
       metaTitle: metaTitle || title,
       metaDesc: metaDesc || excerpt,
-      readTime: `${Math.ceil(content.split(" ").length / 200)} min read`,
+      readTime: readTime || `${Math.ceil(content.split(" ").length / 200)} min read`,
     });
 
     const plain = post.toObject();
@@ -37,7 +37,7 @@ export async function PUT(req: Request) {
     try {
       await dbConnect();
       const body = await req.json();
-      const { id, title, slug, excerpt, content, category, author, image, published, metaTitle, metaDesc } = body;
+      const { id, title, slug, excerpt, content, category, author, image, published, metaTitle, metaDesc, readTime } = body;
   
       const post = await PostModel.findByIdAndUpdate(
         id,
@@ -52,9 +52,9 @@ export async function PUT(req: Request) {
           published,
           seriesId: body.seriesId || null,
           orderInSeries: body.orderInSeries || 0,
-          metaTitle,
-          metaDesc,
-          readTime: `${Math.ceil(content.split(" ").length / 200)} min read`,
+          metaTitle: metaTitle || title,
+          metaDesc: metaDesc || excerpt,
+          readTime: readTime || `${Math.ceil(content.split(" ").length / 200)} min read`,
         },
         { new: true }
       ).lean();

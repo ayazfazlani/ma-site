@@ -87,18 +87,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       .lean();
   }
 
-  // Content Splitting Logic
-  const paragraphs = post.content.split('</p>');
+  // Content Splitting Logic for Inline Related Posts
+  const paragraphs = post.content.split('</p>').filter((p: string) => p.trim().length > 0);
   const totalParas = paragraphs.length;
   
-  // Only inject if there's enough content
-  const canInject = totalParas > 4;
-  const chunk1End = Math.floor(totalParas / 3);
-  const chunk2End = Math.floor((totalParas * 2) / 2.5); // Near the end but not quite
-
-  const part1 = paragraphs.slice(0, chunk1End).join('</p>') + (chunk1End > 0 ? '</p>' : '');
-  const part2 = paragraphs.slice(chunk1End, chunk2End).join('</p>') + (chunk2End > chunk1End ? '</p>' : '');
-  const part3 = paragraphs.slice(chunk2End).join('</p>');
+  // Decide how many to inject (up to 3)
+  const injectCount = totalParas > 12 ? 3 : totalParas > 8 ? 2 : totalParas > 4 ? 1 : 0;
+  
+  const chunks = [];
+  if (injectCount > 0) {
+    const chunkSize = Math.floor(totalParas / (injectCount + 1));
+    for (let i = 0; i <= injectCount; i++) {
+        const start = i * chunkSize;
+        const end = (i === injectCount) ? totalParas : (i + 1) * chunkSize;
+        chunks.push(paragraphs.slice(start, end).join('</p>') + '</p>');
+    }
+  } else {
+    chunks.push(post.content);
+  }
 
   return (
     <article className="pt-24 sm:pt-32 pb-16 sm:pb-24 dark:bg-dark-950 min-h-screen">
@@ -125,7 +131,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.15] sm:leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight tracking-tight">
               {post.title}
             </h1>
 
@@ -221,8 +227,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Content Section */}
             <div className="relative">
               <div className={cn(
-                "prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none",
-                "prose-headings:font-black prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
+                "prose prose-sm sm:prose-base dark:prose-invert max-w-none",
+                "prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
                 "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:font-medium",
                 "prose-strong:text-primary-600 dark:prose-strong:text-primary-400 prose-strong:font-black",
                 "prose-img:rounded-2xl sm:prose-img:rounded-3xl prose-img:shadow-xl sm:prose-img:shadow-2xl prose-img:border prose-img:border-gray-100 dark:prose-img:border-white/[0.05] prose-img:max-w-full prose-img:h-auto",
@@ -232,17 +238,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 "prose-pre:overflow-x-auto prose-pre:max-w-full prose-pre:text-xs sm:prose-pre:text-sm",
                 "[&_iframe]:max-w-full [&_iframe]:rounded-xl sm:[&_iframe]:rounded-2xl [&_video]:max-w-full [&_video]:rounded-xl sm:[&_video]:rounded-2xl",
               )}>
-                {canInject ? (
-                  <>
-                    <div dangerouslySetInnerHTML={{ __html: part1 }} />
-                    {finalRelated[0] && <InContentRelated post={finalRelated[0]} />}
-                    <div dangerouslySetInnerHTML={{ __html: part2 }} />
-                    {finalRelated[1] && <InContentRelated post={finalRelated[1]} />}
-                    <div dangerouslySetInnerHTML={{ __html: part3 }} />
-                  </>
-                ) : (
-                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                )}
+                {chunks.map((chunk, index) => (
+                  <div key={index}>
+                    <div dangerouslySetInnerHTML={{ __html: chunk }} />
+                    {index < injectCount && finalRelated[index] && (
+                      <InContentRelated post={finalRelated[index]} />
+                    )}
+                  </div>
+                ))}
               </div>
 
               {/* Footer tags */}

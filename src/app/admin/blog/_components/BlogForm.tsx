@@ -30,6 +30,7 @@ export default function BlogForm({ initialData }: BlogFormProps) {
     orderInSeries: initialData?.orderInSeries || 0,
     metaTitle: initialData?.metaTitle || "",
     metaDesc: initialData?.metaDesc || "",
+    readTime: initialData?.readTime || "",
   });
 
   const [activeTab, setActiveTab] = useState("content");
@@ -194,6 +195,18 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                                 placeholder="Tell your story here..."
                             />
                         </div>
+
+                        <div className="space-y-3">
+                            <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Article Excerpt (Short Summary)</label>
+                            <textarea
+                                name="excerpt"
+                                value={formData.excerpt}
+                                onChange={handleChange}
+                                rows={3}
+                                placeholder="Write a short teaser for the article list..."
+                                className="w-full px-5 py-4 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 transition-all leading-relaxed"
+                            />
+                        </div>
                     </div>
                 ) : (
                     <div className="space-y-10 animate-in fade-in zoom-in-95 duration-500">
@@ -239,6 +252,17 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                                     <span className="text-[11px] text-gray-400 font-medium">Recommended: 150-160 chars</span>
                                     <span className={cn("text-[11px] font-bold", formData.metaDesc.length > 160 ? "text-red-500" : "text-primary-500")}>{formData.metaDesc.length} characters</span>
                                 </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Read Time (e.g. 5 min read)</label>
+                                <input
+                                    name="readTime"
+                                    value={formData.readTime}
+                                    onChange={handleChange}
+                                    placeholder="Leave blank to auto-calculate..."
+                                    className="w-full px-5 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold focus:ring-2 focus:ring-primary-500/20 transition-all"
+                                />
                             </div>
                         </div>
                     </div>
