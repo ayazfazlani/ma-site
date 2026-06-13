@@ -137,7 +137,7 @@ export default function Industries() {
                   </h3>
                   <p
                     className={`text-sm mb-3 leading-relaxed ${
-                      isDark ? "text-neutral-500" : "text-gray-400"
+                      isDark ? "text-neutral-400" : "text-gray-500"
                     }`}
                   >
                     {industry.description}

@@ -46,8 +46,11 @@ export default function FaqSection({
               <li key={item.question}>
                 <button
                   type="button"
+                  id={`faq-btn-${index}`}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${index}`}
+                  aria-label={item.question}
                   className={`w-full text-left rounded-2xl border transition-colors px-5 py-4 flex items-start justify-between gap-4 ${
                     isDark
                       ? "bg-white/[0.03] border-white/[0.08] hover:border-white/[0.12] hover:bg-white/[0.05]"
@@ -69,6 +72,9 @@ export default function FaqSection({
                 <AnimatePresence initial={false}>
                   {isOpen ? (
                     <motion.div
+                      id={`faq-panel-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

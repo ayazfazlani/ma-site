@@ -57,23 +57,21 @@ export default async function Home() {
 
       <Hero partners={partners} />
       <HorizontalScroll />
-      <div className="content-deferred">
-        <Portfolio />
-        <Services />
-        <Stats />
-        <TechStack />
-        <Process />
-        <Industries />
-        <AuditForm />
-        <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />
-        <FaqSection
-          className="bg-gray-50 dark:bg-dark-950"
-          title="Frequently asked questions"
-          subtitle="Common questions about working with MA Softs."
-          items={servicesHubFaqs}
-        />
-        <Testimonials />
-      </div>
+      <Portfolio />
+      <Services />
+      <Stats />
+      <TechStack />
+      <Process />
+      <Industries />
+      <AuditForm />
+      <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />
+      <FaqSection
+        className="bg-gray-50 dark:bg-dark-950"
+        title="Frequently asked questions"
+        subtitle="Common questions about working with MA Softs."
+        items={servicesHubFaqs}
+      />
+      <Testimonials />
     </>
   );
 }

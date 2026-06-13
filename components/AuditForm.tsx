@@ -152,7 +152,7 @@ export default function AuditForm() {
                   </h3>
                   <p
                     className={`text-sm mb-8 ${
-                      isDark ? "text-neutral-500" : "text-gray-400"
+                      isDark ? "text-neutral-400" : "text-gray-400"
                     }`}
                   >
                     Fill in the details below and our team will get back to you.
@@ -266,7 +266,7 @@ export default function AuditForm() {
 
                     <p
                       className={`text-xs text-center mt-4 ${
-                        isDark ? "text-neutral-600" : "text-gray-400"
+                        isDark ? "text-neutral-400" : "text-gray-400"
                       }`}
                     >
                       We respect your privacy. Your information is safe with us.
