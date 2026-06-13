@@ -27,7 +27,7 @@ export default function ServicesWrapper({ children }: { children: React.ReactNod
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-16 lg:mb-20"
+          className="max-w-3xl mb-12 lg:mb-16"
         >
           <span
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-6 ${
@@ -40,13 +40,13 @@ export default function ServicesWrapper({ children }: { children: React.ReactNod
             Our Services
           </span>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             Our Core <span className="gradient-text">Services</span>
           </h2>
-          <p className={`text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
             Comprehensive software development solutions tailored to grow your
             business and establish your online presence in the competitive digital landscape.
           </p>

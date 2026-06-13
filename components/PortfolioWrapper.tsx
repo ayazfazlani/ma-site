@@ -26,7 +26,7 @@ export default function PortfolioWrapper({ children }: { children: React.ReactNo
         }`}
       />
 
-      <div className="container-custom mx-auto relative z-10 mb-12 lg:mb-16">
+      <div className="container-custom mx-auto relative z-10 mb-10 lg:mb-14">
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,13 +45,13 @@ export default function PortfolioWrapper({ children }: { children: React.ReactNo
             Proof of Excellence
           </span>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             My Featured <span className="gradient-text">Works</span>
           </h2>
-          <p className={`text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
             A selection of complex software solutions and high-performance web applications 
             crafted for startups and established businesses.
           </p>

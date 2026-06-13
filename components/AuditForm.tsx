@@ -58,7 +58,7 @@ export default function AuditForm() {
               Free SEO Audit
             </span>
             <h2
-              className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -66,7 +66,7 @@ export default function AuditForm() {
               <span className="gradient-text">Today</span>
             </h2>
             <p
-              className={`text-lg mb-10 leading-relaxed ${
+              className={`text-base sm:text-lg mb-8 leading-relaxed ${
                 isDark ? "text-neutral-400" : "text-gray-500"
               }`}
             >

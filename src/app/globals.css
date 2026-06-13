@@ -128,9 +128,9 @@ html.light {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
     color: var(--color-text-primary);
   }
 
@@ -175,17 +175,17 @@ html.light {
 }
 
 @utility section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   @media (min-width: 768px) {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   @media (min-width: 1024px) {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 

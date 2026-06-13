@@ -65,7 +65,7 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 lg:mb-16"
         >
           <span
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-6 ${
@@ -78,14 +78,14 @@ export default function Process() {
             Our Process
           </span>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             From Vision to{" "}
             <span className="gradient-text">Results</span>
           </h2>
-          <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
             Our proven 4-step methodology ensures consistent, measurable results
             for every client.
           </p>
@@ -132,9 +132,9 @@ export default function Process() {
 
                   {/* Icon */}
                   <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}
                   >
-                    <step.icon className="w-7 h-7 text-white" />
+                    <step.icon className="w-6 h-6 text-white" />
                   </div>
 
                   <h3

@@ -28,14 +28,14 @@ export default function FaqSection({
   return (
     <section className={`section-padding ${className}`}>
       <div className="container-custom mx-auto px-4 max-w-3xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2
             className={`text-3xl sm:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}
           >
             {title}
           </h2>
           {subtitle ? (
-            <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-600"}`}>{subtitle}</p>
+            <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-600"}`}>{subtitle}</p>
           ) : null}
         </div>
 

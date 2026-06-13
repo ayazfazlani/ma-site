@@ -80,8 +80,8 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
       </div>
 
       {/* Content */}
-      <div className="container-custom relative z-10 mx-auto pt-32 pb-20 w-full">
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="container-custom relative z-10 mx-auto pt-28 pb-16 w-full">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <motion.div
             variants={fadeUp}
@@ -107,7 +107,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             initial="hidden"
             animate="visible"
             custom={0.1}
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] mb-8 ${
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -118,7 +118,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             </span>
             <br />
             <span
-              className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold opacity-80 ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold opacity-70 ${
                 isDark ? "text-neutral-400" : "text-gray-400"
               }`}
             >
@@ -132,7 +132,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             initial="hidden"
             animate="visible"
             custom={0.2}
-            className={`text-lg sm:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
+            className={`text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed ${
               isDark ? "text-neutral-400" : "text-gray-500"
             }`}
           >
@@ -207,7 +207,7 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             initial="hidden"
             animate="visible"
             custom={0.45}
-            className={`grid grid-cols-3 gap-6 sm:gap-10 max-w-3xl mx-auto pt-10 border-t ${
+            className={`grid grid-cols-3 gap-6 sm:gap-10 max-w-2xl mx-auto pt-8 border-t ${
               isDark ? "border-white/[0.06]" : "border-gray-200"
             }`}
           >
@@ -218,15 +218,15 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div
-                  className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-2 tracking-tight ${
+                  className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-1 tracking-tight ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
                   {stat.value}
                 </div>
                 <div
-                  className={`text-xs sm:text-sm font-medium uppercase tracking-widest ${
-                    isDark ? "text-neutral-500" : "text-gray-400"
+                  className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-widest ${
+                    isDark ? "text-neutral-600" : "text-gray-400"
                   }`}
                 >
                   {stat.label}

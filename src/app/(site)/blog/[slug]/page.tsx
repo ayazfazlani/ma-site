@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <article className="pt-24 sm:pt-32 pb-16 sm:pb-24 dark:bg-dark-950 min-h-screen">
+    <article className="pt-20 sm:pt-28 pb-16 sm:pb-24 dark:bg-dark-950 min-h-screen">
       <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-4xl">
           <Link
@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
 
           {/* Header Section */}
-          <div className="space-y-4 sm:space-y-6 mb-10 sm:mb-16">
+          <div className="space-y-4 mb-10 sm:mb-14">
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-2">
               <span className="px-3 py-1 sm:px-4 sm:py-1.5 rounded-xl bg-primary-500/10 text-primary-600 dark:text-primary-400 text-xs font-black uppercase tracking-widest border border-primary-500/10 leading-none">
                 {post.category || "General"}
@@ -131,7 +131,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-gray-900 dark:text-white leading-[1.2] tracking-tight">
               {post.title}
             </h1>
 

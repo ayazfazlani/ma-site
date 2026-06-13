@@ -26,7 +26,7 @@ export default function TestimonialsWrapper({ children }: { children: React.Reac
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 lg:mb-16"
         >
           <span
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-6 ${
@@ -39,13 +39,13 @@ export default function TestimonialsWrapper({ children }: { children: React.Reac
             Social Proof
           </span>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-7xl font-black mb-8 tracking-tight ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             Voice of <span className="gradient-text">Success</span>
           </h2>
-          <p className={`text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
             Businesses that have transformed their core digital presence with our bespoke technical expertise.
           </p>
         </motion.div>

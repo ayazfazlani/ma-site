@@ -84,20 +84,20 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
       <JsonLd data={blogBreadcrumb} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-16 lg:py-24">
         <ScrollTray src="/tray.mp4" className="opacity-20" />
         <div className="container-custom mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Our <span className="gradient-text">Blog</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-medium">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
             Insights, tips, and strategies for software development success
           </p>
         </div>
       </section>
 
       {/* Blog Content with Sidebar */}
-      <section className="py-20 lg:py-32 bg-gray-50 dark:bg-dark-950">
+      <section className="section-padding bg-gray-50 dark:bg-dark-950">
         <div className="container-custom mx-auto px-4">
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Main Content */}
