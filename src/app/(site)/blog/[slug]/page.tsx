@@ -47,46 +47,37 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   await dbConnect();
-  const post = await PostModel.findOne({ slug }).lean() as any;
+  // Start all top-level queries in parallel
+  const [postRaw, firstRelatedRaw] = await Promise.all([
+    PostModel.findOne({ slug, published: true }).lean(),
+    PostModel.find({ slug: { $ne: slug }, published: true, category: null }).limit(4).sort({ createdAt: -1 }).lean(), // Placeholders
+  ]);
 
-  if (!post || !post.published) {
-    return notFound();
-  }
+  const post = postRaw as any;
+  if (!post) return notFound();
 
-  // Fetch related posts (same category or latest)
-  const relatedPosts = await PostModel.find({ 
-    slug: { $ne: slug }, 
-    published: true,
-    category: post.category 
-  })
-  .limit(4)
-  .sort({ createdAt: -1 })
-  .lean() as any[];
+  // Now we know the post, we can fetch specific related and series info in parallel
+  const [relatedByCategory, generalRelated, seriesInfo] = await Promise.all([
+    PostModel.find({ slug: { $ne: slug }, published: true, category: post.category }).limit(4).sort({ createdAt: -1 }).lean(),
+    PostModel.find({ slug: { $ne: slug }, published: true }).limit(4).sort({ createdAt: -1 }).lean(),
+    post.seriesId ? (async () => {
+      const SeriesModel = (await import("@/models/Series")).default;
+      const s = await SeriesModel.findById(post.seriesId).lean();
+      const ps = await PostModel.find({ seriesId: post.seriesId, published: true }).sort({ orderInSeries: 1 }).select("title slug orderInSeries").lean();
+      return { series: s, seriesPosts: ps };
+    })() : Promise.resolve(null)
+  ]);
 
-  // If not enough related in same category, fill with others
+  const relatedPosts = relatedByCategory as any[];
   let finalRelated = [...relatedPosts];
   if (finalRelated.length < 4) {
-    const additional = await PostModel.find({
-      slug: { $ne: slug },
-      published: true,
-      _id: { $nin: finalRelated.map(p => p._id) }
-    })
-    .limit(4 - finalRelated.length)
-    .sort({ createdAt: -1 })
-    .lean() as any[];
+    const existingIds = new Set(finalRelated.map(p => p._id.toString()));
+    const additional = (generalRelated as any[]).filter(p => !existingIds.has(p._id.toString())).slice(0, 4 - finalRelated.length);
     finalRelated = [...finalRelated, ...additional];
   }
 
-  let series: any | null = null;
-  let seriesPosts: any[] = [];
-  if (post.seriesId) {
-    const SeriesModel = (await import("@/models/Series")).default;
-    series = await SeriesModel.findById(post.seriesId).lean() as any;
-    seriesPosts = await PostModel.find({ seriesId: post.seriesId, published: true })
-      .sort({ orderInSeries: 1 })
-      .select("title slug orderInSeries")
-      .lean();
-  }
+  const series = seriesInfo?.series || null;
+  const seriesPosts = seriesInfo?.seriesPosts || [];
 
   // Content Splitting Logic for Inline Related Posts
   const paragraphs = post.content.split('</p>').filter((p: string) => p.trim().length > 0);

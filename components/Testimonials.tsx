@@ -4,9 +4,13 @@ import TestimonialModel from "@/models/Testimonial";
 import TestimonialsWrapper from "./TestimonialsWrapper";
 import TestimonialsList from "./TestimonialsList";
 
-export default async function Testimonials() {
-  await dbConnect();
-  const dbTestimonials = await TestimonialModel.find({}).sort({ createdAt: -1 }).lean();
+export default async function Testimonials({ initialTestimonials }: { initialTestimonials?: any[] }) {
+  let dbTestimonials = initialTestimonials;
+
+  if (!initialTestimonials) {
+    await dbConnect();
+    dbTestimonials = await TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean();
+  }
 
   const fallbackTestimonials = [
     {
@@ -23,7 +27,7 @@ export default async function Testimonials() {
     }
   ];
 
-  const raw = dbTestimonials.length > 0 ? dbTestimonials : fallbackTestimonials;
+  const raw = (dbTestimonials && dbTestimonials.length > 0) ? dbTestimonials : fallbackTestimonials;
   const testimonials = JSON.parse(JSON.stringify(raw.map((t: any) => ({ ...t, _id: undefined, id: t._id?.toString?.() || t.id }))));
 
   return (

@@ -51,7 +51,7 @@ const DUMMY_PROJECTS: PortfolioCard[] = [
   }
 ];
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function PortfolioPage() {
   await dbConnect();

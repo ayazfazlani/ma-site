@@ -4,14 +4,16 @@ import PartnerModel from "@/models/Partner";
 import HorizontalScrollWrapper from "./HorizontalScrollWrapper";
 import HorizontalScrollList from "./HorizontalScrollList";
 
-export default async function HorizontalScroll() {
-  let dbPartners: any[] = [];
-  try {
-    await dbConnect();
-    dbPartners = await PartnerModel.find({ active: true }).sort({ order: 1 }).lean();
-    dbPartners = dbPartners.map((p: any) => ({ ...p, _id: undefined, id: p._id?.toString() }));
-  } catch {
-    dbPartners = [];
+export default async function HorizontalScroll({ initialPartners }: { initialPartners?: any[] }) {
+  let dbPartners: any[] = initialPartners || [];
+  if (!initialPartners) {
+    try {
+      await dbConnect();
+      dbPartners = await PartnerModel.find({ active: true }).sort({ order: 1 }).lean();
+      dbPartners = dbPartners.map((p: any) => ({ ...p, _id: undefined, id: p._id?.toString() }));
+    } catch {
+      dbPartners = [];
+    }
   }
 
   const fallbackBrands = ["TechSolutions", "StyleMart", "EduLearn", "HealthFirst", "FoodieHub", "TravelPK", "PropEstate"];

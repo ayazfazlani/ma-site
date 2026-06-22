@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 
-export const dynamic = "force-dynamic"; // Skip static generation during build
+export const revalidate = 3600; // 1 hour revalidation
 
 const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },
@@ -39,14 +39,27 @@ const homeBreadcrumb = getBreadcrumbSchema([
 import dbConnect from "@/lib/mongodb";
 import PartnerModel from "@/models/Partner";
 import TestimonialModel from "@/models/Testimonial";
+import ServiceModel from "@/models/Service";
+import ProjectModel from "@/models/Project";
 
 export default async function Home() {
   await dbConnect();
-  const rawPartners = await PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean();
-  const partners = JSON.parse(JSON.stringify(rawPartners));
+  
+  const [partners, avatars, services, projects, testimonials] = await Promise.all([
+    PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean(),
+    TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean(),
+    ServiceModel.find({ active: true }).sort({ order: 1 }).lean(),
+    ProjectModel.find({ active: true }).sort({ order: 1 }).lean(),
+    TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean(),
+  ]);
 
-  const rawAvatars = await TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean();
-  const avatars = JSON.parse(JSON.stringify(rawAvatars));
+  const serializedData = JSON.parse(JSON.stringify({ 
+    partners, 
+    avatars, 
+    services: services.map((s: any) => ({ ...s, _id: undefined, id: s._id?.toString() })),
+    projects,
+    testimonials
+  }));
 
   return (
     <>
@@ -59,12 +72,12 @@ export default async function Home() {
         <JsonLd key={index} data={schema} />
       ))}
 
-      <Hero partners={partners} avatars={avatars} />
-      <HorizontalScroll />
-      <Portfolio />
+      <Hero partners={serializedData.partners} avatars={serializedData.avatars} />
+      <HorizontalScroll initialPartners={serializedData.partners} />
+      <Portfolio initialProjects={serializedData.projects} />
       
       <div className="content-deferred">
-        <Services />
+        <Services initialServices={serializedData.services} />
         <Stats />
         <TechStack />
         <Process />
@@ -77,7 +90,7 @@ export default async function Home() {
           subtitle="Common questions about working with MA Softs."
           items={servicesHubFaqs}
         />
-        <Testimonials />
+        <Testimonials initialTestimonials={serializedData.testimonials} />
       </div>
     </>
   );

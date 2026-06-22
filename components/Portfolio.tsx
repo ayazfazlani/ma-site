@@ -4,9 +4,13 @@ import ProjectModel from "@/models/Project";
 import PortfolioWrapper from "./PortfolioWrapper";
 import PortfolioList, { type PortfolioListProject } from "./PortfolioList";
 
-export default async function Portfolio() {
-  await dbConnect();
-  const dbProjects = await ProjectModel.find({ active: true }).sort({ order: 1 }).lean();
+export default async function Portfolio({ initialProjects }: { initialProjects?: any[] }) {
+  let dbProjects: any[] = initialProjects || [];
+
+  if (!initialProjects) {
+    await dbConnect();
+    dbProjects = await ProjectModel.find({ active: true }).sort({ order: 1 }).lean();
+  }
 
   // Simplified static projects as backup if DB is empty
   const staticProjects = [
@@ -27,7 +31,7 @@ export default async function Portfolio() {
   ];
 
   type RawEntry = PortfolioListProject & { _id?: { toString(): string }; id?: string };
-  const raw = (dbProjects.length > 0 ? dbProjects : staticProjects) as RawEntry[];
+  const raw = (dbProjects && dbProjects.length > 0 ? dbProjects : staticProjects) as RawEntry[];
   const projects: PortfolioListProject[] = JSON.parse(
     JSON.stringify(
       raw.map((p) => ({
