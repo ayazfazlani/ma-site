@@ -22,16 +22,16 @@ const fadeUp: any = {
   }),
 };
 
-export default function Hero({ partners = [] }: { partners?: any[] }) {
+export default function Hero({ partners = [], avatars = [] }: { partners?: any[], avatars?: any[] }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const displayPartners = partners.length > 0 ? partners : [
-    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=1" },
-    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=2" },
-    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=3" },
-    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=4" },
-    { logo: "https://api.dicebear.com/7.x/avataaars/svg?seed=5" },
+  const displayAvatars = avatars.length > 0 ? avatars : [
+    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=1", name: "Client 1" },
+    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=2", name: "Client 2" },
+    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=3", name: "Client 3" },
+    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=4", name: "Client 4" },
+    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=5", name: "Client 5" },
   ];
 
   // Skip heavy Three.js canvas on mobile to save CPU/GPU
@@ -183,14 +183,14 @@ export default function Hero({ partners = [] }: { partners?: any[] }) {
             style={{ animationDelay: '0.4s' }}
           >
             <div className="flex -space-x-3">
-              {displayPartners.slice(0, 5).map((p, i) => (
+              {displayAvatars.slice(0, 5).map((a, i) => (
                 <div 
                   key={i} 
                   className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl relative ${i >= 3 ? "hidden sm:block" : ""}`}
                 >
                   <Image 
-                    src={p.logo} 
-                    alt={p.name || "Business Partner Logo"} 
+                    src={a.image || a.logo} 
+                    alt={a.name || "Happy Client Avatar"} 
                     fill
                     className="object-cover"
                   />

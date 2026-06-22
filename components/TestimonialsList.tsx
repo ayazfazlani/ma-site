@@ -53,7 +53,7 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
 
             {/* Quote Content */}
             <blockquote className="mb-8 max-w-2xl mx-auto px-4">
-              <p className={`text-xl sm:text-2xl lg:text-3xl font-bold leading-relaxed tracking-tight ${
+              <p className={`text-xl sm:text-2xl lg:text-3xl font-medium leading-relaxed tracking-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}>
                 &ldquo;{current.content}&rdquo;

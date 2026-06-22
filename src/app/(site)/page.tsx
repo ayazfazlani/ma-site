@@ -38,11 +38,15 @@ const homeBreadcrumb = getBreadcrumbSchema([
 
 import dbConnect from "@/lib/mongodb";
 import PartnerModel from "@/models/Partner";
+import TestimonialModel from "@/models/Testimonial";
 
 export default async function Home() {
   await dbConnect();
   const rawPartners = await PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean();
   const partners = JSON.parse(JSON.stringify(rawPartners));
+
+  const rawAvatars = await TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean();
+  const avatars = JSON.parse(JSON.stringify(rawAvatars));
 
   return (
     <>
@@ -55,7 +59,7 @@ export default async function Home() {
         <JsonLd key={index} data={schema} />
       ))}
 
-      <Hero partners={partners} />
+      <Hero partners={partners} avatars={avatars} />
       <HorizontalScroll />
       <Portfolio />
       

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import { Plus, Trash2, Quote, Star, User, Loader2, Pencil, X, Check, Image as ImageIcon } from "lucide-react";
+import { Plus, Trash2, Quote, Star, User, Loader2, Pencil, X, Check, Image as ImageIcon, Layout, Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CldUploadWidget } from "next-cloudinary";
 
@@ -13,6 +13,9 @@ interface TestimonialItem {
   content: string;
   rating: number;
   image?: string;
+  active: boolean;
+  showInHero: boolean;
+  order: number;
 }
 
 export default function TestimonialsManager() {
@@ -27,6 +30,9 @@ export default function TestimonialsManager() {
     content: "",
     rating: 5,
     image: "",
+    active: true,
+    showInHero: false,
+    order: 0,
   });
 
   const fetchTestimonials = async () => {
@@ -45,7 +51,7 @@ export default function TestimonialsManager() {
   }, []);
 
   const resetForm = () => {
-    setFormData({ name: "", role: "", content: "", rating: 5, image: "" });
+    setFormData({ name: "", role: "", content: "", rating: 5, image: "", active: true, showInHero: false, order: 0 });
     setEditingId(null);
     setShowForm(false);
   };
@@ -57,6 +63,9 @@ export default function TestimonialsManager() {
       content: t.content,
       rating: t.rating,
       image: t.image || "",
+      active: t.active,
+      showInHero: t.showInHero || false,
+      order: t.order || 0,
     });
     setEditingId(t._id);
     setShowForm(true);
@@ -95,6 +104,22 @@ export default function TestimonialsManager() {
       }
     } catch {
       toast.error("An error occurred.");
+    }
+  };
+
+  const toggleField = async (id: string, field: "active" | "showInHero", value: boolean) => {
+    try {
+      const res = await fetch(`/api/admin/testimonials/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ [field]: !value }),
+      });
+      if (res.ok) {
+        fetchTestimonials();
+        toast.success("Updated!");
+      }
+    } catch {
+      toast.error("Update failed.");
     }
   };
 
@@ -199,6 +224,42 @@ export default function TestimonialsManager() {
                 {[5, 4, 3, 2, 1].map(r => <option key={r} value={r}>{r} Stars</option>)}
               </select>
             </div>
+            <div className="space-y-2">
+              <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest pl-1">Sort Order</label>
+              <input
+                type="number"
+                value={formData.order}
+                onChange={(e) => setFormData({ ...formData, order: Number(e.target.value) })}
+                className="w-full px-5 py-3.5 rounded-2xl bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold outline-none"
+              />
+            </div>
+            <div className="flex items-center gap-8 pt-8 md:col-span-2">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={formData.active}
+                    onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
+                    className="hidden"
+                  />
+                  <div className={cn("w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all", formData.active ? "bg-primary-500 border-primary-500" : "border-gray-200 dark:border-white/10")}>
+                    {formData.active && <Check className="w-4 h-4 text-white" />}
+                  </div>
+                  <span className="text-sm font-bold text-gray-600 dark:text-neutral-400 uppercase tracking-widest">Active</span>
+                </label>
+
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={formData.showInHero}
+                    onChange={(e) => setFormData({ ...formData, showInHero: e.target.checked })}
+                    className="hidden"
+                  />
+                  <div className={cn("w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all", formData.showInHero ? "bg-accent-500 border-accent-500" : "border-gray-200 dark:border-white/10")}>
+                    {formData.showInHero && <Check className="w-4 h-4 text-white" />}
+                  </div>
+                  <span className="text-sm font-bold text-gray-600 dark:text-neutral-400 uppercase tracking-widest">Show in Hero Stack</span>
+                </label>
+            </div>
             <div className="md:col-span-2 flex items-center gap-3 pt-4">
               <button disabled={actionLoading} type="submit" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-primary-600 text-white font-bold hover:bg-primary-700 transition-all disabled:opacity-50">
                 {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
@@ -234,6 +295,29 @@ export default function TestimonialsManager() {
                   <h4 className="font-bold text-gray-900 dark:text-white text-[15px]">{t.name}</h4>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">{t.role}</p>
                 </div>
+              </div>
+
+              <div className="flex items-center gap-3 mt-6 pt-4 border-t border-gray-50 dark:border-white/[0.05]">
+                <button 
+                    onClick={() => toggleField(t._id, "active", t.active)}
+                    className={cn(
+                        "flex-1 inline-flex items-center justify-center gap-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border",
+                        t.active ? "bg-green-500/10 border-green-500/20 text-green-600" : "bg-gray-100 border-gray-200 text-gray-400"
+                    )}
+                >
+                    {t.active ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+                    {t.active ? "Active" : "Internal"}
+                </button>
+                <button 
+                    onClick={() => toggleField(t._id, "showInHero", t.showInHero)}
+                    className={cn(
+                        "flex-1 inline-flex items-center justify-center gap-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border",
+                        t.showInHero ? "bg-accent-500/10 border-accent-500/20 text-accent-600" : "bg-gray-100 border-gray-200 text-gray-400"
+                    )}
+                >
+                    <Layout className="w-3 h-3" />
+                    Hero Stack
+                </button>
               </div>
             </div>
           ))}

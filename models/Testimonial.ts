@@ -21,6 +21,14 @@ const TestimonialSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    showInHero: {
+      type: Boolean,
+      default: false,
+    },
+    order: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: { createdAt: true, updatedAt: false }, // Only createdAt in Prisma
