@@ -340,6 +340,28 @@ html.light .theme-card {
   overflow-x: hidden;
 }
 
+/* Ensure RTE images and videos are responsive */
+.prose img,
+.ql-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.75rem;
+  margin: 2rem auto;
+  display: block;
+}
+
+.prose iframe,
+.prose video,
+.ql-content iframe,
+.ql-content video {
+  max-width: 100% !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  border-radius: 1rem;
+  margin: 2rem 0;
+}
+
 /* ── Mobile-safe Tables ── */
 .prose table {
   display: block;
