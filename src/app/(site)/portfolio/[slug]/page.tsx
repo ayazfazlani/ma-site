@@ -72,7 +72,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
           <div className="absolute top-40 right-20 w-96 h-96 bg-primary-500 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10 animate-in fade-in slide-in-from-bottom-5 duration-700">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 animate-in fade-in slide-in-from-bottom-5 duration-700">
           {/* Navigation */}
           <Link
             href="/portfolio"
@@ -90,7 +90,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                 {project.category || "Case Study"}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight break-words">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight break-words">
               {project.title}
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-neutral-300 font-medium leading-relaxed max-w-3xl">
@@ -116,7 +116,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
         {/* Featured Image with Lightbox */}
         {project.image && (
@@ -136,7 +136,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         )}
 
         {/* Key Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-50/50 dark:from-primary-950/40 dark:to-primary-950/20 border border-primary-200 dark:border-primary-500/20 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-primary-600 text-white">
@@ -175,7 +175,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         </div>
 
         {/* Detailed Content */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
           <div className="lg:col-span-2">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Project</h2>
             <div className={[
@@ -249,7 +249,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         {relatedProjects.length > 0 && (
           <div className="mb-20">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">More Projects</h2>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {relatedProjects.map((rp) => (
                 <Link key={rp._id.toString()} href={`/portfolio/${rp.slug}`} className="group block">
                   <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm group-hover:shadow-xl transition-all duration-500 mb-5 bg-gray-50 dark:bg-dark-900">
