@@ -37,10 +37,12 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
   const { q: searchQuery } = await searchParams;
   await dbConnect();
   
-  const [rawPosts, categories, series] = await Promise.all([
-    PostModel.find({ published: true }).sort({ createdAt: -1 }).lean(),
+  const postsPerPage = 6;
+  const [rawPosts, categories, series, totalPosts] = await Promise.all([
+    PostModel.find({ published: true }).sort({ createdAt: -1 }).limit(postsPerPage).lean(),
     CategoryModel.find({}).sort({ name: 1 }).lean(),
     SeriesModel.find({ active: true }).sort({ order: 1 }).lean(),
+    PostModel.countDocuments({ published: true }),
   ]);
 
   type DbPost = {
@@ -102,7 +104,12 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-8">
-               <BlogList initialPosts={posts} initialSearch={searchQuery} />
+                <BlogList 
+                  initialPosts={posts} 
+                  initialSearch={searchQuery} 
+                  totalPosts={totalPosts} 
+                  postsPerPage={postsPerPage} 
+                />
             </div>
 
             {/* Sidebar */}

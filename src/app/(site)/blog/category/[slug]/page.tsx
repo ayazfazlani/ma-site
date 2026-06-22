@@ -36,10 +36,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const category = await CategoryModel.findOne({ slug }).lean() as any;
   if (!category) return notFound();
 
-  const [rawPosts, categories, series] = await Promise.all([
-    PostModel.find({ published: true, category: category.name }).sort({ createdAt: -1 }).lean(),
+  const postsPerPage = 6;
+  const [rawPosts, categories, series, totalPosts] = await Promise.all([
+    PostModel.find({ published: true, category: category.name }).sort({ createdAt: -1 }).limit(postsPerPage).lean(),
     CategoryModel.find({}).sort({ name: 1 }).lean(),
     SeriesModel.find({ active: true }).sort({ order: 1 }).lean(),
+    PostModel.countDocuments({ published: true, category: category.name }),
   ]);
 
   const posts = rawPosts.map((p: any) => ({
@@ -99,7 +101,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                     Showing <span className="text-primary-500">{posts.length}</span> articles
                 </h2>
               </div>
-              <BlogList initialPosts={posts} />
+              <BlogList 
+                initialPosts={posts} 
+                totalPosts={totalPosts} 
+                postsPerPage={postsPerPage} 
+                category={category.name}
+              />
             </div>
 
             <aside className="lg:col-span-4 space-y-10">

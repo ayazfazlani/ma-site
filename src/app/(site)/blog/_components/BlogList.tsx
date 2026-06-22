@@ -21,26 +21,76 @@ interface BlogPost {
   image: string | null;
 }
 
-export default function BlogList({ initialPosts, initialSearch = "" }: { initialPosts: BlogPost[], initialSearch?: string }) {
+export default function BlogList({ 
+  initialPosts, 
+  initialSearch = "", 
+  totalPosts, 
+  postsPerPage,
+  category,
+  seriesId
+}: { 
+  initialPosts: BlogPost[], 
+  initialSearch?: string, 
+  totalPosts: number, 
+  postsPerPage: number,
+  category?: string,
+  seriesId?: string
+}) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const [searchQuery, setSearchQuery] = useState(initialSearch);
-  const [filteredPosts, setFilteredPosts] = useState(initialPosts);
+  const [posts, setPosts] = useState(initialPosts);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(initialPosts.length < totalPosts);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
+  // Handle Search
   useEffect(() => {
-    const query = searchQuery.toLowerCase().trim();
-    if (!query) {
-      setFilteredPosts(initialPosts);
-      return;
-    }
+    const timer = setTimeout(async () => {
+      // Don't fetch on initial mount with initialSearch
+      if (searchQuery === initialSearch && page === 1 && posts.length === initialPosts.length) return;
 
-    const filtered = initialPosts.filter(post => 
-      post.title.toLowerCase().includes(query) || 
-      post.excerpt?.toLowerCase().includes(query) || 
-      post.category?.toLowerCase().includes(query)
-    );
-    setFilteredPosts(filtered);
-  }, [searchQuery, initialPosts]);
+      setIsSearching(true);
+      try {
+        const url = `/api/blog?q=${encodeURIComponent(searchQuery)}&page=1&limit=${postsPerPage}${category ? `&category=${encodeURIComponent(category)}` : ""}${seriesId ? `&seriesId=${encodeURIComponent(seriesId)}` : ""}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.posts) {
+          setPosts(data.posts);
+          setHasMore(data.hasMore);
+          setPage(1);
+        }
+      } catch (error) {
+        console.error("Search failed:", error);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  const loadMore = async () => {
+    if (isLoading || !hasMore) return;
+    setIsLoading(true);
+    const nextPage = page + 1;
+
+    try {
+      const url = `/api/blog?q=${encodeURIComponent(searchQuery)}&page=${nextPage}&limit=${postsPerPage}${category ? `&category=${encodeURIComponent(category)}` : ""}${seriesId ? `&seriesId=${encodeURIComponent(seriesId)}` : ""}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.posts) {
+        setPosts(prev => [...prev, ...data.posts]);
+        setHasMore(data.hasMore);
+        setPage(nextPage);
+      }
+    } catch (error) {
+      console.error("Failed to load more posts:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="space-y-10">
@@ -72,7 +122,12 @@ export default function BlogList({ initialPosts, initialSearch = "" }: { initial
         )}
       </div>
 
-      {filteredPosts.length === 0 ? (
+      {isSearching ? (
+         <div className="py-20 flex flex-col items-center gap-4 text-gray-500 animate-pulse">
+            <div className="w-10 h-10 border-4 border-primary-500 border-t-transparent rounded-full animate-spin" />
+            <p className="font-bold uppercase tracking-widest text-xs">Searching Articles...</p>
+         </div>
+      ) : posts.length === 0 ? (
         <div className="py-20 text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center mx-auto mb-6">
             <Search className="w-10 h-10 text-gray-300 dark:text-neutral-700" />
@@ -89,7 +144,7 @@ export default function BlogList({ initialPosts, initialSearch = "" }: { initial
       ) : (
         <div className="grid md:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredPosts.map((post) => {
+            {posts.map((post) => {
               return (
                 <motion.article
                   key={post.id}
@@ -174,6 +229,34 @@ export default function BlogList({ initialPosts, initialSearch = "" }: { initial
               );
             })}
           </AnimatePresence>
+        </div>
+      )}
+
+      {/* Load More Button */}
+      {hasMore && !isSearching && (
+        <div className="flex justify-center pt-10">
+          <button
+            onClick={loadMore}
+            disabled={isLoading}
+            className={cn(
+              "group relative flex items-center gap-3 px-10 py-4 rounded-full font-bold text-lg transition-all border overflow-hidden",
+              isDark 
+                ? "bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-primary-500/50" 
+                : "bg-white border-gray-200 text-gray-900 hover:border-primary-500/30 hover:shadow-xl"
+            )}
+          >
+            {isLoading ? (
+              <>
+                <div className="w-5 h-5 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />
+                <span>Loading More...</span>
+              </>
+            ) : (
+              <>
+                <span>Load More Articles</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </>
+            )}
+          </button>
         </div>
       )}
     </div>

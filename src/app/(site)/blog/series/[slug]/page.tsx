@@ -37,10 +37,12 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const seriesItem = await SeriesModel.findOne({ slug }).lean() as any;
   if (!seriesItem) return notFound();
 
-  const [rawPosts, categories, allSeries] = await Promise.all([
-    PostModel.find({ published: true, seriesId: seriesItem._id }).sort({ orderInSeries: 1 }).lean(),
+  const postsPerPage = 6;
+  const [rawPosts, categories, allSeries, totalPosts] = await Promise.all([
+    PostModel.find({ published: true, seriesId: seriesItem._id }).sort({ orderInSeries: 1 }).limit(postsPerPage).lean(),
     CategoryModel.find({}).sort({ name: 1 }).lean(),
     SeriesModel.find({ active: true }).sort({ order: 1 }).lean(),
+    PostModel.countDocuments({ published: true, seriesId: seriesItem._id }),
   ]);
 
   const posts = rawPosts.map((p: any) => ({
@@ -125,7 +127,12 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
                     <div className="w-2 h-8 bg-primary-500 rounded-full" />
                     Detailed View
                 </h2>
-                <BlogList initialPosts={posts} />
+                <BlogList 
+                  initialPosts={posts} 
+                  totalPosts={totalPosts} 
+                  postsPerPage={postsPerPage} 
+                  seriesId={seriesItem._id.toString()}
+                />
               </div>
             </div>
 
