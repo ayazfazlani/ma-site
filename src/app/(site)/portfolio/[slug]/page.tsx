@@ -90,7 +90,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                 {project.category || "Case Study"}
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight break-words">
               {project.title}
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-neutral-300 font-medium leading-relaxed max-w-3xl">
@@ -121,7 +121,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         {/* Featured Image with Lightbox */}
         {project.image && (
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Project Overview</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">Project Overview</h2>
             <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary-500/10 border border-gray-100 dark:border-white/[0.05] group">
               <Image
                 src={project.image}
@@ -136,8 +136,8 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         )}
 
         {/* Key Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-50/50 dark:from-primary-950/40 dark:to-primary-950/20 border border-primary-200 dark:border-primary-500/20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-50/50 dark:from-primary-950/40 dark:to-primary-950/20 border border-primary-200 dark:border-primary-500/20 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-primary-600 text-white">
                 <Target className="w-5 h-5" />
@@ -149,7 +149,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-50/50 dark:from-blue-950/40 dark:to-blue-950/20 border border-blue-200 dark:border-blue-500/20">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-50/50 dark:from-blue-950/40 dark:to-blue-950/20 border border-blue-200 dark:border-blue-500/20 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-blue-600 text-white">
                 <Zap className="w-5 h-5" />
@@ -161,7 +161,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-50/50 dark:from-emerald-950/40 dark:to-emerald-950/20 border border-emerald-200 dark:border-emerald-500/20">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-50/50 dark:from-emerald-950/40 dark:to-emerald-950/20 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-emerald-600 text-white">
                 <CheckCircle2 className="w-5 h-5" />
@@ -177,9 +177,9 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         {/* Detailed Content */}
         <div className="grid lg:grid-cols-3 gap-12 mb-20">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Project</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Project</h2>
             <div className={[
-              "ql-content prose prose-lg dark:prose-invert max-w-none",
+              "ql-content prose prose-base sm:prose-lg dark:prose-invert max-w-none",
               "prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
               "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:font-medium",
               "prose-strong:text-primary-600 dark:prose-strong:text-primary-400",
@@ -248,7 +248,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         {/* Related Projects (Internal Links for SEO) */}
         {relatedProjects.length > 0 && (
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">More Projects</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">More Projects</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
               {relatedProjects.map((rp) => (
                 <Link key={rp._id.toString()} href={`/portfolio/${rp.slug}`} className="group block">
@@ -281,8 +281,8 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         )}
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary-600 to-primary-500 rounded-3xl p-12 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">Interested in Your Project?</h2>
+        <div className="bg-gradient-to-r from-primary-600 to-primary-500 rounded-[2rem] sm:rounded-3xl p-8 sm:p-12 text-white text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Interested in Your Project?</h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Let&apos;s work together to bring your vision to life with the same quality and attention to detail.
           </p>

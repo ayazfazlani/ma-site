@@ -101,7 +101,7 @@ export default function ServiceDetailClient({
                 <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
                 Premium Service
               </div>
-              <h1 className={`text-5xl lg:text-7xl font-bold mb-6 tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
+              <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] ${isDark ? "text-white" : "text-gray-900"}`}>
                 {fullService.title.split(' ').map((word, i, arr) => (
                   i === arr.length - 1 ? <span key={i} className="gradient-text">{word}</span> : word + ' '
                 ))}
@@ -151,7 +151,7 @@ export default function ServiceDetailClient({
       {/* Key Features Section */}
       <section className={`py-24 ${isDark ? "bg-dark-900" : "bg-white"}`}>
         <div className="container-custom mx-auto px-4 text-center">
-          <h2 className={`text-4xl font-bold mb-16 ${isDark ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-16 ${isDark ? "text-white" : "text-gray-900"}`}>
             What's Included in our <span className="gradient-text">Service</span>
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -188,7 +188,7 @@ export default function ServiceDetailClient({
                 We bring together industry expertise and innovative technology to deliver results that matter.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {fullService.whyChooseUs.map((point, i) => (
                 <div key={i} className={`p-6 rounded-2xl border transition-all ${isDark ? "bg-dark-900/50 border-white/10" : "bg-white border-gray-100 shadow-sm"}`}>
                   <div className="w-10 h-10 rounded-xl bg-primary-600/10 flex items-center justify-center mb-4">
@@ -208,12 +208,12 @@ export default function ServiceDetailClient({
         <section className={`py-24 ${isDark ? "bg-dark-900" : "bg-white"}`}>
           <div className="container-custom mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className={`text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
+              <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
                 Our <span className="gradient-text">Working Process</span>
               </h2>
               <p className={isDark ? "text-neutral-400" : "text-gray-600"}>From initial discovery to successful deployment and beyond.</p>
             </div>
-            <div className="grid md:grid-cols-4 gap-8 relative">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
               {fullService.process.map((step, i) => (
                 <div key={i} className="relative group">
                   <div className={`p-8 rounded-3xl border h-full transition-all ${isDark ? "bg-white/[0.02] border-white/10 group-hover:bg-white/[0.04]" : "bg-gray-50 border-gray-100 group-hover:bg-white group-hover:shadow-lg"}`}>
@@ -238,7 +238,7 @@ export default function ServiceDetailClient({
         <section id="plans" className={`py-24 ${isDark ? "bg-dark-950" : "bg-gray-50"}`}>
           <div className="container-custom mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className={`text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
+              <h2 className={`text-3xl sm:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
                 Flexible <span className="gradient-text">Pricing Plans</span>
               </h2>
               <p className={isDark ? "text-neutral-400" : "text-gray-600"}>Choose the perfect plan for your business needs</p>
@@ -319,7 +319,7 @@ export default function ServiceDetailClient({
       <section className={`py-24 ${isDark ? "bg-dark-950" : "bg-slate-50"}`}>
         <div className="container-custom mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
               What Our <span className="gradient-text">Clients Say</span>
             </h2>
           </div>
@@ -331,7 +331,7 @@ export default function ServiceDetailClient({
       {fullService.faqs && (
         <section className={`py-24 ${isDark ? "bg-dark-900" : "bg-white"}`}>
           <div className="container-custom mx-auto px-4 max-w-3xl">
-            <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h2 className={`text-3xl sm:text-4xl font-bold mb-12 text-center ${isDark ? "text-white" : "text-gray-900"}`}>
               Service <span className="gradient-text">FAQ</span>
             </h2>
             <div className="space-y-4">
