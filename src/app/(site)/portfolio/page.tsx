@@ -66,8 +66,8 @@ export default async function PortfolioPage() {
       <JsonLd data={toFaqPageSchema(portfolioListingFaqs)} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header content */}
-        <div className="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">Work</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-500 dark:text-neutral-400 leading-relaxed font-medium">
@@ -76,7 +76,7 @@ export default async function PortfolioPage() {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.slug || project._id || String(index)}
