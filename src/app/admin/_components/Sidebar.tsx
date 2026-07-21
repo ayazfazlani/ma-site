@@ -38,6 +38,7 @@ const menuItems = [
 export default function Sidebar() {
   const pathname = usePathname();
 
+  
   return (
     <aside className="w-64 border-r border-gray-200 dark:border-white/[0.08] bg-white dark:bg-dark-900 hidden lg:flex flex-col h-screen sticky top-0 transition-all duration-300">
       <div className="p-6 border-b border-gray-200 dark:border-white/[0.08] flex items-center gap-3">
