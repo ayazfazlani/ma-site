@@ -26,13 +26,26 @@ export default function Hero({ partners = [], avatars = [] }: { partners?: any[]
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const displayAvatars = avatars.length > 0 ? avatars : [
-    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=1", name: "Client 1" },
-    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=2", name: "Client 2" },
-    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=3", name: "Client 3" },
-    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=4", name: "Client 4" },
-    { image: "https://api.dicebear.com/7.x/avataaars/svg?seed=5", name: "Client 5" },
-  ];
+  // Prefer partners marked "Show in Hero Stack", then testimonial avatars, then placeholders
+  const stackFromPartners = partners
+    .filter((p) => p?.logo || p?.image)
+    .map((p) => ({ image: p.logo || p.image, name: p.name }));
+  const stackFromAvatars = avatars.map((a) => ({
+    image: a.image || a.logo || "",
+    name: a.name || "Client",
+  }));
+  const displayAvatars =
+    stackFromPartners.length > 0
+      ? stackFromPartners
+      : stackFromAvatars.length > 0
+        ? stackFromAvatars
+        : [
+            { image: "", name: "Ahmed K" },
+            { image: "", name: "Sarah A" },
+            { image: "", name: "Omar B" },
+            { image: "", name: "Fatima R" },
+            { image: "", name: "Zara M" },
+          ];
 
   // Skip heavy Three.js canvas on mobile to save CPU/GPU
   // Skip heavy Three.js canvas on mobile/slow connection
@@ -186,14 +199,22 @@ export default function Hero({ partners = [], avatars = [] }: { partners?: any[]
               {displayAvatars.slice(0, 5).map((a, i) => (
                 <div 
                   key={i} 
-                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden bg-primary-100 shadow-xl relative ${i >= 3 ? "hidden sm:block" : ""}`}
+                  className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950" : "border-white"} overflow-hidden shadow-xl relative ${i >= 3 ? "hidden sm:block" : ""}`}
                 >
-                  <Image 
-                    src={a.image || a.logo} 
-                    alt={a.name || "Happy Client Avatar"} 
-                    fill
-                    className="object-cover"
-                  />
+                  {(a.image) ? (
+                    <Image 
+                      src={a.image || "" } 
+                      alt={a.name || "Happy Client Avatar"} 
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className={`w-full h-full flex items-center justify-center text-[11px] font-black uppercase text-white ${
+                      ["bg-primary-500", "bg-accent-500", "bg-primary-600", "bg-accent-600", "bg-primary-400"][i % 5]
+                    }`}>
+                      {(a.name || "C")[0]}
+                    </div>
+                  )}
                 </div>
               ))}
               <div className={`w-10 h-10 rounded-full border-2 ${isDark ? "border-dark-950 bg-primary-600" : "border-white bg-primary-500"} flex items-center justify-center text-[10px] font-black text-white shadow-xl`}>

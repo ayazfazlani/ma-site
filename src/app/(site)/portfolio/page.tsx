@@ -27,6 +27,7 @@ type PortfolioCard = {
   title: string;
   description?: string;
   image?: string;
+  images?: string[];
   category?: string;
   link?: string;
   _id?: string;
@@ -77,7 +78,9 @@ export default async function PortfolioPage() {
 
         {/* Portfolio Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const cover = project.image || project.images?.[0];
+            return (
             <div
               key={project.slug || project._id || String(index)}
               className="group relative bg-white dark:bg-dark-900 rounded-[2rem] overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in slide-in-from-bottom-10"
@@ -85,9 +88,9 @@ export default async function PortfolioPage() {
             >
               {/* Image Showcase */}
               <div className="h-64 relative bg-gray-50 dark:bg-white/[0.02] overflow-hidden">
-                {project.image ? (
+                {cover ? (
                   <Image
-                    src={project.image}
+                    src={cover}
                     alt={project.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -125,7 +128,8 @@ export default async function PortfolioPage() {
                 </Link>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

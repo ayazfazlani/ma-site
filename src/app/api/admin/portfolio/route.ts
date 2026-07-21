@@ -3,10 +3,19 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
 
+function normalizeImages(body: any) {
+  const images: string[] = Array.isArray(body.images)
+    ? body.images.filter(Boolean)
+    : [];
+  const image = body.image || images[0] || "";
+  const merged = Array.from(new Set([...images, image].filter(Boolean)));
+  return { ...body, image, images: merged };
+}
+
 export async function POST(req: Request) {
   try {
     await dbConnect();
-    const body = await req.json();
+    const body = normalizeImages(await req.json());
     const project = await ProjectModel.create(body);
     const plain = project.toObject();
     return NextResponse.json({ ...plain, _id: undefined, id: plain._id?.toString() });

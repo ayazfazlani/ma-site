@@ -123,7 +123,7 @@ export default function PartnersManager() {
           <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">
             Brand <span className="text-primary-500">Partners</span>
           </h2>
-          <p className="text-gray-500 dark:text-neutral-500 font-medium font-heading">Manage trust logos and Hero social proof avatars.</p>
+          <p className="text-gray-500 dark:text-neutral-500 font-medium font-heading">Manage brand logos for the marquee and toggle which images appear in the Hero avatar stack.</p>
         </div>
         <button
           onClick={() => { resetForm(); setShowForm(!showForm); }}

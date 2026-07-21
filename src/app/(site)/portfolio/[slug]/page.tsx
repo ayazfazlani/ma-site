@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ArrowLeft, Monitor, LayoutGrid, Calendar, ExternalLink, Target, Zap, CheckCircle2 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import FaqSection from '@/components/FaqSection';
+import ImageLightbox from '@/components/ImageLightbox';
 import { portfolioDetailFaqs, toFaqPageSchema } from '@/lib/faq-data';
 
 /** Fields used on this page; DB documents may include more than the Mongoose schema declares. */
@@ -15,6 +16,7 @@ type PortfolioDetail = {
   description?: string;
   category?: string;
   image?: string;
+  images?: string[];
   link?: string;
   challenges?: string;
   solution?: string;
@@ -56,6 +58,15 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
   if (!project) {
     notFound();
   }
+
+  const galleryImages = Array.from(
+    new Set(
+      [
+        ...(Array.isArray(project.images) ? project.images : []),
+        project.image,
+      ].filter((url): url is string => Boolean(url))
+    )
+  );
 
   // Fetch related projects for SEO internal linking
   const relatedProjects = await ProjectModel.find({ 
@@ -118,20 +129,24 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
-        {/* Featured Image with Lightbox */}
-        {project.image && (
+        {/* Featured Image / Gallery */}
+        {galleryImages.length > 0 && (
           <div className="mb-20">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">Project Overview</h2>
-            <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary-500/10 border border-gray-100 dark:border-white/[0.05] group">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                className="object-contain bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4 group-hover:scale-105 transition-transform duration-500"
-                priority
-              />
-            </div>
+            {galleryImages.length === 1 ? (
+              <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary-500/10 border border-gray-100 dark:border-white/[0.05] group">
+                <Image
+                  src={galleryImages[0]}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  className="object-contain bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4 group-hover:scale-105 transition-transform duration-500"
+                  priority
+                />
+              </div>
+            ) : (
+              <ImageLightbox images={galleryImages} />
+            )}
           </div>
         )}
 
@@ -253,9 +268,9 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
               {relatedProjects.map((rp) => (
                 <Link key={rp._id.toString()} href={`/portfolio/${rp.slug}`} className="group block">
                   <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm group-hover:shadow-xl transition-all duration-500 mb-5 bg-gray-50 dark:bg-dark-900">
-                    {rp.image ? (
+                    {(rp.image || rp.images?.[0]) ? (
                       <Image 
-                        src={rp.image} 
+                        src={rp.image || rp.images[0]} 
                         alt={rp.title} 
                         fill 
                         className="object-cover group-hover:scale-105 transition-transform duration-500" 

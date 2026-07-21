@@ -45,16 +45,18 @@ import ProjectModel from "@/models/Project";
 export default async function Home() {
   await dbConnect();
   
-  const [partners, avatars, services, projects, testimonials] = await Promise.all([
-    PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean(),
-    TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(5).lean(),
+  const [heroPartners, allPartners, avatars, services, projects, testimonials] = await Promise.all([
+    PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(8).lean(),
+    PartnerModel.find({ active: true }).sort({ order: 1 }).lean(),
+    TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(8).lean(),
     ServiceModel.find({ active: true }).sort({ order: 1 }).lean(),
     ProjectModel.find({ active: true }).sort({ order: 1 }).lean(),
     TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean(),
   ]);
 
   const serializedData = JSON.parse(JSON.stringify({ 
-    partners, 
+    heroPartners,
+    partners: allPartners, 
     avatars, 
     services: services.map((s: any) => ({ ...s, _id: undefined, id: s._id?.toString() })),
     projects,
@@ -72,7 +74,7 @@ export default async function Home() {
         <JsonLd key={index} data={schema} />
       ))}
 
-      <Hero partners={serializedData.partners} avatars={serializedData.avatars} />
+      <Hero partners={serializedData.heroPartners} avatars={serializedData.avatars} />
       <HorizontalScroll initialPartners={serializedData.partners} />
       <Portfolio initialProjects={serializedData.projects} />
       

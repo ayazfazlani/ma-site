@@ -19,7 +19,14 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
   try {
     const { id } = await params;
     await dbConnect();
-    const body = await req.json();
+    const raw = await req.json();
+    const images: string[] = Array.isArray(raw.images) ? raw.images.filter(Boolean) : [];
+    const image = raw.image || images[0] || "";
+    const body = {
+      ...raw,
+      image,
+      images: Array.from(new Set([...images, image].filter(Boolean))),
+    };
     const project = await ProjectModel.findByIdAndUpdate(id, body, { new: true }).lean();
     return NextResponse.json({ ...project, _id: undefined, id: (project as any)._id?.toString() });
   } catch (error) {

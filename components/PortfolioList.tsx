@@ -14,14 +14,27 @@ export type PortfolioListProject = {
   title: string;
   description?: string;
   image?: string;
+  images?: string[];
   category?: string;
   color?: string;
 };
 
 type DisplayProject = PortfolioListProject & {
+  coverImage: string;
+  gallery: string[];
   imageDark: string;
   imageLight: string;
 };
+
+function getProjectGallery(p: PortfolioListProject): string[] {
+  return Array.from(
+    new Set(
+      [...(Array.isArray(p.images) ? p.images : []), p.image].filter(
+        (url): url is string => Boolean(url)
+      )
+    )
+  );
+}
 
 export default function PortfolioList({ initialProjects }: { initialProjects: PortfolioListProject[] }) {
   const { theme } = useTheme();
@@ -30,22 +43,25 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
+  const [lightboxTitle, setLightboxTitle] = useState("");
 
   const projects: DisplayProject[] = useMemo(
     () =>
-      initialProjects.map((p, i) => ({
-        ...p,
-        color: p.color || ["from-blue-500 to-cyan-400", "from-amber-500 to-orange-400", "from-rose-500 to-pink-400"][i % 3],
-        imageDark: p.image ? "" : "bg-primary-900/40",
-        imageLight: p.image ? "" : "bg-primary-100",
-      })),
+      initialProjects.map((p, i) => {
+        const gallery = getProjectGallery(p);
+        const coverImage = p.image || gallery[0] || "";
+        return {
+          ...p,
+          gallery,
+          coverImage,
+          color: p.color || ["from-blue-500 to-cyan-400", "from-amber-500 to-orange-400", "from-rose-500 to-pink-400"][i % 3],
+          imageDark: coverImage ? "" : "bg-primary-900/40",
+          imageLight: coverImage ? "" : "bg-primary-100",
+        };
+      }),
     [initialProjects]
-  );
-
-  const projectsWithImages = useMemo(
-    () => projects.filter((p): p is DisplayProject & { image: string } => Boolean(p.image)),
-    [projects]
   );
 
   useEffect(() => {
@@ -64,9 +80,6 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
   };
 
   if (projects.length === 0) return null;
-
-  const normalizedSlideIndex =
-    ((currentIndex % projects.length) + projects.length) % projects.length;
 
   const visibleOffsets = [-2, -1, 0, 1, 2];
 
@@ -113,9 +126,9 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
             >
               <div className="flex flex-col md:flex-row h-full">
                 <div className={`w-full md:w-1/2 h-56 sm:h-64 md:h-auto md:min-h-[450px] relative overflow-hidden flex-shrink-0 group/image ${isDark ? project.imageDark : project.imageLight}`}>
-                    {project.image ? (
+                    {project.coverImage ? (
                         <Image 
-                          src={project.image} 
+                          src={project.coverImage} 
                           alt={project.title} 
                           fill 
                           priority={isActive}
@@ -129,8 +142,14 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
                     )}
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 mix-blend-overlay`} />
                   
+                  {project.gallery.length > 1 && (
+                    <div className="absolute top-4 left-4 px-3 py-1 rounded-lg bg-black/60 text-white text-[10px] font-black uppercase tracking-widest">
+                      {project.gallery.length} photos
+                    </div>
+                  )}
+
                   {/* Zoom Button */}
-                  {project.image && (
+                  {project.coverImage && (
                     <motion.button
                       type="button"
                       aria-label="Open image full screen"
@@ -138,7 +157,9 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
                       whileTap={{ scale: 0.9 }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setLightboxImageIndex(normalizedSlideIndex);
+                        setLightboxImages(project.gallery);
+                        setLightboxTitle(project.title);
+                        setLightboxImageIndex(0);
                         setLightboxOpen(true);
                       }}
                       className="absolute bottom-4 right-4 p-3 rounded-xl bg-white/90 dark:bg-dark-900/90 text-gray-900 dark:text-white shadow-lg opacity-0 group-hover/image:opacity-100 transition-opacity hover:scale-110"
@@ -223,7 +244,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
 
       {/* Lightbox */}
       <AnimatePresence>
-        {lightboxOpen && projectsWithImages.length > 0 && (
+        {lightboxOpen && lightboxImages.length > 0 && (
           <motion.div
             className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-5"
             initial={{ opacity: 0 }}
@@ -248,13 +269,13 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
               </button>
 
               <div className="flex items-center gap-4">
-                {projectsWithImages.length > 1 && (
+                {lightboxImages.length > 1 && (
                   <button
                     type="button"
                     aria-label="Previous image"
                     onClick={() =>
                       setLightboxImageIndex(
-                        (prev) => (prev - 1 + projectsWithImages.length) % projectsWithImages.length
+                        (prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length
                       )
                     }
                     className="rounded-full p-2 bg-white/90 dark:bg-dark-900/90 text-black dark:text-white shadow-lg shrink-0"
@@ -265,19 +286,19 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
 
                 <div className="relative w-full overflow-hidden rounded-2xl" style={{ paddingBottom: "56.25%" }}>
                   <Image
-                    src={projectsWithImages[lightboxImageIndex].image}
-                    alt={projectsWithImages[lightboxImageIndex].title}
+                    src={lightboxImages[lightboxImageIndex]}
+                    alt={lightboxTitle}
                     fill
                     className="object-contain"
                   />
                 </div>
 
-                {projectsWithImages.length > 1 && (
+                {lightboxImages.length > 1 && (
                   <button
                     type="button"
                     aria-label="Next image"
                     onClick={() =>
-                      setLightboxImageIndex((prev) => (prev + 1) % projectsWithImages.length)
+                      setLightboxImageIndex((prev) => (prev + 1) % lightboxImages.length)
                     }
                     className="rounded-full p-2 bg-white/90 dark:bg-dark-900/90 text-black dark:text-white shadow-lg shrink-0"
                   >
@@ -287,7 +308,7 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
               </div>
 
               <div className="mt-3 text-center text-white text-sm">
-                {lightboxImageIndex + 1}/{projectsWithImages.length}
+                {lightboxImageIndex + 1}/{lightboxImages.length}
               </div>
             </motion.div>
           </motion.div>

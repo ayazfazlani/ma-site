@@ -30,6 +30,7 @@ const menuItems = [
   { icon: MessagesSquare, label: "Comments", href: "/admin/comments" },
   { icon: Briefcase, label: "Services", href: "/admin/services" },
   { icon: LayoutGrid, label: "Portfolio", href: "/admin/portfolio" },
+  { icon: LayoutGrid, label: "Partners", href: "/admin/partners" },
   { icon: MessageSquare, label: "Testimonials", href: "/admin/testimonials" },
   { icon: Settings, label: "Site Settings", href: "/admin/settings" },
 ];

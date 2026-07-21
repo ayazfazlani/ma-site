@@ -3,12 +3,11 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Save, LayoutGrid, ImageIcon, ArrowLeft, Globe, Tag, ExternalLink } from "lucide-react";
+import { Save, LayoutGrid, ImageIcon, ArrowLeft, Globe, Tag, ExternalLink, X, Plus } from "lucide-react";
 import Link from "next/link";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import { toast, Toaster } from "react-hot-toast";
-import { cn } from "@/lib/utils";
 import RichTextEditor from "../../blog/_components/RichTextEditor";
 
 export const dynamic = "force-dynamic";
@@ -24,9 +23,10 @@ export default function EditProjectPage() {
       description: "",
       content: "",
       image: "",
+      images: [] as string[],
       link: "",
       category: "Web App",
-      published: true,
+      active: true,
       order: 0,
     });
   
@@ -35,8 +35,23 @@ export default function EditProjectPage() {
             try {
                 const res = await fetch(`/api/admin/portfolio/${params.id}`);
                 const data = await res.json();
-                if (res.ok) setFormData(data);
-                else toast.error("Asset not found");
+                if (res.ok) {
+                    const images: string[] = Array.isArray(data.images) && data.images.length
+                      ? data.images
+                      : data.image ? [data.image] : [];
+                    setFormData({
+                      title: data.title || "",
+                      slug: data.slug || "",
+                      description: data.description || "",
+                      content: data.content || "",
+                      image: data.image || images[0] || "",
+                      images,
+                      link: data.link || "",
+                      category: data.category || "Web App",
+                      active: data.active !== false,
+                      order: data.order || 0,
+                    });
+                } else toast.error("Asset not found");
             } catch (err) {
                 toast.error("Cloud connection failed");
             } finally {
@@ -50,14 +65,39 @@ export default function EditProjectPage() {
       const { name, value, type, checked } = e.target;
       setFormData(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
     };
+
+    const addImage = (url: string) => {
+      if (!url) return;
+      setFormData((prev) => {
+        const images = prev.images.includes(url) ? prev.images : [...prev.images, url];
+        return { ...prev, images, image: prev.image || url };
+      });
+    };
+
+    const removeImage = (url: string) => {
+      setFormData((prev) => {
+        const images = prev.images.filter((img) => img !== url);
+        const image = prev.image === url ? images[0] || "" : prev.image;
+        return { ...prev, images, image };
+      });
+    };
+
+    const setCoverImage = (url: string) => {
+      setFormData((prev) => ({ ...prev, image: url }));
+    };
   
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       setLoading(true);
       try {
+        const payload = {
+          ...formData,
+          image: formData.image || formData.images[0] || "",
+          images: formData.images.length ? formData.images : formData.image ? [formData.image] : [],
+        };
         const res = await fetch(`/api/admin/portfolio/${params.id}`, {
           method: "PUT",
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" },
         });
         if (res.ok) {
@@ -135,27 +175,51 @@ export default function EditProjectPage() {
 
         <div className="space-y-8">
             <div className="p-8 rounded-3xl bg-white dark:bg-dark-900 border border-gray-200 dark:border-white/[0.08] shadow-sm space-y-6">
-                <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Primary Display Snapshot</label>
-                <div className="group/img relative w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-dashed border-gray-100 dark:border-white/[0.05] flex items-center justify-center bg-gray-50 dark:bg-white/[0.01] hover:border-primary-500/40 transition-all">
-                    {formData.image ? (
-                        <>
-                            <Image src={formData.image} alt="Preview" fill className="object-cover" />
-                            <button type="button" onClick={() => setFormData(prev => ({ ...prev, image: "" }))} className="absolute inset-0 bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white font-bold backdrop-blur-sm">Swap Snapshot</button>
-                        </>
-                    ) : (
-                        <CldUploadWidget 
-                            uploadPreset="ma_softs_preset"
-                            onSuccess={(result: any) => setFormData(prev => ({ ...prev, image: result?.info?.secure_url }))}
-                        >
-                            {({ open }) => (
-                                <button type="button" onClick={() => open()} className="flex flex-col items-center gap-3 text-gray-400 hover:text-primary-500 transition-colors">
-                                    <ImageIcon className="w-10 h-10" />
-                                    <span className="text-xs font-black uppercase tracking-widest">Connect Media Asset</span>
-                                </button>
-                            )}
-                        </CldUploadWidget>
-                    )}
+                <div className="flex items-center justify-between gap-3">
+                    <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Project Images</label>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary-500/70">{formData.images.length} added</span>
                 </div>
+
+                {formData.images.length > 0 && (
+                    <div className="grid grid-cols-2 gap-3">
+                        {formData.images.map((url) => (
+                            <div key={url} className={`relative aspect-[4/3] rounded-2xl overflow-hidden border-2 group/img ${formData.image === url ? "border-primary-500" : "border-gray-100 dark:border-white/[0.05]"}`}>
+                                <Image src={url} alt="Project" fill className="object-cover" />
+                                <div className="absolute inset-0 bg-black/55 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-2">
+                                    {formData.image !== url && (
+                                        <button type="button" onClick={() => setCoverImage(url)} className="text-[10px] font-black uppercase tracking-widest text-white bg-primary-600 px-3 py-1.5 rounded-lg">Set Cover</button>
+                                    )}
+                                    {formData.image === url && (
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-accent-400">Cover</span>
+                                    )}
+                                    <button type="button" onClick={() => removeImage(url)} className="p-2 rounded-lg bg-red-500/90 text-white" aria-label="Remove image">
+                                        <X className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                <CldUploadWidget
+                    uploadPreset="ma_softs_preset"
+                    options={{ multiple: true, maxFiles: 12 }}
+                    onSuccess={(result: any) => addImage(result?.info?.secure_url)}
+                >
+                    {({ open }) => (
+                        <button
+                            type="button"
+                            onClick={() => open()}
+                            className="w-full flex flex-col items-center gap-3 py-8 rounded-2xl border-2 border-dashed border-gray-100 dark:border-white/[0.05] bg-gray-50 dark:bg-white/[0.01] text-gray-400 hover:text-primary-500 hover:border-primary-500/40 transition-all"
+                        >
+                            <div className="flex items-center gap-2">
+                                <Plus className="w-5 h-5" />
+                                <ImageIcon className="w-8 h-8" />
+                            </div>
+                            <span className="text-xs font-black uppercase tracking-widest">Add Images</span>
+                        </button>
+                    )}
+                </CldUploadWidget>
             </div>
 
             <div className="p-8 rounded-3xl bg-white dark:bg-dark-900 border border-gray-200 dark:border-white/[0.08] shadow-sm space-y-8">
@@ -179,7 +243,7 @@ export default function EditProjectPage() {
                         <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Visible to world</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" name="published" checked={formData.published} onChange={handleChange} className="sr-only peer" />
+                        <input type="checkbox" name="active" checked={formData.active} onChange={handleChange} className="sr-only peer" />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-white/[0.1] peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
                     </label>
                 </div>
