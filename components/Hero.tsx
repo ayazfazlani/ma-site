@@ -206,6 +206,7 @@ export default function Hero({ partners = [], avatars = [] }: { partners?: any[]
                       src={a.image || "" } 
                       alt={a.name || "Happy Client Avatar"} 
                       fill
+                      unoptimized
                       className="object-cover"
                     />
                   ) : (

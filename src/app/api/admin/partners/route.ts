@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Partner from "@/models/Partner";
+import { revalidatePath } from "next/cache";
 
 export async function GET() {
   try {
@@ -18,6 +19,7 @@ export async function POST(req: Request) {
     await dbConnect();
     const body = await req.json();
     const partner = await Partner.create(body);
+    revalidatePath("/");
     return NextResponse.json(partner, { status: 201 });
   } catch (error) {
     return NextResponse.json({ message: "Error creating partner" }, { status: 500 });

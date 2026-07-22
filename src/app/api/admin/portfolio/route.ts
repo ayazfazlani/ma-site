@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
+import { revalidatePath } from "next/cache";
 
 function normalizeImages(body: any) {
   const images: string[] = Array.isArray(body.images)
@@ -18,6 +19,8 @@ export async function POST(req: Request) {
     const body = normalizeImages(await req.json());
     const project = await ProjectModel.create(body);
     const plain = project.toObject();
+    revalidatePath("/");
+    revalidatePath("/portfolio");
     return NextResponse.json({ ...plain, _id: undefined, id: plain._id?.toString() });
   } catch (error) {
     console.error(error);

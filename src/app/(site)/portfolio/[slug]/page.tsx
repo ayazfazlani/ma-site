@@ -139,6 +139,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                   src={galleryImages[0]}
                   alt={project.title}
                   fill
+                  unoptimized
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                   className="object-contain bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4 group-hover:scale-105 transition-transform duration-500"
                   priority
@@ -273,6 +274,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                         src={rp.image || rp.images[0]} 
                         alt={rp.title} 
                         fill 
+                        unoptimized
                         className="object-cover group-hover:scale-105 transition-transform duration-500" 
                       />
                     ) : (

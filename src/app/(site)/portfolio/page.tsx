@@ -93,6 +93,7 @@ export default async function PortfolioPage() {
                     src={cover}
                     alt={project.title}
                     fill
+                    unoptimized
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 ) : (

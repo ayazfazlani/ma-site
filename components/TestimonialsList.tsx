@@ -71,6 +71,7 @@ export default function TestimonialsList({ testimonials }: { testimonials: any[]
                     alt={current.name} 
                     width={64}
                     height={64}
+                    unoptimized
                     className="w-full h-full rounded-[0.9rem] object-cover" 
                   />
                 ) : (

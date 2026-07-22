@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -28,6 +29,14 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       images: Array.from(new Set([...images, image].filter(Boolean))),
     };
     const project = await ProjectModel.findByIdAndUpdate(id, body, { new: true }).lean();
+    
+    // Trigger cache revalidation
+    revalidatePath("/");
+    revalidatePath("/portfolio");
+    if (project && (project as any).slug) {
+      revalidatePath(`/portfolio/${(project as any).slug}`);
+    }
+    
     return NextResponse.json({ ...project, _id: undefined, id: (project as any)._id?.toString() });
   } catch (error) {
     return NextResponse.json({ error: "Sync error" }, { status: 500 });
@@ -38,7 +47,15 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   try {
     const { id } = await params;
     await dbConnect();
-    await ProjectModel.findByIdAndDelete(id);
+    const project = await ProjectModel.findByIdAndDelete(id);
+    
+    // Trigger cache revalidation
+    revalidatePath("/");
+    revalidatePath("/portfolio");
+    if (project && (project as any).slug) {
+      revalidatePath(`/portfolio/${(project as any).slug}`);
+    }
+    
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json({ error: "Clean up error" }, { status: 500 });

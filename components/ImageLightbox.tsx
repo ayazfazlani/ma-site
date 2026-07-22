@@ -47,6 +47,7 @@ export default function ImageLightbox({ images, initialIndex = 0 }: ImageLightbo
               src={image}
               alt={`Gallery ${idx + 1}`}
               fill
+              unoptimized
               className="object-cover group-hover:scale-110 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
@@ -105,6 +106,7 @@ export default function ImageLightbox({ images, initialIndex = 0 }: ImageLightbo
                     src={images[currentIndex]}
                     alt={`Image ${currentIndex + 1}`}
                     fill
+                    unoptimized
                     className="object-contain"
                     quality={90}
                   />
