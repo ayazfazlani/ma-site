@@ -114,7 +114,7 @@ export default function ServiceDetailClient({
                   href="#plans"
                   className="bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-700 transition-all shadow-lg shadow-primary-500/20"
                 >
-                  View Our Plans
+                  View Pricing Plans
                 </Link>
                 <Link
                   href="/contact"
@@ -152,7 +152,7 @@ export default function ServiceDetailClient({
       <section className={`py-24 ${isDark ? "bg-dark-900" : "bg-white"}`}>
         <div className="container-custom mx-auto px-4 text-center">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-16 ${isDark ? "text-white" : "text-gray-900"}`}>
-            What's Included in our <span className="gradient-text">Service</span>
+            What's Included in this <span className="gradient-text">Service</span>
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fullService.features.map((feature, index) => (
@@ -185,7 +185,7 @@ export default function ServiceDetailClient({
                 Why Partner With <span className="gradient-text">MA Softs?</span>
               </h2>
               <p className={isDark ? "text-neutral-400" : "text-gray-600"}>
-                We bring together industry expertise and innovative technology to deliver results that matter.
+                I bring together industry expertise and innovative technology to deliver results that matter.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -209,7 +209,7 @@ export default function ServiceDetailClient({
           <div className="container-custom mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
-                Our <span className="gradient-text">Working Process</span>
+                My <span className="gradient-text">Working Process</span>
               </h2>
               <p className={isDark ? "text-neutral-400" : "text-gray-600"}>From initial discovery to successful deployment and beyond.</p>
             </div>
@@ -278,7 +278,7 @@ export default function ServiceDetailClient({
                     href="/contact"
                     className={`block w-full py-4 rounded-2xl text-center font-bold transition-all ${
                       plan.highlighted 
-                        ? "bg-white text-primary-700 hover:bg-gray-100" 
+                        ? "bg-white text-gray-500 hover:bg-gray-100" 
                         : "bg-primary-600 text-white hover:bg-primary-700 shadow-lg shadow-primary-500/20"
                     }`}
                   >
@@ -297,7 +297,7 @@ export default function ServiceDetailClient({
           <div className="container-custom mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className={`text-3xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
-                Technologies <span className="gradient-text">We Use</span>
+                Technologies <span className="gradient-text">I Use</span>
               </h2>
             </div>
             <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
@@ -320,7 +320,7 @@ export default function ServiceDetailClient({
         <div className="container-custom mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
-              What Our <span className="gradient-text">Clients Say</span>
+              What My <span className="gradient-text">Clients Say</span>
             </h2>
           </div>
           <TestimonialsList testimonials={testimonials} />
@@ -365,7 +365,7 @@ export default function ServiceDetailClient({
             Ready to Accelerate Your <span className="gradient-text">Startup?</span>
           </h2>
           <p className={`text-xl mb-12 max-w-2xl mx-auto ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
-            Let's discuss how our {fullService.title} can help your business grow and succeed in the digital landscape.
+            Let's discuss how my {fullService.title} can help your business grow and succeed in the digital landscape.
           </p>
           <Link
             href="/contact"

@@ -31,6 +31,84 @@ export interface ServiceData {
 
 export const servicesData: ServiceData[] = [
   {
+    slug: "custom-erp",
+    icon: "Database",
+    title: "Custom ERP for Manufacturing",
+    description:
+      "Bespoke manufacturing ERP built for plastic, pipe, and industrial factories. Streamline your raw materials, production metrics, supplier ledgers, and reporting.",
+    features: [
+      "Plastics & Pipe Operations Tracking",
+      "Raw Materials Inventory & Waste Logging",
+      "Supplier Ledger & Accounting Integration",
+      "Detailed Production Machinery Scheduling",
+      "Government Contract & Invoice Management",
+      "Operational Reports & Performance Auditing",
+    ],
+    gradient: "from-blue-600 to-indigo-500",
+    glow: "group-hover:shadow-indigo-500/20",
+    number: "01",
+    color: "from-indigo-500 to-purple-600",
+    price: "Starting at $950",
+    longDescription:
+      "I engineer custom Enterprise Resource Planning (ERP) systems tailored to the specific needs of plastic, pipe, and industrial manufacturers. From raw material ingestion to final shipments and government contract accounting, I build secure, high-performance operations software.",
+    plans: [
+      {
+        name: "Starter Manufacturing ERP",
+        price: "$950",
+        billingCycle: "one-time",
+        description: "For small-to-medium factories needing core material and order tracking.",
+        features: [
+          "Raw Material Inventory",
+          "Production Batch Tracking",
+          "Order & Delivery Flow",
+          "Basic Reporting Dashboard",
+          "1 Month Handover Support",
+        ],
+        cta: "Request Demo",
+      },
+      {
+        name: "Enterprise ERP Suite",
+        price: "$2,400",
+        billingCycle: "one-time",
+        description: "Advanced ERP built for multi-plant operations and government contracting.",
+        features: [
+          "Multi-location Production Tracking",
+          "Machinery Metrics & Uptime Audit",
+          "Government Contract Invoicing",
+          "Advanced Supplier Audits",
+          "Multi-role Authentication & Logs",
+          "6 Months Dedicated Support",
+        ],
+        cta: "Schedule Audit",
+        highlighted: true,
+      },
+    ],
+    whyChooseUs: [
+      { title: "Built for Operations", description: "Bespoke features designed for real factory floors, not generic templates." },
+      { title: "Local Compliance", description: "Configured for local taxes, supplier ledgers, and government contracts." },
+      { title: "No Licensing Fees", description: "You own the custom software entirely, with zero recurring per-user fees." },
+      { title: "Scalable Core", description: "Engineered on React/Next.js and Node.js for lightning performance and stability." }
+    ],
+    process: [
+      { title: "Discovery", description: "I Map out your factory flows, inventory checkpoints, and reporting targets." },
+      { title: "Prototype Design", description: "Modeling the user interface to ensure workers can enter data effortlessly." },
+      { title: "Bespoke Development", description: "Writing lean code and setting up secure databases tailored to your metrics." },
+      { title: "Onboarding & Launch", description: "Testing on-site, trailing operations, and coaching your staff to use the system." }
+    ],
+    faqs: [
+      { q: "Is this ERP suitable for plastics and pipe factories?", a: "Yes. I customize the workflows to track feedstock, granulator operations, pipe production, waste margins, and government order ledgers." },
+      { q: "Can we run this offline or locally?", a: "Optionally yes. I can deploy it to a local container or intranet server, or as a secure cloud application accessible from anywhere." },
+      { q: "How do we handle government contracts?", a: "I build specific modules to track tender requirements, milestones, advance billing, security deposits, and final clearance status." },
+      { q: "What support is provided after launch?", a: "All projects include dedicated support to address adjustments, training queries, and ensure smooth daily operations." }
+    ],
+    techStack: [
+      { name: "Next.js", icon: "Zap", color: "text-white" },
+      { name: "Node.js", icon: "Layers", color: "text-green-500" },
+      { name: "MongoDB", icon: "Database", color: "text-emerald-500" },
+      { name: "Tailwind CSS", icon: "Layout", color: "text-cyan-400" }
+    ]
+  },
+  {
     slug: "web-development",
     icon: "Code2",
     title: "Custom Web Application Development Pakistan",
@@ -46,18 +124,17 @@ export const servicesData: ServiceData[] = [
     ],
     gradient: "from-primary-500 to-primary-400",
     glow: "group-hover:shadow-primary-500/20",
-    number: "01",
+    number: "02",
     color: "from-blue-500 to-blue-600",
-    price: "Starting from $99",
+    price: "Starting at $150",
     longDescription:
       "I design and develop fast, conversion-focused websites and web apps that help startups launch quickly and scale efficiently.",
     plans: [
       {
         name: "Starter Website",
-        price: "$99",
+        price: "$150",
         billingCycle: "one-time",
-        description:
-          "Perfect for new startups needing a professional online presence on a tight budget.",
+        description: "For new startups needing a professional online presence on a tight budget.",
         features: [
           "Up to 5 Pages",
           "Mobile Responsive Design",
@@ -69,10 +146,9 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Business Pro",
-        price: "$199",
+        price: "$450",
         billingCycle: "one-time",
-        description:
-          "Feature-rich website ideal for startups ready to grow and convert visitors.",
+        description: "Feature-rich website for startups ready to grow and convert visitors.",
         features: [
           "Up to 12 Pages",
           "CMS Integration",
@@ -86,10 +162,9 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Enterprise Web App",
-        price: "$499",
-        billingCycle: "starting from",
-        description:
-          "Custom freelance ERP developer Pakistan expertise for high-end web applications, plastic factory ERP software, and property dealer software.",
+        price: "$850",
+        billingCycle: "one-time",
+        description: "Custom development for high-end web applications, factory ERP, and property software.",
         features: [
           "Custom Full-stack Development",
           "Plastic Factory ERP Software",
@@ -104,21 +179,21 @@ export const servicesData: ServiceData[] = [
       },
     ],
     whyChooseUs: [
-      { title: "Performance First", description: "Our websites are lightning-fast, ensuring your users never have to wait." },
+      { title: "Performance First", description: "My websites are lightning-fast, ensuring your users never have to wait." },
       { title: "SEO Optimized", description: "Built-in SEO best practices to help you rank higher from day one." },
       { title: "Conversion Focused", description: "Every element is designed to turn visitors into loyal customers." },
       { title: "Scale Ready", description: "Architecture designed to grow alongside your business and traffic." }
     ],
     process: [
-      { title: "Discovery", description: "We dive deep into your brand, goals, and target audience." },
+      { title: "Discovery", description: "I dive deep into your brand, goals, and target audience." },
       { title: "Design", description: "Creating stunning, user-centric designs that reflect your brand." },
       { title: "Development", description: "Coding with the latest technologies for speed and reliability." },
       { title: "Launch", description: "Thorough testing and deployment to bring your vision to life." }
     ],
     faqs: [
       { q: "How long does a website take to build?", a: "Typical timelines: Starter (3-4 weeks), Professional (5-7 weeks), E-commerce (8-12 weeks)." },
-      { q: "Can you migrate my existing website?", a: "Yes! We handle full migrations including data transfer, SEO setup, and zero downtime." },
-      { q: "Will my website be mobile-friendly?", a: "Absolutely. All our websites are fully responsive and mobile-optimized." },
+      { q: "Can you migrate my existing website?", a: "Yes! I handle full migrations including data transfer, SEO setup, and zero downtime." },
+      { q: "Will my website be mobile-friendly?", a: "Absolutely. All my websites are fully responsive and mobile-optimized." },
       { q: "What about ongoing support?", a: "All plans include free support beyond the initial launch period." }
     ],
     techStack: [
@@ -133,7 +208,7 @@ export const servicesData: ServiceData[] = [
     icon: "Settings",
     title: "Affordable SEO Services for Startups",
     description:
-      "Boost your startup’s visibility with affordable SEO services designed for early-stage businesses. Get more organic traffic, higher rankings, and sustainable growth.",
+      "Boost your startup's visibility with affordable SEO services designed for early-stage businesses. Get more organic traffic, higher rankings, and sustainable growth.",
     features: [
       "Technical SEO Audit & Fixes",
       "In-depth Keyword Research & Strategy",
@@ -145,15 +220,15 @@ export const servicesData: ServiceData[] = [
     ],
     gradient: "from-rose-500 to-pink-400",
     glow: "group-hover:shadow-rose-500/20",
-    number: "02",
+    number: "03",
     color: "from-green-500 to-emerald-600",
-    price: "Starting from $249/mo",
+    price: "Starting at $199/mo",
     longDescription:
-      "Our affordable SEO services for startups focus on high-ROI strategies including technical fixes, keyword targeting, and content optimization to help you rank faster and grow organically.",
+      "My affordable SEO services for startups focus on high-ROI strategies including technical fixes, keyword targeting, and content optimization to help you rank faster and grow organically.",
     plans: [
       {
         name: "SEO Starter",
-        price: "$249",
+        price: "$199",
         billingCycle: "/month",
         description: "Budget-friendly SEO perfect for early-stage startups.",
         features: [
@@ -168,7 +243,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Startup Growth SEO",
-        price: "$449",
+        price: "$349",
         billingCycle: "/month",
         description: "Comprehensive SEO for startups looking to scale traffic quickly.",
         features: [
@@ -184,7 +259,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Enterprise SEO",
-        price: "$899",
+        price: "$699",
         billingCycle: "/month",
         description: "Full-scale SEO for aggressive growth or competitive niches.",
         features: [
@@ -199,10 +274,10 @@ export const servicesData: ServiceData[] = [
       },
     ],
     whyChooseUs: [
-      { title: "Data Driven", description: "We use hard data and analytics to shape your SEO strategy." },
+      { title: "Data Driven", description: "I use hard data and analytics to shape your SEO strategy." },
       { title: "White Hat Only", description: "Ethical SEO practices that protect your site from penalties." },
       { title: "Transparent Reporting", description: "Clear, simplified reports that show real growth metrics." },
-      { title: "Content Specialists", description: "Our team creates content that both Google and users love." }
+      { title: "Content Specialists", description: "I create content that both Google and users love." }
     ],
     process: [
       { title: "Audit", description: "Finding technical issues that hold your site back." },
@@ -212,7 +287,7 @@ export const servicesData: ServiceData[] = [
     ],
     faqs: [
       { q: "How long until I see SEO results?", a: "Noticeable improvements in 3-6 months, significant results within 6-12 months." },
-      { q: "What makes your SEO different?", a: "We combine technical expertise with data-driven growth strategies for startups." },
+      { q: "What makes your SEO different?", a: "I combine technical expertise with data-driven growth strategies for startups." },
       { q: "Do you guarantee rankings?", a: "We guarantee effort, expertise, and transparency. Rankings depend on many market factors." },
       { q: "What's in the monthly retainer?", a: "Ongoing optimization, monitoring, and proactive strategy adjustments." }
     ],
@@ -239,15 +314,15 @@ export const servicesData: ServiceData[] = [
     ],
     gradient: "from-emerald-500 to-teal-400",
     glow: "group-hover:shadow-emerald-500/20",
-    number: "03",
+    number: "04",
     color: "from-purple-500 to-indigo-600",
-    price: "Starting from $299/mo",
+    price: "Starting at $249/mo",
     longDescription:
-      "We help startups grow their social presence with engaging content, consistent posting, and smart paid campaigns — all at startup-friendly prices.",
+      "I help startups grow their social presence with engaging content, consistent posting, and smart paid campaigns — all at startup-friendly prices.",
     plans: [
       {
         name: "Social Starter",
-        price: "$299",
+        price: "$249",
         billingCycle: "/month",
         description: "Great entry point for startups building social presence.",
         features: [
@@ -261,7 +336,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Social Growth",
-        price: "$599",
+        price: "$499",
         billingCycle: "/month",
         description: "Accelerated growth plan for active startups.",
         features: [
@@ -277,7 +352,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Social Premium",
-        price: "$999",
+        price: "$849",
         billingCycle: "/month",
         description: "Full-service social media for scaling startups.",
         features: [
@@ -292,7 +367,7 @@ export const servicesData: ServiceData[] = [
       },
     ],
     whyChooseUs: [
-      { title: "Engagement focus", description: "We don't just post; we build active communities around your brand." },
+      { title: "Engagement focus", description: "I don't just post; I build active communities around your brand." },
       { title: "Platform Experts", description: "Deep knowledge of algorithms for TikTok, Instagram, and LinkedIn." },
       { title: "Creative Storytelling", description: "Content that stops the scroll and starts conversations." },
       { title: "ROI Oriented", description: "Social strategies that align with your actual business goals." }
@@ -306,7 +381,7 @@ export const servicesData: ServiceData[] = [
     faqs: [
       { q: "Which platforms do you manage?", a: "Facebook, Instagram, TikTok, LinkedIn, Twitter, and YouTube." },
       { q: "How often do you post?", a: "Varies by plan, from 12 posts/month to daily posting." },
-      { q: "Can you create our brand voice?", a: "Absolutely! We'll develop an authentic voice that resonates with your audience." },
+      { q: "Can you create our brand voice?", a: "Absolutely! I'll develop an authentic voice that resonates with your audience." },
       { q: "How do you track success?", a: "Through detailed engagement metrics, reach, and conversion analytics." }
     ],
     techStack: [
@@ -332,15 +407,15 @@ export const servicesData: ServiceData[] = [
     ],
     gradient: "from-amber-500 to-orange-400",
     glow: "group-hover:shadow-amber-500/20",
-    number: "04",
+    number: "05",
     color: "from-amber-500 to-orange-600",
-    price: "Starting from $99/mo",
+    price: "Starting at $79/mo",
     longDescription:
       "Affordable PPC management that drives qualified leads and sales for startups with smart targeting and continuous optimization.",
     plans: [
       {
         name: "PPC Starter",
-        price: "$99",
+        price: "$79",
         billingCycle: "/month",
         description: "Low-commitment entry for testing paid ads.",
         features: [
@@ -354,7 +429,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "PPC Growth",
-        price: "$199",
+        price: "$169",
         billingCycle: "/month",
         description: "Multi-platform campaigns for growing startups.",
         features: [
@@ -370,7 +445,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "PPC Enterprise",
-        price: "$399",
+        price: "$329",
         billingCycle: "/month",
         description: "Full-scale advertising for high-growth startups.",
         features: [
@@ -388,7 +463,7 @@ export const servicesData: ServiceData[] = [
       { title: "Immediate Impact", description: "Start getting traffic and leads within hours of launch." },
       { title: "Strict ROI focus", description: "Constant monitoring to ensure your ad spend yields profit." },
       { title: "Laser Targeting", description: "Reaching the exact people searching for your solution." },
-      { title: "Creative A/B Testing", description: "We constantly test copy and visuals to optimize CPAs." }
+      { title: "Creative A/B Testing", description: "I constantly test copy and visuals to optimize CPAs." }
     ],
     process: [
       { title: "KW Research", description: "Identifying high-intent search terms for your business." },
@@ -398,7 +473,7 @@ export const servicesData: ServiceData[] = [
     ],
     faqs: [
       { q: "How much is the management fee?", a: "Management fees are separate from your ad spend, which you control." },
-      { q: "What's a good budget to start?", a: "We recommend starting with at least $1,000/mo in spend for meaningful data." },
+      { q: "What's a good budget to start?", a: "I recommend starting with at least $1,000/mo in spend for meaningful data." },
       { q: "How quickly will I see results?", a: "Immediate visibility, with peak optimization typically in 2-4 weeks." },
       { q: "Which platform is best?", a: "Depends on your niche; typically Google for intent and Meta for awareness." }
     ],
@@ -425,15 +500,15 @@ export const servicesData: ServiceData[] = [
     ],
     gradient: "from-accent-500 to-primary-400",
     glow: "group-hover:shadow-accent-500/20",
-    number: "05",
+    number: "06",
     color: "from-cyan-500 to-blue-600",
-    price: "Starting from $249/mo",
+    price: "Starting at $199/mo",
     longDescription:
-      "We produce high-quality, SEO-friendly content that helps startups establish thought leadership and drive organic traffic.",
+      "I produce high-quality, SEO-friendly content that helps startups establish thought leadership and drive organic traffic.",
     plans: [
       {
         name: "Content Starter",
-        price: "$249",
+        price: "$199",
         billingCycle: "/month",
         description: "Build your content foundation with quality blog posts.",
         features: [
@@ -447,7 +522,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Content Growth",
-        price: "$499",
+        price: "$399",
         billingCycle: "/month",
         description: "Scale content production for serious startup growth.",
         features: [
@@ -463,7 +538,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Content Premium",
-        price: "$899",
+        price: "$749",
         billingCycle: "/month",
         description: "Full content engine with blogs, video, and campaigns.",
         features: [
@@ -490,10 +565,10 @@ export const servicesData: ServiceData[] = [
       { title: "Promotion", description: "Ensuring your content reaches the right eyes." }
     ],
     faqs: [
-      { q: "Can you write in our voice?", a: "Yes, we create style guides to ensure perfect brand alignment." },
+      { q: "Can you write in our voice?", a: "Yes, I create style guides to ensure perfect brand alignment." },
       { q: "How long are the articles?", a: "Typically 1,500-2,500 words for maximum SEO impact." },
       { q: "Do you include graphics?", a: "Yes, social graphics are included; infographics in higher tiers." },
-      { q: "Can we request revisions?", a: "Absolutely. We include multiple revision rounds in every plan." }
+      { q: "Can we request revisions?", a: "Absolutely. I include multiple revision rounds in every plan." }
     ],
     techStack: [
       { name: "Grammarly", icon: "Type", color: "text-green-500" },
@@ -518,15 +593,15 @@ export const servicesData: ServiceData[] = [
     ],
     gradient: "from-purple-500 to-pink-400",
     glow: "group-hover:shadow-purple-500/20",
-    number: "06",
+    number: "07",
     color: "from-pink-500 to-rose-600",
-    price: "Starting from $199/mo",
+    price: "Starting at $159/mo",
     longDescription:
-      "We set up clear analytics systems so startups can track performance, measure ROI, and make smart growth decisions.",
+      "I set up clear analytics systems so startups can track performance, measure ROI, and make smart growth decisions.",
     plans: [
       {
         name: "Analytics Basic",
-        price: "$199",
+        price: "$159",
         billingCycle: "/month",
         description: "Essential analytics setup for startups.",
         features: [
@@ -540,7 +615,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Analytics Pro",
-        price: "$399",
+        price: "$329",
         billingCycle: "/month",
         description: "Advanced tracking and custom reporting.",
         features: [
@@ -556,7 +631,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         name: "Analytics Enterprise",
-        price: "$799",
+        price: "$649",
         billingCycle: "/month",
         description: "Complete business intelligence for scaling startups.",
         features: [
@@ -572,9 +647,9 @@ export const servicesData: ServiceData[] = [
     ],
     whyChooseUs: [
       { title: "Biolerplate-free", description: "Custom tracking tailored to your specific business model." },
-      { title: "Clarity over Noise", description: "We highlight the metrics that actually drive growth." },
+      { title: "Clarity over Noise", description: "I highlight the metrics that actually drive growth." },
       { title: "GTM Experts", description: "Complex tracking implementations made reliable and fast." },
-      { title: "Actionable Insights", description: "We don't just give data; we tell you what to do with it." }
+      { title: "Actionable Insights", description: "I don't just give data; I tell you what to do with it." }
     ],
     process: [
       { title: "Audit", description: "Evaluating your current tracking health and data gaps." },
@@ -586,7 +661,7 @@ export const servicesData: ServiceData[] = [
       { q: "Why GA4?", a: "It's the future of tracking, offering better user behavior insights." },
       { q: "Standard vs Custom?", a: "Custom reports focus only on the KPIs that matter to you." },
       { q: "How often reports?", a: "Weekly/Monthly based on your preference; real-time dashboards." },
-      { q: "Can you track calls?", a: "Yes, we can implement full call and lead tracking systems." }
+      { q: "Can you track calls?", a: "Yes, I can implement full call and lead tracking systems." }
     ],
     techStack: [
       { name: "GA4", icon: "BarChart", color: "text-yellow-500" },

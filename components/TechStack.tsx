@@ -88,7 +88,7 @@ export default function TechStack() {
           Building with <span className="gradient-text">Excellence</span>
         </h2>
         <p className={`text-lg max-w-2xl mx-auto ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-          We use industry-leading tools to deliver high-performance solutions.
+          I use industry-leading tools to deliver high-performance solutions.
         </p>
       </div>
 

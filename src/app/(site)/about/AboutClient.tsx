@@ -18,17 +18,17 @@ const values = [
   {
     icon: Target,
     title: "Results-Driven",
-    description: "We focus on delivering measurable results that impact your bottom line.",
+    description: "I focus on delivering measurable results that impact your bottom line.",
   },
   {
     icon: Users,
     title: "Client-Centric",
-    description: "Your success is our priority. We work as an extension of your team.",
+    description: "Your success is my priority. I work as an extension of your team.",
   },
   {
     icon: Award,
     title: "Excellence",
-    description: "We maintain the highest standards in every project we undertake.",
+    description: "I maintain the highest standards in every project I undertake.",
   },
   {
     icon: Globe,
@@ -79,7 +79,7 @@ export default function AboutClient() {
               viewport={{ once: true }}
             >
               <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
-                Our <span className="gradient-text">Story</span>
+                My <span className="gradient-text">Story</span>
               </h2>
               <div className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
                 <p>
@@ -140,10 +140,10 @@ export default function AboutClient() {
         <div className="container-custom mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
-              Our Core <span className="gradient-text">Values</span>
+              My Core <span className="gradient-text">Values</span>
             </h2>
             <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-              The principles that guide everything we do
+              The principles that guide everything I do
             </p>
           </div>
 

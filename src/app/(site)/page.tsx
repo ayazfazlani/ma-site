@@ -10,6 +10,7 @@ import AuditForm from "@/components/AuditForm";
 import Testimonials from "@/components/Testimonials";
 import TechStack from "@/components/TechStack";
 import JsonLd from "@/components/JsonLd";
+import ErpSection from "@/components/ErpSection";
 import FaqSection from "@/components/FaqSection";
 import {
   homePageSchema,
@@ -76,6 +77,7 @@ export default async function Home() {
 
       <Hero partners={serializedData.heroPartners} avatars={serializedData.avatars} />
       <HorizontalScroll initialPartners={serializedData.partners} />
+      <ErpSection />
       <Portfolio initialProjects={serializedData.projects} />
       
       <div className="content-deferred">

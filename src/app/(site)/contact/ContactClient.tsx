@@ -97,7 +97,7 @@ export default function ContactClient() {
               <div>
                 <h2 className={`text-2xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>Contact Information</h2>
                 <p className={`mb-8 ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-                  Fill out the form and our team will get back to you within 24 hours.
+                  Fill out the form and I will get back to you within 24 hours.
                 </p>
               </div>
 

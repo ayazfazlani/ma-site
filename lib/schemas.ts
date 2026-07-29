@@ -144,7 +144,12 @@ export const localBusinessSchema = {
     worstRating: "1",
   },
   areaServed: [
-    { "@type": "Country", name: "Pakistan" },
+    { "@type": "AdministrativeArea", name: "Pakistan" },
+    { "@type": "AdministrativeArea", name: "Punjab" },
+    { "@type": "AdministrativeArea", name: "Multan" },
+    { "@type": "AdministrativeArea", name: "Lahore" },
+    { "@type": "AdministrativeArea", name: "Karachi" },
+    { "@type": "AdministrativeArea", name: "Islamabad" },
     { "@type": "Country", name: "United States" },
     { "@type": "Country", name: "United Kingdom" },
     { "@type": "Country", name: "United Arab Emirates" },
@@ -179,7 +184,11 @@ export const localBusinessSchema = {
         itemListElement: [
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Custom ERP Systems" },
+            itemOffered: { "@type": "Service", name: "Custom ERP for Manufacturing" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Plastic Factory ERP Software" },
           },
           {
             "@type": "Offer",
@@ -335,7 +344,7 @@ export const servicesItemListSchema = {
   name: "Software Development Services",
   description: "Comprehensive custom software and web development solutions by MA Softs",
   url: `${SITE_URL}/services`,
-  numberOfItems: 6,
+  numberOfItems: 7,
   itemListElement: serviceSchemas.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,

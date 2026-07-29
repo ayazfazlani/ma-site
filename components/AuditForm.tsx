@@ -71,7 +71,7 @@ export default function AuditForm() {
               }`}
             >
               Discover how MA Softs can grow your website traffic, leads,
-              and sales. Our comprehensive SEO audit identifies opportunities
+              and sales. My comprehensive SEO audit identifies opportunities
               and provides actionable recommendations.
             </p>
 
@@ -137,7 +137,7 @@ export default function AuditForm() {
                     Thank You!
                   </h3>
                   <p className={isDark ? "text-neutral-400" : "text-gray-500"}>
-                    We&apos;ve received your request. Our team will analyze your
+                    I've received your request. I will analyze your
                     website and send the audit report within 24 hours.
                   </p>
                 </motion.div>
@@ -155,7 +155,7 @@ export default function AuditForm() {
                       isDark ? "text-neutral-400" : "text-gray-400"
                     }`}
                   >
-                    Fill in the details below and our team will get back to you.
+                    Fill in the details below and I will get back to you.
                   </p>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
@@ -269,7 +269,7 @@ export default function AuditForm() {
                         isDark ? "text-neutral-400" : "text-gray-400"
                       }`}
                     >
-                      We respect your privacy. Your information is safe with us.
+                      I respect your privacy. Your information is safe with me.
                     </p>
                   </form>
                 </>

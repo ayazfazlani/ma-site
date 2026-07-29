@@ -89,14 +89,14 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3.5">
               <a
-                href="mailto:ayaz@masoftwares.com"
+                href="mailto:info@masofts.com"
                 className="flex items-center gap-3 text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm"
               >
                 <Mail className="w-4.5 h-4.5" />
                 <span>info@masofts.com</span>
               </a>
               <a
-                href="tel:+923001234567"
+                href="tel:+923367057973"
                 className="flex items-center gap-3 text-neutral-400 hover:text-primary-400 transition-colors duration-300 text-sm"
               >
                 <Phone className="w-4.5 h-4.5" />
@@ -170,7 +170,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/[0.06] py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-neutral-400 text-sm">
-            © {new Date().getFullYear()} MA Softs | Ayaz Freelancer. All rights reserved.
+            © {new Date().getFullYear()} MA Softs by Ayaz | Freelance Software Developer. All rights reserved.
           </p>
 
           {/* Social Links */}

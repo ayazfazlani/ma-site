@@ -56,7 +56,7 @@ export default function ServicesClient() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
-            Our <span className="gradient-text">Services</span>
+            My <span className="gradient-text">Services</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -141,7 +141,7 @@ export default function ServicesClient() {
       <FaqSection
         className={isDark ? "bg-dark-900" : "bg-gray-100"}
         title="Services FAQs"
-        subtitle="Straight answers about how we build, price, and support custom software."
+        subtitle="Straight answers about how I build, price, and support custom software."
         items={servicesHubFaqs}
       />
 
@@ -158,14 +158,14 @@ export default function ServicesClient() {
               Need a Custom Solution?
             </h2>
             <p className={`text-lg mb-8 ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-              Every business is unique. Contact us to discuss a tailored software development
+              Every business is unique. Contact me to discuss a tailored software development
               strategy that fits your specific needs and budget.
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center space-x-2 bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-700 transition-all transform hover:scale-105"
             >
-              <span>Contact Us</span>
+              <span>Contact Me</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>

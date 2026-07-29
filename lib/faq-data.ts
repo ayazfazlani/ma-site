@@ -26,7 +26,7 @@ export const portfolioListingFaqs: FaqItem[] = [
   {
     question: "Can I see more detail than the portfolio card?",
     answer:
-      "Yes. Open any case study for a deeper overview, tech context, and links when a live demo or product is public. If something is under NDA, we share what we can without exposing sensitive details.",
+      "Yes. Open any case study for a deeper overview, tech context, and links when a live demo or product is public. If something is under NDA, I share what I can without exposing sensitive details.",
   },
   {
     question: "Do you take on projects similar to these?",
@@ -62,7 +62,7 @@ export const contactFaqs: FaqItem[] = [
   {
     question: "What should I include in my first message?",
     answer:
-      "A brief on your product or problem, desired timeline, any tech preferences, and whether you need discovery, a fixed scope, or ongoing work. Attachments or links help us understand faster.",
+      "A brief on your product or problem, desired timeline, any tech preferences, and whether you need discovery, a fixed scope, or ongoing work. Attachments or links help me understand faster.",
   },
   {
     question: "Do you work with international clients?",

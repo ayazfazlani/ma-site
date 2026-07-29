@@ -67,7 +67,7 @@ export default function Navbar() {
                 MA<span className="text-primary-400"> Softs</span>
               </span>
               <span className={`text-[10px] uppercase tracking-[0.2em] font-medium ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-                Ayaz | Software Developer
+                Ayaz | Freelance Software Developer
               </span>
             </div>
           </Link>
