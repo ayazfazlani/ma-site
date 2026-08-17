@@ -1,4 +1,5 @@
 // app/page.tsx
+import { Suspense } from "react";
 import Hero from "@/components/Hero";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import Services from "@/components/Services";
@@ -12,6 +13,8 @@ import TechStack from "@/components/TechStack";
 import JsonLd from "@/components/JsonLd";
 import ErpSection from "@/components/ErpSection";
 import FaqSection from "@/components/FaqSection";
+import HeroAvatarsServer from "@/components/HeroAvatarsServer";
+import { HeroAvatarPlaceholders } from "@/components/HeroAvatars";
 import {
   homePageSchema,
   reviewsSchema,
@@ -51,51 +54,38 @@ export const metadata: Metadata = {
   },
 };
 
-
-export const revalidate = 3600; // 1 hour revalidation
+export const revalidate = 3600;
 
 const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },
 ]);
 
-export default async function Home() {
+async function HomePageSections() {
   await dbConnect();
-  
-  const [heroPartners, allPartners, avatars, projects, testimonials] = await Promise.all([
-    PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(8).lean(),
+
+  const [allPartners, projects, testimonials] = await Promise.all([
     PartnerModel.find({ active: true }).sort({ order: 1 }).lean(),
-    TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(8).lean(),
     ProjectModel.find({ active: true }).sort({ order: 1 }).lean(),
     TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean(),
   ]);
 
-  const serializedData = JSON.parse(JSON.stringify({ 
-    heroPartners,
-    partners: allPartners, 
-    avatars, 
-    services: servicesData.filter((s) =>
-      (HOMEPAGE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
-    ),
-    projects,
-    testimonials
-  }));
+  const serializedData = JSON.parse(
+    JSON.stringify({
+      partners: allPartners,
+      services: servicesData.filter((s) =>
+        (HOMEPAGE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+      ),
+      projects,
+      testimonials,
+    })
+  );
 
   return (
     <>
-      {/* Page-specific SEO Schemas */}
-      <JsonLd data={homePageSchema} />
-      <JsonLd data={personSchema} />
-      <JsonLd data={reviewsSchema} />
-      <JsonLd data={homeBreadcrumb} />
-      {serviceSchemas.map((schema, index) => (
-        <JsonLd key={index} data={schema} />
-      ))}
-
-      <Hero partners={serializedData.heroPartners} avatars={serializedData.avatars} />
       <HorizontalScroll initialPartners={serializedData.partners} />
       <ErpSection />
       <Portfolio initialProjects={serializedData.projects} />
-      
+
       <div className="content-deferred">
         <Services initialServices={serializedData.services} />
         <Stats />
@@ -112,6 +102,32 @@ export default async function Home() {
         />
         <Testimonials initialTestimonials={serializedData.testimonials} />
       </div>
+    </>
+  );
+}
+
+export default function Home() {
+  return (
+    <>
+      <JsonLd data={homePageSchema} />
+      <JsonLd data={personSchema} />
+      <JsonLd data={reviewsSchema} />
+      <JsonLd data={homeBreadcrumb} />
+      {serviceSchemas.map((schema, index) => (
+        <JsonLd key={index} data={schema} />
+      ))}
+
+      <Hero
+        avatarSlot={
+          <Suspense fallback={<HeroAvatarPlaceholders />}>
+            <HeroAvatarsServer />
+          </Suspense>
+        }
+      />
+
+      <Suspense fallback={null}>
+        <HomePageSections />
+      </Suspense>
     </>
   );
 }

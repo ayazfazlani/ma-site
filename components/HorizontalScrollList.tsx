@@ -27,12 +27,13 @@ export default function HorizontalScrollList({ partners }: { partners: any[] }) 
         <div key={`${partner.name}-${i}`} className="flex-shrink-0 flex items-center px-8 py-3 group/item transition-all duration-500 hover:scale-110">
           {partner.logo ? (
             <div className={`relative h-10 w-32 group-hover/item:scale-110 transition-transform duration-500`}>
-              <Image 
-                src={partner.logo} 
-                alt={partner.name} 
-                fill
-                unoptimized
-                className={`object-contain filter grayscale opacity-40 group-hover/item:opacity-100 group-hover/item:grayscale-0 transition-all duration-700 ${isDark ? 'brightness-0 invert' : ''}`} 
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                width={128}
+                height={40}
+                sizes="128px"
+                className={`object-contain w-full h-full filter grayscale opacity-40 group-hover/item:opacity-100 group-hover/item:grayscale-0 transition-all duration-700 ${isDark ? "brightness-0 invert" : ""}`}
               />
             </div>
           ) : (
