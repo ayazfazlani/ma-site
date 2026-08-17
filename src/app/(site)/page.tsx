@@ -4,10 +4,10 @@ import Hero from "@/components/Hero";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
-import Stats from "@/components/Stats";
 import Process from "@/components/Process";
 import Industries from "@/components/Industries";
-import AuditForm from "@/components/AuditForm";
+import WhoThisIsFor from "@/components/WhoThisIsFor";
+import ProjectCTA from "@/components/ProjectCTA";
 import Testimonials from "@/components/Testimonials";
 import TechStack from "@/components/TechStack";
 import JsonLd from "@/components/JsonLd";
@@ -17,40 +17,39 @@ import HeroAvatarsServer from "@/components/HeroAvatarsServer";
 import { HeroAvatarPlaceholders } from "@/components/HeroAvatars";
 import {
   homePageSchema,
-  reviewsSchema,
   personSchema,
   serviceSchemas,
   getBreadcrumbSchema,
 } from "@/lib/schemas";
 import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
-import { servicesData } from "@/lib/services";
-import { HOMEPAGE_SERVICE_SLUGS } from "@/lib/seo";
+import { HOMEPAGE_SERVICES, uniqueBySlugOrTitle } from "@/lib/seo";
 import { Metadata } from "next";
 import dbConnect from "@/lib/mongodb";
 import PartnerModel from "@/models/Partner";
 import TestimonialModel from "@/models/Testimonial";
 import ProjectModel from "@/models/Project";
 
+const TITLE = "Custom Software Development Services | MA Softs";
+const DESCRIPTION =
+  "MA Softs builds custom ERP systems, manufacturing software, web applications and SaaS platforms for businesses worldwide. Build software around your workflow—not an off-the-shelf package.";
+
 export const metadata: Metadata = {
   title: {
-    absolute: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
+    absolute: TITLE,
   },
-  description:
-    "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
+  description: DESCRIPTION,
   alternates: {
     canonical: "https://masofts.com",
   },
   openGraph: {
-    title: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
-    description:
-      "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "https://masofts.com",
     type: "website",
   },
   twitter: {
-    title: "Custom Software Development Services | MA Softs",
-    description:
-      "MA Softs builds custom software for businesses worldwide — ERP systems, web applications, and business automation.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
@@ -69,13 +68,15 @@ async function HomePageSections() {
     TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean(),
   ]);
 
+  const uniqueProjects = uniqueBySlugOrTitle(projects).filter(
+    (p: { slug?: string }) => p.slug !== "plastic-factory-erp"
+  );
+
   const serializedData = JSON.parse(
     JSON.stringify({
       partners: allPartners,
-      services: servicesData.filter((s) =>
-        (HOMEPAGE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
-      ),
-      projects,
+      services: HOMEPAGE_SERVICES,
+      projects: uniqueProjects,
       testimonials,
     })
   );
@@ -83,22 +84,22 @@ async function HomePageSections() {
   return (
     <div className="content-deferred">
       <HorizontalScroll initialPartners={serializedData.partners} />
+      <Services initialServices={serializedData.services} />
       <ErpSection />
       <Portfolio initialProjects={serializedData.projects} />
-      <Services initialServices={serializedData.services} />
-      <Stats />
+      <WhoThisIsFor />
+      <Industries />
       <TechStack />
       <Process />
-      <Industries />
-      <AuditForm />
       <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />
       <FaqSection
         className="bg-gray-50 dark:bg-dark-950"
         title="Frequently asked questions"
-        subtitle="Custom software, ERP, and web development — straight answers."
+        subtitle="Straight answers about custom software, ERP, and how we work."
         items={servicesHubFaqs}
       />
       <Testimonials initialTestimonials={serializedData.testimonials} />
+      <ProjectCTA />
     </div>
   );
 }
@@ -108,7 +109,6 @@ export default function Home() {
     <>
       <JsonLd data={homePageSchema} />
       <JsonLd data={personSchema} />
-      <JsonLd data={reviewsSchema} />
       <JsonLd data={homeBreadcrumb} />
       {serviceSchemas.map((schema, index) => (
         <JsonLd key={index} data={schema} />

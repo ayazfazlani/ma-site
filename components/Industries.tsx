@@ -4,8 +4,6 @@
 import { motion } from "framer-motion";
 import {
   ShoppingBag,
-  Heart,
-  GraduationCap,
   Building2,
   Cpu,
   Factory,
@@ -18,44 +16,30 @@ const industries = [
   {
     icon: Factory,
     name: "Manufacturing",
-    description: "Custom software for manufacturing — production, inventory, and shop-floor reporting.",
+    description: "Production, inventory, raw materials and factory reporting.",
     href: "/services/manufacturing",
     gradient: "from-slate-600 to-blue-500",
   },
   {
     icon: Building2,
-    name: "Small Business",
-    description: "Custom software for small business teams replacing spreadsheets and scattered tools.",
+    name: "Small & Growing Businesses",
+    description: "Replace spreadsheets and disconnected tools with custom business software.",
     href: "/services/small-business",
     gradient: "from-teal-500 to-emerald-400",
   },
   {
-    icon: Cpu,
-    name: "Plastic & Pipe",
-    description: "ERP for the plastic industry: feedstock, extrusion, waste, and supplier ledgers.",
-    href: "/portfolio/plastic-factory-erp",
-    gradient: "from-primary-500 to-primary-400",
-  },
-  {
     icon: ShoppingBag,
-    name: "Web & Commerce",
-    description: "Custom website development services for brands that need more than a template.",
+    name: "Retail & Commerce",
+    description: "Inventory, sales, orders and business management.",
     href: "/services/web-development",
     gradient: "from-emerald-500 to-emerald-400",
   },
   {
-    icon: Heart,
-    name: "Healthcare",
-    description: "Secure patient portals and medical management software",
-    href: "/services",
-    gradient: "from-rose-500 to-pink-400",
-  },
-  {
-    icon: GraduationCap,
-    name: "EdTech",
-    description: "Interactive learning platforms and management portals",
-    href: "/services",
-    gradient: "from-amber-500 to-amber-400",
+    icon: Cpu,
+    name: "Startups",
+    description: "SaaS platforms, dashboards and custom web applications.",
+    href: "/services/web-development",
+    gradient: "from-primary-500 to-primary-400",
   },
 ];
 
@@ -69,7 +53,6 @@ export default function Industries() {
         isDark ? "bg-dark-900" : "bg-slate-50"
       }`}
     >
-      {/* Background */}
       {isDark && (
         <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950" />
       )}
@@ -80,7 +63,6 @@ export default function Industries() {
       />
 
       <div className="container-custom mx-auto relative z-10">
-        {/* Header */}
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
@@ -96,22 +78,21 @@ export default function Industries() {
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
-            Specialized Expertise
+            Who we build for
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Industries I <span className="gradient-text">build for</span>
+            Industries & <span className="gradient-text">business problems</span>
           </h2>
           <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Custom software development services for manufacturers, small businesses, and teams that have outgrown off-the-shelf tools.
+            We work with operators who need software that matches their process — especially manufacturing, growing businesses, and product teams.
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.name}

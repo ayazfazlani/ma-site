@@ -43,10 +43,10 @@ export default function TestimonialsWrapper({ children }: { children: React.Reac
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Voice of <span className="gradient-text">Success</span>
+            What clients <span className="gradient-text">say</span>
           </h2>
           <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Businesses that have transformed their core digital presence with our bespoke technical expertise.
+            Feedback from teams we&apos;ve built software with.
           </p>
         </motion.div>
 

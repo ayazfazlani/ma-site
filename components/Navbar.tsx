@@ -103,7 +103,7 @@ export default function Navbar() {
               href="/contact"
               className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full text-sm font-semibold overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/25 hover:scale-[1.03]"
             >
-              <span className="relative z-10">Get Started</span>
+              <span className="relative z-10">Discuss Project</span>
               <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-0.5 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
@@ -158,7 +158,7 @@ export default function Navbar() {
               className="block w-full text-center bg-gradient-to-r from-primary-600 to-primary-500 text-white py-4 rounded-2xl font-semibold text-lg shadow-xl shadow-primary-500/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Get Started
+              Discuss Your Project
             </Link>
           </div>
         </div>

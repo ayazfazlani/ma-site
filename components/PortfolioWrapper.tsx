@@ -42,17 +42,17 @@ export default function PortfolioWrapper({ children }: { children: React.ReactNo
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            Proof of Excellence
+            Proof of work
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Featured <span className="gradient-text">work</span>
+            Featured <span className="gradient-text">projects</span>
           </h2>
           <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Live systems including ERP for the plastic industry, manufacturing operations, and custom web applications for growing businesses.
+            Selected systems we&apos;ve shipped — manufacturing, commerce, and custom web applications.
           </p>
         </motion.div>
       </div>

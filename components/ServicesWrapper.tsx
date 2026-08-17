@@ -38,33 +38,30 @@ export default function ServicesWrapper({ children }: { children: React.ReactNod
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            What we build
+            Custom software solutions
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Custom software for{" "}
-            <span className="gradient-text">real operations</span>
+            Software built around{" "}
+            <span className="gradient-text">your business</span>
           </h2>
           <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+            ERP, manufacturing software, web applications, and SaaS — designed around how you already work.{" "}
             <Link href="/services/custom-erp" className="font-semibold text-primary-500 hover:underline">
-              Custom ERP development
+              See ERP systems
             </Link>
-            ,{" "}
-            <Link href="/services/web-development" className="font-semibold text-primary-500 hover:underline">
-              custom website development services
-            </Link>
-            ,{" "}
+            {", "}
             <Link href="/services/manufacturing" className="font-semibold text-primary-500 hover:underline">
-              custom software for manufacturing
+              manufacturing software
             </Link>
-            , and{" "}
-            <Link href="/services/small-business" className="font-semibold text-primary-500 hover:underline">
-              custom software for small business
+            {", or "}
+            <Link href="/services/web-development" className="font-semibold text-primary-500 hover:underline">
+              web applications
             </Link>
-            {" "}— built around how you work, not an off-the-shelf package.
+            .
           </p>
         </motion.div>
 

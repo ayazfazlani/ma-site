@@ -79,7 +79,7 @@ export default function ErpSection() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide border border-primary-500/20 bg-primary-500/10 text-primary-400"
             >
               <Building2 className="w-3.5 h-3.5" />
-              <span>MANUFACTURING ERP SOLUTIONS</span>
+              <span>Featured manufacturing ERP</span>
             </motion.div>
 
             <motion.h2 
@@ -91,10 +91,7 @@ export default function ErpSection() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Custom ERP Development for <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-indigo-400">
-                Plastic &amp; Pipe
-              </span> Industries
+              Plastic Factory ERP — software built for a real plant
             </motion.h2>
 
             <motion.p
@@ -106,7 +103,7 @@ export default function ErpSection() {
                 isDark ? "text-neutral-300" : "text-gray-600"
               }`}
             >
-              Custom ERP development built for factory floors — including ERP for the plastic industry, pipe extrusion, and industrial manufacturing. Track waste margins, supplier accounts, machine parameters, and government contracting ledgers.
+              A custom ERP covering production, inventory, raw materials, supplier ledgers, machine operations and reporting — built for plastic and pipe manufacturing, not a generic package.
             </motion.p>
 
             <motion.div
@@ -117,10 +114,10 @@ export default function ErpSection() {
               className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               <Link 
-                href="/contact"
+                href="/portfolio/plastic-factory-erp"
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white font-semibold shadow-lg shadow-primary-600/20 hover:shadow-primary-600/35 transition-all duration-300 group"
               >
-                <span>Request Demo</span>
+                <span>View Case Study</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
@@ -128,14 +125,13 @@ export default function ErpSection() {
                 className={`inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl font-semibold border transition-all duration-300 ${
                   isDark 
                     ? "border-white/[0.08] hover:border-white/20 bg-white/[0.02] text-white" 
-                    : "border-gray-205 hover:border-gray-300 bg-slate-50 text-gray-800"
+                    : "border-gray-200 hover:border-gray-300 bg-slate-50 text-gray-800"
                 }`}
               >
-                Custom ERP Development
+                ERP Development
               </Link>
             </motion.div>
 
-            {/* Quick Metrics */}
             <motion.div 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -146,12 +142,17 @@ export default function ErpSection() {
               }`}
             >
               <div>
-                <p className="text-3xl font-extrabold text-primary-400">100%</p>
-                <p className={`text-xs mt-1 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>Bespoke Codebase (No License Fees)</p>
+                <p className="text-lg font-extrabold text-primary-400">You own the code</p>
+                <p className={`text-xs mt-1 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>No per-user ERP license fees</p>
               </div>
               <div>
-                <p className="text-3xl font-extrabold text-indigo-400">Local</p>
-                <p className={`text-xs mt-1 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>Supplier Ledgers & Tax Ready</p>
+                <p className="text-lg font-extrabold text-indigo-400">Built for the floor</p>
+                <p className={`text-xs mt-1 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                  <Link href="/services/manufacturing" className="hover:underline">
+                    Manufacturing software
+                  </Link>
+                  {" "}shaped around real operations
+                </p>
               </div>
             </motion.div>
           </div>

@@ -8,33 +8,33 @@ import { useTheme } from "./ThemeProvider";
 const steps = [
   {
     icon: Search,
-    title: "Discovery",
+    title: "Understand",
     description:
-      "We analyze your business, competitors, and target audience to understand your unique challenges and opportunities.",
+      "We map your current workflow, problems, users and business requirements.",
     gradient: "from-primary-500 to-primary-400",
     number: "01",
   },
   {
     icon: Lightbulb,
-    title: "Strategy",
+    title: "Plan",
     description:
-      "Our experts craft a customized software development strategy aligned with your business goals and budget.",
+      "We define the modules, features, technology and development roadmap.",
     gradient: "from-purple-500 to-pink-400",
     number: "02",
   },
   {
     icon: Rocket,
-    title: "Execution",
+    title: "Build",
     description:
-      "We implement the strategy using cutting-edge tools and proven methodologies for maximum impact.",
+      "We develop the system in milestones so you can review progress throughout development.",
     gradient: "from-amber-500 to-orange-400",
     number: "03",
   },
   {
     icon: TrendingUp,
-    title: "Optimization",
+    title: "Launch",
     description:
-      "Continuous monitoring, analysis, and refinement to ensure sustained growth and ROI.",
+      "We deploy the software, train your team and provide post-launch support.",
     gradient: "from-success-500 to-emerald-400",
     number: "04",
   },
@@ -75,18 +75,18 @@ export default function Process() {
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            How custom software gets built
+            How we build your software
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            From process to{" "}
+            From workflow to{" "}
             <span className="gradient-text">live system</span>
           </h2>
           <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Discovery, design, build, and handover — so your team actually uses the software after launch.
+            A clear path from the first conversation to software your team can actually use.
           </p>
         </motion.div>
 

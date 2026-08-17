@@ -136,13 +136,6 @@ export const localBusinessSchema = {
     },
   ],
   priceRange: "$$",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "500",
-    bestRating: "5",
-    worstRating: "1",
-  },
   areaServed: [
     { "@type": "AdministrativeArea", name: "Pakistan" },
     { "@type": "AdministrativeArea", name: "Punjab" },

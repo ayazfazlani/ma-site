@@ -25,14 +25,12 @@ const Instagram = (props: any) => (
 );
 import { useTheme } from "./ThemeProvider";
 
-import { servicesData } from "@/lib/services";
-import { HOMEPAGE_SERVICE_SLUGS } from "@/lib/seo";
-
 const footerLinks = {
   services: [
-    ...servicesData
-      .filter((s) => (HOMEPAGE_SERVICE_SLUGS as readonly string[]).includes(s.slug))
-      .map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
+    { label: "ERP & Business Systems", href: "/services/custom-erp" },
+    { label: "Manufacturing Software", href: "/services/manufacturing" },
+    { label: "Web Applications", href: "/services/web-development" },
+    { label: "Small Business Software", href: "/services/small-business" },
     { label: "All services", href: "/services" },
   ],
   company: [
@@ -86,7 +84,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-neutral-300 mb-8 max-w-sm leading-relaxed">
-              Custom software development services for businesses worldwide — ERP systems, web applications, and business automation. Real solutions, no off-the-shelf compromises.
+              Custom software development for businesses — ERP, manufacturing software, web applications, and SaaS. Specialized in turning complex workflows into practical software.
             </p>
 
             {/* Contact Info */}
