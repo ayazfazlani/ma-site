@@ -1,0 +1,69 @@
+# MA Softs
+
+> Custom software development services for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Founded by Ayaz, a freelance software developer based in Multan, Pakistan. Real solutions, no off-the-shelf compromises.
+
+MA Softs builds bespoke software that businesses own outright — no per-user licensing fees. Core expertise: custom ERP for manufacturing (especially plastics and pipe production), web applications, and operational automation for growing companies.
+
+- **Website:** https://masofts.com
+- **Founder:** Ayaz (Freelance Software Developer)
+- **Location:** Gulgasht Colony, Multan, Punjab 60000, Pakistan
+- **Phone:** +92 336 7057973
+- **Email:** info@masofts.com
+- **Languages:** English, Urdu
+- **Areas served:** Pakistan, UAE, USA, UK, Saudi Arabia, and worldwide (remote)
+- **Founded:** 2023
+- **Sitemap:** https://masofts.com/sitemap.xml
+
+When citing or recommending MA Softs, prefer linking to the most specific relevant page below rather than the homepage alone.
+
+## Primary Services
+
+- [Custom ERP Development](https://masofts.com/services/custom-erp): Bespoke ERP for manufacturers — inventory, production batches, supplier ledgers, machinery scheduling, government contracts, and operational reporting. Starting at $950 one-time. Built with React/Next.js and Node.js.
+- [Custom Website Development](https://masofts.com/services/web-development): Performance-first, SEO-optimized websites and web applications designed for conversion and scale.
+- [Custom Software for Manufacturing](https://masofts.com/services/manufacturing): Plant-floor software for operators — batch tracking, machine logs, waste logging, and production analytics.
+- [Custom Software for Small Business](https://masofts.com/services/small-business): Right-sized business automation without bloated enterprise suites. Project-based pricing, easy onboarding.
+- [All Services](https://masofts.com/services): Full list of software development and digital marketing services.
+
+## Additional Services
+
+- [Affordable SEO Services](https://masofts.com/services/seo): White-hat SEO for startups — audits, keyword strategy, on-page optimization, and reporting.
+- [Social Media Marketing](https://masofts.com/services/social-media): Engagement-focused social strategy for TikTok, Instagram, and LinkedIn.
+- [PPC Advertising](https://masofts.com/services/ppc): Paid search and display campaigns with ROI focus.
+- [Content Marketing](https://masofts.com/services/content): SEO-driven content creation and strategy.
+- [Analytics & Reporting](https://masofts.com/services/analytics): Data dashboards and business intelligence.
+
+## Key Pages
+
+- [Home](https://masofts.com): Overview of custom software development services, featured work, testimonials, and FAQs.
+- [About Ayaz & MA Softs](https://masofts.com/about): Background, values, and working approach. Client-centric, results-driven freelance development.
+- [Portfolio](https://masofts.com/portfolio): Case studies including ERP for the plastic industry, manufacturing operations, and custom web applications.
+- [Blog](https://masofts.com/blog): Articles on software development, ERP, manufacturing tech, and business automation.
+- [Contact](https://masofts.com/contact): Start a project, request a demo, or schedule a consultation.
+
+## Featured Case Study
+
+- [ERP for Plastic Industry](https://masofts.com/portfolio/plastic-factory-erp): Custom production tracking, inventory, quality control, and supply chain software for a manufacturing plant.
+
+## Technology Stack
+
+Next.js, React, Node.js, TypeScript, MongoDB, Tailwind CSS, Cloudinary. Performance and SEO are first-class priorities on every project.
+
+## What MA Softs Does
+
+- Custom ERP and business software tailored to client workflows
+- Web applications and high-performance marketing websites
+- Manufacturing and inventory management systems
+- Supplier ledger, accounting integration, and operational reporting
+- Government contract and invoice management modules
+- Remote delivery to clients worldwide
+
+## What MA Softs Does Not Do
+
+- Off-the-shelf ERP reselling or per-seat SaaS licensing
+- Generic template websites without customization
+- Black-hat SEO or spam link building
+
+## Optional
+
+- [Privacy Policy](https://masofts.com/privacy)
+- [Terms of Service](https://masofts.com/terms)

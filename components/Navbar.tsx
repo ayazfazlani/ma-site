@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -58,6 +57,7 @@ export default function Navbar() {
                 alt="MA Softs Logo"
                 width={70}
                 height={70}
+                sizes="48px"
                 className="object-contain relative z-10 drop-shadow-2xl"
                 priority
               />
@@ -127,57 +127,42 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className={`lg:hidden backdrop-blur-2xl border-t ${isDark
-              ? "bg-dark-950/98 border-white/[0.06]"
-              : "bg-white/98 border-gray-200/60"
-              }`}
-          >
-            <div className="container-custom py-8 space-y-2">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`block py-3.5 px-4 text-lg font-medium transition-all rounded-xl ${isDark
-                      ? "text-neutral-300 hover:text-white hover:bg-white/[0.04]"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                      }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="pt-4"
+      <div
+        id="mobile-menu"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out backdrop-blur-2xl border-t ${
+          isMobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0 border-transparent"
+        } ${isDark
+          ? "bg-dark-950/98 border-white/[0.06]"
+          : "bg-white/98 border-gray-200/60"
+        }`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        <div className="container-custom py-8 space-y-2">
+          {navLinks.map((link) => (
+            <div key={link.href}>
+              <Link
+                href={link.href}
+                className={`block py-3.5 px-4 text-lg font-medium transition-all rounded-xl ${isDark
+                  ? "text-neutral-300 hover:text-white hover:bg-white/[0.04]"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                <Link
-                  href="/contact"
-                  className="block w-full text-center bg-gradient-to-r from-primary-600 to-primary-500 text-white py-4 rounded-2xl font-semibold text-lg shadow-xl shadow-primary-500/20"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Get Started
-                </Link>
-              </motion.div>
+                {link.label}
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+          <div className="pt-4">
+            <Link
+              href="/contact"
+              className="block w-full text-center bg-gradient-to-r from-primary-600 to-primary-500 text-white py-4 rounded-2xl font-semibold text-lg shadow-xl shadow-primary-500/20"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

@@ -133,9 +133,8 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
                           src={project.coverImage} 
                           alt={project.title} 
                           fill 
-                          priority={isActive}
-                          unoptimized
-                          sizes="(max-width: 768px) 100vw, 50vw"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 92vw, 50vw"
                           className="object-contain object-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4" 
                         />
                     ) : (

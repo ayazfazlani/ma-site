@@ -75,7 +75,7 @@ export default function Hero({
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 tracking-tight text-gray-900 dark:text-white">
                   {stat.value}
                 </div>
-                <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-400 dark:text-neutral-600">
+                <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-500 dark:text-neutral-400">
                   {stat.label}
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function Hero({
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-        <div className="flex flex-col items-center gap-2 animate-float text-gray-400 dark:text-neutral-500">
+        <div className="flex flex-col items-center gap-2 animate-float text-gray-500 dark:text-neutral-400">
           <span className="text-[10px] uppercase tracking-[0.3em] font-medium">Scroll</span>
           <ChevronDown className="w-4 h-4" />
         </div>

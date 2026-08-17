@@ -52,7 +52,7 @@ export default function HeroBackground() {
 
       <div className="absolute inset-0 z-[1] pointer-events-none bg-radial-gradient from-white/20 via-white/40 to-white/90 dark:hidden" />
 
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden hero-blur-decoration">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px] animate-float bg-primary-500/[0.15] dark:bg-primary-500/[0.07]" />
         <div
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px] animate-float bg-accent-400/[0.1] dark:bg-accent-400/[0.05]"

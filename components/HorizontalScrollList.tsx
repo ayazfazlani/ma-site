@@ -33,6 +33,7 @@ export default function HorizontalScrollList({ partners }: { partners: any[] }) 
                 width={128}
                 height={40}
                 sizes="128px"
+                loading="lazy"
                 className={`object-contain w-full h-full filter grayscale opacity-40 group-hover/item:opacity-100 group-hover/item:grayscale-0 transition-all duration-700 ${isDark ? "brightness-0 invert" : ""}`}
               />
             </div>

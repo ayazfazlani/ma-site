@@ -2,13 +2,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import DeferredWidgets from "@/components/DeferredWidgets";
 import {
   organizationSchema,
   websiteSchema,
   localBusinessSchema,
 } from "@/lib/schemas";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { Toaster } from "react-hot-toast";
 
 export default function SiteLayout({
   children,
@@ -17,11 +16,10 @@ export default function SiteLayout({
 }) {
   return (
     <>
-      <Toaster position="top-right" toastOptions={{ style: { borderRadius: '12px', fontWeight: '600' } }} />
+      <DeferredWidgets />
       <Navbar />
       <main>{children}</main>
       <Footer />
-      <WhatsAppButton />
       {/* Site Schemas */}
       <JsonLd data={organizationSchema} />
       <JsonLd data={websiteSchema} />

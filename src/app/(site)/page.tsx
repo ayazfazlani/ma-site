@@ -81,28 +81,25 @@ async function HomePageSections() {
   );
 
   return (
-    <>
+    <div className="content-deferred">
       <HorizontalScroll initialPartners={serializedData.partners} />
       <ErpSection />
       <Portfolio initialProjects={serializedData.projects} />
-
-      <div className="content-deferred">
-        <Services initialServices={serializedData.services} />
-        <Stats />
-        <TechStack />
-        <Process />
-        <Industries />
-        <AuditForm />
-        <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />
-        <FaqSection
-          className="bg-gray-50 dark:bg-dark-950"
-          title="Frequently asked questions"
-          subtitle="Custom software, ERP, and web development — straight answers."
-          items={servicesHubFaqs}
-        />
-        <Testimonials initialTestimonials={serializedData.testimonials} />
-      </div>
-    </>
+      <Services initialServices={serializedData.services} />
+      <Stats />
+      <TechStack />
+      <Process />
+      <Industries />
+      <AuditForm />
+      <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />
+      <FaqSection
+        className="bg-gray-50 dark:bg-dark-950"
+        title="Frequently asked questions"
+        subtitle="Custom software, ERP, and web development — straight answers."
+        items={servicesHubFaqs}
+      />
+      <Testimonials initialTestimonials={serializedData.testimonials} />
+    </div>
   );
 }
 

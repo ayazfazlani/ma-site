@@ -206,6 +206,7 @@ html.light {
 @utility animate-gradient {
   background-size: 200% auto;
   animation: gradient-shift 6s ease infinite;
+  will-change: background-position;
 }
 
 /* ── GLOW EFFECTS ── */
@@ -240,6 +241,7 @@ html.light {
 
 @utility animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* ── PULSE GLOW ── */
@@ -250,6 +252,7 @@ html.light {
 
 @utility animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+  will-change: opacity;
 }
 
 @keyframes fade-in-up {
@@ -281,6 +284,7 @@ html.light {
 
 @utility animate-slide-up-subtle {
   animation: slide-up-subtle 0.6s ease-out forwards;
+  will-change: transform, opacity;
 }
 
 /* ── NOISE TEXTURE OVERLAY ── */
@@ -296,6 +300,7 @@ html.light {
 
 @utility animate-marquee {
   animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 
 @utility hover-pause {
@@ -594,4 +599,11 @@ html.dark .prose code:not(pre code) {
 .content-deferred {
   content-visibility: auto;
   contain-intrinsic-size: 0 500px;
+}
+
+/* Blur decorations are expensive on mobile — hide them below md */
+@media (max-width: 767px) {
+  .hero-blur-decoration {
+    display: none;
+  }
 }
