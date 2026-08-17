@@ -194,7 +194,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top Button
       <motion.button
         onClick={scrollToTop}
         whileHover={{ scale: 1.1 }}
@@ -203,7 +203,7 @@ export default function Footer() {
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />
-      </motion.button>
+      </motion.button> */}
     </footer>
   );
 }
