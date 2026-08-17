@@ -15,6 +15,8 @@ export interface ServiceData {
   icon?: string;
   title: string;
   description: string;
+  metaTitle?: string;
+  metaDescription?: string;
   features: string[];
   gradient?: string;
   glow?: string;
@@ -33,9 +35,12 @@ export const servicesData: ServiceData[] = [
   {
     slug: "custom-erp",
     icon: "Database",
-    title: "Custom ERP for Manufacturing",
+    title: "Custom ERP Development",
+    metaTitle: "Custom ERP Development",
+    metaDescription:
+      "Custom ERP development for manufacturers and growing businesses. Own your workflows, inventory, production, and reporting — no generic off-the-shelf ERP.",
     description:
-      "Bespoke manufacturing ERP built for plastic, pipe, and industrial factories. Streamline your raw materials, production metrics, supplier ledgers, and reporting.",
+      "Custom ERP development built around how your business actually runs. Inventory, production, suppliers, and reporting in one system you own.",
     features: [
       "Plastics & Pipe Operations Tracking",
       "Raw Materials Inventory & Waste Logging",
@@ -50,7 +55,7 @@ export const servicesData: ServiceData[] = [
     color: "from-indigo-500 to-purple-600",
     price: "Starting at $950",
     longDescription:
-      "I engineer custom Enterprise Resource Planning (ERP) systems tailored to the specific needs of plastic, pipe, and industrial manufacturers. From raw material ingestion to final shipments and government contract accounting, I build secure, high-performance operations software.",
+      "Custom ERP development from MA Softs means software shaped to your operations — not a bloated suite you have to work around. I build ERP systems for manufacturers, distributors, and growing teams that need inventory, production, supplier ledgers, and reporting in one place. You own the codebase. No per-user licenses.",
     plans: [
       {
         name: "Starter Manufacturing ERP",
@@ -96,7 +101,8 @@ export const servicesData: ServiceData[] = [
       { title: "Onboarding & Launch", description: "Testing on-site, trailing operations, and coaching your staff to use the system." }
     ],
     faqs: [
-      { q: "Is this ERP suitable for plastics and pipe factories?", a: "Yes. I customize the workflows to track feedstock, granulator operations, pipe production, waste margins, and government order ledgers." },
+      { q: "What is custom ERP development?", a: "Custom ERP development means building operations software around your workflows — inventory, production, suppliers, and reporting — instead of forcing your team into a generic package." },
+      { q: "Is this ERP suitable for plastics and pipe factories?", a: "Yes. ERP for the plastic industry is a core use case: feedstock, granulator operations, pipe production, waste margins, and government order ledgers." },
       { q: "Can we run this offline or locally?", a: "Optionally yes. I can deploy it to a local container or intranet server, or as a secure cloud application accessible from anywhere." },
       { q: "How do we handle government contracts?", a: "I build specific modules to track tender requirements, milestones, advance billing, security deposits, and final clearance status." },
       { q: "What support is provided after launch?", a: "All projects include dedicated support to address adjustments, training queries, and ensure smooth daily operations." }
@@ -111,16 +117,19 @@ export const servicesData: ServiceData[] = [
   {
     slug: "web-development",
     icon: "Code2",
-    title: "Custom Web Application Development Pakistan",
+    title: "Custom Website Development Services",
+    metaTitle: "Custom Website Development Services",
+    metaDescription:
+      "Custom website development services for businesses that need more than a template. Fast, SEO-ready sites and web apps built around your brand and workflows.",
     description:
-      "Expert custom web application development for startups worldwide. I build scalable SaaS platforms and ERP software using Next.js, React, and modern tech stacks.",
+      "Custom website development services for companies that need a fast, conversion-focused site or web app — not another generic template.",
     features: [
-      "Full-stack Next.js & React Developer for Hire",
-      "SaaS MVP Development Pakistan",
-      "Web Development for Startups Pakistan",
-      "Headless Ecommerce Developer Pakistan",
-      "Custom ERP Development for Startups",
-      "Performance & SEO-ready Architecture",
+      "Business websites & marketing sites",
+      "Web apps and client portals",
+      "SEO-ready Next.js architecture",
+      "Ecommerce and booking flows",
+      "CMS and content management",
+      "Performance & Core Web Vitals",
     ],
     gradient: "from-primary-500 to-primary-400",
     glow: "group-hover:shadow-primary-500/20",
@@ -128,7 +137,7 @@ export const servicesData: ServiceData[] = [
     color: "from-blue-500 to-blue-600",
     price: "Starting at $150",
     longDescription:
-      "I design and develop fast, conversion-focused websites and web apps that help startups launch quickly and scale efficiently.",
+      "Custom website development services from MA Softs cover marketing sites, client portals, and full web applications. I design and build fast, SEO-ready experiences on Next.js and React so your site ranks, converts, and scales with the business.",
     plans: [
       {
         name: "Starter Website",
@@ -164,11 +173,9 @@ export const servicesData: ServiceData[] = [
         name: "Enterprise Web App",
         price: "$850",
         billingCycle: "one-time",
-        description: "Custom development for high-end web applications, factory ERP, and property software.",
+        description: "Custom development for high-end web applications and business portals.",
         features: [
           "Custom Full-stack Development",
-          "Plastic Factory ERP Software",
-          "Property Dealer Software Pakistan",
           "User Authentication & Roles",
           "Third-party API Integrations",
           "Real-time Dashboards",
@@ -201,6 +208,168 @@ export const servicesData: ServiceData[] = [
       { name: "Next.js", icon: "Zap", color: "text-white" },
       { name: "TypeScript", icon: "Code2", color: "text-blue-500" },
       { name: "Tailwind", icon: "Layout", color: "text-cyan-400" }
+    ]
+  },
+  {
+    slug: "manufacturing",
+    icon: "Factory",
+    title: "Custom Software for Manufacturing",
+    metaTitle: "Custom Software for Manufacturing",
+    metaDescription:
+      "Custom software for manufacturing — production tracking, inventory, machine logs, and shop-floor reporting built around your factory, not a generic package.",
+    description:
+      "Custom software for manufacturing that connects the shop floor to the office: production, inventory, quality, and reporting in one system.",
+    features: [
+      "Production & Batch Tracking",
+      "Raw Materials & Inventory Control",
+      "Machine Output & Downtime Logs",
+      "Quality Checks & Waste Margins",
+      "Supplier & Purchase Orders",
+      "Live Factory Dashboards",
+    ],
+    gradient: "from-slate-600 to-blue-500",
+    glow: "group-hover:shadow-blue-500/20",
+    number: "03",
+    color: "from-slate-600 to-blue-600",
+    price: "Starting at $950",
+    longDescription:
+      "Custom software for manufacturing should match how your plant actually runs. I build systems for production scheduling, raw-material inventory, machine output, quality, and reporting — including ERP for the plastic industry and other industrial operations. No modules you never use. No per-user fees.",
+    plans: [
+      {
+        name: "Plant Starter",
+        price: "$950",
+        billingCycle: "one-time",
+        description: "Core production and inventory tracking for a single plant.",
+        features: [
+          "Raw Material Inventory",
+          "Production Batch Tracking",
+          "Order & Delivery Flow",
+          "Basic Factory Dashboard",
+          "1 Month Handover Support",
+        ],
+        cta: "Request Demo",
+      },
+      {
+        name: "Factory Operations Suite",
+        price: "$2,400",
+        billingCycle: "one-time",
+        description: "Full operations software for plants that need machinery, suppliers, and reporting together.",
+        features: [
+          "Multi-line Production Tracking",
+          "Machinery Metrics & Downtime",
+          "Supplier Ledger & Purchasing",
+          "Quality & Waste Reporting",
+          "Role-based Access",
+          "6 Months Dedicated Support",
+        ],
+        cta: "Schedule Audit",
+        highlighted: true,
+      },
+    ],
+    whyChooseUs: [
+      { title: "Built for the Floor", description: "Interfaces your operators can use on a busy shift — not desktop software designed for accountants only." },
+      { title: "Your Process, Not Ours", description: "Workflows follow your plant: batches, machines, waste, and suppliers as you already run them." },
+      { title: "You Own It", description: "Custom software you own outright, with no recurring per-user ERP licenses." },
+      { title: "Ready to Grow", description: "Add a second line, warehouse, or plant without starting over." }
+    ],
+    process: [
+      { title: "Plant Walkthrough", description: "I map materials, machines, shifts, and the reports you actually need." },
+      { title: "Prototype", description: "Clickable screens so operators and managers can confirm the flow before we build." },
+      { title: "Build", description: "Production software with secure data, roles, and the metrics that matter on your floor." },
+      { title: "Go-Live", description: "On-site or remote training, parallel running, and support through the first live weeks." }
+    ],
+    faqs: [
+      { q: "Is this custom software for manufacturing or a generic ERP?", a: "It is custom software for manufacturing. We model your plant — materials, machines, batches, and reports — instead of forcing you into a generic ERP template." },
+      { q: "Do you work with plastic and pipe factories?", a: "Yes. ERP for the plastic industry is a core use case: feedstock, extrusion or moulding, waste, and supplier ledgers." },
+      { q: "Can it run on a local server?", a: "Yes. Cloud, on-premise, or a hybrid setup depending on your network and IT policy." },
+      { q: "How long does a typical plant system take?", a: "A focused first version is usually 6–12 weeks. Larger multi-plant suites take longer and ship in phases." }
+    ],
+    techStack: [
+      { name: "Next.js", icon: "Zap", color: "text-white" },
+      { name: "Node.js", icon: "Layers", color: "text-green-500" },
+      { name: "MongoDB", icon: "Database", color: "text-emerald-500" },
+      { name: "Tailwind CSS", icon: "Layout", color: "text-cyan-400" }
+    ]
+  },
+  {
+    slug: "small-business",
+    icon: "Briefcase",
+    title: "Custom Software for Small Business",
+    metaTitle: "Custom Software for Small Business",
+    metaDescription:
+      "Custom software for small business — operations, invoicing, client portals, and automation built to fit your team without enterprise bloat or per-seat fees.",
+    description:
+      "Custom software for small business teams that have outgrown spreadsheets and generic tools, without paying enterprise prices.",
+    features: [
+      "Operations & Job Tracking",
+      "Invoicing & Client Records",
+      "Simple Inventory or Bookings",
+      "Staff Roles & Permissions",
+      "WhatsApp or Email Alerts",
+      "Reports You Actually Use",
+    ],
+    gradient: "from-teal-500 to-emerald-400",
+    glow: "group-hover:shadow-emerald-500/20",
+    number: "04",
+    color: "from-teal-500 to-emerald-600",
+    price: "Starting at $450",
+    longDescription:
+      "Custom software for small business should feel simple on day one and still fit as you grow. I replace scattered spreadsheets, WhatsApp threads, and mismatched apps with one system for jobs, clients, invoicing, and reporting — sized for a small team, not an enterprise IT department.",
+    plans: [
+      {
+        name: "Starter Ops",
+        price: "$450",
+        billingCycle: "one-time",
+        description: "A focused first system for a small team replacing spreadsheets.",
+        features: [
+          "Client & Job Records",
+          "Basic Invoicing",
+          "Simple Dashboard",
+          "Mobile-friendly Screens",
+          "1 Month Support",
+        ],
+        cta: "Get Started",
+      },
+      {
+        name: "Business Hub",
+        price: "$950",
+        billingCycle: "one-time",
+        description: "Full operations software for small businesses ready to run on one platform.",
+        features: [
+          "Jobs, Clients & Invoicing",
+          "Inventory or Bookings",
+          "Staff Roles",
+          "Email or WhatsApp Alerts",
+          "Custom Reports",
+          "3 Months Support",
+        ],
+        cta: "Build My System",
+        highlighted: true,
+      },
+    ],
+    whyChooseUs: [
+      { title: "Sized for Small Teams", description: "No 200-feature suites. We build the workflows you use every week." },
+      { title: "Clear Pricing", description: "Project-based custom software — not a surprise per-seat bill as you hire." },
+      { title: "Easy to Learn", description: "If your team can use a phone, they can use the system after a short walkthrough." },
+      { title: "Room to Grow", description: "Add modules later: inventory, a client portal, or a second location." }
+    ],
+    process: [
+      { title: "Listen", description: "We list the spreadsheets, tools, and daily headaches that waste the most time." },
+      { title: "Sketch", description: "Simple screens for the 3–5 jobs your team does every day." },
+      { title: "Build", description: "A working system with your data, your wording, and your rules." },
+      { title: "Handover", description: "Training, a short guide, and support while the team switches over." }
+    ],
+    faqs: [
+      { q: "Is custom software for small business worth it versus off-the-shelf?", a: "If you are bending three tools and a spreadsheet to fit one process, custom software for small business usually pays back in time saved and fewer mistakes." },
+      { q: "How small is too small?", a: "If two or more people touch the same jobs, invoices, or stock every day, a focused system is usually a good fit." },
+      { q: "Can we start small and add later?", a: "Yes. Most small-business builds start with one core workflow, then add invoicing, inventory, or a client portal." },
+      { q: "Do you provide training?", a: "Yes. Handover includes walkthroughs for the people who will use it daily, plus a window of support after launch." }
+    ],
+    techStack: [
+      { name: "Next.js", icon: "Zap", color: "text-white" },
+      { name: "Node.js", icon: "Layers", color: "text-green-500" },
+      { name: "MongoDB", icon: "Database", color: "text-emerald-500" },
+      { name: "Tailwind CSS", icon: "Layout", color: "text-cyan-400" }
     ]
   },
   {

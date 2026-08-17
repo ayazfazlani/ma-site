@@ -91,9 +91,9 @@ export default function ErpSection() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Custom ERP for <br />
+              Custom ERP Development for <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-indigo-400">
-                Plastic & Pipe
+                Plastic &amp; Pipe
               </span> Industries
             </motion.h2>
 
@@ -106,7 +106,7 @@ export default function ErpSection() {
                 isDark ? "text-neutral-300" : "text-gray-600"
               }`}
             >
-              I build custom Enterprise Resource Planning software tailored to operations like plastic moulding extrusion, industrial manufacturing, and raw inventory management. Track waste margins, supplier accounts, machine parameters, and government contracting ledgers.
+              Custom ERP development built for factory floors — including ERP for the plastic industry, pipe extrusion, and industrial manufacturing. Track waste margins, supplier accounts, machine parameters, and government contracting ledgers.
             </motion.p>
 
             <motion.div
@@ -131,7 +131,7 @@ export default function ErpSection() {
                     : "border-gray-205 hover:border-gray-300 bg-slate-50 text-gray-800"
                 }`}
               >
-                Explore Modules
+                Custom ERP Development
               </Link>
             </motion.div>
 

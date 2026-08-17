@@ -9,6 +9,7 @@ import JsonLd from '@/components/JsonLd';
 import FaqSection from '@/components/FaqSection';
 import ImageLightbox from '@/components/ImageLightbox';
 import { portfolioDetailFaqs, toFaqPageSchema } from '@/lib/faq-data';
+import { applyPortfolioSeo } from '@/lib/seo';
 
 /** Fields used on this page; DB documents may include more than the Mongoose schema declares. */
 type PortfolioDetail = {
@@ -33,15 +34,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!project) return { title: 'Not Found' };
 
+  const seoProject = applyPortfolioSeo({ ...project, slug });
+  const title = seoProject.title;
+  const description =
+    seoProject.description ||
+    `Case study: how MA Softs delivered ${project.title} with custom software development.`;
+
   return {
-    title: `${project.title} | Custom ERP Development Pakistan`,
-    description: project.description ?? `Case Study: How MA Softs delivered ${project.title} using modern custom software development in Pakistan.`,
+    title,
+    description,
     alternates: {
       canonical: `https://masofts.com/portfolio/${slug}`,
     },
     openGraph: {
-      title: `${project.title} – MA Softs Portfolio`,
-      description: project.description ?? undefined,
+      title: `${title} | MA Softs`,
+      description,
       url: `https://masofts.com/portfolio/${slug}`,
       type: "article",
       images: project.image ? [project.image] : [],
@@ -58,6 +65,10 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
   if (!project) {
     notFound();
   }
+
+  const seoProject = applyPortfolioSeo({ ...project, slug });
+  const displayTitle = seoProject.title;
+  const displayDescription = seoProject.description;
 
   const galleryImages = Array.from(
     new Set(
@@ -102,10 +113,10 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
               </span>
             </div>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight break-words">
-              {project.title}
+              {displayTitle}
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-neutral-300 font-medium leading-relaxed max-w-3xl">
-              {project.description}
+              {displayDescription}
             </p>
           </div>
 
@@ -137,7 +148,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
               <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary-500/10 border border-gray-100 dark:border-white/[0.05] group">
                 <Image
                   src={galleryImages[0]}
-                  alt={project.title}
+                  alt={displayTitle}
                   fill
                   unoptimized
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
@@ -266,13 +277,15 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
           <div className="mb-20">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">More Projects</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {relatedProjects.map((rp) => (
-                <Link key={rp._id.toString()} href={`/portfolio/${rp.slug}`} className="group block">
+              {relatedProjects.map((rp) => {
+                const related = applyPortfolioSeo(rp);
+                return (
+                <Link key={rp._id.toString()} href={`/portfolio/${related.slug}`} className="group block">
                   <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm group-hover:shadow-xl transition-all duration-500 mb-5 bg-gray-50 dark:bg-dark-900">
-                    {(rp.image || rp.images?.[0]) ? (
+                    {(related.image || related.images?.[0]) ? (
                       <Image 
-                        src={rp.image || rp.images[0]} 
-                        alt={rp.title} 
+                        src={related.image || related.images[0]} 
+                        alt={related.title} 
                         fill 
                         unoptimized
                         className="object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -284,15 +297,16 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                     )}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors mb-2 leading-tight">
-                    {rp.title}
+                    {related.title}
                   </h3>
-                  {rp.category && (
+                  {related.category && (
                     <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
-                      {rp.category}
+                      {related.category}
                     </p>
                   )}
                 </Link>
-              ))}
+              );
+              })}
             </div>
           </div>
         )}

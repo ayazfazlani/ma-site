@@ -92,9 +92,9 @@ export const aboutFaqs: FaqItem[] = [
 /** Mirrors the existing servicesFaqSchema for on-page display */
 export const servicesHubFaqs: FaqItem[] = [
   {
-    question: "What software development services does MA Softs offer?",
+    question: "What custom software development services does MA Softs offer?",
     answer:
-      "MA Softs offers a wide range of custom software development services including Web Application Development, ERP Systems, E-commerce Solutions, SaaS Development, and Business Process Automation. Each solution is custom-built by me to meet your specific business requirements.",
+      "MA Softs offers custom software development services including custom ERP development, custom website development services, custom software for manufacturing, and custom software for small business. Each system is built around your workflows — not an off-the-shelf package.",
   },
   {
     question: "How much does custom software development cost?",
@@ -102,9 +102,9 @@ export const servicesHubFaqs: FaqItem[] = [
       "Project costs vary depending on complexity and requirements. I offer competitive pricing for high-quality, custom-built solutions. Contact me for a detailed quote based on your specific needs.",
   },
   {
-    question: "How long does it take to build a custom web application?",
+    question: "Do you build ERP for the plastic industry?",
     answer:
-      "Simple web applications can take 4-8 weeks, while complex enterprise systems or ERPs may take 3-6 months. I follow an agile development process to deliver functional modules incrementally.",
+      "Yes. ERP for the plastic industry is a core specialty — production tracking, feedstock inventory, waste margins, and supplier ledgers built for real factory floors.",
   },
   {
     question: "Do you provide support after the software is launched?",

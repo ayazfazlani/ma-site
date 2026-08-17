@@ -7,6 +7,7 @@ import Image from "next/image";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { ExternalLink, ImageIcon, Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { applyPortfolioSeo } from "@/lib/seo";
 
 export type PortfolioListProject = {
   id?: string;
@@ -50,10 +51,11 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
   const projects: DisplayProject[] = useMemo(
     () =>
       initialProjects.map((p, i) => {
-        const gallery = getProjectGallery(p);
-        const coverImage = p.image || gallery[0] || "";
+        const overlay = applyPortfolioSeo(p);
+        const gallery = getProjectGallery(overlay);
+        const coverImage = overlay.image || gallery[0] || "";
         return {
-          ...p,
+          ...overlay,
           gallery,
           coverImage,
           color: p.color || ["from-blue-500 to-cyan-400", "from-amber-500 to-orange-400", "from-rose-500 to-pink-400"][i % 3],

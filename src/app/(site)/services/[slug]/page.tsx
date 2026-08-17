@@ -27,20 +27,20 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     return {};
   }
   return {
-    title: `${service.title} | MA Softs`,
-    description: service.description,
+    title: service.metaTitle || service.title,
+    description: service.metaDescription || service.description,
     alternates: {
       canonical: `https://masofts.com/services/${service.slug}`,
     },
     openGraph: {
-      title: `${service.title} - MA Softs`,
-      description: service.description,
+      title: `${service.metaTitle || service.title} | MA Softs`,
+      description: service.metaDescription || service.description,
       url: `https://masofts.com/services/${service.slug}`,
       type: "website",
     },
     twitter: {
-      title: `${service.title} - MA Softs`,
-      description: service.description,
+      title: `${service.metaTitle || service.title} | MA Softs`,
+      description: service.metaDescription || service.description,
     },
   };
 }

@@ -8,47 +8,54 @@ import {
   GraduationCap,
   Building2,
   Cpu,
-  Truck,
+  Factory,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 
 const industries = [
   {
+    icon: Factory,
+    name: "Manufacturing",
+    description: "Custom software for manufacturing — production, inventory, and shop-floor reporting.",
+    href: "/services/manufacturing",
+    gradient: "from-slate-600 to-blue-500",
+  },
+  {
+    icon: Building2,
+    name: "Small Business",
+    description: "Custom software for small business teams replacing spreadsheets and scattered tools.",
+    href: "/services/small-business",
+    gradient: "from-teal-500 to-emerald-400",
+  },
+  {
     icon: Cpu,
-    name: "SaaS Startups",
-    description: "Cloud-native solutions and scalable MVP development",
+    name: "Plastic & Pipe",
+    description: "ERP for the plastic industry: feedstock, extrusion, waste, and supplier ledgers.",
+    href: "/portfolio/plastic-factory-erp",
     gradient: "from-primary-500 to-primary-400",
   },
   {
-    icon: Truck,
-    name: "Logistics & ERP",
-    description: "Streamlined supply chain and resource planning systems",
-    gradient: "from-purple-500 to-violet-400",
-  },
-  {
     icon: ShoppingBag,
-    name: "E-commerce",
-    description: "High-conversion headless stores and custom platforms",
+    name: "Web & Commerce",
+    description: "Custom website development services for brands that need more than a template.",
+    href: "/services/web-development",
     gradient: "from-emerald-500 to-emerald-400",
   },
   {
     icon: Heart,
     name: "Healthcare",
     description: "Secure patient portals and medical management software",
+    href: "/services",
     gradient: "from-rose-500 to-pink-400",
   },
   {
     icon: GraduationCap,
     name: "EdTech",
     description: "Interactive learning platforms and management portals",
+    href: "/services",
     gradient: "from-amber-500 to-amber-400",
-  },
-  {
-    icon: Building2,
-    name: "Fintech & PropTech",
-    description: "Secure financial tools and real estate data platforms",
-    gradient: "from-accent-500 to-accent-400",
   },
 ];
 
@@ -96,11 +103,10 @@ export default function Industries() {
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Sectors I <span className="gradient-text">Empower</span>
+            Industries I <span className="gradient-text">build for</span>
           </h2>
           <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            I specialize in building complex, data-driven software solutions for industries 
-            demanding high reliability and seamless user scaling.
+            Custom software development services for manufacturers, small businesses, and teams that have outgrown off-the-shelf tools.
           </p>
         </motion.div>
 
@@ -113,7 +119,10 @@ export default function Industries() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`group rounded-2xl lg:rounded-3xl p-7 border transition-all duration-500 cursor-pointer hover:shadow-xl ${
+            >
+            <Link
+              href={industry.href}
+              className={`group rounded-2xl lg:rounded-3xl p-7 border transition-all duration-500 hover:shadow-xl block ${
                 isDark
                   ? "bg-white/[0.02] border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04] hover:shadow-primary-500/5"
                   : "bg-white border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-lg"
@@ -151,6 +160,7 @@ export default function Industries() {
                   </span>
                 </div>
               </div>
+            </Link>
             </motion.div>
           ))}
         </div>

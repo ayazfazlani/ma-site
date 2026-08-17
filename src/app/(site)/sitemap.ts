@@ -62,19 +62,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Static service sub-pages
   const servicePages = [
+    'custom-erp',
+    'web-development',
+    'manufacturing',
+    'small-business',
     'analytics',
     'content',
     'ppc',
     'seo',
     'social-media',
-    'web-development',
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = servicePages.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: 0.8,
+    priority: ['custom-erp', 'web-development', 'manufacturing', 'small-business'].includes(slug) ? 0.9 : 0.8,
   }));
 
   // Dynamic service sub-pages from servicesData (for [slug] routes)
@@ -115,7 +118,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/portfolio/${project.slug}`,
       lastModified: project.updatedAt || new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.6,
+      priority: project.slug === 'plastic-factory-erp' ? 0.85 : 0.6,
     }));
   } catch {
     // DB unavailable during build – skip dynamic portfolio routes

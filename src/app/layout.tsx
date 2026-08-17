@@ -12,11 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://masofts.com"),
   title: {
-    default: "MA Softs – Custom Software & Web Development Company in Pakistan",
+    default: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
     template: "%s | MA Softs",
   },
   description:
-    "MA Softs delivers custom web applications, ERP systems, SaaS platforms & e-commerce solutions for startups and businesses worldwide. Get a free consultation today.",
+    "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
   alternates: {
     canonical: "https://masofts.com",
   },
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://masofts.com",
-    title: "MA Softs – Custom Software & Web Development Company",
+    title: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
     description:
-      "Custom web applications, ERP systems, SaaS & e-commerce solutions built for scale. Free consultation available.",
+      "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MA Softs – Custom Software & Web Development",
+    title: "Custom Software Development Services | MA Softs",
     description:
-      "Custom web apps, ERP systems & SaaS platforms for startups and businesses. Free consultation.",
+      "MA Softs builds custom software for businesses worldwide — ERP systems, web applications, and business automation.",
   },
   icons: {
     icon: [

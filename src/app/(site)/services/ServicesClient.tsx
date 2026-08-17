@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import ScrollTray from "@/components/ScrollTray";
-import { ArrowRight, CheckCircle, Code2, Cpu, Database, Globe, Layout, Layers, Settings } from "lucide-react";
+import { ArrowRight, CheckCircle, Code2, Cpu, Database, Globe, Layout, Layers, Settings, Factory, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
@@ -32,6 +32,8 @@ const ICON_MAP: Record<string, any> = {
   Globe,
   Settings,
   Layout,
+  Factory,
+  Briefcase,
 };
 
 export default function ServicesClient() {
@@ -56,7 +58,7 @@ export default function ServicesClient() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
-            My <span className="gradient-text">Services</span>
+            ERP, Web &amp; <span className="gradient-text">Business Software</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +66,7 @@ export default function ServicesClient() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Comprehensive software development solutions tailored to grow your business
+            Custom ERP development, website development, manufacturing software, and systems for small businesses — built around how you work.
           </motion.p>
         </div>
       </section>

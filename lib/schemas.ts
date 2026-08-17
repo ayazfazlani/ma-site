@@ -22,7 +22,7 @@ export const organizationSchema = {
   },
   image: LOGO_URL,
   description:
-    "Leading freelance ERP developer in Pakistan & global SaaS MVP developer. MA Softs delivers custom plastic factory ERP software, property dealer software, and Next.js solutions for startups.",
+    "MA Softs delivers custom software development services worldwide — custom ERP development, web applications, and business automation for manufacturers and growing companies.",
   foundingDate: "2023",
   founder: {
     "@type": "Person",
@@ -63,7 +63,7 @@ export const organizationSchema = {
     "@type": "QuantitativeValue",
     value: 1,
   },
-  slogan: "Custom Software & Web Development by Ayaz",
+  slogan: "Custom Software Development Services — ERP, Web & Business Apps",
 };
 
 // ── WebSite Schema (with search action) ──
@@ -77,7 +77,7 @@ export const websiteSchema = {
     "@id": `${SITE_URL}/#organization`,
   },
   description:
-    "Custom software, web development, and SaaS MVP development for startups worldwide. Expert Next.js developer and freelance ERP developer in Pakistan.",
+    "Custom software development services for businesses worldwide — ERP systems, web applications, and business automation.",
   potentialAction: [
     {
       "@type": "SearchAction",
@@ -230,7 +230,12 @@ export const serviceSchemas = servicesData.map((s) => {
     name: s.title,
     description: s.description,
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: { "@type": "Country", name: "Pakistan" },
+    areaServed: [
+      { "@type": "Country", name: "Pakistan" },
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "United Arab Emirates" },
+    ],
     serviceType,
     url: `${SITE_URL}/services/${s.slug}`,
     offers: offer,
@@ -344,7 +349,7 @@ export const servicesItemListSchema = {
   name: "Software Development Services",
   description: "Comprehensive custom software and web development solutions by MA Softs",
   url: `${SITE_URL}/services`,
-  numberOfItems: 7,
+  numberOfItems: serviceSchemas.length,
   itemListElement: serviceSchemas.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
@@ -364,10 +369,10 @@ export const servicesFaqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What software development services does MA Softs offer?",
+      name: "What custom software development services does MA Softs offer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MA Softs offers a wide range of custom software development services including Web Application Development, ERP Systems, E-commerce Solutions, SaaS Development, and Business Process Automation. Each solution is custom-built by Ayaz to meet your specific business requirements.",
+        text: "MA Softs offers custom software development services including custom ERP development, custom website development services, custom software for manufacturing, and custom software for small business. Each system is built around your workflows — not an off-the-shelf package.",
       },
     },
     {
@@ -380,10 +385,10 @@ export const servicesFaqSchema = {
     },
     {
       "@type": "Question",
-      name: "How long does it take to build a custom web application?",
+      name: "Do you build ERP for the plastic industry?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Simple web applications can take 4-8 weeks, while complex enterprise systems or ERPs may take 3-6 months. We follow an agile development process to deliver functional modules incrementally.",
+        text: "Yes. ERP for the plastic industry is a core specialty — production tracking, feedstock inventory, waste margins, and supplier ledgers built for real factory floors.",
       },
     },
     {
@@ -426,9 +431,9 @@ export const homePageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": `${SITE_URL}/#webpage`,
-  name: "MA Softs - Custom Software & Web Development by Ayaz",
+  name: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
   description:
-    "Expert freelance ERP developer in Pakistan & SaaS MVP developer. Specialized in plastic factory ERP software, property dealer software, and custom Next.js development for startups worldwide.",
+    "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
   url: SITE_URL,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },
@@ -450,9 +455,9 @@ export const personSchema = {
   name: "Ayaz",
   image: LOGO_URL,
   url: SITE_URL,
-  jobTitle: "Senior Software Developer & ERP Expert",
+  jobTitle: "Software Developer",
   worksFor: { "@id": `${SITE_URL}/#organization` },
-  description: "Senior Full-stack Developer and Freelance ERP Expert helping startups build scalable products.",
+  description: "Software developer building custom software, ERP systems, and web applications for businesses worldwide.",
   sameAs: [
     "https://www.facebook.com/masofts",
     "https://twitter.com/masofts",

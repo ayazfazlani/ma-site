@@ -130,7 +130,7 @@ export default function Hero({ partners = [], avatars = [] }: { partners?: any[]
               }`}
             >
               <span className={`w-2 h-2 rounded-full animate-pulse-glow ${isDark ? "bg-accent-400" : "bg-primary-500"}`} />
-              Ayaz | Software Developer
+              ERP, Web &amp; Business Apps
             </span>
           </div>
 
@@ -139,18 +139,10 @@ export default function Hero({ partners = [], avatars = [] }: { partners?: any[]
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Building the Future of
+            Custom Software
             <br />
             <span className="gradient-text animate-gradient">
-              Startup Software
-            </span>
-            <br />
-            <span
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold opacity-70 ${
-                isDark ? "text-neutral-400" : "text-gray-600"
-              }`}
-            >
-              by Ayaz
+              Development Services
             </span>
           </h1>
 
@@ -160,10 +152,9 @@ export default function Hero({ partners = [], avatars = [] }: { partners?: any[]
             }`}
             style={{ animationDelay: '0.15s' }}
           >
-            I am a full-stack developer specializing in crafting 
-            <span className={`px-2 font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>custom ERPs</span>, 
-            scalable web platforms, and MVPs for startups. With expert-level 
-            execution, I transform complex business needs into seamless digital experiences.
+            MA Softs builds custom software for businesses worldwide — 
+            <span className={`px-1.5 font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>ERP systems for manufacturers</span>, 
+            web applications, and business automation. Real solutions, no off-the-shelf compromises.
           </p>
 
           <div

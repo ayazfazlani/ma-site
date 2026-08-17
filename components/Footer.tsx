@@ -26,10 +26,15 @@ const Instagram = (props: any) => (
 import { useTheme } from "./ThemeProvider";
 
 import { servicesData } from "@/lib/services";
+import { HOMEPAGE_SERVICE_SLUGS } from "@/lib/seo";
 
 const footerLinks = {
-  services: servicesData
-    .map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
+  services: [
+    ...servicesData
+      .filter((s) => (HOMEPAGE_SERVICE_SLUGS as readonly string[]).includes(s.slug))
+      .map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
+    { label: "All services", href: "/services" },
+  ],
   company: [
     { label: "About Ayaz", href: "/about" },
     { label: "Blog", href: "/blog" },
@@ -81,9 +86,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-neutral-300 mb-8 max-w-sm leading-relaxed">
-              Specialized software development for startups and small businesses. 
-              Crafting premium ERPs, custom web applications, and technical strategies 
-              that drive real business value.
+              Custom software development services for businesses worldwide — ERP systems, web applications, and business automation. Real solutions, no off-the-shelf compromises.
             </p>
 
             {/* Contact Info */}

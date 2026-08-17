@@ -20,13 +20,34 @@ import {
   getBreadcrumbSchema,
 } from "@/lib/schemas";
 import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
+import { servicesData } from "@/lib/services";
+import { HOMEPAGE_SERVICE_SLUGS } from "@/lib/seo";
 import { Metadata } from "next";
+import dbConnect from "@/lib/mongodb";
+import PartnerModel from "@/models/Partner";
+import TestimonialModel from "@/models/Testimonial";
+import ProjectModel from "@/models/Project";
 
 export const metadata: Metadata = {
-  title: "Custom Web Development & ERP Solutions | MA Softs – Pakistan",
-  description: "Senior Full-stack Developer Ayaz (MA Softs) specialized in custom ERP solutions, SaaS MVP development, and Next.js applications for startups worldwide.",
+  title: {
+    absolute: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
+  },
+  description:
+    "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
   alternates: {
     canonical: "https://masofts.com",
+  },
+  openGraph: {
+    title: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
+    description:
+      "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
+    url: "https://masofts.com",
+    type: "website",
+  },
+  twitter: {
+    title: "Custom Software Development Services | MA Softs",
+    description:
+      "MA Softs builds custom software for businesses worldwide — ERP systems, web applications, and business automation.",
   },
 };
 
@@ -37,20 +58,13 @@ const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },
 ]);
 
-import dbConnect from "@/lib/mongodb";
-import PartnerModel from "@/models/Partner";
-import TestimonialModel from "@/models/Testimonial";
-import ServiceModel from "@/models/Service";
-import ProjectModel from "@/models/Project";
-
 export default async function Home() {
   await dbConnect();
   
-  const [heroPartners, allPartners, avatars, services, projects, testimonials] = await Promise.all([
+  const [heroPartners, allPartners, avatars, projects, testimonials] = await Promise.all([
     PartnerModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(8).lean(),
     PartnerModel.find({ active: true }).sort({ order: 1 }).lean(),
     TestimonialModel.find({ active: true, showInHero: true }).sort({ order: 1 }).limit(8).lean(),
-    ServiceModel.find({ active: true }).sort({ order: 1 }).lean(),
     ProjectModel.find({ active: true }).sort({ order: 1 }).lean(),
     TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean(),
   ]);
@@ -59,7 +73,9 @@ export default async function Home() {
     heroPartners,
     partners: allPartners, 
     avatars, 
-    services: services.map((s: any) => ({ ...s, _id: undefined, id: s._id?.toString() })),
+    services: servicesData.filter((s) =>
+      (HOMEPAGE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+    ),
     projects,
     testimonials
   }));
@@ -91,7 +107,7 @@ export default async function Home() {
         <FaqSection
           className="bg-gray-50 dark:bg-dark-950"
           title="Frequently asked questions"
-          subtitle="Common questions about working with MA Softs."
+          subtitle="Custom software, ERP, and web development — straight answers."
           items={servicesHubFaqs}
         />
         <Testimonials initialTestimonials={serializedData.testimonials} />

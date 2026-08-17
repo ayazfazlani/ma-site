@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us – Custom Software Development Team in Pakistan",
+  title: "About MA Softs",
   description:
-    "Meet the MA Softs team led by Ayaz. 5+ years building high-performance web applications, ERP systems & SaaS platforms for startups and businesses worldwide.",
+    "Meet Ayaz and MA Softs. Custom software development services for manufacturers and growing businesses — ERP, web apps, and automation.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About MA Softs – Software Development Experts",
+    title: "About MA Softs",
     description:
-      "5+ years delivering custom web apps, ERP systems & SaaS solutions. Learn about our mission, values, and the team behind MA Softs.",
+      "Custom software development services for manufacturers and growing businesses — ERP, web apps, and automation.",
     url: "https://masofts.com/about",
     type: "website",
   },
   twitter: {
-    title: "About MA Softs – Software Development Experts",
+    title: "About MA Softs",
     description:
-      "Custom software development team in Pakistan. 40+ projects delivered for clients worldwide.",
+      "Custom software, ERP systems, and web applications built by Ayaz at MA Softs.",
   },
 };
 

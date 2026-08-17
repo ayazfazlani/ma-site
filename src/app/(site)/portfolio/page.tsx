@@ -7,6 +7,7 @@ import { ArrowUpRight, Layers, LayoutGrid } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import FaqSection from "@/components/FaqSection";
 import { portfolioListingFaqs, toFaqPageSchema } from "@/lib/faq-data";
+import { applyPortfolioSeo } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Portfolio – Our Work & Case Studies",
@@ -60,7 +61,9 @@ export default async function PortfolioPage() {
   // Fetch active projects and sort them
   const rawProjects = await ProjectModel.find({ active: true }).sort({ order: 1 }).lean();
   const raw = rawProjects.length > 0 ? rawProjects : DUMMY_PROJECTS;
-  const projects = JSON.parse(JSON.stringify(raw)) as PortfolioCard[];
+  const projects = JSON.parse(JSON.stringify(raw)).map((project: PortfolioCard) =>
+    applyPortfolioSeo(project)
+  ) as PortfolioCard[];
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-dark-950 font-sans">
@@ -72,7 +75,7 @@ export default async function PortfolioPage() {
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">Work</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-500 dark:text-neutral-400 leading-relaxed font-medium">
-            Explore our recent digital products, custom web applications, and UI/UX design transformations built for scale.
+            Custom ERP development, website projects, and ERP for the plastic industry — real systems built for manufacturers and growing businesses.
           </p>
         </div>
 

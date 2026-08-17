@@ -49,11 +49,10 @@ export default function PortfolioWrapper({ children }: { children: React.ReactNo
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            My Featured <span className="gradient-text">Works</span>
+            Featured <span className="gradient-text">work</span>
           </h2>
           <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            A selection of complex software solutions and high-performance web applications 
-            crafted for startups and established businesses.
+            Live systems including ERP for the plastic industry, manufacturing operations, and custom web applications for growing businesses.
           </p>
         </motion.div>
       </div>

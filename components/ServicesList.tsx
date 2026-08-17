@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Layers, Code2, Database, Cpu, Globe, Settings, Layout } from "lucide-react";
+import { ArrowUpRight, Layers, Code2, Database, Cpu, Globe, Settings, Layout, Factory, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 
@@ -13,6 +13,8 @@ const ICON_MAP: Record<string, any> = {
   Globe,
   Settings,
   Layout,
+  Factory,
+  Briefcase,
   Figma: Layout
 };
 

@@ -75,19 +75,18 @@ export default function Process() {
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            Our Process
+            How custom software gets built
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            From Vision to{" "}
-            <span className="gradient-text">Results</span>
+            From process to{" "}
+            <span className="gradient-text">live system</span>
           </h2>
           <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Our proven 4-step methodology ensures consistent, measurable results
-            for every client.
+            Discovery, design, build, and handover — so your team actually uses the software after launch.
           </p>
         </motion.div>
 

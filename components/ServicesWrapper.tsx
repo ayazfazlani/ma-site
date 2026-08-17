@@ -2,6 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 
 export default function ServicesWrapper({ children }: { children: React.ReactNode }) {
@@ -37,18 +38,33 @@ export default function ServicesWrapper({ children }: { children: React.ReactNod
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400" />
-            Our Services
+            What we build
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Our Core <span className="gradient-text">Services</span>
+            Custom software for{" "}
+            <span className="gradient-text">real operations</span>
           </h2>
           <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            Comprehensive software development solutions tailored to grow your
-            business and establish your online presence in the competitive digital landscape.
+            <Link href="/services/custom-erp" className="font-semibold text-primary-500 hover:underline">
+              Custom ERP development
+            </Link>
+            ,{" "}
+            <Link href="/services/web-development" className="font-semibold text-primary-500 hover:underline">
+              custom website development services
+            </Link>
+            ,{" "}
+            <Link href="/services/manufacturing" className="font-semibold text-primary-500 hover:underline">
+              custom software for manufacturing
+            </Link>
+            , and{" "}
+            <Link href="/services/small-business" className="font-semibold text-primary-500 hover:underline">
+              custom software for small business
+            </Link>
+            {" "}— built around how you work, not an off-the-shelf package.
           </p>
         </motion.div>
 

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
 
 export const metadata: Metadata = {
-  title: "Professional Software & Web Development Services",
-  description: "Comprehensive software development solutions including custom ERPs, SaaS platforms, high-performance web applications, and UI/UX design transformations.",
+  title: "ERP, Web & Business Software Services",
+  description: "Custom ERP development, custom website development services, manufacturing software, and custom software for small business — built by MA Softs.",
   alternates: {
     canonical: "https://masofts.com/services",
   },

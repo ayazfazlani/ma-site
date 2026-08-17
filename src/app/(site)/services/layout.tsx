@@ -2,23 +2,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services – Web Development, SEO, PPC & Digital Marketing",
+  title: "ERP, Web & Business Software Services",
   description:
-    "Explore MA Softs services: custom web development from $499, SEO from $299/mo, PPC advertising, social media marketing, content creation & analytics. Free consultation.",
+    "Explore MA Softs services: custom ERP development, custom website development, manufacturing software, and custom software for small business.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Digital Services – MA Softs",
+    title: "ERP, Web & Business Software Services | MA Softs",
     description:
-      "Web Development, SEO, PPC, Social Media Marketing, Content & Analytics. Affordable pricing for businesses of all sizes.",
+      "Custom ERP development, website development, manufacturing software, and business apps — built around how you work.",
     url: "https://masofts.com/services",
     type: "website",
   },
   twitter: {
-    title: "MA Softs Services – Web Dev, SEO, PPC & More",
+    title: "ERP, Web & Business Software Services | MA Softs",
     description:
-      "Custom web development from $499, SEO from $299/mo, and full digital marketing services.",
+      "Custom ERP, websites, manufacturing software, and business apps from MA Softs.",
   },
 };
 

@@ -22,6 +22,8 @@ import {
   TrendingUp,
   Lightbulb,
   Rocket,
+  Factory,
+  Briefcase,
   ChevronDown
 } from "lucide-react";
 import Link from "next/link";
@@ -56,7 +58,9 @@ const ICON_MAP: Record<string, any> = {
   ShieldCheck,
   TrendingUp,
   Lightbulb,
-  Rocket
+  Rocket,
+  Factory,
+  Briefcase,
 };
 
 export default function ServiceDetailClient({
