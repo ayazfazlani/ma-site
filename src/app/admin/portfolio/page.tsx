@@ -1,10 +1,10 @@
 // src/app/admin/portfolio/page.tsx
-import { Plus, FileEdit, Trash2, LayoutGrid, ImageIcon, ExternalLink, MoreVertical } from "lucide-react";
+import { Plus, FileEdit, LayoutGrid, ImageIcon, ExternalLink, MoreVertical } from "lucide-react";
 import Link from "next/link";
 import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import PortfolioDeleteButton from "./PortfolioDeleteButton";
 
 export const dynamic = "force-dynamic";
 
@@ -87,11 +87,7 @@ export default async function AdminPortfolioPage() {
                             >
                                 <FileEdit className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
                             </Link>
-                            <button 
-                                className="p-2.5 rounded-xl bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white transition-all shadow-sm"
-                            >
-                                <Trash2 className="w-4 h-4" />
-                            </button>
+                            <PortfolioDeleteButton id={project.id} />
                          </div>
                          
                          {project.link && (

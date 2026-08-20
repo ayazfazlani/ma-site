@@ -29,6 +29,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       images: Array.from(new Set([...images, image].filter(Boolean))),
     };
     const project = await ProjectModel.findByIdAndUpdate(id, body, { new: true }).lean();
+    if (!project) return NextResponse.json({ error: "Not found" }, { status: 404 });
     
     // Trigger cache revalidation
     revalidatePath("/");
@@ -48,6 +49,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     const { id } = await params;
     await dbConnect();
     const project = await ProjectModel.findByIdAndDelete(id);
+    if (!project) return NextResponse.json({ error: "Not found" }, { status: 404 });
     
     // Trigger cache revalidation
     revalidatePath("/");

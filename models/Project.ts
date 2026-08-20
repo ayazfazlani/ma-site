@@ -12,6 +12,7 @@ const ProjectSchema = new Schema(
       unique: true,
     },
     category: String,
+    description: String,
     content: String,
     image: String, // primary / cover image
     images: {
