@@ -17,14 +17,22 @@ interface Params {
   slug: string;
 }
 
+async function getStoredService(slug: string) {
+  try {
+    await dbConnect();
+    return await ServiceModel.findOne({ slug, active: true }).lean();
+  } catch {
+    return null;
+  }
+}
+
 export async function generateStaticParams() {
   return servicesData.map((s: ServiceData) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
-  await dbConnect();
-  const stored = await ServiceModel.findOne({ slug, active: true }).lean();
+  const stored = await getStoredService(slug);
   const service = stored
     ? serviceFromStoredRecord(stored as unknown as Record<string, unknown>)
     : servicesData.find((item) => item.slug === slug);
@@ -52,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
 export default async function ServiceDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const stored = await ServiceModel.findOne({ slug, active: true }).lean();
+  const stored = await getStoredService(slug);
   const service = stored
     ? serviceFromStoredRecord(stored as unknown as Record<string, unknown>)
     : servicesData.find((item) => item.slug === slug);
@@ -61,8 +69,13 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
   }
 
   // Fetch Testimonials
-  await dbConnect();
-  const dbTestimonials = await TestimonialModel.find({}).sort({ createdAt: -1 }).lean();
+  let dbTestimonials: Awaited<ReturnType<typeof TestimonialModel.find>> = [];
+  try {
+    await dbConnect();
+    dbTestimonials = await TestimonialModel.find({}).sort({ createdAt: -1 }).lean();
+  } catch {
+    dbTestimonials = [];
+  }
   const fallbackTestimonials = [
     {
       name: "Ahmed Khan",

@@ -16,8 +16,13 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function ServicesPage() {
-  await dbConnect();
-  const storedServices = await ServiceModel.find({ active: true }).sort({ order: 1 }).lean();
+  let storedServices: Awaited<ReturnType<typeof ServiceModel.find>> = [];
+  try {
+    await dbConnect();
+    storedServices = await ServiceModel.find({ active: true }).sort({ order: 1 }).lean();
+  } catch {
+    storedServices = [];
+  }
   const services = storedServices.length > 0
     ? storedServices.map((service) => serviceFromStoredRecord(service as unknown as Record<string, unknown>))
     : servicesData;
