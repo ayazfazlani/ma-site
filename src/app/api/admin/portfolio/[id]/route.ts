@@ -32,7 +32,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     if (!project) return NextResponse.json({ error: "Not found" }, { status: 404 });
     
     // Trigger cache revalidation
-    revalidatePath("/");
+    revalidatePath("/", "page");
     revalidatePath("/portfolio");
     if (project && (project as any).slug) {
       revalidatePath(`/portfolio/${(project as any).slug}`);
@@ -44,6 +44,37 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
   }
 }
 
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  try {
+    const { id } = await params;
+    const body = await req.json();
+    if (typeof body.active !== "boolean") {
+      return NextResponse.json({ error: "Active status must be a boolean" }, { status: 400 });
+    }
+
+    await dbConnect();
+    const project = await ProjectModel.findByIdAndUpdate(
+      id,
+      { active: body.active },
+      { new: true, runValidators: true }
+    ).lean();
+    if (!project) return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+    revalidatePath("/", "page");
+    revalidatePath("/portfolio");
+    revalidatePath(`/portfolio/${project.slug}`);
+    revalidatePath("/sitemap.xml");
+
+    return NextResponse.json({
+      ...project,
+      _id: undefined,
+      id: project._id.toString(),
+    });
+  } catch {
+    return NextResponse.json({ error: "Could not update project visibility" }, { status: 500 });
+  }
+}
+
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
@@ -52,7 +83,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     if (!project) return NextResponse.json({ error: "Not found" }, { status: 404 });
     
     // Trigger cache revalidation
-    revalidatePath("/");
+    revalidatePath("/", "page");
     revalidatePath("/portfolio");
     if (project && (project as any).slug) {
       revalidatePath(`/portfolio/${(project as any).slug}`);

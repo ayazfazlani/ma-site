@@ -217,8 +217,8 @@ export default function NewProjectPage() {
                 
                 <div className="flex items-center justify-between p-5 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05]">
                     <div className="space-y-1">
-                        <p className="text-sm font-bold text-gray-900 dark:text-white">Active Display</p>
-                        <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Visible to public</p>
+                        <p className="text-sm font-bold text-gray-900 dark:text-white">Public project</p>
+                        <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Turn off to pause and make private</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" name="active" checked={formData.active} onChange={handleChange} className="sr-only peer" />

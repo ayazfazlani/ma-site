@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },

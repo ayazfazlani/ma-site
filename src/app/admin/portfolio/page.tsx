@@ -5,6 +5,7 @@ import dbConnect from "@/lib/mongodb";
 import ProjectModel from "@/models/Project";
 import Image from "next/image";
 import PortfolioDeleteButton from "./PortfolioDeleteButton";
+import PortfolioStatusToggle from "./PortfolioStatusToggle";
 
 export const dynamic = "force-dynamic";
 
@@ -58,8 +59,8 @@ export default async function AdminPortfolioPage() {
                     )}
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                         <div className="flex items-center gap-2">
-                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                             <span className="text-[10px] text-white font-black uppercase tracking-widest">{project.active ? "Active Display" : "Private Draft"}</span>
+                             <span className={`w-2 h-2 rounded-full ${project.active ? "bg-green-500" : "bg-amber-500"}`} />
+                             <span className="text-[10px] text-white font-black uppercase tracking-widest">{project.active ? "Public" : "Private / Paused"}</span>
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@ export default async function AdminPortfolioPage() {
                             <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-1 block leading-none">{project.category || "Development"}</span>
                             <h4 className="text-xl font-bold text-gray-900 dark:text-white truncate leading-tight">{project.title}</h4>
                         </div>
-                        <button className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
+                        <button type="button" aria-label="More project actions" className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
                             <MoreVertical className="w-4.5 h-4.5 text-gray-400" />
                         </button>
                     </div>
@@ -81,6 +82,7 @@ export default async function AdminPortfolioPage() {
 
                     <div className="mt-auto pt-6 border-t border-gray-100 dark:border-white/[0.05] flex items-center justify-between">
                          <div className="flex items-center gap-3">
+                           <PortfolioStatusToggle id={project.id} active={project.active !== false} />
                             <Link 
                                 href={`/admin/portfolio/${project.id}`}
                                 className="p-2.5 rounded-xl bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white transition-all shadow-sm group/btn"
