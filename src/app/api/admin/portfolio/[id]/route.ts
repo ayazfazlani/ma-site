@@ -21,10 +21,15 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     const { id } = await params;
     await dbConnect();
     const raw = await req.json();
+    const slug = typeof raw.slug === "string" ? raw.slug.trim().toLowerCase() : "";
+    if (!slug) return NextResponse.json({ error: "Project slug is required" }, { status: 400 });
+    const duplicate = await ProjectModel.findOne({ slug, _id: { $ne: id } }).select("_id").lean();
+    if (duplicate) return NextResponse.json({ error: "That project slug is already in use" }, { status: 409 });
     const images: string[] = Array.isArray(raw.images) ? raw.images.filter(Boolean) : [];
     const image = raw.image || images[0] || "";
     const body = {
       ...raw,
+      slug,
       image,
       images: Array.from(new Set([...images, image].filter(Boolean))),
     };

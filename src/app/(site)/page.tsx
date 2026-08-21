@@ -22,7 +22,7 @@ import {
   getBreadcrumbSchema,
 } from "@/lib/schemas";
 import { servicesHubFaqs, toFaqPageSchema } from "@/lib/faq-data";
-import { HOMEPAGE_SERVICES, uniqueBySlugOrTitle } from "@/lib/seo";
+import { HOMEPAGE_SERVICES } from "@/lib/seo";
 import { Metadata } from "next";
 import dbConnect from "@/lib/mongodb";
 import PartnerModel from "@/models/Partner";
@@ -68,15 +68,11 @@ async function HomePageSections() {
     TestimonialModel.find({ active: true }).sort({ createdAt: -1 }).lean(),
   ]);
 
-  const uniqueProjects = uniqueBySlugOrTitle(projects).filter(
-    (p: { slug?: string }) => p.slug !== "plastic-factory-erp"
-  );
-
   const serializedData = JSON.parse(
     JSON.stringify({
       partners: allPartners,
       services: HOMEPAGE_SERVICES,
-      projects: uniqueProjects,
+      projects,
       testimonials,
     })
   );
