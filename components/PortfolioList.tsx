@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
@@ -73,6 +74,15 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
     }, 5000);
     return () => clearInterval(interval);
   }, [projects.length, isHovered, isDragging]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [lightboxOpen]);
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     setIsDragging(false);
@@ -245,22 +255,23 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
       </div>
 
       {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxOpen && lightboxImages.length > 0 && (
-          <motion.div
+      {typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {lightboxOpen && lightboxImages.length > 0 && (
+            <motion.div
             className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxOpen(false)}
-          >
-            <motion.div
+            >
+              <motion.div
               className="relative w-full max-w-5xl max-h-[90vh]"
               initial={{ scale: 0.92 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.92 }}
               onClick={(e) => e.stopPropagation()}
-            >
+              >
               <button
                 type="button"
                 aria-label="Close image preview"
@@ -313,10 +324,12 @@ export default function PortfolioList({ initialProjects }: { initialProjects: Po
               <div className="mt-3 text-center text-white text-sm">
                 {lightboxImageIndex + 1}/{lightboxImages.length}
               </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }
