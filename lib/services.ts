@@ -31,6 +31,33 @@ export interface ServiceData {
   techStack?: { name: string; icon: string; color?: string }[];
 }
 
+export function serviceFromStoredRecord(record: Record<string, unknown>): ServiceData {
+  const parseArray = <T,>(value: unknown): T[] => {
+    if (Array.isArray(value)) return value as T[];
+    if (typeof value !== "string") return [];
+    try {
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  };
+
+  return {
+    slug: String(record.slug || ""),
+    title: String(record.title || ""),
+    description: String(record.description || ""),
+    longDescription: typeof record.longDescription === "string" ? record.longDescription : undefined,
+    metaTitle: typeof record.metaTitle === "string" ? record.metaTitle : undefined,
+    metaDescription: typeof record.metaDescription === "string" ? record.metaDescription : undefined,
+    icon: typeof record.icon === "string" ? record.icon : "Layers",
+    price: typeof record.price === "string" ? record.price : "Contact for Quote",
+    features: parseArray<string>(record.features),
+    plans: parseArray<PricingPlan>(record.plans),
+    number: typeof record.order === "number" ? String(record.order).padStart(2, "0") : undefined,
+  };
+}
+
 export const servicesData: ServiceData[] = [
   {
     slug: "custom-erp",

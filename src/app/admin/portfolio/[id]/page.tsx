@@ -21,6 +21,8 @@ export default function EditProjectPage() {
       title: "",
       slug: "",
       description: "",
+    metaTitle: "",
+    metaDescription: "",
       content: "",
       image: "",
       images: [] as string[],
@@ -43,6 +45,8 @@ export default function EditProjectPage() {
                       title: data.title || "",
                       slug: data.slug || "",
                       description: data.description || "",
+                      metaTitle: data.metaTitle || "",
+                      metaDescription: data.metaDescription || "",
                       content: data.content || "",
                       image: data.image || images[0] || "",
                       images,
@@ -168,6 +172,10 @@ export default function EditProjectPage() {
                 <div className="space-y-4 relative z-10">
                     <label className="text-[13px] font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest pl-1">Short Description</label>
                     <textarea name="description" required value={formData.description} onChange={handleChange} rows={4} placeholder="A concise summary for the portfolio showcase" className="w-full px-5 py-4 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 outline-none resize-y" />
+                </div>
+                <div className="grid gap-4 md:grid-cols-2 relative z-10">
+                    <input name="metaTitle" value={formData.metaTitle} onChange={handleChange} placeholder="SEO title" className="w-full px-5 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white" />
+                    <textarea name="metaDescription" value={formData.metaDescription} onChange={handleChange} rows={2} placeholder="SEO description" className="w-full px-5 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white" />
                 </div>
             </div>
 

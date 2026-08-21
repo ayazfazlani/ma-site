@@ -15,6 +15,8 @@ import { applyPortfolioSeo } from '@/lib/seo';
 type PortfolioDetail = {
   title: string;
   description?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   category?: string;
   image?: string;
   images?: string[];
@@ -35,9 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return { title: 'Not Found' };
 
   const seoProject = applyPortfolioSeo({ ...project, slug });
-  const title = seoProject.title;
+  const title = seoProject.metaTitle || seoProject.title;
   const description =
-    seoProject.description ||
+    seoProject.metaDescription || seoProject.description ||
     `Case study: how MA Softs delivered ${project.title} with custom software development.`;
 
   return {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import ScrollTray from "@/components/ScrollTray";
-import { ArrowRight, CheckCircle, Code2, Cpu, Database, Globe, Layout, Layers, Settings, Factory, Briefcase } from "lucide-react";
+import { ArrowRight, CheckCircle, Code2, Cpu, Database, Globe, Layout, Layers, Settings, Factory, Briefcase, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
@@ -23,9 +23,7 @@ import { servicesData } from "@/lib/services";
 import FaqSection from "@/components/FaqSection";
 import { servicesHubFaqs } from "@/lib/faq-data";
 
-const services: ServiceData[] = servicesData;
-
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   Code2,
   Database,
   Cpu,
@@ -36,7 +34,7 @@ const ICON_MAP: Record<string, any> = {
   Briefcase,
 };
 
-export default function ServicesClient() {
+export default function ServicesClient({ services = servicesData }: { services?: ServiceData[] }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 

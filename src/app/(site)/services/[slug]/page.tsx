@@ -1,7 +1,7 @@
 // src/app/services/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { type ServiceData, servicesData } from "@/lib/services";
+import { serviceFromStoredRecord, type ServiceData, servicesData } from "@/lib/services";
 import {
   servicesItemListSchema,
   servicesFaqSchema,
@@ -11,6 +11,7 @@ import {
 import ServiceDetailClient from "./ServiceDetailClient";
 import dbConnect from "@/lib/mongodb";
 import TestimonialModel from "@/models/Testimonial";
+import ServiceModel from "@/models/Service";
 
 interface Params {
   slug: string;
@@ -22,7 +23,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
-  const service = servicesData.find((s: ServiceData) => s.slug === slug);
+  await dbConnect();
+  const stored = await ServiceModel.findOne({ slug, active: true }).lean();
+  const service = stored
+    ? serviceFromStoredRecord(stored as unknown as Record<string, unknown>)
+    : servicesData.find((item) => item.slug === slug);
   if (!service) {
     return {};
   }
@@ -47,7 +52,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
 export default async function ServiceDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const service = servicesData.find((s: ServiceData) => s.slug === slug);
+  const stored = await ServiceModel.findOne({ slug, active: true }).lean();
+  const service = stored
+    ? serviceFromStoredRecord(stored as unknown as Record<string, unknown>)
+    : servicesData.find((item) => item.slug === slug);
   if (!service) {
     notFound();
   }
@@ -70,7 +78,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
     }
   ];
   const raw = dbTestimonials.length > 0 ? dbTestimonials : fallbackTestimonials;
-  const testimonials = JSON.parse(JSON.stringify(raw.map((t: any) => ({ ...t, _id: undefined, id: t._id?.toString?.() || t.id }))));
+  const testimonials = JSON.parse(JSON.stringify(raw.map((testimonial) => ({ ...testimonial, _id: undefined, id: "id" in testimonial ? testimonial.id : undefined }))));
 
   const breadcrumb = getBreadcrumbSchema([
     { name: "Home", url: "https://masofts.com" },
@@ -78,10 +86,10 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
     { name: service.title, url: `https://masofts.com/services/${service.slug}` },
   ]);
 
-  const serviceSchema = serviceSchemas.find((sch: any) => sch.name === service.title) || serviceSchemas[0];
+  const serviceSchema = serviceSchemas.find((schema) => (schema as { name?: string }).name === service.title) || serviceSchemas[0];
 
   // Strip the non-serializable icon component from the service object
-  const { icon, ...serializableService } = service;
+  const serializableService = { ...service };
 
   return (
     <ServiceDetailClient

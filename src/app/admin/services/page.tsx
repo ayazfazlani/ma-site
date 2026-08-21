@@ -1,16 +1,26 @@
 // src/app/admin/services/page.tsx
-import { Plus, FileEdit, Trash2, Server, Layers } from "lucide-react";
+import { Plus, FileEdit, Server, Layers } from "lucide-react";
 import Link from "next/link";
 import dbConnect from "@/lib/mongodb";
 import ServiceModel from "@/models/Service";
 import { cn } from "@/lib/utils";
+import ServiceDeleteButton from "./ServiceDeleteButton";
 
 export const dynamic = "force-dynamic";
+
+type AdminService = {
+  id: string;
+  title: string;
+  slug: string;
+  price?: string;
+  order?: number;
+  active?: boolean;
+};
 
 export default async function AdminServicesPage() {
   await dbConnect();
   const rawServices = await ServiceModel.find({}).sort({ order: 1 }).lean();
-  const services = rawServices.map((s: any) => ({ ...s, _id: undefined, id: s._id?.toString() }));
+  const services = rawServices.map((service) => ({ ...service, _id: undefined, id: service._id.toString() })) as unknown as AdminService[];
 
   return (
     <div className="space-y-4 md:space-y-6 animate-in fade-in slide-in-from-bottom-3 duration-500">
@@ -60,7 +70,7 @@ export default async function AdminServicesPage() {
                     </div>
                   </td>
                 </tr>
-              ) : services.map((service: any) => (
+              ) : services.map((service) => (
                 <tr key={service.id} className="group/row hover:bg-gray-50/50 dark:hover:bg-white/[0.01] transition-colors duration-300">
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-4">
@@ -100,9 +110,7 @@ export default async function AdminServicesPage() {
                         >
                             <FileEdit className="w-4.5 h-4.5" />
                         </Link>
-                        <button className="p-2.5 rounded-xl bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white transition-all shadow-sm">
-                            <Trash2 className="w-4.5 h-4.5" />
-                        </button>
+                        <ServiceDeleteButton id={service.id} />
                     </div>
                   </td>
                 </tr>

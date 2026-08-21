@@ -4,6 +4,7 @@ import dbConnect from '@/lib/mongodb';
 import PostModel from '@/models/Post';
 import ProjectModel from '@/models/Project';
 import { servicesData } from '@/lib/services';
+import ServiceModel from '@/models/Service';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://masofts.com';
@@ -80,6 +81,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: ['custom-erp', 'web-development', 'manufacturing', 'small-business'].includes(slug) ? 0.9 : 0.8,
   }));
 
+  let storedServiceRoutes: MetadataRoute.Sitemap = [];
+  try {
+    await dbConnect();
+    const storedServices = await ServiceModel.find({ active: true }).select('slug updatedAt').lean();
+    storedServiceRoutes = storedServices.map((service) => ({
+      url: `${baseUrl}/services/${service.slug}`,
+      lastModified: service.updatedAt || new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    }));
+  } catch {
+    // DB unavailable during build - static service routes remain available
+  }
+
   // Dynamic service sub-pages from servicesData (for [slug] routes)
   const dynamicServiceRoutes: MetadataRoute.Sitemap = servicesData
     .filter((s) => !servicePages.includes(s.slug))
@@ -97,7 +112,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await PostModel.find({ published: true })
       .select('slug updatedAt')
       .lean();
-    blogRoutes = posts.map((post: any) => ({
+    blogRoutes = posts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: post.updatedAt || new Date(),
       changeFrequency: 'weekly' as const,
@@ -114,7 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const projects = await ProjectModel.find({ active: true })
       .select('slug updatedAt')
       .lean();
-    portfolioRoutes = projects.map((project: any) => ({
+    portfolioRoutes = projects.map((project) => ({
       url: `${baseUrl}/portfolio/${project.slug}`,
       lastModified: project.updatedAt || new Date(),
       changeFrequency: 'monthly' as const,
@@ -127,6 +142,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes,
     ...serviceRoutes,
+    ...storedServiceRoutes,
     ...dynamicServiceRoutes,
     ...blogRoutes,
     ...portfolioRoutes,

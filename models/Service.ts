@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const ServiceSchema = new Schema(
   {
@@ -15,6 +15,8 @@ const ServiceSchema = new Schema(
       type: String,
       required: [true, "Service description is required"],
     },
+    metaTitle: String,
+    metaDescription: String,
     longDescription: String,
     icon: String,
     image: String,
