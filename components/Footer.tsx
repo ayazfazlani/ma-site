@@ -47,7 +47,7 @@ const footerLinks = {
 const socialLinks = [
   { icon: Facebook, href: "https://web.facebook.com/profile.php?id=61575731168705", label: "Facebook" },
   // { icon: Twitter, href: "https://twitter.com/ayaz_fsk", label: "Twitter" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/ayaz-fsk/", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/ma-softs/", label: "LinkedIn" },
   { icon: Instagram, href: "https://www.instagram.com/ayaz_fsk/", label: "Instagram" },
 ];
 
