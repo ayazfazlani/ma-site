@@ -378,10 +378,10 @@ export const servicesFaqSchema = {
     },
     {
       "@type": "Question",
-      name: "Do you build ERP for the plastic industry?",
+      name: "Do you build ERP for manufacturing businesses?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. ERP for the plastic industry is a core specialty — production tracking, feedstock inventory, waste margins, and supplier ledgers built for real factory floors.",
+        text: "Yes. We build manufacturing ERP around the way a plant works, including production tracking, inventory, quality checks, supplier records and reporting. Our plastic manufacturing ERP is one example of this work.",
       },
     },
     {
@@ -424,9 +424,9 @@ export const homePageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": `${SITE_URL}/#webpage`,
-  name: "Custom Software Development Services — ERP, Web & Business Apps | MA Softs",
+  name: "Custom Software Development for Growing Businesses | MA Softs",
   description:
-    "MA Softs builds custom software for businesses worldwide — ERP systems for manufacturers, web applications, and business automation. Real solutions, no off-the-shelf compromises.",
+    "MA Softs designs and builds custom ERP systems, manufacturing software, web applications and SaaS platforms around the way businesses work.",
   url: SITE_URL,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SITE_URL}/#organization` },

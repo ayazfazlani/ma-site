@@ -129,7 +129,7 @@ export const servicesData: ServiceData[] = [
     ],
     faqs: [
       { q: "What is custom ERP development?", a: "Custom ERP development means building operations software around your workflows — inventory, production, suppliers, and reporting — instead of forcing your team into a generic package." },
-      { q: "Is this ERP suitable for plastics and pipe factories?", a: "Yes. ERP for the plastic industry is a core use case: feedstock, granulator operations, pipe production, waste margins, and government order ledgers." },
+      { q: "Is this ERP suitable for plastics and pipe factories?", a: "Yes. Plastic and pipe manufacturing is one use case: the system can cover materials, production, waste, quality checks, suppliers and reporting." },
       { q: "Can we run this offline or locally?", a: "Optionally yes. I can deploy it to a local container or intranet server, or as a secure cloud application accessible from anywhere." },
       { q: "How do we handle government contracts?", a: "I build specific modules to track tender requirements, milestones, advance billing, security deposits, and final clearance status." },
       { q: "What support is provided after launch?", a: "All projects include dedicated support to address adjustments, training queries, and ensure smooth daily operations." }
@@ -260,7 +260,7 @@ export const servicesData: ServiceData[] = [
     color: "from-slate-600 to-blue-600",
     price: "Starting at $950",
     longDescription:
-      "Custom software for manufacturing should match how your plant actually runs. I build systems for production scheduling, raw-material inventory, machine output, quality, and reporting — including ERP for the plastic industry and other industrial operations. No modules you never use. No per-user fees.",
+      "Custom software for manufacturing should match how your plant actually runs. I build systems for production scheduling, raw-material inventory, machine output, quality, and reporting for industrial operations, including plastic and pipe factories. No modules you never use. No per-user fees.",
     plans: [
       {
         name: "Plant Starter",
@@ -307,7 +307,7 @@ export const servicesData: ServiceData[] = [
     ],
     faqs: [
       { q: "Is this custom software for manufacturing or a generic ERP?", a: "It is custom software for manufacturing. We model your plant — materials, machines, batches, and reports — instead of forcing you into a generic ERP template." },
-      { q: "Do you work with plastic and pipe factories?", a: "Yes. ERP for the plastic industry is a core use case: feedstock, extrusion or moulding, waste, and supplier ledgers." },
+      { q: "Do you work with plastic and pipe factories?", a: "Yes. Plastic and pipe factories are one use case: the system can cover materials, extrusion or moulding, waste, supplier records and reporting." },
       { q: "Can it run on a local server?", a: "Yes. Cloud, on-premise, or a hybrid setup depending on your network and IT policy." },
       { q: "How long does a typical plant system take?", a: "A focused first version is usually 6–12 weeks. Larger multi-plant suites take longer and ship in phases." }
     ],

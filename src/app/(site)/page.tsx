@@ -29,9 +29,9 @@ import PartnerModel from "@/models/Partner";
 import TestimonialModel from "@/models/Testimonial";
 import ProjectModel from "@/models/Project";
 
-const TITLE = "Custom Software Development Services | MA Softs";
+const TITLE = "Custom Software Development for Growing Businesses | MA Softs";
 const DESCRIPTION =
-  "MA Softs builds custom ERP systems, manufacturing software, web applications and SaaS platforms for businesses worldwide. Build software around your workflow—not an off-the-shelf package.";
+  "MA Softs designs and builds custom ERP systems, manufacturing software, web applications and SaaS platforms around the way your business works.";
 
 export const metadata: Metadata = {
   title: {
@@ -81,10 +81,10 @@ async function HomePageSections() {
     <div className="content-deferred">
       <HorizontalScroll initialPartners={serializedData.partners} />
       <Services initialServices={serializedData.services} />
-      <ErpSection />
-      <Portfolio initialProjects={serializedData.projects} />
       <WhoThisIsFor />
       <Industries />
+      <Portfolio initialProjects={serializedData.projects} />
+      <ErpSection />
       <TechStack />
       <Process />
       <JsonLd data={toFaqPageSchema(servicesHubFaqs)} />

@@ -21,29 +21,27 @@ export default function Hero({
               className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide mb-8 bg-primary-50 border border-primary-200/60 text-primary-600 shadow-sm dark:glass dark:text-primary-300 dark:bg-transparent dark:border-transparent"
             >
               <span className="w-2 h-2 rounded-full animate-pulse-glow bg-primary-500 dark:bg-accent-400" />
-              ERP · Manufacturing · Web Apps · SaaS
+              Custom ERP · Manufacturing · Web Apps · SaaS
             </span>
           </div>
 
           <h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-gray-900 dark:text-white"
           >
-            Custom Software
+            Custom software development services
             <br />
-            <span className="gradient-text animate-gradient">
-              Development Services
-            </span>
+            <span className="gradient-text animate-gradient">for the way you work</span>
           </h1>
 
           <p
             className="text-base sm:text-lg max-w-2xl mx-auto mb-4 leading-relaxed text-gray-700 dark:text-neutral-400"
           >
-            Build the software your business actually needs — from custom ERP systems and manufacturing software to web applications and SaaS platforms.
+            We design and build custom ERP systems, manufacturing software, web applications and SaaS products for businesses that have outgrown disconnected tools.
           </p>
           <p
             className="text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed text-gray-600 dark:text-neutral-500"
           >
-            MA Softs helps businesses replace spreadsheets, disconnected tools, and off-the-shelf limitations with software built around their workflows.
+            Start with your workflow, get a clear plan, and receive software your team can use, own and improve.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-16">
@@ -51,7 +49,7 @@ export default function Hero({
               href="/contact"
               className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-[1.03]"
             >
-              <span className="relative z-10">Discuss Your Software Project</span>
+              <span className="relative z-10">Tell Us What Needs Fixing</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
@@ -60,7 +58,7 @@ export default function Hero({
               href="/portfolio"
               className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:border-white/10 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/[0.04]"
             >
-              <span>View Our Work</span>
+              <span>See Relevant Work</span>
             </Link>
           </div>
 

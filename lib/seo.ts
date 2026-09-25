@@ -12,7 +12,7 @@ export const HOMEPAGE_SERVICES = [
     icon: "Database",
     title: "ERP & Business Management Systems",
     description:
-      "Centralize inventory, sales, purchasing, production, suppliers, reporting and other business operations in one system.",
+      "Connect departments, approvals, inventory, sales, purchasing and reporting in one database-backed business system.",
     gradient: "from-blue-600 to-indigo-500",
     glow: "group-hover:shadow-indigo-500/20",
     number: "01",
@@ -22,7 +22,7 @@ export const HOMEPAGE_SERVICES = [
     icon: "Factory",
     title: "Manufacturing Software",
     description:
-      "Connect production, inventory, quality control and shop-floor reporting around how your plant actually runs.",
+      "Connect the shop floor to management with production, inventory, quality control, roles and live reporting.",
     gradient: "from-slate-600 to-blue-500",
     glow: "group-hover:shadow-slate-500/20",
     number: "02",
@@ -30,9 +30,9 @@ export const HOMEPAGE_SERVICES = [
   {
     slug: "web-development",
     icon: "Globe",
-    title: "Web Applications",
+    title: "Websites & Full-Stack Web Applications",
     description:
-      "Build custom portals, dashboards, marketplaces and internal business applications.",
+      "Build fast, SEO-ready websites, customer portals, dashboards and full-stack web applications with secure databases and integrations.",
     gradient: "from-primary-500 to-primary-400",
     glow: "group-hover:shadow-primary-500/20",
     number: "03",
@@ -40,9 +40,9 @@ export const HOMEPAGE_SERVICES = [
   {
     slug: "web-development",
     icon: "Layout",
-    title: "SaaS Products",
+    title: "Business Automation & SaaS",
     description:
-      "Turn your idea into a production-ready SaaS platform — from MVP to software your customers can actually use.",
+      "Automate manual work, connect existing tools and turn a product idea into a production-ready SaaS platform.",
     gradient: "from-cyan-500 to-accent-400",
     glow: "group-hover:shadow-accent-400/20",
     number: "04",

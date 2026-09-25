@@ -102,9 +102,9 @@ export const servicesHubFaqs: FaqItem[] = [
       "Project costs vary depending on complexity and requirements. I offer competitive pricing for high-quality, custom-built solutions. Contact me for a detailed quote based on your specific needs.",
   },
   {
-    question: "Do you build ERP for the plastic industry?",
+    question: "Do you build ERP for manufacturing businesses?",
     answer:
-      "Yes. ERP for the plastic industry is a core specialty — production tracking, feedstock inventory, waste margins, and supplier ledgers built for real factory floors.",
+      "Yes. We build manufacturing ERP around the way a plant works, including production tracking, inventory, quality checks, supplier records and reporting. Plastic manufacturing is one example of this work.",
   },
   {
     question: "Do you provide support after the software is launched?",
