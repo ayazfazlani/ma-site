@@ -5,24 +5,20 @@ import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import { 
   Code2, 
-  Cpu, 
   Database, 
   Globe, 
   Layers, 
   Layout, 
-  Smartphone, 
   Terminal, 
   Zap, 
-  Workflow, 
   Cloud,
   ShieldCheck,
-  Search,
   Users,
   BarChart
 } from "lucide-react";
 
 // Custom Figma SVG for stable build
-const Figma = (props: any) => (
+const Figma = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 38 57" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M19 28.5a9.5 9.5 0 1 1-19 0 9.5 9.5 0 0 1 19 0z" fill="#0ACF83"/>
     <path d="M0 47.5a9.5 9.5 0 0 1 9.5-9.5H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#1ABCFE"/>
@@ -52,15 +48,21 @@ const techStacks = [
   ],
   // Row 3
   [
-    { name: "SEO Expert", icon: Search, color: "text-yellow-500" },
-    { name: "Analytics", icon: BarChart, color: "text-blue-500" },
-    { name: "CyberSecurity", icon: ShieldCheck, color: "text-red-500" },
-    { name: "AI Strategy", icon: Cpu, color: "text-indigo-500" },
+    { name: "Role-based Access", icon: Users, color: "text-yellow-500" },
+    { name: "Business Reporting", icon: BarChart, color: "text-blue-500" },
+    { name: "Secure Authentication", icon: ShieldCheck, color: "text-red-500" },
+    { name: "Cloud Deployment", icon: Cloud, color: "text-indigo-500" },
     { name: "UI/UX Design", icon: Figma, color: "text-rose-500" },
   ]
 ];
 
-const Row = ({ stacks, direction = 1, speed = 25, isDark }: { stacks: any[], direction?: number, speed?: number, isDark: boolean }) => (
+type TechStackItem = {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+};
+
+const Row = ({ stacks, direction = 1, speed = 25, isDark }: { stacks: TechStackItem[], direction?: number, speed?: number, isDark: boolean }) => (
   <div className="flex overflow-hidden group select-none">
     <motion.div
       animate={{ x: direction > 0 ? ["-50%", "0%"] : ["0%", "-50%"] }}
@@ -85,10 +87,10 @@ export default function TechStack() {
     <section className={`py-24 relative overflow-hidden ${isDark ? "bg-dark-950" : "bg-slate-50"}`}>
       <div className="container-custom mx-auto relative z-10 mb-16 px-4 text-center">
         <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
-          Building with <span className="gradient-text">Excellence</span>
+          A reliable foundation for <span className="gradient-text">your system</span>
         </h2>
         <p className={`text-lg max-w-2xl mx-auto ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
-          I use industry-leading tools to deliver high-performance solutions.
+          Your users see a simple interface. Behind it, we build the frontend, backend, database, permissions and integrations needed to keep the business connected.
         </p>
       </div>
 

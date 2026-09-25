@@ -18,33 +18,33 @@ import { useTheme } from "./ThemeProvider";
 const erpFeatures = [
   {
     icon: Warehouse,
-    title: "Raw Material & Feedstock Ingestion",
-    description: "Track plastic pellets, masterbatch colors, resin, pipe joints, and scrap regrind with automatic reorder triggers."
+    title: "Inventory you can trust",
+    description: "Track raw materials, finished goods and scrap in one place, with reorder signals based on real stock levels."
   },
   {
     icon: Factory,
-    title: "Machinery Cycle & Output Analytics",
-    description: "Monitor injection molding parameters, pipe extruder throughput, machinery logs, and factory downtime."
+    title: "Production visibility",
+    description: "See machine output, downtime and production activity without relying on disconnected spreadsheets."
   },
   {
     icon: Boxes,
-    title: "Production Batch Tracking",
-    description: "Associate active batches with raw materials, machine logs, shift operators, and quality inspection audits."
+    title: "Traceable batches",
+    description: "Connect each batch to its materials, machine activity, operators and quality checks."
   },
   {
     icon: LineChart,
-    title: "Supplier Ledger & Accounting",
-    description: "Keep transparent ledger tracking with supplier balances, credit periods, and clear payment triggers."
+    title: "Clear supplier records",
+    description: "Keep supplier balances, credit terms and payment information together for faster decisions."
   },
   {
     icon: ShieldCheck,
-    title: "Government Contract Management",
-    description: "Monitor local development bids, progress invoicing, security deposits, and final clearances."
+    title: "Orders and contracts",
+    description: "Track orders, invoices, deposits and delivery progress from one operational system."
   },
   {
     icon: Gauge,
-    title: "Live Yield & Margin Reports",
-    description: "Calculate your exact price per kilogram or per pipe in real-time as feedstock costs fluctuate."
+    title: "Useful margin reports",
+    description: "Turn production and material data into practical yield, cost and margin reports."
   }
 ];
 
@@ -79,7 +79,7 @@ export default function ErpSection() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide border border-primary-500/20 bg-primary-500/10 text-primary-400"
             >
               <Building2 className="w-3.5 h-3.5" />
-              <span>Featured manufacturing ERP</span>
+              <span>Featured case study | Manufacturing software</span>
             </motion.div>
 
             <motion.h2 
@@ -91,7 +91,7 @@ export default function ErpSection() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Plastic Factory ERP — software built for a real plant
+              A real example of custom ERP for plastic manufacturing
             </motion.h2>
 
             <motion.p
@@ -103,7 +103,7 @@ export default function ErpSection() {
                 isDark ? "text-neutral-300" : "text-gray-600"
               }`}
             >
-              A custom ERP covering production, inventory, raw materials, supplier ledgers, machine operations and reporting — built for plastic and pipe manufacturing, not a generic package.
+              This is why manufacturing businesses choose custom software: one system connects inventory, production, suppliers and reporting around the plant&apos;s actual workflow. It is an example of our work, not a requirement for every client.
             </motion.p>
 
             <motion.div
@@ -117,7 +117,7 @@ export default function ErpSection() {
                 href="/portfolio/plastic-factory-erp"
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white font-semibold shadow-lg shadow-primary-600/20 hover:shadow-primary-600/35 transition-all duration-300 group"
               >
-                <span>View Case Study</span>
+                <span>Read the Case Study</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 

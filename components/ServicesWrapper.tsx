@@ -45,11 +45,11 @@ export default function ServicesWrapper({ children }: { children: React.ReactNod
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Software built around{" "}
-            <span className="gradient-text">your business</span>
+            One connected system for{" "}
+            <span className="gradient-text">the way you work</span>
           </h2>
           <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-            ERP, manufacturing software, web applications, and SaaS — designed around how you already work.{" "}
+            We connect the parts of your business that currently live in Excel, WhatsApp, email, or separate tools. Choose a custom ERP, manufacturing system, full-stack website, web app, or automation project based on the problem you need to solve.{" "}
             <Link href="/services/custom-erp" className="font-semibold text-primary-500 hover:underline">
               See ERP systems
             </Link>

@@ -2,17 +2,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight, FileSpreadsheet, GitBranch, ShieldCheck, Workflow } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 
-const fits = [
-  "Your business relies heavily on Excel, notebooks, or WhatsApp to run operations.",
-  "Your existing software doesn't match how your team actually works.",
-  "You're manually moving data between different systems.",
-  "You need an internal business application or custom dashboard.",
-  "You need ERP customized around your operations — not a generic suite.",
-  "You're building a SaaS product and need a technical partner.",
+const solutions = [
+  {
+    icon: FileSpreadsheet,
+    problem: "Your team re-enters the same information in Excel, WhatsApp and email.",
+    solution: "We create one shared database and automate the handoffs between teams.",
+  },
+  {
+    icon: GitBranch,
+    problem: "Sales, operations, finance and management work from different records.",
+    solution: "We connect departments with one workflow, clear approvals and live reports.",
+  },
+  {
+    icon: ShieldCheck,
+    problem: "Everyone can see or change information they should not access.",
+    solution: "We add role-based access, permissions and activity history for each team.",
+  },
+  {
+    icon: Workflow,
+    problem: "Manual reporting and repetitive tasks slow down decisions.",
+    solution: "We turn the process into software that calculates, notifies and reports automatically.",
+  },
 ];
 
 export default function WhoThisIsFor() {
@@ -52,11 +66,11 @@ export default function WhoThisIsFor() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Is your business outgrowing{" "}
-              <span className="gradient-text">spreadsheets?</span>
+              From disconnected work to{" "}
+              <span className="gradient-text">one clear system</span>
             </h2>
             <p className={`text-base sm:text-lg leading-relaxed mb-8 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-              MA Softs is a good fit if you need software that follows your workflow — not the other way around. Not sure what you need? That&apos;s okay.
+              You do not need to know the technical answer. Tell us where work gets lost, repeated or delayed, and we will map the right website, web app, automation or internal business system.
             </p>
             <Link
               href="/contact"
@@ -67,25 +81,28 @@ export default function WhoThisIsFor() {
             </Link>
           </motion.div>
 
-          <div className="lg:col-span-7 space-y-3">
-            {fits.map((item, index) => (
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            {solutions.map((item, index) => (
               <motion.div
-                key={item}
+                key={item.problem}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className={`flex items-start gap-4 p-4 sm:p-5 rounded-2xl border ${
+                className={`p-5 rounded-2xl border ${
                   isDark
                     ? "bg-white/[0.02] border-white/[0.05]"
                     : "bg-white border-gray-100 shadow-sm"
                 }`}
               >
-                <div className="w-6 h-6 rounded-full bg-success-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-3.5 h-3.5 text-success-500" />
-                </div>
-                <p className={`text-[15px] leading-relaxed ${isDark ? "text-neutral-300" : "text-gray-700"}`}>
-                  {item}
+                <item.icon className="w-6 h-6 mb-4 text-primary-500" />
+                <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                  <span className={`font-semibold ${isDark ? "text-neutral-200" : "text-gray-800"}`}>Problem: </span>
+                  {item.problem}
+                </p>
+                <p className={`mt-3 text-sm leading-relaxed ${isDark ? "text-neutral-300" : "text-gray-700"}`}>
+                  <span className="font-semibold text-success-500">Solution: </span>
+                  {item.solution}
                 </p>
               </motion.div>
             ))}
