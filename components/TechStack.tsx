@@ -67,12 +67,12 @@ const Row = ({ stacks, direction = 1, speed = 25, isDark }: { stacks: TechStackI
     <motion.div
       animate={{ x: direction > 0 ? ["-50%", "0%"] : ["0%", "-50%"] }}
       transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
-      className="flex gap-8 py-4 whitespace-nowrap min-w-max"
+      className="flex gap-6 py-3 whitespace-nowrap min-w-max"
     >
       {[...stacks, ...stacks].map((tech, i) => (
-        <div key={i} className={`flex items-center gap-3 px-8 py-4 rounded-2xl border transition-all duration-300 ${isDark ? "bg-white/[0.03] border-white/[0.06] hover:bg-white/[0.1] shadow-xl" : "bg-white border-gray-100 hover:border-primary-200 shadow-sm"}`}>
-          <tech.icon className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${tech.color}`} />
-          <span className={`text-lg font-bold ${isDark ? "text-white/90" : "text-gray-700"}`}>{tech.name}</span>
+        <div key={i} className={`flex items-center gap-3 px-6 py-3 rounded-xl border transition-all duration-300 ${isDark ? "bg-white/[0.03] border-white/[0.06] hover:bg-white/[0.1] shadow-lg" : "bg-white border-gray-100 hover:border-primary-200 shadow-sm"}`}>
+          <tech.icon className={`w-5 h-5 transition-transform duration-300 group-hover:scale-110 ${tech.color}`} />
+          <span className={`text-sm font-bold ${isDark ? "text-white/90" : "text-gray-700"}`}>{tech.name}</span>
         </div>
       ))}
     </motion.div>
@@ -84,17 +84,17 @@ export default function TechStack() {
   const isDark = theme === "dark";
 
   return (
-    <section className={`py-24 relative overflow-hidden ${isDark ? "bg-dark-950" : "bg-slate-50"}`}>
-      <div className="container-custom mx-auto relative z-10 mb-16 px-4 text-center">
-        <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
+    <section className={`py-14 lg:py-16 relative overflow-hidden ${isDark ? "bg-dark-950" : "bg-slate-50"}`}>
+      <div className="container-custom mx-auto relative z-10 mb-10 px-4 text-center">
+        <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
           A reliable foundation for <span className="gradient-text">your system</span>
         </h2>
-        <p className={`text-lg max-w-2xl mx-auto ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
+        <p className={`text-sm sm:text-base max-w-2xl mx-auto ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
           Your users see a simple interface. Behind it, we build the frontend, backend, database, permissions and integrations needed to keep the business connected.
         </p>
       </div>
 
-      <div className="space-y-8 relative">
+      <div className="space-y-5 relative">
         <Row stacks={techStacks[0]} direction={1} speed={30} isDark={isDark} />
         <Row stacks={techStacks[1]} direction={-1} speed={35} isDark={isDark} />
         <Row stacks={techStacks[2]} direction={1} speed={40} isDark={isDark} />

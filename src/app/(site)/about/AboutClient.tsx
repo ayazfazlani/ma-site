@@ -17,23 +17,23 @@ const aboutBreadcrumb = getBreadcrumbSchema([
 const values = [
   {
     icon: Target,
-    title: "Results-Driven",
-    description: "I focus on delivering measurable results that impact your bottom line.",
+    title: "Practical scope",
+    description: "Prioritize the workflows and reports your team needs most, then expand with purpose.",
   },
   {
     icon: Users,
-    title: "Client-Centric",
-    description: "Your success is my priority. I work as an extension of your team.",
+    title: "Direct collaboration",
+    description: "Work through requirements and decisions together, with clear checkpoints along the way.",
   },
   {
     icon: Award,
-    title: "Excellence",
-    description: "I maintain the highest standards in every project I undertake.",
+    title: "Maintainable software",
+    description: "Favor understandable systems your business can continue to improve after launch.",
   },
   {
     icon: Globe,
-    title: "Personalized Approach",
-    description: "I work closely with you as a dedicated partner, not just a service provider.",
+    title: "A useful handover",
+    description: "Plan for documentation, ownership, and the practical needs of the people using the software.",
   },
 ];
 
@@ -48,13 +48,13 @@ export default function AboutClient() {
       <JsonLd data={aboutBreadcrumb} />
       <JsonLd data={toFaqPageSchema(aboutFaqs)} />
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-14 lg:py-20">
         <ScrollTray src="/tray.mp4" className="opacity-20" />
         <div className="container-custom mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
           >
             About <span className="gradient-text">MA Softs</span>
           </motion.h1>
@@ -62,7 +62,7 @@ export default function AboutClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto"
           >
             Serving startups and businesses globally from Multan, Pakistan
           </motion.p>
@@ -79,25 +79,23 @@ export default function AboutClient() {
               viewport={{ once: true }}
             >
               <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
-                My <span className="gradient-text">Story</span>
+                How I approach <span className="gradient-text">software</span>
               </h2>
               <div className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
                 <p>
-                  Founded in 2023, MA Softs started with a simple mission: to help
-                  startups and businesses worldwide succeed with custom-built software solutions.
-                  Based in Multan, Punjab, I leverage modern technology to serve a global clientele,
-                  acting as a dedicated technical partner for companies from the US to Australia.
+                  MA Softs is an independent software practice based in Multan, Pakistan, working
+                  with businesses locally and remotely. The focus is custom ERP, manufacturing
+                  software, web applications, and SaaS products shaped around real operations.
                 </p>
                 <p>
-                  What began as a personal passion for coding has grown into a specialized
-                  software development practice focused on ERPs, SaaS MVPs, and scalable web apps.
-                  Over the past few years, I&apos;ve helped dozens of businesses automate their operations, 
-                  build their first digital products, and scale their technical infrastructure.
+                  Projects begin with the current process: where information is recorded, where
+                  work gets delayed, and what the team needs to see. That discovery helps separate
+                  the essential first release from features that can wait.
                 </p>
                 <p>
-                  I combine creative UI/UX with robust engineering to deliver products that matter. 
-                  I believe in building long-term partnerships, delivering the high-touch reliability 
-                  of a dedicated expert with the reach and expertise of a global partner.
+                  From there, I design and build a practical system with a clear handover in mind.
+                  The goal is software that fits day-to-day work and can be maintained as the
+                  business changes.
                 </p>
               </div>
             </motion.div>
@@ -109,24 +107,24 @@ export default function AboutClient() {
               className="relative"
             >
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4 mt-8">
-                  <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-primary-500/10" : "bg-primary-50"}`}>
-                    <div className="text-4xl font-bold text-primary-600 mb-2">5+</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Years Experience</div>
+                <div className="space-y-4 mt-6">
+                  <div className={`rounded-2xl p-5 ${isDark ? "bg-primary-500/10" : "bg-primary-50"}`}>
+                    <div className="text-sm font-bold text-primary-600 mb-1">Start with the workflow</div>
+                    <div className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>Map how work moves before choosing what to build.</div>
                   </div>
-                  <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-accent-500/10" : "bg-accent-300/10"}`}>
-                    <div className="text-4xl font-bold text-accent-500 mb-2">40+</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Projects Done</div>
+                  <div className={`rounded-2xl p-5 ${isDark ? "bg-accent-500/10" : "bg-accent-300/10"}`}>
+                    <div className="text-sm font-bold text-accent-600 mb-1">Build in useful stages</div>
+                    <div className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>Make the first release focused, testable, and ready to extend.</div>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-purple-500/10" : "bg-purple-50"}`}>
-                    <div className="text-4xl font-bold text-purple-600 mb-2">25+</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Happy Clients</div>
+                  <div className={`rounded-2xl p-5 ${isDark ? "bg-purple-500/10" : "bg-purple-50"}`}>
+                    <div className="text-sm font-bold text-purple-600 mb-1">Keep decisions clear</div>
+                    <div className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>Review scope, trade-offs, and progress together.</div>
                   </div>
-                  <div className={`rounded-2xl p-6 text-center ${isDark ? "bg-success-500/10" : "bg-green-50"}`}>
-                    <div className="text-4xl font-bold text-green-600 mb-2">99%</div>
-                    <div className={isDark ? "text-neutral-400" : "text-gray-600"}>Satisfaction</div>
+                  <div className={`rounded-2xl p-5 ${isDark ? "bg-success-500/10" : "bg-green-50"}`}>
+                    <div className="text-sm font-bold text-green-600 mb-1">Plan for ownership</div>
+                    <div className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>Consider documentation and future maintenance from the start.</div>
                   </div>
                 </div>
               </div>
@@ -139,15 +137,15 @@ export default function AboutClient() {
       <section className={`section-padding ${isDark ? "bg-dark-900" : "bg-gray-50"}`}>
         <div className="container-custom mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h2 className={`text-2xl sm:text-3xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
               My Core <span className="gradient-text">Values</span>
             </h2>
-            <p className={`text-lg ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
+            <p className={`${isDark ? "text-neutral-400" : "text-gray-600"}`}>
               The principles that guide everything I do
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -155,17 +153,17 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`rounded-2xl p-8 text-center ${isDark
+                className={`rounded-2xl p-6 text-left ${isDark
                     ? "bg-white/[0.03] border border-white/[0.06]"
                     : "bg-white shadow-lg"
                   }`}
               >
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${isDark ? "bg-primary-500/15" : "bg-primary-50"
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${isDark ? "bg-primary-500/15" : "bg-primary-50"
                   }`}>
-                  <value.icon className="w-8 h-8 text-primary-600" />
+                  <value.icon className="w-6 h-6 text-primary-600" />
                 </div>
-                <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>{value.title}</h3>
-                <p className={isDark ? "text-neutral-400" : "text-gray-600"}>{value.description}</p>
+                <h3 className={`text-base font-bold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>{value.title}</h3>
+                <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-600"}`}>{value.description}</p>
               </motion.div>
             ))}
           </div>

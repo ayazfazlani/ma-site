@@ -2,17 +2,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Check, 
-  ArrowRight, 
-  CheckCircle, 
-  Layers, 
-  Code2, 
-  Database, 
-  Cpu, 
-  Globe, 
-  Settings, 
-  Layout, 
+import {
+  Check,
+  ArrowRight,
+  CheckCircle,
+  Layers,
+  Code2,
+  Database,
+  Cpu,
+  Globe,
+  Settings,
+  Layout,
   Zap,
   Search,
   BarChart,
@@ -24,7 +24,8 @@ import {
   Rocket,
   Factory,
   Briefcase,
-  ChevronDown
+  ChevronDown,
+  type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -33,16 +34,18 @@ import JsonLd from "@/components/JsonLd";
 import TestimonialsList from "@/components/TestimonialsList";
 import { type ServiceData, servicesData } from "@/lib/services";
 
+type SchemaData = Record<string, unknown>;
+
 interface ServiceDetailClientProps {
   service: ServiceData;
-  breadcrumb: any;
-  serviceItemListSchema: any;
-  servicesFaqSchema: any;
-  serviceSchema: any;
-  testimonials: any[];
+  breadcrumb: SchemaData;
+  serviceItemListSchema: SchemaData;
+  servicesFaqSchema: SchemaData;
+  serviceSchema: SchemaData;
+  testimonials: Array<Record<string, unknown>>;
 }
 
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   Code2,
   Database,
   Cpu,
@@ -88,41 +91,41 @@ export default function ServiceDetailClient({
       <JsonLd data={serviceSchema} />
 
       {/* Hero Section */}
-      <section className={`py-20 lg:py-32 relative ${isDark ? "bg-dark-950" : "bg-gray-50"}`}>
+      <section className={`py-14 lg:py-20 relative ${isDark ? "bg-dark-950" : "bg-gray-50"}`}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className={`absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[100px] ${isDark ? "bg-primary-500/10" : "bg-primary-500/5"}`} />
           <div className={`absolute top-1/2 -left-24 w-72 h-72 rounded-full blur-[80px] ${isDark ? "bg-purple-500/10" : "bg-purple-500/5"}`} />
         </div>
 
         <div className="container-custom mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex-1 text-center lg:text-left"
             >
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6 ${isDark ? "glass text-primary-400" : "bg-primary-50 text-primary-600 border border-primary-100"}`}>
+              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-5 ${isDark ? "glass text-primary-400" : "bg-primary-50 text-primary-600 border border-primary-100"}`}>
                 <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
-                Premium Service
+                Built around your workflow
               </div>
-              <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] ${isDark ? "text-white" : "text-gray-900"}`}>
+              <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-[1.08] ${isDark ? "text-white" : "text-gray-900"}`}>
                 {fullService.title.split(' ').map((word, i, arr) => (
                   i === arr.length - 1 ? <span key={i} className="gradient-text">{word}</span> : word + ' '
                 ))}
               </h1>
-              <p className={`text-xl mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
+              <p className={`text-lg sm:text-xl mb-7 leading-relaxed max-w-2xl mx-auto lg:mx-0 ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
                 {fullService.longDescription || fullService.description}
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                 <Link
                   href="#plans"
-                  className="bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-700 transition-all shadow-lg shadow-primary-500/20"
+                  className="bg-primary-600 text-white px-7 py-3.5 rounded-full font-bold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-500/20"
                 >
                   View Pricing Plans
                 </Link>
                 <Link
                   href="/contact"
-                  className={`px-8 py-4 rounded-full font-bold text-lg border transition-all ${
+                  className={`px-7 py-3.5 rounded-full font-bold text-base border transition-all ${
                     isDark ? "border-white/10 text-white hover:bg-white/5" : "border-gray-200 text-gray-900 hover:bg-gray-100"
                   }`}
                 >
@@ -134,18 +137,48 @@ export default function ServiceDetailClient({
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex-1 relative"
+              className="w-full max-w-xl flex-1"
             >
-              <div className={`relative w-64 h-64 lg:w-80 lg:h-80 mx-auto rounded-[3rem] p-12 flex items-center justify-center transition-all duration-500 ${isDark ? "bg-gradient-to-br from-primary-500/20 to-purple-500/20 glass border-primary-500/20 shadow-2xl shadow-primary-500/10" : "bg-white border-gray-100 shadow-xl"}`}>
-                <HeroIcon className="w-full h-full text-primary-500" />
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                  <Zap className="w-6 h-6 text-white" fill="currentColor" />
+              <div className={`rounded-3xl border p-5 shadow-2xl sm:p-7 ${isDark ? "border-white/10 bg-dark-900/80 shadow-black/30" : "border-gray-200 bg-white shadow-primary-900/10"}`}>
+                <div className="relative flex min-h-56 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary-700 via-indigo-700 to-slate-900 p-8 text-white sm:min-h-64">
+                  <div className="absolute -right-12 -top-16 h-48 w-48 rounded-full bg-cyan-300/15 blur-3xl" />
+                  <div className="relative text-center">
+                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-white/15 bg-white/10 shadow-xl backdrop-blur-sm">
+                      <HeroIcon className="h-10 w-10 text-white" />
+                    </div>
+                    <p className="mt-4 text-sm font-semibold text-white/90">
+                      A connected system for your team&apos;s day-to-day work
+                    </p>
+                  </div>
                 </div>
-              </div>
-              {/* Floating elements */}
-              <div className={`absolute -bottom-6 -right-6 lg:right-0 p-4 rounded-2xl glass border shadow-xl ${isDark ? "text-white" : "text-gray-900"}`}>
-                <div className="text-2xl font-bold">{fullService.price}</div>
-                <div className="text-xs opacity-60">Starting Point</div>
+                <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {fullService.features.slice(0, 4).map((feature) => (
+                    <div
+                      key={feature}
+                      className={`flex items-start gap-2 rounded-lg px-3 py-2 text-xs font-medium leading-relaxed ${
+                        isDark ? "bg-white/[0.04] text-neutral-300" : "bg-gray-50 text-gray-700"
+                      }`}
+                    >
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+                <div className={`mt-5 flex flex-wrap items-end justify-between gap-3 border-t pt-4 ${
+                  isDark ? "border-white/10" : "border-gray-100"
+                }`}>
+                  <div>
+                    <p className={`text-xs font-semibold uppercase tracking-wide ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                      Project starting point
+                    </p>
+                    <p className={`mt-1 text-xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
+                      {fullService.price}
+                    </p>
+                  </div>
+                  <p className={`max-w-52 text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                    Final scope and cost depend on your requirements and integrations.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -153,11 +186,20 @@ export default function ServiceDetailClient({
       </section>
 
       {/* Key Features Section */}
-      <section className={`py-24 ${isDark ? "bg-dark-900" : "bg-white"}`}>
+      <section className={`py-20 lg:py-24 ${isDark ? "bg-dark-900" : "bg-white"}`}>
         <div className="container-custom mx-auto px-4 text-center">
-          <h2 className={`text-3xl sm:text-4xl font-bold mb-16 ${isDark ? "text-white" : "text-gray-900"}`}>
-            What's Included in this <span className="gradient-text">Service</span>
-          </h2>
+          <div className="mx-auto mb-12 max-w-3xl sm:mb-14">
+            <p className={`mb-3 text-xs font-bold uppercase tracking-[0.16em] ${isDark ? "text-primary-300" : "text-primary-700"}`}>
+              Capabilities
+            </p>
+            <h2 className={`text-3xl font-bold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-900"}`}>
+              What your <span className="gradient-text">service can cover</span>
+            </h2>
+            <p className={`mt-4 leading-relaxed ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
+              We select and sequence these capabilities around your users, existing systems,
+              and the operational problems you want to solve first.
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fullService.features.map((feature, index) => (
               <motion.div
@@ -166,12 +208,12 @@ export default function ServiceDetailClient({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`p-8 rounded-3xl border text-left transition-all hover:scale-[1.02] ${isDark ? "bg-white/5 border-white/10 hover:bg-white/[0.08]" : "bg-gray-50 border-gray-200 hover:bg-white hover:shadow-xl"}`}
+                className={`p-6 sm:p-7 rounded-2xl border text-left transition-all hover:-translate-y-1 ${isDark ? "bg-white/5 border-white/10 hover:bg-white/[0.08]" : "bg-gray-50 border-gray-200 hover:bg-white hover:shadow-xl"}`}
               >
                 <div className="w-12 h-12 rounded-2xl bg-primary-600/10 flex items-center justify-center mb-6">
                   <CheckCircle className="w-6 h-6 text-primary-500" />
                 </div>
-                <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>
+                <h3 className={`text-lg font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>
                   {feature}
                 </h3>
               </motion.div>
@@ -369,7 +411,7 @@ export default function ServiceDetailClient({
             Ready to Accelerate Your <span className="gradient-text">Startup?</span>
           </h2>
           <p className={`text-xl mb-12 max-w-2xl mx-auto ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
-            Let's discuss how my {fullService.title} can help your business grow and succeed in the digital landscape.
+            Let&apos;s discuss how my {fullService.title} can help your business grow and succeed in the digital landscape.
           </p>
           <Link
             href="/contact"

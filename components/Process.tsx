@@ -78,14 +78,14 @@ export default function Process() {
             How we build your software
           </span>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             From workflow to{" "}
             <span className="gradient-text">live system</span>
           </h2>
-          <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-sm sm:text-base ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
             A clear path from the first conversation to software your team can actually use.
           </p>
         </motion.div>
@@ -112,7 +112,7 @@ export default function Process() {
                 className="group"
               >
                 <div
-                  className={`relative rounded-2xl lg:rounded-3xl p-8 border transition-all duration-500 h-full ${
+                  className={`relative rounded-2xl p-6 border transition-all duration-300 h-full ${
                     isDark
                       ? "bg-white/[0.02] border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04]"
                       : "bg-white border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-lg"
@@ -137,7 +137,7 @@ export default function Process() {
                   </div>
 
                   <h3
-                    className={`text-xl font-bold mb-3 transition-colors duration-300 ${
+                    className={`text-lg font-bold mb-2 transition-colors duration-300 ${
                       isDark
                         ? "text-white group-hover:text-primary-300"
                         : "text-gray-900 group-hover:text-primary-600"

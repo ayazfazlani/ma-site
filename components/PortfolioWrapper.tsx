@@ -45,13 +45,13 @@ export default function PortfolioWrapper({ children }: { children: React.ReactNo
             Proof of work
           </span>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             Featured <span className="gradient-text">projects</span>
           </h2>
-          <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-sm sm:text-base leading-relaxed ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
             Selected systems we&apos;ve shipped — manufacturing, commerce, and custom web applications.
           </p>
         </motion.div>

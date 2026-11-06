@@ -81,13 +81,13 @@ export default function Industries() {
             Who we build for
           </span>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             Industries & <span className="gradient-text">business problems</span>
           </h2>
-          <p className={`text-base sm:text-lg ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-sm sm:text-base ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
             We work with operators who need software that matches their process — especially manufacturing, growing businesses, and product teams.
           </p>
         </motion.div>
@@ -103,7 +103,7 @@ export default function Industries() {
             >
             <Link
               href={industry.href}
-              className={`group rounded-2xl lg:rounded-3xl p-7 border transition-all duration-500 hover:shadow-xl block ${
+              className={`group rounded-2xl p-5 border transition-all duration-300 hover:shadow-xl block ${
                 isDark
                   ? "bg-white/[0.02] border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04] hover:shadow-primary-500/5"
                   : "bg-white border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-lg"

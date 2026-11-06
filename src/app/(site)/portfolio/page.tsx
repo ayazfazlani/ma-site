@@ -34,25 +34,6 @@ type PortfolioCard = {
   _id?: string;
 };
 
-const DUMMY_PROJECTS: PortfolioCard[] = [
-  {
-    title: "AI-Powered ERP Solution",
-    slug: "ai-erp",
-    category: "Business Software",
-    description: "Custom enterprise resource planning system with AI-driven inventory forecasting and real-time analytics.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    link: "https://masofts.com"
-  },
-  {
-    title: "Fintech SaaS Dashboard",
-    slug: "fintech-saas",
-    category: "Web Application",
-    description: "High-performance financial monitoring dashboard for a European startup, built with Next.js and Chart.js.",
-    image: "https://images.unsplash.com/photo-1551288049-bbda646261c6?w=800&q=80",
-    link: "https://masofts.com"
-  }
-];
-
 export const revalidate = 3600;
 
 export default async function PortfolioPage() {
@@ -60,37 +41,37 @@ export default async function PortfolioPage() {
 
   // Fetch active projects and sort them
   const rawProjects = await ProjectModel.find({ active: true }).sort({ order: 1 }).lean();
-  const raw = rawProjects.length > 0 ? rawProjects : DUMMY_PROJECTS;
-  const projects = JSON.parse(JSON.stringify(raw)).map((project: PortfolioCard) =>
+  const projects = JSON.parse(JSON.stringify(rawProjects)).map((project: PortfolioCard) =>
     applyPortfolioSeo(project)
   ) as PortfolioCard[];
 
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-dark-950 font-sans">
+    <div className="min-h-screen bg-white pb-12 pt-24 font-sans dark:bg-dark-950 sm:pt-28">
       <JsonLd data={toFaqPageSchema(portfolioListingFaqs)} />
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header content */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+        <div className="mx-auto mb-10 max-w-3xl text-center animate-in fade-in slide-in-from-bottom-5 duration-700 sm:mb-12">
+          <h1 className="mb-4 text-3xl font-black leading-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">Work</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-500 dark:text-neutral-400 leading-relaxed font-medium">
-            Custom ERP development, website projects, and ERP for the plastic industry — real systems built for manufacturers and growing businesses.
+          <p className="text-base leading-relaxed text-gray-600 dark:text-neutral-300">
+            Explore real software projects and case studies. Each one explains the business context and the work shared publicly.
           </p>
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {projects.length > 0 ? (
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
             const cover = project.image || project.images?.[0];
             return (
             <div
               key={project.slug || project._id || String(index)}
-              className="group relative bg-white dark:bg-dark-900 rounded-[2rem] overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in slide-in-from-bottom-10"
+              className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[0.06] dark:bg-dark-900"
               style={{ animationDelay: `${index * 150}ms`, animationFillMode: "both" }}
             >
               {/* Image Showcase */}
-              <div className="h-64 relative bg-gray-50 dark:bg-white/[0.02] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden bg-gray-50 dark:bg-white/[0.02]">
                 {cover ? (
                   <Image
                     src={cover}
@@ -106,7 +87,7 @@ export default async function PortfolioPage() {
                 )}
 
                 {/* Overlay Category Tag */}
-                <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 dark:bg-black/60 backdrop-blur-md rounded-full border border-white/20 dark:border-white/[0.05]">
+                <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-white/90 px-3 py-1.5 backdrop-blur-md dark:border-white/[0.05] dark:bg-black/60">
                   <span className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-2">
                     <LayoutGrid className="w-3.5 h-3.5 text-primary-500" />
                     {project.category ?? "Portfolio"}
@@ -115,17 +96,17 @@ export default async function PortfolioPage() {
               </div>
 
               {/* Content Details */}
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              <div className="p-5">
+                <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {project.title}
                 </h3>
-                <p className="text-gray-500 dark:text-neutral-400 line-clamp-3 mb-8 text-[15px] leading-relaxed">
+                <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
                   {project.description}
                 </p>
 
                 <Link
                   href={`/portfolio/${project.slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.03] text-sm font-bold text-gray-900 dark:text-white group-hover:bg-primary-500 group-hover:text-white transition-all duration-300"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gray-50 px-4 py-2.5 text-sm font-bold text-gray-900 transition-all duration-300 group-hover:bg-primary-500 group-hover:text-white dark:bg-white/[0.03] dark:text-white"
                 >
                   View Case Study
                   <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
@@ -135,6 +116,23 @@ export default async function PortfolioPage() {
             );
           })}
         </div>
+        ) : (
+          <div className="mx-auto max-w-3xl rounded-2xl border border-gray-200 bg-gray-50 p-7 text-center dark:border-white/10 dark:bg-white/[0.03]">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">A focused look at our manufacturing work</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+              We only publish client work when it is appropriate to share. In the meantime, explore how a custom system can support plastic manufacturing, or tell us what your operation needs.
+            </p>
+            <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/erp-for-plastic-injection-molding" className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-700">
+                Explore plastic manufacturing ERP
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-white dark:border-white/15 dark:text-neutral-200 dark:hover:bg-white/[0.04]">
+                Discuss your project
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
 
       <FaqSection

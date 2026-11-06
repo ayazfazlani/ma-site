@@ -41,14 +41,14 @@ export default function ServicesWrapper({ children }: { children: React.ReactNod
             Custom software solutions
           </span>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
             One connected system for{" "}
             <span className="gradient-text">the way you work</span>
           </h2>
-          <p className={`text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+          <p className={`text-sm sm:text-base leading-relaxed ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
             We connect the parts of your business that currently live in Excel, WhatsApp, email, or separate tools. Choose a custom ERP, manufacturing system, full-stack website, web app, or automation project based on the problem you need to solve.{" "}
             <Link href="/services/custom-erp" className="font-semibold text-primary-500 hover:underline">
               See ERP systems

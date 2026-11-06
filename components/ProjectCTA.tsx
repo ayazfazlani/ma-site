@@ -30,7 +30,7 @@ export default function ProjectCTA() {
           viewport={{ once: true }}
         >
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -38,14 +38,14 @@ export default function ProjectCTA() {
             <span className="gradient-text">project</span>
           </h2>
           <p
-            className={`text-base sm:text-lg mb-4 leading-relaxed ${
+            className={`text-sm sm:text-base mb-3 leading-relaxed ${
               isDark ? "text-neutral-400" : "text-gray-600"
             }`}
           >
             Have a business process that software could improve?
           </p>
           <p
-            className={`text-base sm:text-lg mb-10 leading-relaxed ${
+            className={`text-sm sm:text-base mb-7 leading-relaxed ${
               isDark ? "text-neutral-400" : "text-gray-500"
             }`}
           >
@@ -54,14 +54,14 @@ export default function ProjectCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold text-lg shadow-xl shadow-primary-500/25 hover:scale-[1.03] transition-all"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold text-sm shadow-lg shadow-primary-500/20 hover:shadow-primary-500/35 transition-all"
             >
               Discuss Your Project
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/portfolio"
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-lg border transition-all ${
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm border transition-all ${
                 isDark
                   ? "border-white/10 text-neutral-300 hover:bg-white/[0.04]"
                   : "border-gray-200 text-gray-600 hover:bg-white"

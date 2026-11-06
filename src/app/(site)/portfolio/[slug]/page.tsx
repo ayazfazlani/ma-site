@@ -91,7 +91,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
     <article className="min-h-screen bg-white dark:bg-dark-950 font-sans overflow-x-hidden">
       <JsonLd data={toFaqPageSchema(portfolioDetailFaqs)} />
       {/* Hero Section */}
-      <div className="relative pt-32 pb-20 bg-gradient-to-b from-primary-50/50 dark:from-primary-950/20 to-transparent overflow-hidden">
+      <div className="relative pt-24 pb-12 bg-gradient-to-b from-primary-50/50 dark:from-primary-950/20 to-transparent overflow-hidden">
         <div className="absolute inset-0 opacity-30 dark:opacity-10">
           <div className="absolute top-40 right-20 w-96 h-96 bg-primary-500 rounded-full blur-3xl" />
         </div>
@@ -107,17 +107,17 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
           </Link>
 
           {/* Header */}
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="px-4 py-1.5 rounded-full bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-primary-500/10">
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-primary-500/10">
                 <LayoutGrid className="w-3.5 h-3.5" />
                 {project.category || "Case Study"}
               </span>
             </div>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight break-words">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight tracking-tight break-words">
               {displayTitle}
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-neutral-300 font-medium leading-relaxed max-w-3xl">
+            <p className="text-base text-gray-600 dark:text-neutral-300 leading-relaxed max-w-3xl">
               {displayDescription}
             </p>
           </div>
@@ -129,7 +129,7 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 text-white font-bold tracking-wide shadow-lg shadow-primary-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 text-white text-sm font-semibold shadow-lg shadow-primary-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
               >
                 Visit Live Project
                 <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -140,21 +140,35 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
+        {slug === "plastic-factory-erp" && (
+          <aside className="mb-8 rounded-xl border border-primary-200 bg-primary-50 p-4 sm:p-5 dark:border-primary-500/20 dark:bg-primary-500/10">
+            <p className="text-sm text-gray-700 dark:text-neutral-300">
+              Exploring a similar system for your plant? See our dedicated page for{" "}
+              <Link
+                href="/erp-for-plastic-injection-molding"
+                className="font-bold text-primary-700 underline underline-offset-4 dark:text-primary-400"
+              >
+                ERP for Plastic Injection Molding
+              </Link>
+              .
+            </p>
+          </aside>
+        )}
 
         {/* Featured Image / Gallery */}
         {galleryImages.length > 0 && (
-          <div className="mb-20">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">Project Overview</h2>
+          <div className="mb-14">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-5">Project Overview</h2>
             {galleryImages.length === 1 ? (
-              <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary-500/10 border border-gray-100 dark:border-white/[0.05] group">
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl shadow-primary-500/10 border border-gray-100 dark:border-white/[0.05] group">
                 <Image
                   src={galleryImages[0]}
                   alt={displayTitle}
                   fill
                   unoptimized
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                  className="object-contain bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-4 group-hover:scale-105 transition-transform duration-500"
+                  className="object-contain bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-800 dark:to-dark-900 p-3 group-hover:scale-105 transition-transform duration-500"
                   priority
                 />
               </div>
@@ -165,57 +179,57 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         )}
 
         {/* Key Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-50/50 dark:from-primary-950/40 dark:to-primary-950/20 border border-primary-200 dark:border-primary-500/20 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-xl bg-primary-600 text-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+          <div className="p-5 rounded-xl bg-gradient-to-br from-primary-50 to-primary-50/50 dark:from-primary-950/40 dark:to-primary-950/20 border border-primary-200 dark:border-primary-500/20 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2.5 rounded-lg bg-primary-600 text-white">
                 <Target className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-gray-900 dark:text-white">Challenge</h3>
+              <h3 className="text-base font-bold text-gray-900 dark:text-white">Challenge</h3>
             </div>
-            <p className="text-gray-600 dark:text-neutral-400 font-medium">
+            <p className="text-sm text-gray-600 dark:text-neutral-400">
               {project.challenges || "Building scalable, efficient solutions for modern business needs."}
             </p>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-50/50 dark:from-blue-950/40 dark:to-blue-950/20 border border-blue-200 dark:border-blue-500/20 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-xl bg-blue-600 text-white">
+          <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-blue-50/50 dark:from-blue-950/40 dark:to-blue-950/20 border border-blue-200 dark:border-blue-500/20 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2.5 rounded-lg bg-blue-600 text-white">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-gray-900 dark:text-white">Solution</h3>
+              <h3 className="text-base font-bold text-gray-900 dark:text-white">Solution</h3>
             </div>
-            <p className="text-gray-600 dark:text-neutral-400 font-medium">
+            <p className="text-sm text-gray-600 dark:text-neutral-400">
               {project.solution || "Custom-built solutions with modern tech stack and best practices."}
             </p>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-50/50 dark:from-emerald-950/40 dark:to-emerald-950/20 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-xl bg-emerald-600 text-white">
+          <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-emerald-50/50 dark:from-emerald-950/40 dark:to-emerald-950/20 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2.5 rounded-lg bg-emerald-600 text-white">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-gray-900 dark:text-white">Results</h3>
+              <h3 className="text-base font-bold text-gray-900 dark:text-white">Results</h3>
             </div>
-            <p className="text-gray-600 dark:text-neutral-400 font-medium">
+            <p className="text-sm text-gray-600 dark:text-neutral-400">
               {project.results || "Increased efficiency and improved business outcomes."}
             </p>
           </div>
         </div>
 
         {/* Detailed Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">About This Project</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-5">About This Project</h2>
             <div className={[
-              "ql-content prose prose-base sm:prose-lg dark:prose-invert max-w-none",
+              "ql-content prose prose-base dark:prose-invert max-w-none",
               "prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white",
-              "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:font-medium",
+              "prose-p:text-gray-600 dark:prose-p:text-neutral-400 prose-p:leading-relaxed",
               "prose-strong:text-primary-600 dark:prose-strong:text-primary-400",
               "prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:font-bold",
               "prose-blockquote:border-primary-500 prose-blockquote:text-gray-500 dark:prose-blockquote:text-neutral-400",
               "prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-code:bg-primary-50 dark:prose-code:bg-primary-500/10",
-              "prose-img:rounded-2xl prose-img:shadow-lg",
+              "prose-img:rounded-xl prose-img:shadow-md",
               "prose-ul:list-disc prose-ol:list-decimal prose-li:text-gray-600 dark:prose-li:text-neutral-400",
             ].join(" ")}>
               {project.content ? (
@@ -232,9 +246,9 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
           <div>
             <div className="sticky top-32 space-y-6">
               {/* Technologies */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.08]">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <Monitor className="w-5 h-5 text-primary-600" />
+              <div className="p-5 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.08]">
+                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                  <Monitor className="w-4 h-4 text-primary-600" />
                   Tech Stack
                 </h3>
                 <div className="space-y-2">
@@ -242,21 +256,21 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                     project.technologies.split(',').map((tech: string, i: number) => (
                       <span
                         key={i}
-                        className="inline-block px-3 py-1.5 rounded-lg bg-primary-100 dark:bg-primary-500/20 text-primary-700 dark:text-primary-300 text-sm font-semibold mr-2 mb-2"
+                        className="inline-block px-2.5 py-1 rounded-md bg-primary-100 dark:bg-primary-500/20 text-primary-700 dark:text-primary-300 text-xs font-semibold mr-2 mb-2"
                       >
                         {tech.trim()}
                       </span>
                     ))
                   ) : (
-                    <p className="text-gray-600 dark:text-neutral-400">Custom Technology Stack</p>
+                    <p className="text-sm text-gray-600 dark:text-neutral-400">Custom Technology Stack</p>
                   )}
                 </div>
               </div>
 
               {/* Timeline */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.08]">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-primary-600" />
+              <div className="p-5 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.08]">
+                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-primary-600" />
                   Project Info
                 </h3>
                 <div className="space-y-3 text-sm">
@@ -276,14 +290,14 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
 
         {/* Related Projects (Internal Links for SEO) */}
         {relatedProjects.length > 0 && (
-          <div className="mb-20">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">More Projects</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="mb-14">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-5">More Projects</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
               {relatedProjects.map((rp) => {
                 const related = applyPortfolioSeo(rp);
                 return (
                 <Link key={rp._id.toString()} href={`/portfolio/${related.slug}`} className="group block">
-                  <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm group-hover:shadow-xl transition-all duration-500 mb-5 bg-gray-50 dark:bg-dark-900">
+                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gray-100 dark:border-white/[0.05] shadow-sm group-hover:shadow-xl transition-all duration-500 mb-3 bg-gray-50 dark:bg-dark-900">
                     {(related.image || related.images?.[0]) ? (
                       <Image 
                         src={related.image || related.images[0]} 
@@ -298,11 +312,11 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
                       </div>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors mb-2 leading-tight">
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors mb-2 leading-tight">
                     {related.title}
                   </h3>
                   {related.category && (
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-primary-600 dark:text-primary-400">
                       {related.category}
                     </p>
                   )}
@@ -314,14 +328,14 @@ export default async function SinglePortfolioPage({ params }: { params: Promise<
         )}
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary-600 to-primary-500 rounded-[2rem] sm:rounded-3xl p-8 sm:p-12 text-white text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Interested in Your Project?</h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-primary-600 to-primary-500 rounded-2xl p-6 sm:p-8 text-white text-center">
+          <h2 className="text-xl sm:text-2xl font-bold mb-3">Interested in Your Project?</h2>
+          <p className="text-sm sm:text-base text-white/90 mb-6 max-w-2xl mx-auto">
             Let&apos;s work together to bring your vision to life with the same quality and attention to detail.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-primary-600 font-bold rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-primary-600 text-sm font-semibold rounded-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg"
           >
             Start Your Project
             <ExternalLink className="w-4 h-4" />

@@ -29,6 +29,7 @@ const footerLinks = {
   services: [
     { label: "ERP & Business Systems", href: "/services/custom-erp" },
     { label: "Manufacturing Software", href: "/services/manufacturing" },
+    { label: "Plastic Injection Molding ERP", href: "/erp-for-plastic-injection-molding" },
     { label: "Web Applications", href: "/services/web-development" },
     { label: "Small Business Software", href: "/services/small-business" },
     { label: "All services", href: "/services" },

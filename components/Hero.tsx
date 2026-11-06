@@ -10,15 +10,15 @@ export default function Hero({
 }) {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 bg-white dark:bg-dark-950"
+      className="relative min-h-[88svh] flex items-center justify-center overflow-hidden transition-colors duration-500 bg-white dark:bg-dark-950"
     >
       <HeroBackground />
 
-      <div className="container-custom relative z-10 mx-auto pt-28 pb-16 w-full">
+      <div className="container-custom relative z-10 mx-auto pt-24 pb-12 w-full">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center">
             <span
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide mb-8 bg-primary-50 border border-primary-200/60 text-primary-600 shadow-sm dark:glass dark:text-primary-300 dark:bg-transparent dark:border-transparent"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wide mb-6 bg-primary-50 border border-primary-200/60 text-primary-600 shadow-sm dark:glass dark:text-primary-300 dark:bg-transparent dark:border-transparent"
             >
               <span className="w-2 h-2 rounded-full animate-pulse-glow bg-primary-500 dark:bg-accent-400" />
               Custom ERP · Manufacturing · Web Apps · SaaS
@@ -26,7 +26,7 @@ export default function Hero({
           </div>
 
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-gray-900 dark:text-white"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-5 text-gray-900 dark:text-white"
           >
             Custom software development services
             <br />
@@ -34,20 +34,20 @@ export default function Hero({
           </h1>
 
           <p
-            className="text-base sm:text-lg max-w-2xl mx-auto mb-4 leading-relaxed text-gray-700 dark:text-neutral-400"
+            className="text-[15px] sm:text-base max-w-2xl mx-auto mb-3 leading-relaxed text-gray-700 dark:text-neutral-300"
           >
             We design and build custom ERP systems, manufacturing software, web applications and SaaS products for businesses that have outgrown disconnected tools.
           </p>
           <p
-            className="text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed text-gray-600 dark:text-neutral-500"
+            className="text-sm max-w-2xl mx-auto mb-8 leading-relaxed text-gray-600 dark:text-neutral-400"
           >
             Start with your workflow, get a clear plan, and receive software your team can use, own and improve.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12">
             <Link
               href="/contact"
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-[1.03]"
+              className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-6 py-3 rounded-full font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30"
             >
               <span className="relative z-10">Tell Us What Needs Fixing</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -56,25 +56,25 @@ export default function Hero({
 
             <Link
               href="/portfolio"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:border-white/10 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/[0.04]"
+              className="group inline-flex items-center gap-3 px-6 py-3 rounded-full font-medium text-base transition-all duration-300 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:border-white/10 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/[0.04]"
             >
               <span>See Relevant Work</span>
             </Link>
           </div>
 
-          {avatarSlot ? <div className="mb-12">{avatarSlot}</div> : null}
+          {avatarSlot ? <div className="mb-8">{avatarSlot}</div> : null}
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto pt-8 border-t border-gray-200 dark:border-white/[0.06]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto pt-6 border-t border-gray-200 dark:border-white/[0.06]">
             {[
-              { value: "Custom-built", label: "You own the software" },
-              { value: "Manufacturing ERP", label: "Proven on the factory floor" },
-              { value: "Remote delivery", label: "For teams worldwide" },
+              { value: "Built around you", label: "Your workflow shapes the scope" },
+              { value: "One connected system", label: "Operations, inventory, and reporting" },
+              { value: "Clear handover", label: "Software your team can own and improve" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-base sm:text-lg font-bold mb-1 tracking-tight text-gray-900 dark:text-white">
+                <div className="text-sm sm:text-base font-bold mb-1 tracking-tight text-gray-900 dark:text-white">
                   {stat.value}
                 </div>
-                <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-500 dark:text-neutral-400">
+                <div className="text-xs font-medium text-gray-500 dark:text-neutral-400">
                   {stat.label}
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function Hero({
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
         <div className="flex flex-col items-center gap-2 animate-float text-gray-500 dark:text-neutral-400">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-medium">Scroll</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] font-medium">Explore</span>
           <ChevronDown className="w-4 h-4" />
         </div>
       </div>

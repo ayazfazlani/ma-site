@@ -62,19 +62,19 @@ export default function WhoThisIsFor() {
               Who this is for
             </span>
             <h2
-              className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight ${
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
               From disconnected work to{" "}
               <span className="gradient-text">one clear system</span>
             </h2>
-            <p className={`text-base sm:text-lg leading-relaxed mb-8 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+            <p className={`text-sm sm:text-base leading-relaxed mb-6 ${isDark ? "text-neutral-300" : "text-gray-600"}`}>
               You do not need to know the technical answer. Tell us where work gets lost, repeated or delayed, and we will map the right website, web app, automation or internal business system.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/35 transition-all group"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-white text-sm font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/35 transition-all group"
             >
               Discuss Your Requirements
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

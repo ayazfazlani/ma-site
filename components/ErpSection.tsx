@@ -130,6 +130,16 @@ export default function ErpSection() {
               >
                 ERP Development
               </Link>
+              <Link
+                href="/erp-for-plastic-injection-molding"
+                className={`inline-flex items-center justify-center gap-2 px-2 py-3 font-semibold transition-colors ${
+                  isDark
+                    ? "text-neutral-300 hover:text-primary-400"
+                    : "text-gray-700 hover:text-primary-600"
+                }`}
+              >
+                ERP for Plastic Injection Molding
+              </Link>
             </motion.div>
 
             <motion.div 

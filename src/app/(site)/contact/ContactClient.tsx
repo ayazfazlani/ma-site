@@ -62,13 +62,13 @@ export default function ContactClient() {
       <JsonLd data={contactBreadcrumb} />
       <JsonLd data={toFaqPageSchema(contactFaqs)} />
       {/* Hero */}
-      <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-linear-to-br from-primary-900 to-primary-800 py-14 lg:py-20">
         <ScrollTray src="/tray.mp4" className="opacity-20" />
         <div className="container-custom mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
           >
             Get In <span className="gradient-text">Touch</span>
           </motion.h1>
@@ -76,7 +76,7 @@ export default function ContactClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto"
           >
             Ready to build your custom software? Let&apos;s discuss your project
           </motion.p>
