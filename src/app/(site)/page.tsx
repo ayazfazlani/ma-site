@@ -29,9 +29,9 @@ import PartnerModel from "@/models/Partner";
 import TestimonialModel from "@/models/Testimonial";
 import ProjectModel from "@/models/Project";
 
-const TITLE = "Custom Software Development for Growing Businesses | MA Softs";
+const TITLE = "Custom Software Development Company | ERP, Web Apps & Manufacturing Software | MA Softs";
 const DESCRIPTION =
-  "MA Softs designs and builds custom ERP systems, manufacturing software, web applications and SaaS platforms around the way your business works.";
+  "MA Softs is a custom software development company building ERP software, manufacturing software, business systems, and web applications for growing businesses and factory teams.";
 
 export const metadata: Metadata = {
   title: {

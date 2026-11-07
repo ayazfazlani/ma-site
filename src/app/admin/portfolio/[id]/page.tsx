@@ -13,6 +13,7 @@ import RichTextEditor from "../../blog/_components/RichTextEditor";
 export const dynamic = "force-dynamic";
 
 export default function EditProjectPage() {
+    const cloudinaryEnabled = Boolean(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
     const params = useParams();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
@@ -217,25 +218,36 @@ export default function EditProjectPage() {
                     </div>
                 )}
 
-                <CldUploadWidget
-                    uploadPreset="ma_softs_preset"
-                    options={{ multiple: true, maxFiles: 12 }}
-                    onSuccess={(result: any) => addImage(result?.info?.secure_url)}
-                >
-                    {({ open }) => (
-                        <button
-                            type="button"
-                            onClick={() => open()}
-                            className="w-full flex flex-col items-center gap-3 py-8 rounded-2xl border-2 border-dashed border-gray-100 dark:border-white/[0.05] bg-gray-50 dark:bg-white/[0.01] text-gray-400 hover:text-primary-500 hover:border-primary-500/40 transition-all"
-                        >
-                            <div className="flex items-center gap-2">
-                                <Plus className="w-5 h-5" />
-                                <ImageIcon className="w-8 h-8" />
-                            </div>
-                            <span className="text-xs font-black uppercase tracking-widest">Add Images</span>
-                        </button>
-                    )}
-                </CldUploadWidget>
+                {cloudinaryEnabled ? (
+                    <CldUploadWidget
+                        uploadPreset="ma_softs_preset"
+                        options={{ multiple: true, maxFiles: 12 }}
+                        onSuccess={(result: any) => addImage(result?.info?.secure_url)}
+                    >
+                        {({ open }) => (
+                            <button
+                                type="button"
+                                onClick={() => open()}
+                                className="w-full flex flex-col items-center gap-3 py-8 rounded-2xl border-2 border-dashed border-gray-100 dark:border-white/[0.05] bg-gray-50 dark:bg-white/[0.01] text-gray-400 hover:text-primary-500 hover:border-primary-500/40 transition-all"
+                            >
+                                <div className="flex items-center gap-2">
+                                    <Plus className="w-5 h-5" />
+                                    <ImageIcon className="w-8 h-8" />
+                                </div>
+                                <span className="text-xs font-black uppercase tracking-widest">Add Images</span>
+                            </button>
+                        )}
+                    </CldUploadWidget>
+                ) : (
+                    <button
+                        type="button"
+                        disabled
+                        className="w-full flex flex-col items-center gap-3 py-8 rounded-2xl border-2 border-dashed border-gray-100 dark:border-white/[0.05] bg-gray-50 dark:bg-white/[0.01] text-gray-400 cursor-not-allowed"
+                    >
+                        <ImageIcon className="w-8 h-8" />
+                        <span className="text-xs font-black uppercase tracking-widest">Cloudinary not configured</span>
+                    </button>
+                )}
             </div>
 
             <div className="p-8 rounded-3xl bg-white dark:bg-dark-900 border border-gray-200 dark:border-white/[0.08] shadow-sm space-y-8">

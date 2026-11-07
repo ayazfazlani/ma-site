@@ -7,6 +7,7 @@ import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 
 export default function SeriesManagementPage() {
+  const cloudinaryEnabled = Boolean(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
   const [series, setSeries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -168,7 +169,7 @@ export default function SeriesManagementPage() {
                             <Image src={formData.image} alt="Preview" fill className="object-cover" />
                             <button type="button" onClick={() => setFormData(prev => ({ ...prev, image: "" }))} className="absolute inset-0 bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white font-bold backdrop-blur-sm">Clear Image</button>
                         </>
-                    ) : (
+                    ) : cloudinaryEnabled ? (
                         <CldUploadWidget 
                             uploadPreset="ma_softs_preset"
                             onSuccess={(result: any) => setFormData(prev => ({ ...prev, image: result?.info?.secure_url }))}
@@ -180,6 +181,11 @@ export default function SeriesManagementPage() {
                                 </button>
                             )}
                         </CldUploadWidget>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center gap-2 h-full text-gray-400">
+                            <ImageIcon className="w-8 h-8" />
+                            <span className="text-xs font-bold uppercase">Cloudinary missing</span>
+                        </div>
                     )}
                   </div>
               </div>

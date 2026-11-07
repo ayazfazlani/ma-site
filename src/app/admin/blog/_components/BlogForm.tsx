@@ -15,6 +15,7 @@ interface BlogFormProps {
 }
 
 export default function BlogForm({ initialData }: BlogFormProps) {
+  const cloudinaryEnabled = Boolean(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -329,9 +330,9 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                                 </button>
                             </div>
                         </div>
-                    ) : (
+                    ) : cloudinaryEnabled ? (
                         <CldUploadWidget 
-                            uploadPreset="ma_softs_preset" // Need to have the user configure this or I'll provide a neutral one
+                            uploadPreset="ma_softs_preset"
                             onSuccess={(result: any) => {
                                 setFormData(prev => ({ ...prev, image: result?.info?.secure_url }));
                             }}
@@ -352,6 +353,11 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                                 </button>
                             )}
                         </CldUploadWidget>
+                    ) : (
+                        <div className="w-full h-56 rounded-3xl border-2 border-dashed border-gray-200 dark:border-white/[0.08] bg-gray-50 dark:bg-white/[0.01] flex flex-col items-center justify-center gap-4 text-gray-400">
+                            <ImageIcon className="w-8 h-8 text-primary-500" />
+                            <p className="font-bold text-gray-900 dark:text-white">Cloudinary not configured</p>
+                        </div>
                     )}
                 </div>
 

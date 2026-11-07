@@ -16,6 +16,7 @@ interface PartnerItem {
 }
 
 export default function PartnersManager() {
+  const cloudinaryEnabled = Boolean(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
   const [partners, setPartners] = useState<PartnerItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -161,23 +162,33 @@ export default function PartnersManager() {
                           <ImageIcon className="w-6 h-6 text-gray-400" />
                       )}
                   </div>
-                  <CldUploadWidget 
-                      uploadPreset="ma_softs_preset" 
-                      onSuccess={(result: any) => {
-                          setFormData(prev => ({ ...prev, logo: result?.info?.secure_url }));
-                      }}
-                  >
-                      {({ open }) => (
-                          <button
-                              type="button"
-                              onClick={() => open()}
-                              className="flex-1 px-5 py-3 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all flex items-center justify-center gap-2"
-                          >
-                              <ImageIcon className="w-4 h-4 text-primary-500" />
-                              {formData.logo ? "Change Image" : "Upload Image"}
-                          </button>
-                      )}
-                  </CldUploadWidget>
+                  {cloudinaryEnabled ? (
+                    <CldUploadWidget 
+                        uploadPreset="ma_softs_preset" 
+                        onSuccess={(result: any) => {
+                            setFormData(prev => ({ ...prev, logo: result?.info?.secure_url }));
+                        }}
+                    >
+                        {({ open }) => (
+                            <button
+                                type="button"
+                                onClick={() => open()}
+                                className="flex-1 px-5 py-3 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.05] text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all flex items-center justify-center gap-2"
+                            >
+                                <ImageIcon className="w-4 h-4 text-primary-500" />
+                                {formData.logo ? "Change Image" : "Upload Image"}
+                            </button>
+                        )}
+                    </CldUploadWidget>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      className="flex-1 px-5 py-3 rounded-2xl border border-dashed border-gray-200 dark:border-white/[0.08] bg-gray-50 text-gray-400 dark:bg-white/[0.02] cursor-not-allowed"
+                    >
+                      Cloudinary missing
+                    </button>
+                  )}
               </div>
               <input
                 value={formData.logo}

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { Toaster, toast } from "react-hot-toast";
 
 export default function SettingsForm({ initialData }: { initialData: any }) {
+  const cloudinaryEnabled = Boolean(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     siteName: initialData?.siteName || "MA Softs",
@@ -102,7 +103,7 @@ export default function SettingsForm({ initialData }: { initialData: any }) {
                                     Change
                                 </button>
                             </div>
-                        ) : (
+                        ) : cloudinaryEnabled ? (
                             <CldUploadWidget 
                                 uploadPreset="ma_softs_preset"
                                 onSuccess={(result: any) => setFormData(prev => ({ ...prev, logo: result?.info?.secure_url }))}
@@ -117,6 +118,10 @@ export default function SettingsForm({ initialData }: { initialData: any }) {
                                     </button>
                                 )}
                             </CldUploadWidget>
+                        ) : (
+                            <div className="w-24 h-24 rounded-2xl border-2 border-dashed border-gray-200 dark:border-white/[0.08] flex items-center justify-center text-xs font-bold text-gray-400 dark:text-neutral-500">
+                                Cloudinary missing
+                            </div>
                         )}
                     </div>
                     

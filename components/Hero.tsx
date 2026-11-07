@@ -28,20 +28,20 @@ export default function Hero({
           <h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-5 text-gray-900 dark:text-white"
           >
-            Custom software development services
+            Custom ERP software, manufacturing software,
             <br />
-            <span className="gradient-text animate-gradient">for the way you work</span>
+            <span className="gradient-text animate-gradient">and web app development for growing businesses</span>
           </h1>
 
           <p
             className="text-[15px] sm:text-base max-w-2xl mx-auto mb-3 leading-relaxed text-gray-700 dark:text-neutral-300"
           >
-            We design and build custom ERP systems, manufacturing software, web applications and SaaS products for businesses that have outgrown disconnected tools.
+            MA Softs is a custom software development company building ERP software, bussiness systems, manufacturing software, and web applications for teams that need better processes, visibility, and control.
           </p>
           <p
             className="text-sm max-w-2xl mx-auto mb-8 leading-relaxed text-gray-600 dark:text-neutral-400"
           >
-            Start with your workflow, get a clear plan, and receive software your team can use, own and improve.
+            We help factories, service businesses, and growing companies replace manual work with custom software that is built around their real workflow.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12">

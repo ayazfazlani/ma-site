@@ -6,8 +6,8 @@ import ServiceModel from "@/models/Service";
 import { serviceFromStoredRecord, servicesData } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "ERP, Web & Business Software Services",
-  description: "Custom ERP development, custom website development services, manufacturing software, and custom software for small business — built by MA Softs.",
+  title: "Custom ERP Software, Web App Development & Business Software Services | MA Softs",
+  description: "Custom ERP software development, custom website development services, manufacturing software, and business software built for growing companies by MA Softs.",
   alternates: {
     canonical: "https://masofts.com/services",
   },
