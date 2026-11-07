@@ -59,6 +59,25 @@ const homeBreadcrumb = getBreadcrumbSchema([
   { name: "Home", url: "https://masofts.com" },
 ]);
 
+function HomePageLoadingSkeleton() {
+  return (
+    <div className="space-y-8 px-4 py-8 sm:px-6 lg:px-8" aria-busy="true" aria-live="polite">
+      <div className="h-40 w-full rounded-3xl bg-gray-200/80 dark:bg-white/[0.05] animate-pulse" />
+      <div className="grid gap-6 md:grid-cols-3">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <div key={index} className="h-56 rounded-3xl bg-gray-200/80 dark:bg-white/[0.05] animate-pulse" />
+        ))}
+      </div>
+      <div className="h-72 w-full rounded-3xl bg-gray-200/80 dark:bg-white/[0.05] animate-pulse" />
+      <div className="grid gap-6 md:grid-cols-2">
+        {Array.from({ length: 2 }).map((_, index) => (
+          <div key={index} className="h-52 rounded-3xl bg-gray-200/80 dark:bg-white/[0.05] animate-pulse" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 async function HomePageSections() {
   await dbConnect();
 
@@ -78,7 +97,7 @@ async function HomePageSections() {
   );
 
   return (
-    <div className="content-deferred">
+    <div>
       <HorizontalScroll initialPartners={serializedData.partners} />
       <Services initialServices={serializedData.services} />
       <WhoThisIsFor />
@@ -118,7 +137,7 @@ export default function Home() {
         }
       />
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<HomePageLoadingSkeleton />}>
         <HomePageSections />
       </Suspense>
     </>
